@@ -1,3 +1,35 @@
 .logo{
     max-width: 100%;
 }
+
+.btn-ligth{
+    border-width: thick;
+}
+
+.option-btn{
+    display: inline-block;
+    padding: 5%;
+/*
+    border-width: medium;
+    border-color: grey;
+    border-style: solid;
+*/
+    min-width: 100%;
+    min-height: 225px;
+    max-width: 95%;
+    transition: background-color, 1s;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.option-btn:hover{
+    background-color: rgb(220, 220, 220);
+}
+
+.option-btn img{
+    width: 75%;
+}
+
+h5{
+    line-height: 38px;;
+}
