@@ -1,6 +1,7 @@
 <?php include("partials/_header.html"); ?>
 <?php include("partials/_top_bar.html"); ?>
 <?php 
+# Administrador
 $perm["entry"] = 1;
 $perm["lend"] = 1;
 $perm["stats"] = 1;
@@ -9,7 +10,17 @@ $perm["visitors"] = 1;
 $perm["users"] = 1;
 $perm["act"] = 1;
 $perm["catalog"] = 1;
+# Anónimo
+//$perm["entry"] = 0;
+//$perm["lend"] = 0;
+//$perm["stats"] = 0;
+//$perm["dgb"] = 0;
+//$perm["visitors"] = 0;
+//$perm["users"] = 0;
+//$perm["act"] = 0;
+//$perm["catalog"] = 1;
 ?>
+
 <div class="container"><br /><br /><br />
     <div class="row text-center">
         <?php 
