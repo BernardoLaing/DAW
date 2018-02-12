@@ -2,6 +2,15 @@
     max-width: 100%;
 }
 
+.dropdown-toggle::after {
+    display:none !important;
+    color: black !important;
+}
+
+.dropdown-menu{
+    position: absolute;
+}
+
 .btn-ligth{
     border-width: thick;
 }
