@@ -6,7 +6,7 @@
         <div class="col col-sm-12 col-md-6 mx-auto">
             <div class="display-3">Reporte DGB</div>
         </div>
-    </div>
+    </div><br />
     <div class="shadow">
         <br />
         <div class="row px-2">
@@ -74,6 +74,12 @@
             </div>
         </div>
         <br /><br />
+        <div class="row">
+            <div class="col-sm-2 text-center">
+                <a class="btn btn-outline-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
+            </div>
+        </div>
+        <br />
     </div>
 </div>
 

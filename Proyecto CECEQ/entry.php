@@ -90,7 +90,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <div class="col-md-12">
-                    <a class="btn btn-outline-secondary mx-auto" href="menu.php"><img src="src/btns/iconReturn.png" alt="Regresar" width="50" height="50"></a>
+                    <a class="btn btn-outline-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
     <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
                     </div>
                 </div>
