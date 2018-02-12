@@ -10,6 +10,8 @@ $perm["visitors"] = 1;
 $perm["users"] = 1;
 $perm["act"] = 1;
 $perm["catalog"] = 1;
+$perm["control"] = 1;
+$perm["sanctions"] = 1;
 # Anónimo
 //$perm["entry"] = 0;
 //$perm["lend"] = 0;
@@ -17,7 +19,7 @@ $perm["catalog"] = 1;
 //$perm["dgb"] = 0;
 //$perm["visitors"] = 0;
 //$perm["users"] = 0;
-//$perm["act"] = 0;
+//$perm["act"] = 1;
 //$perm["catalog"] = 1;
 ?>
 
@@ -48,7 +50,13 @@ $perm["catalog"] = 1;
         if($perm["catalog"]){
             include("partials/buttons/_catalog.html");
         }
+        if($perm["control"]){
+            include("partials/buttons/_control.html");
+        }
+        if($perm["sanctions"]){
+            include("partials/buttons/_sanctions.html");
+        }
         ?>
-    </div>
+    </div><br /><br />
 </div>
 <?php include("partials/_footer.html"); ?>
