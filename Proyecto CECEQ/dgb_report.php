@@ -9,7 +9,7 @@
     </div>
     <div class="shadow">
         <br />
-        <div class="row">
+        <div class="row px-2">
             <div class="col">
                 <form>
                     <div class="row text-center">
@@ -46,12 +46,12 @@
             </div>
         </div>
         <hr>
-        <div class="row text-center mt-3 my-2">
+        <div class="row text-center mt-3 my-2 px-2">
             <div class="col-sm-12">
                 <b>Usuarios Atendidos</b>
             </div>
         </div>
-        <div class="row">
+        <div class="row px-2">
             <div class="col-sm-12 col-md-6">
                 <b>Jóvenes:</b>
             </div>
@@ -60,12 +60,12 @@
             </div>
         </div>
         <hr>
-        <div class="row text-center mt-3 my-2">
+        <div class="row text-center mt-3 my-2 px-2">
             <div class="col-sm-12">
                 <b>Servicio de Préstamo</b>
             </div>
         </div>
-        <div class="row">
+        <div class="row px-2">
             <div class="col-sm-12 col-md-6">
                 <b>Credenciales expedidas:</b>
             </div>

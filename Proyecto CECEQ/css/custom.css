@@ -16,6 +16,14 @@
     cursor: pointer;
 }
 
+.option-link{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
 .option-btn:hover{
     background-color: rgb(220, 220, 220);
 }
@@ -29,5 +37,10 @@
 }
 
 h5{
-    line-height: 38px;;
+    line-height: 38px;
+}
+
+a h2, h5{
+    text-decoration: none;
+    color: black;
 }
