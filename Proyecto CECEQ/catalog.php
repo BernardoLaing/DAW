@@ -1,0 +1,162 @@
+<?php include("partials/_header.html"); ?>
+<?php include("partials/_top_bar.html"); ?>
+<br /><br />
+<div class="container shadow">
+    <form>
+        <div class="row">
+            <div class="col-sm-12">
+                    <div class="text-center">
+                        <div class="display-4">Catálogo de Libros</div>
+                    </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-sm-4'>    
+                <div class='form-group'>
+                    <label for="user_name">Titulo.</label>
+                    <div class="col-md-12">
+                        <input class="form-control" id="user_name" name="user[name]" size="30" type="text" placeholder="Mara y la cerveza"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="user_paternal">Año.</label>
+                    <div class="col-md-12">
+                        <input class="form-control" id="user_paternal" name="user[paternal]" required="true" size="30" type="text" placeholder="2017"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="user_maternal">Clasificación</label>
+                    <div class="col-md-12">
+                        <input class="form-control" id="user_maternal" name="user[maternal]" required="true" size="30" type="text" placeholder="80"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <div class='row'>
+                <div class='col-sm-4'>
+                    <div class='form-group'>
+                        <label for="user_age">Autor</label>
+                        <div class="col-md-12">
+                            <input class="form-control" id="user_age" name="user[age]" required="true" size="30" type="text" placeholder="Laing, Bernardo"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-sm-4'>
+                    <div class='form-group'>
+                        <label for="user_grade">Editorial.</label>
+                        <div class="col-md-12">
+                            <input class="form-control" id="user_grade" name="user[grade]" required="true" size="30" type="text" placeholder="Porrua"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-sm-4'>
+                    <div class='form-group'>
+                        <label for="user_ocupation">ISBN.</label>
+                        <div class="col-md-12">
+                            <input class="form-control" id="user_ocupation" name="user[ocupation]" required="true" size="30" type="text" placeholder="0-7645-26413" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-outline-secondary mx-auto">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Autor</th>
+                            <th scope="col">Año</th>
+                            <th scope="col">Estante</th>
+                            <th scope="col">Editorial</th>
+                            <th scope="col">Clasificación</th>
+                            <th scope="col">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="edit_book.php">Los Miserables</a></td>
+                            <td>Hugo, Victor</td>
+                            <td>1998</td>
+                            <td>VII-A</td>
+                            <td>Porrua</td>
+                            <td>80</td>
+                            <td>Dañado</td>
+                        </tr>
+                        <tr>
+                            <td>Muestra 1</td>
+                            <td>Cuesta, Eduardo</td>
+                            <td>1998</td>
+                            <td>VII-A</td>
+                            <td>Porrua</td>
+                            <td>80</td>
+                            <td>En reparación</td>
+                        </tr>
+                        <tr>
+                            <td>Muestra 2</td>
+                            <td>Laing, Bernardo</td>
+                            <td>2018</td>
+                            <td>VII-A</td>
+                            <td>Porrua</td>
+                            <td>65</td>
+                            <td>Disponible</td>
+                        </tr>
+                        <tr>
+                            <td>Muestra 3</td>
+                            <td>Güemes, Angie</td>
+                            <td>2000</td>
+                            <td>VII-A</td>
+                            <td>Porrua</td>
+                            <td>30</td>
+                            <td>En prestamo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                        <a class="btn btn-outline-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
+        <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-right">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <a class="btn btn-outline-secondary mx-auto" href="#">Agregar libros desde Excel</a>
+            <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-right">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <a class="btn btn-outline-secondary mx-auto" href="add_book.php">Añadir Libro</a>
+            <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </form>
+</div>
+<?php include("partials/_footer.html"); ?>

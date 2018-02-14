@@ -5,12 +5,10 @@
     <div class="row">
         <div class="col-sm-12">
                 <div class="text-center">
-                    <div class="display-3">Entrada</div>
+                    <div class="display-4">Entrada</div>
                 </div>
         </div>
     </div>
-    <br/><br/><br/><br/>
-
     <form>
     <div class="row">
 
