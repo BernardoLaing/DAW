@@ -25,7 +25,7 @@
     </div>
         <div class='row'>
 
-            <div class='col-sm-4'>    
+            <div class='col-sm-4'>
                 <div class='form-group'>
                     <label for="user_name">Nombre(s).</label>
                     <div class="col-md-12">
@@ -51,9 +51,9 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
-        
+
         <div class='row'>
 
             <div class='col-sm-4'>
