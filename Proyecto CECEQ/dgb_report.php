@@ -33,7 +33,7 @@
                         <div class="col-sm-12 col-md-4 offset-md-1 my-1">
                             <select class="form-control shadow" name="Mes">
                                 <option value="" disabled selected>-- Año --</option>
-                                <?php 
+                                <?php
                                 $firstYear = 2018;
                                 for($year = $firstYear; $year <= date("Y"); $year++) {
                                     echo "<option value='$year'> $year </option>";
