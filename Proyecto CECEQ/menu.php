@@ -10,7 +10,7 @@ $perm["visitors"] = 0;
 $perm["users"] = 1;
 $perm["act"] = 1;
 $perm["catalog"] = 1;
-$perm["control"] = 0;
+$perm["control"] = 1;
 $perm["sanctions"] = 0;
 # Anónimo
 //$perm["entry"] = 0;

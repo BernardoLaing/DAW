@@ -48,8 +48,24 @@
 h5{
     line-height: 38px;
 }
-
 a h2, h5{
+    text-decoration: none;
+    color: black;
+}
+.mdiv
+{
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    z-index: -1;
+}
+.mdiv2
+{
+    background-color: white;
+    background: white;
+    z-index: 10;
+}
+.mlink 
+{
     text-decoration: none;
     color: black;
 }
