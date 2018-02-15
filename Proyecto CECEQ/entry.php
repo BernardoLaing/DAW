@@ -15,7 +15,7 @@
         <div class="col-sm-12">
             <div class='form-group'>
                 <label for="user_number">Número de Usuario</label>
-                <div class="col-md-10">
+                <div class="col-md-6">
                     <input class="form-control" id="user_number" name="user[number]" size="30" type="text" placeholder="1234567"/>
                 </div>
             </div>
@@ -56,9 +56,9 @@
 
             <div class='col-sm-4'>
                 <div class='form-group'>
-                    <label for="user_age">Edad.</label>
+                    <label for="user_age">Fecha de Nacimiento.(dd/mm/aaaa)</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="user_age" name="user[age]" required="true" size="30" type="text" placeholder="19"/>
+                        <input class="form-control" id="user_birthday" name="user[birthday]" required="true" size="30" type="text" placeholder="01/05/1998"/>
                     </div>
                 </div>
             </div>
@@ -67,16 +67,26 @@
                 <div class='form-group'>
                     <label for="user_grade">Grado de Estudio.</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="user_grade" name="user[grade]" required="true" size="30" type="text" placeholder="Universidad"/>
+                        <select class="form-control" id="user_grade" name="user[user_grade]">
+                            <option value="" disabled selected>-- Grado de Estudio --</option>
+                            <option value="Secundaria">Secundaria</option>
+                            <option value="Preparatoria">Preparatoria</option>
+                            <option value="Universidad">Universidad</option>
+                        </select>
                     </div>
                 </div>
             </div>
 
             <div class='col-sm-4'>
                 <div class='form-group'>
-                    <label for="user_ocupation">Ocupación.</label>
+                    <label for="user_gender">Género.</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="user_ocupation" name="user[ocupation]" required="true" size="30" type="text" placeholder="Estudiante"/>
+                        <select class="form-control" id="user_gender" name="user[gender]">
+                            <option value="" disabled selected>-- Genero --</option>
+                            <option value="Hombre">Hombre</option>
+                            <option value="Mujer">Mujer</option>
+                            <option value="Null">Otro</option>
+                        </select>
                     </div>
                 </div>
             </div>
