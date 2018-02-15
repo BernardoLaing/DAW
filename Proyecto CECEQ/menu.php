@@ -11,6 +11,7 @@ $perm["users"] = 1;
 $perm["act"] = 1;
 $perm["catalog"] = 1;
 $perm["control"] = 1;
+<<<<<<< HEAD
 $perm["sanctions"] = 1;
 # Anónimo
 //$perm["entry"] = 0;
