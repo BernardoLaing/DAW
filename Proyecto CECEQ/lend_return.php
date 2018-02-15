@@ -22,7 +22,7 @@
     </div>
     <div class="col-sm-4"></div> <!--NADA-->
   </div>
-  <!--ID LIBROS-->
+  <!--ID LIBROS--><br>
   <div class="row">
       <div class="col-sm-1"></div> <!--NADA-->
       <div class='col-sm-2'>
@@ -47,8 +47,27 @@
       </div>
       <div class="col-sm-1"></div> <!--NADA-->
   </div>
-  <!--BOTONES-->
-
+  <!--BOTONES--><br>
+  <div class="row">
+    <div class="col-sm-4 col-md-3">
+      <a class="btn btn-outline-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
+    </div>
+    <div class="col-sm-4 col-md-3">
+      <div class='form-group'>
+          <div class="text-center">
+              <button type="button" name="button" class="btn btn-outline-secondary mx-auto">Préstamo</button>
+          </div>
+      </div>
+    </div>
+    <div class="col-sm-4 col-md-3">
+      <div class="text-center">
+          <button type="button" name="button" class="btn btn-outline-secondary mx-auto">Devolución</button>
+      </div>
+    </div>
+    </div>
+    <br>
+  </div>
+  <br>
 </div>
 
 
