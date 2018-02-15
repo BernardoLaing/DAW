@@ -11,11 +11,7 @@ $perm["users"] = 1;
 $perm["act"] = 1;
 $perm["catalog"] = 1;
 $perm["control"] = 1;
-<<<<<<< HEAD
 $perm["sanctions"] = 1;
-=======
-$perm["sanctions"] = 0;
->>>>>>> 96d7e5a3f1e2ad72f8ae475273ca2a9882ccf1f6
 # Anónimo
 //$perm["entry"] = 0;
 //$perm["lend"] = 0;
