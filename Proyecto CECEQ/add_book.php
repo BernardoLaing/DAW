@@ -18,7 +18,7 @@
                 <div class='form-group'>
                     <label for="book_title">Title.</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="book_title" name="book[title]" size="30" type="text" placeholder="Los Miserables" />
+                        <input class="form-control" id="book_title" name="book[title]" required size="30" type="text" placeholder="Los Miserables" />
                     </div>
                 </div>
             </div>

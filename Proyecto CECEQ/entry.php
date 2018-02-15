@@ -58,7 +58,7 @@
                 <div class='form-group'>
                     <label for="user_age">Fecha de Nacimiento.(dd/mm/aaaa)</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="user_birthday" name="user[birthday]" required="true" size="30" type="text" placeholder="01/05/1998"/>
+                        <input class="form-control" id="user_birthday" name="user[birthday]" required="true" size="30" type="date" placeholder="01/05/1998"/>
                     </div>
                 </div>
             </div>
