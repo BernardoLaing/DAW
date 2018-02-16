@@ -109,18 +109,22 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                            <div class="col-sm-12 text-center">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" class="form-check-input" id="generalidades" value="000">
-                                                        900 Geografía e historia.
-                                                    </label>
+                                                <div class="col-sm-6">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" id="generalidades" value="000">
+                                                            900 Geografía e historia.
+                                                        </label>
                                                 </div>
-                                            </div>
+                                                <div class="col-sm-6 text-right">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Agregar clasificación...</button>
+                                                </div>
+                                                
+                                            </div>  
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-outline-secondary">Save changes</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-secondary">Guardar cambios</button>
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +166,7 @@
             <div class="col-sm-12 text-center">
                 <div class="form-group">
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-outline-secondary mx-auto">Buscar</button>
+                        <button type="submit" class="btn btn-secondary mx-auto">Buscar</button>
                     </div>
                 </div>
             </div>
@@ -226,7 +230,7 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <div class="col-md-12">
-                        <a class="btn btn-outline-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
+                        <a class="btn btn-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
         <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
                         </div>
                     </div>
@@ -234,7 +238,7 @@
                 <div class="col-sm-4 text-right">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <a class="btn btn-outline-secondary mx-auto" href="#">Agregar libros desde Excel</a>
+                            <a class="btn btn-secondary mx-auto" href="#">Agregar libros desde Excel</a>
             <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
                         </div>
                     </div>
@@ -242,7 +246,7 @@
                 <div class="col-sm-4 text-right">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <a class="btn btn-outline-secondary mx-auto" href="add_book.php">Añadir Libro</a>
+                            <a class="btn btn-secondary mx-auto" href="add_book.php">Añadir Libro</a>
             <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
                         </div>
                     </div>
