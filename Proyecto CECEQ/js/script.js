@@ -47,15 +47,11 @@ if(document.getElementById("sanctionTable")!=null){
 }
 
 addBookButton = document.getElementById("addBook");
-addBookButton.onclick = addBookInput;
-//function addBookInput() {
-//    document.getElementById("row-book-input-2").style.height = "86px";
-//}
-
-
-bookInputs = document.getElementsByClassName("book-input");
-
+if(addBookButton != null) {
+    addBookButton.onclick = addBookInput;
+}
 var n = 0;
+bookInputs = document.getElementsByClassName("book-input");
 
 function addBookInput(){
     if(n < bookInputs.length){
