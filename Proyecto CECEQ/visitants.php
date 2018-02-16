@@ -101,7 +101,7 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <div class="col-lg-12">
-                        <a class="btn btn-outline-secondary mx-auto" id="buscarVisitante" href="#">Buscar Visitante</a>
+                        <a class="btn btn-outline-secondary mx-auto" id="buscarVisitante">Buscar Visitante</a>
                     </div>
                 </div>
             </div>
