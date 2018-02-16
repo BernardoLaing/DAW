@@ -46,18 +46,25 @@ if(document.getElementById("sanctionTable")!=null){
     userTable = document.getElementById("sanctionTable");
 }
 
-addBookButton = document.getElementById("addBook").onclick = addBookInput;
+addBookButton = document.getElementById("addBook");
+addBookButton.onclick = addBookInput;
 //function addBookInput() {
 //    document.getElementById("row-book-input-2").style.height = "86px";
 //}
 
 
 bookInputs = document.getElementsByClassName("book-input");
+
 var n = 0;
 
 function addBookInput(){
-    bookInputs[n].style.height = "86px";
-    n = n+1;
+    if(n < bookInputs.length){
+        bookInputs[n].style.height = "86px";
+        n = n+1;
+        if( n >= bookInputs.length){
+            addBookButton.style.display = "none";
+        }
+    }
 }
 
 
