@@ -76,8 +76,11 @@
         </div>
         <br /><br />
         <div class="row">
-            <div class="col-sm-2 text-center">
-                <a class="btn btn-outline-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
+            <div class="col-sm-4 text-center">
+                <a class="btn btn-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
+            </div>
+            <div class="col-sm-4 text-right">
+                <a class="btn btn-secondary" href="#">Imprimir</a>
             </div>
         </div>
         <br />

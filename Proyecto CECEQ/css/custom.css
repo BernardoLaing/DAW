@@ -2,6 +2,7 @@
     max-width: 100%;
 }
 
+/* Nav */
 .dropdown-toggle::after {
     display:none !important;
     color: black !important;
@@ -11,6 +12,7 @@
     position: absolute;
 }
 
+/* Menu */
 .btn-ligth{
     border-width: thick;
 }
@@ -52,6 +54,8 @@ a h2, h5{
     text-decoration: none;
     color: black;
 }
+
+/**/
 .mdiv
 {
     margin-bottom: 50px;
@@ -63,8 +67,21 @@ a h2, h5{
     background-color: white;
     z-index: 10;
 }
-.mlink 
+.mlink
 {
     text-decoration: none;
     color: black;
+}
+
+/* Table scroll */
+
+#stats-table{
+    height: 250px;
+    overflow-y: auto;
+}
+
+.fixed-thead{
+    width: 100%;
+    position: absolute;
+    background-color: white;
 }

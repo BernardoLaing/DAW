@@ -31,25 +31,18 @@
 
             <div class='col-sm-4'>
                 <div class='form-group'>
-                    <label for="user_maternal">Clasificación</label>
+                    <label for="user_age">Autor</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="user_maternal" name="user[maternal]" required="true" size="30" type="text" placeholder="80"/>
+                        <input class="form-control" id="user_age" name="user[age]" required="true" size="30" type="text" placeholder="Laing, Bernardo"/>
                     </div>
                 </div>
             </div>
+
         </div>
             
         <div class='row'>
-                <div class='col-sm-4'>
-                    <div class='form-group'>
-                        <label for="user_age">Autor</label>
-                        <div class="col-md-12">
-                            <input class="form-control" id="user_age" name="user[age]" required="true" size="30" type="text" placeholder="Laing, Bernardo"/>
-                        </div>
-                    </div>
-                </div>
 
-                <div class='col-sm-4'>
+                <div class='col-sm-6'>
                     <div class='form-group'>
                         <label for="user_grade">Editorial.</label>
                         <div class="col-md-12">
@@ -58,7 +51,7 @@
                     </div>
                 </div>
 
-                <div class='col-sm-4'>
+                <div class='col-sm-6'>
                     <div class='form-group'>
                         <label for="user_ocupation">ISBN.</label>
                         <div class="col-md-12">
@@ -68,15 +61,61 @@
                 </div>
             </div>
         <div class="row">
+            <div class='col-sm-5'>
+                <div class='form-group'>
+                    <label for="clasificacion">Clasificación</label>
+                    <div class="col-md-12">
+                        <select class="form-control" name="clasificacion">
+                        <option value="" disabled selected>-- Clasificación --</option>
+                            <option value="generalidades">000 Generalidades</option>
+                            <option value="filosofia">100 Filosofía y psicología</option>
+                            <option value="religion">200 Religión</option>
+                            <option value="cienciassoc">300 Ciencias sociales</option>
+                            <option value="lenguas">400 Lenguas</option>
+                            <option value="cienciasnat">500 Ciencias naturales y matemáticas</option>
+                            <option value="tecno">600 Tecnología</option>
+                            <option value="artes">700 Las artes. Bellas artes y artes decorativas</option>
+                            <option value="literatura">800 Literatura y retórica</option>
+                            <option value="geografia">900 Geografía e historia</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class='col-sm-5'>
+                <div class='form-group'>
+                    <label for="clasificacion">Subclasificación</label>
+                    <div class="col-md-12">
+                        <select class="form-control" name="clasificacion">
+                        <option value="" disabled selected>-- Subclasificación --</option>
+                            <option value="generalidades">000 Generalidades</option>
+                            <option value="filosofia">100 Filosofía y psicología</option>
+                            <option value="religion">200 Religión</option>
+                            <option value="cienciassoc">300 Ciencias sociales</option>
+                            <option value="lenguas">400 Lenguas</option>
+                            <option value="cienciasnat">500 Ciencias naturales y matemáticas</option>
+                            <option value="tecno">600 Tecnología</option>
+                            <option value="artes">700 Las artes. Bellas artes y artes decorativas</option>
+                            <option value="literatura">800 Literatura y retórica</option>
+                            <option value="geografia">900 Geografía e historia</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 py-auto"><br>
+                    <a class="btn btn-secondary mx-auto my-auto py-2" href="#"><i class="material-icons">add</i></a>
+        <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
+            </div>
+        </div>
+        <div class="row">
             <div class="col-sm-12 text-center">
                 <div class="form-group">
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-outline-secondary mx-auto">Buscar</button>
+                        <button type="submit" class="btn btn-secondary mx-auto">Buscar</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row text-center">
             <div class="col-sm-12">
                 <table class="table table-hover">
                     <thead>
@@ -135,7 +174,7 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <div class="col-md-12">
-                        <a class="btn btn-outline-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
+                        <a class="btn btn-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
         <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
                         </div>
                     </div>
@@ -143,7 +182,7 @@
                 <div class="col-sm-4 text-right">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <a class="btn btn-outline-secondary mx-auto" href="#">Agregar libros desde Excel</a>
+                            <a class="btn btn-secondary mx-auto" href="#">Agregar libros desde Excel</a>
             <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
                         </div>
                     </div>
@@ -151,7 +190,7 @@
                 <div class="col-sm-4 text-right">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <a class="btn btn-outline-secondary mx-auto" href="add_book.php">Añadir Libro</a>
+                            <a class="btn btn-secondary mx-auto" href="add_book.php">Añadir Libro</a>
             <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
                         </div>
                     </div>
@@ -159,4 +198,5 @@
         </div>
     </form>
 </div>
+
 <?php include("partials/_footer.html"); ?>
