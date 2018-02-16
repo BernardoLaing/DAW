@@ -1,3 +1,18 @@
+function main() {
+  $('.projects').hide();
+
+  $('.projects-button').on('click', function() {
+        $(this).next().toggle();
+    if($(this).text() == "Ocultar Permisos")
+        $(this).text("Ver Permisos");
+    else
+        $(this).text("Ocultar Permisos");
+    });
+}
+
+$(document).ready(main);
+
+
 function greet() {
     console.log("js works");
 }
@@ -62,5 +77,3 @@ function addBookInput(){
         }
     }
 }
-
-

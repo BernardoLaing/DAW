@@ -8,45 +8,101 @@
     <br>
     <br>
     <div class="row text-center">
-        <div class="col-sm-6 col-md-3">
-            <p><b>Rol 1</b></p>
-            <p>Privilegio 1</p>
+      <div class=" col-sm-12 col-md-1 "></div>
+      <div class="col-sm-12 col-md-2 card shadow">
+        <div class="card-body">
+          <p class="card-title"><b>Rol 6</b></p>
+          <div class="card-text">
+            Esta es la descripcion del rol mas cool de ceceq
+          </div> <br>
+          <div class='projects-button btn btn-secondary'>Ver permisos</div>
+          <div class='projects'> <br>
+            <p >Privilegio 1</p>
             <p>Privilegio 2</p>
             <p>Privilegio 3</p>
+          </div>
         </div>
-        <div class="col-sm-6 col-md-3">
-            <p><b>Rol 2</b></p>
-            <p>Privilegio 1</p>
-            <p>Privilegio 2</p>
-            <p>Privilegio 3</p>
+      </div>
+      <div class=" col-sm-12 col-md-2"></div>
+      <div class="col-sm-12 col-md-2 card shadow">
+          <div class="card-body">
+            <p class="card-title"><b>Rol 6</b></p>
+            <div class="card-text">
+              Esta es la descripcion del rol mas cool de ceceq
+            </div> <br>
+            <div class='projects-button btn btn-secondary'>Ver permisos</div>
+            <div class='projects'> <br>
+              <p >Privilegio 1</p>
+              <p>Privilegio 2</p>
+              <p>Privilegio 3</p>
+            </div>
+          </div>
         </div>
-        <div class="col-sm-6 col-md-3">
-            <p><b>Rol 3</b></p>
-            <p>Privilegio 1</p>
-            <p>Privilegio 2</p>
-            <p>Privilegio 3</p>
+      <div class=" col-sm-12 col-md-2"></div>
+      <div class="col-sm-12 col-md-2 card shadow">
+          <div class="card-body">
+            <p class="card-title"><b>Rol 6</b></p>
+            <div class="card-text">
+              Esta es la descripcion del rol mas cool de ceceq
+            </div> <br>
+            <div class='projects-button btn btn-secondary'>Ver permisos</div>
+            <div class='projects'> <br>
+              <p >Privilegio 1</p>
+              <p>Privilegio 2</p>
+              <p>Privilegio 3</p>
+            </div>
+          </div>
         </div>
-        <div class="col-sm-6 col-md-3">
-            <p><b>Rol 4</b></p>
-            <p>Privilegio 1</p>
-            <p>Privilegio 2</p>
-            <p>Privilegio 3</p>
-        </div>
+      <div class=" col-sm-12 col-md-1"></div>
     </div>
-    <hr>
+    <br><br>
     <div class="row text-center">
-        <div class="col-sm-6 col-md-3">
-            <p><b>Rol 5</b></p>
-            <p>Privilegio 1</p>
+      <div class=" col-sm-12 col-md-1 "></div>
+      <div class="col-sm-12 col-md-2 card shadow">
+        <div class="card-body">
+          <p class="card-title"><b>Rol 6</b></p>
+          <div class="card-text">
+            Esta es la descripcion del rol mas cool de ceceq
+          </div> <br>
+          <div class='projects-button btn btn-secondary'>Ver permisos</div>
+          <div class='projects'> <br>
+            <p >Privilegio 1</p>
             <p>Privilegio 2</p>
             <p>Privilegio 3</p>
+          </div>
         </div>
-        <div class="col-sm-6 col-md-3">
-            <p><b>Rol 6</b></p>
-            <p>Privilegio 1</p>
-            <p>Privilegio 2</p>
-            <p>Privilegio 3</p>
+      </div>
+      <div class=" col-sm-12 col-md-2"></div>
+      <div class="col-sm-12 col-md-2 card shadow">
+          <div class="card-body">
+            <p class="card-title"><b>Rol 6</b></p>
+            <div class="card-text">
+              Esta es la descripcion del rol mas cool de ceceq
+            </div> <br>
+            <div class='projects-button btn btn-secondary'>Ver permisos</div>
+            <div class='projects'> <br>
+              <p >Privilegio 1</p>
+              <p>Privilegio 2</p>
+              <p>Privilegio 3</p>
+            </div>
+          </div>
         </div>
+      <div class=" col-sm-12 col-md-2"></div>
+      <div class="col-sm-12 col-md-2 card shadow">
+          <div class="card-body">
+            <p class="card-title"><b>Rol 6</b></p>
+            <div class="card-text">
+              Esta es la descripcion del rol mas cool de ceceq
+            </div> <br>
+            <div class='projects-button btn btn-secondary'>Ver permisos</div>
+            <div class='projects'> <br>
+              <p >Privilegio 1</p>
+              <p>Privilegio 2</p>
+              <p>Privilegio 3</p>
+            </div>
+          </div>
+        </div>
+      <div class=" col-sm-12 col-md-1"></div>
     </div>
     <br />
     <div class="row">
@@ -73,4 +129,5 @@
         </div>
     </div>
 -->
+
 <?php include("partials/_footer.html"); ?>
