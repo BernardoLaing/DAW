@@ -22,7 +22,11 @@
     <br>
     <br>
     <div class="row mx-auto">
-        <div class="col-lg-5 col-sm-4"></div>
+        <div class="col-lg-2">
+        <div class="col-sm-2 center-block"><a href="rols.php" class="btn btn-secondary "><i class="material-icons alagin-middle">arrow_back</i></a></div>
+        <div class="col-sm-4"></div>
+        </div>
+        <div class="col-lg-3 col-sm-4"></div>
         <div class="col-lg-2 col-sm-4">
             <button type="button" class="btn btn-secondary btn-lg btn-block"> Registrar</button>
         </div>
@@ -30,10 +34,14 @@
     </div>
     
 </div>
+<<<<<<< HEAD
 <div class="row fixed-bottom mdiv2" id="marBot">
         <div class="col-sm-2"></div>
         <div class="col-sm-2 center-block"><a href="cuentas.php" class="btn btn-secondary"><i class="material-icons alagin-middle">arrow_back</i></a></div>
         <div class="col-sm-4"></div>
         
     </div>
+=======
+
+>>>>>>> c76b8439de9601a8b74a148b8b7d2bd6cedbd255
 <?php include("partials/_footer.html"); ?>
