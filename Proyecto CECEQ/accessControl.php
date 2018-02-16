@@ -17,7 +17,7 @@
     <br>
     <div class="row fixed-bottom">
         <div class="col-sm-2"></div>
-        <div class="col-sm-2 center-block"><a href="menu.php" class="btn btn-outline-secondary"><i class="material-icons alagin-middle">arrow_back</i></a></div>
+        <div class="col-sm-2 center-block"><a href="menu.php" class="btn btn-secondary"><i class="material-icons alagin-middle">arrow_back</i></a></div>
     </div>
 </div>
 <?php include("partials/_footer.html"); ?>
