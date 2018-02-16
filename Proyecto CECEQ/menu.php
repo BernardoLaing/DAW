@@ -12,7 +12,7 @@ $perm["act"] = 1;
 $perm["catalog"] = 1;
 $perm["control"] = 1;
 $perm["sanctions"] = 1;
-# Anónimo
+# Usuario Simple
 //$perm["entry"] = 0;
 //$perm["lend"] = 0;
 //$perm["stats"] = 0;
@@ -21,9 +21,11 @@ $perm["sanctions"] = 1;
 //$perm["users"] = 0;
 //$perm["act"] = 1;
 //$perm["catalog"] = 1;
+//$perm["control"] = 0;
+//$perm["sanctions"] = 0;
 ?>
 
-<div class="container"><br /><br /><br />
+<div class="container">
     <div class="row text-center">
         <?php 
         if($perm["entry"]){
@@ -57,6 +59,6 @@ $perm["sanctions"] = 1;
             include("partials/buttons/_sanctions.html");
         }
         ?>
-    </div><br /><br />
+    </div><br />
 </div>
 <?php include("partials/_footer.html"); ?>

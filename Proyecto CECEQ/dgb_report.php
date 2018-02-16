@@ -2,12 +2,13 @@
 <?php include("partials/_top_bar.html"); ?>
 
 <div class="container">
-    <div class="row text-center">
+    <br />
+    <div class="shadow">
+        <div class="row text-center">
         <div class="col col-sm-12 col-md-6 mx-auto">
             <div class="display-3">Reporte DGB</div>
         </div>
-    </div><br />
-    <div class="shadow">
+    </div>
         <br />
         <div class="row px-2">
             <div class="col">

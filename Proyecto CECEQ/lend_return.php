@@ -17,7 +17,7 @@
     <div class='col-sm-4'>
         <div class='form-group'>
             <label for="user_ocupation">Id. Credencial</label>
-            <input class="form-control" id="user_ocupation" name="user[ocupation]" required="false" size="30" type="text" />
+            <input class="form-control" id="user_ocupation" name="user[ocupation]" required="false" size="30" type="number" />
         </div>
     </div>
     <div class="col-sm-4"></div> <!--NADA-->
@@ -68,7 +68,6 @@
     <br>
   </div>
   <br>
-</div>
 
 
 
