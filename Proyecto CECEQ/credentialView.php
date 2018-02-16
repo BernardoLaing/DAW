@@ -17,11 +17,11 @@
         <div class="row">
             <div class="form-group form-inline col-lg-6">
                 <label class="mr-3" for="credential_issuance">Fecha de expedición:</label>
-                <input name="credential[issuance]" type="date" class="form-control" id="credential_issuance">
+                <label>01/10/2018</label>
             </div>
             <div class="form-group form-inline col-lg-6">
                 <label class="mr-3" for="credential_expiration">Fecha de vencimiento:</label>
-                <input name="credential[expiration]" type="date" class="form-control" id="credential_expiration">
+                <label>01/10/2018</label>
             </div>
         </div>
         <!--end of dates-->
@@ -37,36 +37,36 @@
             <div class='col-lg-4'>
                 <div class='form-group'>
                     <label for="user_name">Nombre(s):</label>
-                    <input name="credential[name]" class="form-control" id="credential_name" size="30" type="text" />
+                    <label>Jorge Alberto</label>
                 </div>
             </div>
             <div class='col-lg-4'>
                 <div class='form-group'>
                     <label for="user_paternal">Apellido paterno:</label>
-                    <input name="credential[paternal]" class="form-control" id="credential_paternal" size="30" type="text" />
+                    <label>Niño</label>
                 </div>
             </div>
             <div class='col-lg-4'>
                 <div class='form-group'>
                     <label for="user_maternal">Apellido materno:</label>
-                    <input name="credential[maternal]" class="form-control" id="credential_maternal" size="30" type="text" />
+                    <label>Cabal</label>
                 </div>
             </div>
         </div>
         <!--end of paternal, maternal, name-->
 
-        <!--birth, email-->
+        <!--age, email-->
         <div class="row">
             <div class="form-group form-inline col-lg-6">
                 <label class="mr-3 col-lg-5" for="credential_birth">Fecha de nacimiento:</label>
-                <input name="credential[birth]" class="form-control col-lg-6" id="credential_birth" placeholder="1997-05-09">
+                <label>10/04/1997</label>
             </div>
             <div class="form-group form-inline col-lg-6">
                 <label class="mr-3 col-lg-3" for="credential_email">E-Mail:</label>
-                <input name="credential[email]" class="form-control col-lg-8" type="email" id="credential_email" placeholder="ejemplo@gmail.com">
+                <label>ninopythonlover@gmail.com</label>
             </div>
         </div>
-        <!--end of birth, email-->
+        <!--end of age, email-->
 
         <!--domicilio (subsection)-->
         <div class="row">
@@ -79,11 +79,11 @@
         <div class="row">
             <div class="col-lg-9 form-group form-inline">
                 <label class="mr-3 col-lg-3" for="credential_street">Calle:</label>
-                <input name="credential[street]" class="form-control col-lg-8" id="credential_street" placeholder="Felipe Ángeles">
+                <label>Calle del niño</label>
             </div>
             <div class="col-lg-3 form-group form-inline">
                 <label class="mr-3 col-lg-5" for="credential_number">Número:</label>
-                <input name="credential[number]" class="form-control col-lg-6" id="credential_number" placeholder="302">
+                <label>404</label>
             </div>
         </div>
         <!--end of street, number-->
@@ -92,11 +92,11 @@
         <div class="row">
             <div class="col-lg-9 form-group form-inline">
                 <label class="mr-3 col-lg-3" for="credential_neighborhood">Colonia:</label>
-                <input name="credential[neighborhood]" class="form-control col-lg-8" id="credential_neighborhood" placeholder="Centro">
+                <label>Jardín de los niños</label>
             </div>
             <div class="col-lg-3 form-group form-inline">
                 <label class="mr-3 col-lg-5" for="credential_postalCode">CP:</label>
-                <input name="credential[postalCode]" class="form-control col-lg-6" id="credential_postalCode" placeholder="76504">
+                <label>761010</label>
             </div>
         </div>
         <!--end of neighborhood, postalcode-->
@@ -111,7 +111,7 @@
         <div class="row">
             <div class="form-group form-inline col-12">
                 <label class="mr-3 col-lg-1" for="credential_phone">Teléfono:</label>
-                <input name="credential[phone]" class="form-control col-lg-5" id="credential_phone" placeholder="01 442 3231433">
+                <label>475968304958</label>
             </div>
         </div>
         <!--end of phone-->
@@ -120,21 +120,11 @@
         <div class="row">
             <div class="col-lg-6 form-group form-inline">
                 <label class="mr-3 col-lg-2" for="credential_occupation">Ocupación:</label>
-                <input name="credential[occupation]" class="form-control col-lg-8" id="credential_occupation" placeholder="Obrero">
+                <label>Estudiante</label>
             </div>
             <div class="col-lg-6 form-group form-inline">
                 <label class="mr-3 col-lg-5" for="credential_schooling">Escolaridad:</label>
-                <select name="user[schooling]" class="form-control" id="user_schooling">
-                    <option value="" disabled selected>...</option>
-                    <option value="NINGUNO">Ninguno</option>
-                    <option value="PREESCOLAR">Preescolar</option>
-                    <option value="PRIMARIA">Primaria</option>
-                    <option value="SECUNDARIA">Secundaria</option>
-                    <option value="PREPARATORIA">Preparatoria</option>
-                    <option value="UNIVERSIDAD">Universidad</option>
-                    <option value="MAESTRIA">Maestría</option>
-                    <option value="DOCTORADO">Doctorado</option>
-                </select>
+                <label>Preparatoria</label>
             </div>
         </div>
         <!--end of occupation, schooling-->
@@ -150,11 +140,11 @@
         <div class="row">
             <div class="col-lg-9 form-group form-inline">
                 <label class="mr-3 col-lg-3" for="credential_workStreet">Calle:</label>
-                <input name="credential[workStreet]" class="form-control col-lg-8" id="credential_workStreet" placeholder="Av. Monasterio">
+                <label>Av. Monasterio</label>
             </div>
             <div class="col-lg-3 form-group form-inline">
                 <label class="mr-3 col-lg-5" for="credential_workNumber">Número:</label>
-                <input name="credential[workNumber]" class="form-control col-lg-6" id="credential_workNumber" placeholder="556">
+                <label>898</label>
             </div>
         </div>
         <!--end of workStreet, workNumber-->
@@ -163,11 +153,11 @@
         <div class="row">
             <div class="col-lg-9 form-group form-inline">
                 <label class="mr-3 col-lg-3" for="credential_workNeighborhood">Colonia:</label>
-                <input name="credential[workNeighborhood]" class="form-control col-lg-8" id="credential_workNeighborhood" placeholder="Carretas">
+                <label>Del parque</label>
             </div>
             <div class="col-lg-3 form-group form-inline">
                 <label class="mr-3 col-lg-5" for="credential_workPostalCode">CP:</label>
-                <input name="credential[workPostalCode]" class="form-control col-lg-6" id="credential_workPostalCode" placeholder="76701">
+                <label>76938</label>
             </div>
         </div>
         <!--end of workNeighborhood, workPostalCode-->
@@ -176,7 +166,7 @@
         <div class="row">
             <div class="form-group form-inline col-12">
                 <label class="mr-3 col-lg-3" for="credential_workPhone">Teléfono de trabajo:</label>
-                <input name="credential[workPhone]" class="form-control col-lg-8" id="credential_workPhone" placeholder="01 442 3231433">
+                <label>44287869686</label>
             </div>
         </div>
         <!--end of workPhone-->
@@ -184,6 +174,14 @@
         <!--end of personal information-->
 
         <!--control buttons-->
+        <div class="row">
+            <div class="col-lg-9"></div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <a class="btn btn-outline-secondary" href="credentialEdit.php">Editar</a>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <!--back button-->
             <div class="col-lg-4">
@@ -196,7 +194,7 @@
             <!--save button-->
             <div class="col-lg-4">
                 <div class="form-group">
-                    <a class="btn btn-outline-secondary" href="#">Tramitar credencial</a>
+                    <a class="btn btn-outline-secondary" href="#">Imprimir credencial</a>
                 </div>
             </div>
 
