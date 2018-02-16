@@ -46,7 +46,18 @@ if(document.getElementById("sanctionTable")!=null){
     userTable = document.getElementById("sanctionTable");
 }
 
+addBookButton = document.getElementById("addBook").onclick = addBookInput;
+//function addBookInput() {
+//    document.getElementById("row-book-input-2").style.height = "86px";
+//}
 
 
+bookInputs = document.getElementsByClassName("book-input");
+var n = 0;
+
+function addBookInput(){
+    bookInputs[n].style.height = "86px";
+    n = n+1;
+}
 
 

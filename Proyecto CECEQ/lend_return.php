@@ -25,16 +25,34 @@
   <!--ID LIBROS--><br>
   <div class="row">
       <div class="col-sm-4"></div> <!--NADA-->
-      <div class='col-sm-3'>
+      <div class='col-sm-4'>
           <div class='form-group'>
               <label for="user_ocupation">Código de Libro</label>
               <input class="form-control" id="user_ocupation" name="user[ocupation]" required="false" size="30" type="text" />
           </div>
       </div>
       <div class="col-sm-1"> <!--BOTON MAS -->
-        <br><a class="btn btn-secondary mx-auto my-auto py-2" href="#"><i class="material-icons">add</i></a>
+        <br><button class="btn btn-secondary mx-auto my-auto py-2 add-book" id="addBook" href="#"><i class="material-icons">add</i></button>
       </div> <!--NADA-->
       <div class="col-sm-4"></div> <!--NADA-->
+  </div>
+    <div class="row book-input" id="">
+      <div class="col-sm-4"></div> <!--NADA-->
+      <div class='col-sm-4'>
+          <div class='form-group'>
+              <label for="user_ocupation">Código de Libro</label>
+              <input class="form-control" id="user_ocupation" name="user[ocupation]" required="false" size="30" type="text" />
+          </div>
+      </div>
+  </div>
+    <div class="row book-input" id="">
+      <div class="col-sm-4"></div> <!--NADA-->
+      <div class='col-sm-4'>
+          <div class='form-group'>
+              <label for="user_ocupation">Código de Libro</label>
+              <input class="form-control" id="user_ocupation" name="user[ocupation]" required="false" size="30" type="text" />
+          </div>
+      </div>
   </div>
   <!--BOTONES--><br>
   <div class="row">
@@ -60,4 +78,4 @@
 
 
 
-<?php include("partials/_footer.html"); ?> <!--Empieza en los scroipts-->
+<?php include("partials/_footer.html"); ?> <!--Empieza en los scripts-->

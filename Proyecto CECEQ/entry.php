@@ -16,7 +16,7 @@
             <div class='form-group'>
                 <label for="user_number">Número de Usuario</label>
                 <div class="col-md-6">
-                    <input class="form-control" id="user_number" name="user[number]" size="30" type="text" placeholder="1234567"/>
+                    <input class="form-control" id="user_number" name="user[number]" size="30" type="number" placeholder="1234567"/>
                 </div>
             </div>
         </div>
