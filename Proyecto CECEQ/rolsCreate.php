@@ -32,7 +32,7 @@
 </div>
 <div class="row fixed-bottom mdiv2" id="marBot">
         <div class="col-sm-2"></div>
-        <div class="col-sm-2 center-block"><a href="cuentas.php" class="btn btn-secondary"><i class="material-icons alagin-middle">arrow_back</i></a></div>
+        <div class="col-sm-2 center-block"><a href="cuentas.php" class="btn btn-outline-secondary"><i class="material-icons alagin-middle">arrow_back</i></a></div>
         <div class="col-sm-4"></div>
         
     </div>

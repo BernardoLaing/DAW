@@ -76,7 +76,7 @@
         <div class='row'>
 
             <div class='col-sm-4 mx-auto'>
-                <div class='form-group'>
+                <div class='form-groupr'>
                     <label for="book_year">Año.</label>
                     <div class="col-md-12">
                         <input class="form-control" id="book_year" name="book[year]" required="true" size="30" type="text" value="1998"/>
@@ -88,33 +88,22 @@
 
         <div class="row">
 
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="form-group">
                     <div class="col-md-12">
-                    <a class="btn btn-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
+                    <a class="btn btn-outline-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
     <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
                     </div>
                 </div>
             </div>
-            
-            <div class="col-sm-4 text-right">
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <a class="btn btn-secondary" href="catalog.php">Eliminar ejemplar</a>
-        <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-sm-4 text-right">
+            <div class="col-sm-6 text-right">
                 <div class="form-group">
                     <div class="col-md-12">
-                    <a class="btn btn-secondary" href="catalog.php">Guardar cambios</a>
-                        <!--<button type="submit" class="btn btn-outline-secondary mx-auto">Guardar cambios</button>-->
+                        <button type="submit" class="btn btn-outline-secondary mx-auto">Agregar Libro</button>
                     </div>
                 </div>
             </div>
-            
 
         </div>
 

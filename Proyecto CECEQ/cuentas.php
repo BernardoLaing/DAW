@@ -111,7 +111,7 @@
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-2 center-block">
-                <a href="accessControl.php" class="btn btn-secondary py-0"><i class="material-icons align-middle">arrow_back</i></a>
+                <a href="accessControl.php" class="btn btn-outline-secondary py-0"><i class="material-icons align-middle">arrow_back</i></a>
             </div>
             <div class="col-sm-4"></div>
             <div class="col-sm-2">

@@ -36,37 +36,37 @@
         <div class='row'>
             <div class='col-lg-4'>
                 <div class='form-group'>
-                    <label for="user_name">Nombre(s):</label>
-                    <input name="credential[name]" class="form-control" id="credential_name" size="30" type="text" />
-                </div>
-            </div>
-            <div class='col-lg-4'>
-                <div class='form-group'>
-                    <label for="user_paternal">Apellido paterno:</label>
+                    <label for="user_paternal">Apellido P.</label>
                     <input name="credential[paternal]" class="form-control" id="credential_paternal" size="30" type="text" />
                 </div>
             </div>
             <div class='col-lg-4'>
                 <div class='form-group'>
-                    <label for="user_maternal">Apellido materno:</label>
+                    <label for="user_maternal">Apellido M.</label>
                     <input name="credential[maternal]" class="form-control" id="credential_maternal" size="30" type="text" />
+                </div>
+            </div>
+            <div class='col-lg-4'>
+                <div class='form-group'>
+                    <label for="user_name">Nombre(s).</label>
+                    <input name="credential[name]" class="form-control" id="credential_name" size="30" type="text" />
                 </div>
             </div>
         </div>
         <!--end of paternal, maternal, name-->
 
-        <!--birth, email-->
+        <!--age, email-->
         <div class="row">
-            <div class="form-group form-inline col-lg-6">
-                <label class="mr-3 col-lg-5" for="credential_birth">Fecha de nacimiento:</label>
-                <input name="credential[birth]" class="form-control col-lg-6" id="credential_birth" placeholder="1997-05-09">
+            <div class="form-group form-inline col-lg-3">
+                <label class="mr-3 col-lg-5" for="credential_age">Edad:</label>
+                <input name="credential[age]" class="form-control col-lg-6" id="credential_age" placeholder="18">
             </div>
-            <div class="form-group form-inline col-lg-6">
+            <div class="form-group form-inline col-lg-9 row">
                 <label class="mr-3 col-lg-3" for="credential_email">E-Mail:</label>
                 <input name="credential[email]" class="form-control col-lg-8" type="email" id="credential_email" placeholder="ejemplo@gmail.com">
             </div>
         </div>
-        <!--end of birth, email-->
+        <!--end of age, email-->
 
         <!--domicilio (subsection)-->
         <div class="row">
@@ -120,21 +120,11 @@
         <div class="row">
             <div class="col-lg-6 form-group form-inline">
                 <label class="mr-3 col-lg-2" for="credential_occupation">Ocupación:</label>
-                <input name="credential[occupation]" class="form-control col-lg-8" id="credential_occupation" placeholder="Obrero">
+                <input name="credential[occupation]" class="form-control col-lg-8" id="credential_occupation" placeholder="Centro">
             </div>
             <div class="col-lg-6 form-group form-inline">
                 <label class="mr-3 col-lg-5" for="credential_schooling">Escolaridad:</label>
-                <select name="user[schooling]" class="form-control" id="user_schooling">
-                    <option value="" disabled selected>...</option>
-                    <option value="NINGUNO">Ninguno</option>
-                    <option value="PREESCOLAR">Preescolar</option>
-                    <option value="PRIMARIA">Primaria</option>
-                    <option value="SECUNDARIA">Secundaria</option>
-                    <option value="PREPARATORIA">Preparatoria</option>
-                    <option value="UNIVERSIDAD">Universidad</option>
-                    <option value="MAESTRIA">Maestría</option>
-                    <option value="DOCTORADO">Doctorado</option>
-                </select>
+                <input name="credential[schooling]" class="form-control col-lg-6" id="credential_schooling" placeholder="76504">
             </div>
         </div>
         <!--end of occupation, schooling-->
@@ -188,7 +178,7 @@
             <!--back button-->
             <div class="col-lg-4">
                 <div class="form-group">
-                    <a class="btn btn-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
+                    <a class="btn btn-outline-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
                 </div>
             </div>
             <!--end of back button-->
@@ -196,7 +186,7 @@
             <!--save button-->
             <div class="col-lg-4">
                 <div class="form-group">
-                    <a class="btn btn-secondary" href="#">Tramitar credencial</a>
+                    <a class="btn btn-outline-secondary" href="#">Tramitar credencial</a>
                 </div>
             </div>
 
