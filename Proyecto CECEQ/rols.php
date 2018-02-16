@@ -1,7 +1,7 @@
 <?php include("partials/_header.html"); ?>
 <?php include("partials/_top_bar.html"); ?>
 <br /><br />
-<div class="container mdiv shadow">
+<div class="container mdiv shadow text-center">
     <div class="mx-auto text-center"> <!-- mx-auto da un padding y border automatico-->
         <div class="display-3">Roles</div> <!--display son headdings mas grandes-->
     </div>

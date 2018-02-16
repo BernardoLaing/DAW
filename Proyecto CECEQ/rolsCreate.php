@@ -8,16 +8,22 @@
     <br>
     <br>
     <div class=" center-block mx-auto">
-        <div>Nombre: <input type="text" name="name"></div>
+        <div class="text-center">Nombre: <input type="text" name="name"></div>
         <br>
-        <p>Privilegios:</p>
-        <form>
-            <input type="checkbox" name="priv1" value="priv1"> Privilegio 1 <br>
-            <input type="checkbox" name="priv2" value="priv2"> Privilegio 2 <br>
-            <input type="checkbox" name="priv3" value="priv3"> Privilegio 3 <br>
-            <input type="checkbox" name="priv4" value="priv4"> Privilegio 4 <br>
-        </form>
-        
+        <div class="row">
+            <p class="col-lg-2"></p>
+            <p class="col-lg-4">Privilegios:</p>
+            <p class="col-lg-8"></p>
+        </div>
+        <div class="row">
+            <p class="col-lg-2"></p>
+            <form class="col-lg-2">
+                <input type="checkbox" name="priv1" value="priv1"> Privilegio 1 <br>
+                <input type="checkbox" name="priv2" value="priv2"> Privilegio 2 <br>
+                <input type="checkbox" name="priv3" value="priv3"> Privilegio 3 <br>
+                <input type="checkbox" name="priv4" value="priv4"> Privilegio 4 <br>
+            </form>
+        </div>
     </div>
     <br>
     <br>
