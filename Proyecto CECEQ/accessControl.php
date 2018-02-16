@@ -15,9 +15,11 @@
     </div>
     <br>
     <br>
-    <div class="row fixed-bottom">
+    <div class="row ">
         <div class="col-sm-2"></div>
         <div class="col-sm-2 center-block"><a href="menu.php" class="btn btn-secondary"><i class="material-icons alagin-middle">arrow_back</i></a></div>
+        <br>
+        <br>
     </div>
 </div>
 <?php include("partials/_footer.html"); ?>
