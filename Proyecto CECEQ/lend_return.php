@@ -24,28 +24,17 @@
   </div>
   <!--ID LIBROS--><br>
   <div class="row">
-      <div class="col-sm-1"></div> <!--NADA-->
-      <div class='col-sm-2'>
+      <div class="col-sm-4"></div> <!--NADA-->
+      <div class='col-sm-3'>
           <div class='form-group'>
               <label for="user_ocupation">Código de Libro</label>
               <input class="form-control" id="user_ocupation" name="user[ocupation]" required="false" size="30" type="text" />
           </div>
       </div>
-      <div class="col-sm-2"></div> <!--NADA-->
-      <div class='col-sm-2'>
-          <div class='form-group'>
-              <label for="user_ocupation">Código de Libro</label>
-              <input class="form-control" id="user_ocupation" name="user[ocupation]" required="false" size="30" type="text" />
-          </div>
-      </div>
-      <div class="col-sm-2"></div> <!--NADA-->
-      <div class='col-sm-2'>
-          <div class='form-group'>
-              <label for="user_ocupation">Código de Libro</label>
-              <input class="form-control" id="user_ocupation" name="user[ocupation]" required="false" size="30" type="text" />
-          </div>
-      </div>
-      <div class="col-sm-1"></div> <!--NADA-->
+      <div class="col-sm-1"> <!--BOTON MAS -->
+        <br><a class="btn btn-secondary mx-auto my-auto py-2" href="#"><i class="material-icons">add</i></a>
+      </div> <!--NADA-->
+      <div class="col-sm-4"></div> <!--NADA-->
   </div>
   <!--BOTONES--><br>
   <div class="row">
