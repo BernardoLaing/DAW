@@ -91,7 +91,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <div class="col-md-12">
-                    <a class="btn btn-outline-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
+                    <a class="btn btn-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
     <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
                     </div>
                 </div>
@@ -100,7 +100,8 @@
             <div class="col-sm-6 text-right">
                 <div class="form-group">
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-outline-secondary mx-auto">Agregar Libro</button>
+                        <a class="btn btn-secondary" href="catalog.php">Agregar libro</a>
+                        <!--<button type="submit" class="btn btn-secondary mx-auto">Agregar Libro</button>-->
                     </div>
                 </div>
             </div>
