@@ -178,7 +178,7 @@
             <!--back button-->
             <div class="col-lg-4">
                 <div class="form-group">
-                    <a class="btn btn-outline-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
+                    <a class="btn btn-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
                 </div>
             </div>
             <!--end of back button-->
@@ -186,7 +186,7 @@
             <!--save button-->
             <div class="col-lg-4">
                 <div class="form-group">
-                    <a class="btn btn-outline-secondary" href="#">Tramitar credencial</a>
+                    <a class="btn btn-secondary" href="#">Tramitar credencial</a>
                 </div>
             </div>
 
