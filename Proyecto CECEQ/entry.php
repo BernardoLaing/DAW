@@ -56,7 +56,7 @@
 
             <div class='col-sm-4'>
                 <div class='form-group'>
-                    <label for="user_age">Fecha de Nacimiento.(dd/mm/aaaa)</label>
+                    <label for="user_age">Fecha de Nacimiento.</label>
                     <div class="col-md-12">
                         <input class="form-control" id="user_birthday" name="user[birthday]" required="true" size="30" type="date" placeholder="01/05/1998"/>
                     </div>
@@ -98,7 +98,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <div class="col-md-12">
-                    <a class="btn btn-outline-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
+                    <a class="btn btn-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
     <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
                     </div>
                 </div>
@@ -107,7 +107,7 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <div class="col-md-12">
-                    <a class="btn btn-outline-secondary mx-auto" href="#">Buscar Visitante</a>
+                    <a class="btn btn-secondary mx-auto" href="#">Buscar Visitante</a>
     <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
                     </div>
                 </div>
@@ -116,7 +116,7 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-outline-secondary mx-auto">Registrar entrada</button>
+                        <button type="submit" class="btn btn-secondary mx-auto">Registrar entrada</button>
                     </div>
                 </div>
             </div>
