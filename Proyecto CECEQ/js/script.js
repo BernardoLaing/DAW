@@ -8,8 +8,7 @@ function changeDisplay(){
         document.getElementById("userTable").setAttribute("style", "display: block;");
     else
         document.getElementById("userTable").setAttribute("style", "display: none;");
-    console.log("should have changed");
-    for(var i=0; i<userTable.rows.length; i++){
+    for(var i=1; i<userTable.rows.length; i++){
 
         userTable.rows[i].onclick = function(){
             window.location.replace("visitantsView.php");
@@ -18,6 +17,20 @@ function changeDisplay(){
     console.log("ran");
 }
 
+function changeDisplay(){
+    if(document.getElementById("sanctionTable").getAttribute("style")=="display: none;")
+        document.getElementById("sanctionTable").setAttribute("style", "display: block;");
+    else
+        document.getElementById("sanctionTable").setAttribute("style", "display: none;");
+    console.log("should have changed");
+    for(var i=1; i<userTable.rows.length; i++){
+
+        userTable.rows[i].onclick = function(){
+            window.location.replace("sanctionsView.php");
+        }
+    }
+    console.log("ran");
+}
 
 
 if(document.getElementById("userTable")!=null){
