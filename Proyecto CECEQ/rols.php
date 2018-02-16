@@ -7,7 +7,7 @@
     </div>
     <br>
     <br>
-    <div class="row">
+    <div class="row text-center">
         <div class="col-sm-6 col-md-3">
             <p><b>Rol 1</b></p>
             <p>Privilegio 1</p>
@@ -32,6 +32,9 @@
             <p>Privilegio 2</p>
             <p>Privilegio 3</p>
         </div>
+    </div>
+    <hr>
+    <div class="row text-center">
         <div class="col-sm-6 col-md-3">
             <p><b>Rol 5</b></p>
             <p>Privilegio 1</p>
