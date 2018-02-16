@@ -8,10 +8,10 @@
     <br>
     <br>
     <div class="row text-center center-block mx-auto">
-        <div class="col-sm-12 col-md-4">Nombre: <input type="text" name="name"></div>
-        <div class="col-sm-12 col-md-4">Nombre Usuario: <input type="text" name="user"></div>
+        <div class="col-sm-12 col-md-4">Nombre: <input type="text" name="name" required="true"></div>
+        <div class="col-sm-12 col-md-4">Nombre Usuario: <input type="text" name="user" required="true"></div>
         <div class="col-sm-12 col-md-4">Rol: 
-            <select name="rol">
+            <select name="rol" required="true">
 						<option>-select-</option>
 						<option>Becas</option>
 						<option>Administrador</option>
@@ -20,8 +20,8 @@
         </div>
         <br>
         <br>
-        <div class="col-sm-12 col-md-4">Contraseña: <input type="password" name="pw"></div>
-        <div class="col-sm-12 col-md-4">Validar Contraseña: <input type="password" name="pw2"></div>
+        <div class="col-sm-12 col-md-4">Contraseña: <input type="password" name="pw" required="true"></div>
+        <div class="col-sm-12 col-md-4">Validar Contraseña: <input type="password" name="pw2" required="true"></div>
     </div>
     <br>
     <br>
@@ -29,7 +29,7 @@
         <div class="col-sm-2 center-block"><a href="cuentas.php" class="btn btn-secondary py-0"><i class="material-icons alagin-middle">arrow_back</i></a></div>
         <div class="col-lg-6 col-sm-4"></div>
         <div class="col-lg-2 col-sm-4">
-            <button type="button" class="btn btn-secondary btn-lg btn-block"> Registrar</button>
+            <button type="button" class="btn btn-secondary btn-block"> Registrar</button>
         </div>
         <div class="col-lg-5 col-sm-4"></div>
     </div>

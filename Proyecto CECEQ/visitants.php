@@ -101,7 +101,8 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <div class="col-lg-12">
-                        <a class="btn btn-secondary mx-auto" id="buscarVisitante">Buscar Visitante</a>
+
+                        <a id="buscarVisitante"><button type="button" class="btn btn-secondary btn-block"> Buscar Visitante</button></a>
                     </div>
                 </div>
             </div>

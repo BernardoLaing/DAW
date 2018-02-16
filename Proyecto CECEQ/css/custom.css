@@ -77,6 +77,7 @@ a h2, h5{
 
 #stats-table{
     height: 250px;
+<<<<<<< HEAD
 /*    overflow-y: scroll;*/
 }
 
@@ -144,3 +145,10 @@ table.responsive-table td {
     float: left;
 }
 */
+
+
+.fixed-thead{
+    width: 100%;
+    position: absolute;
+    background-color: white;
+}

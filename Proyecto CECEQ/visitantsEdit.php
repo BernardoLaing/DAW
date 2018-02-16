@@ -6,7 +6,8 @@
     <div class="row">
         <div class="col-sm-12">
                 <div class="text-center">
-                    <div class="display-4">Usuarios</div>
+
+                    <div class="display-4">Entrada</div>
                 </div>
         </div>
     </div>

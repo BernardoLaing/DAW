@@ -28,11 +28,11 @@
     <div class="row mx-auto">
         <div class="col-sm-2 center-block"><a href="cuentas.php" class="btn btn-secondary py-0"><i class="material-icons alagin-middle">arrow_back</i></a></div>
         <div class="col-lg-4 col-sm-3">
-            <button type="button" class="btn btn-secondary btn-lg "> Eliminar cuenta </button>
+            <button type="button" class="btn btn-secondary "> Eliminar cuenta </button>
         </div>
         <div class="col-lg-1 col-sm-6"></div>
         <div class="col-lg-4 col-sm-3">
-            <button type="button" class="btn btn-secondary btn-lg "> Registrar Cambios </button>
+            <button type="button" class="btn btn-secondary "> Registrar Cambios </button>
         </div>
     </div>
     

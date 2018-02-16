@@ -69,9 +69,13 @@
                     <div class="col-md-12">
                         <select class="form-control" id="user_grade" name="user[user_grade]">
                             <option value="" disabled selected>-- Grado de Estudio --</option>
+                            <option value="Secundaria">Ninguno</option>
+                            <option value="Preparatoria">Primaria</option>
                             <option value="Secundaria">Secundaria</option>
                             <option value="Preparatoria">Preparatoria</option>
                             <option value="Universidad">Universidad</option>
+                            <option value="Universidad">Maestría</option>
+                            <option value="Universidad">Doctorado</option>
                         </select>
                     </div>
                 </div>
@@ -107,7 +111,9 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <div class="col-md-12">
-                    <a class="btn btn-secondary mx-auto" href="#">Buscar Visitante</a>
+
+                    <a class="btn btn-secondary mx-auto" href="visitants.php">Buscar Visitante</a>
+
     <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
                     </div>
                 </div>

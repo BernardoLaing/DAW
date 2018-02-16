@@ -88,7 +88,7 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <div class="col-lg-12">
-                        <a class="btn btn-outline-secondary mx-auto" id="searchSanctions">Buscar sanciones</a>
+                        <a id="buscarVisitante"><button type="button" class="btn btn-secondary btn-block"> Buscar sanciones</button></a>
                     </div>
                 </div>
             </div>
@@ -136,7 +136,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <div class="col-md-12">
-                    <a class="btn btn-outline-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
+                    <a class="btn btn-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
                     </div>
                 </div>
             </div>
