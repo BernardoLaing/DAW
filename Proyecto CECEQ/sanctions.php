@@ -88,7 +88,7 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <div class="col-lg-12">
-                        <a id="buscarVisitante"><button type="button" class="btn btn-secondary btn-block"> Buscar sanciones</button></a>
+                        <a id="searchSanctions"><button type="button" class="btn btn-secondary btn-block"> Buscar sanciones</button></a>
                     </div>
                 </div>
             </div>
