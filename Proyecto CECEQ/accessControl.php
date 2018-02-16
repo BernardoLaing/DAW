@@ -2,11 +2,6 @@
 <?php include("partials/_top_bar.html"); ?>
 <br /><br />
 <div class="container">
-     <div class="mx-auto text-center"> <!-- mx-auto da un padding y border automatico-->
-        <div class="display-3">Control de acceso</div> <!--display son headdings mas grandes-->
-    </div>
-    <br>
-    <br>
     <div class="row text-center center-block">
         <div class="col-sm-0 col-md-2 "></div>
         <?php include("partials/buttons/_accounts.html"); ?>

@@ -115,7 +115,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row text-center">
             <div class="col-sm-12">
                 <table class="table table-hover">
                     <thead>
