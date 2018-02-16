@@ -26,13 +26,11 @@
     <br>
     <br>
     <div class="row mx-auto">
-        <div class="col-lg-4 col-sm-3">
-            <button type="button" class="btn btn-secondary btn-lg "> Eliminar cuenta </button>
+        <div class="col-lg-4 col-sm-4"></div>
+        <div class="col-lg-4 col-sm-4">
+            <button type="button" class="btn btn-secondary btn-lg btn-block"> Registrar Cambios </button>
         </div>
-        <div class="col-lg-4 col-sm-6"></div>
-        <div class="col-lg-4 col-sm-3">
-            <button type="button" class="btn btn-secondary btn-lg "> Registrar Cambios </button>
-        </div>
+        <div class="col-lg-4 col-sm-4"></div>
     </div>
     
 </div>
