@@ -63,8 +63,40 @@ a h2, h5{
     background-color: white;
     z-index: 10;
 }
-.mlink 
+.mlink
 {
     text-decoration: none;
     color: black;
 }
+
+
+
+
+tbody{
+  height: 100%;
+  overflow-y: auto;
+}
+
+table{
+  height: 120px;
+}
+
+
+/* thead, tbody, tr, td, th { display: block; }
+
+tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+tbody {
+    height: 120px;
+    overflow-y: auto;
+}
+
+tbody td, thead th {
+    /* width: 19.2%;
+    float: left;
+} */
