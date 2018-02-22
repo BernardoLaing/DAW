@@ -60,3 +60,20 @@ if(document.getElementById("sanctionTable")!=null){
     document.getElementById("searchSanctions").onclick=changeDisplay;
     userTable = document.getElementById("sanctionTable");
 }
+
+addBookButton = document.getElementById("addBook");
+if(addBookButton != null) {
+    addBookButton.onclick = addBookInput;
+}
+var n = 0;
+bookInputs = document.getElementsByClassName("book-input");
+
+function addBookInput(){
+    if(n < bookInputs.length){
+        bookInputs[n].style.height = "86px";
+        n = n+1;
+        if( n >= bookInputs.length){
+            addBookButton.style.display = "none";
+        }
+    }
+}

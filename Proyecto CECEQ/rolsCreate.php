@@ -7,24 +7,38 @@
     </div>
     <br>
     <br>
-    <div class=" center-block mx-auto">
-        <div class="text-center">Nombre: <input type="text" name="name"></div>
-        <br>
+    <form>
+        <div class="form-row">
+            <div class="col-sm-12 col-md-4 mx-auto">
+                <div class="form-group">
+                    <label for="name">Nombre: </label>
+                    <input class="form-control" type="text" name="name">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 mx-auto">
+                <div class="form-group">
+                    <label for="description">Descripción: </label>
+                    <input class="form-control" type="text" name="description">
+                </div>
+            </div>
+        </div><br /><br />
         <div class="row">
-            <p class="col-lg-2"></p>
-            <p class="col-lg-4">Privilegios:</p>
-            <p class="col-lg-8"></p>
+            <div class="col-sm-12 col-md-4 offset-md-1">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">Privilegio 1</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">Privilegio 2</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">Privilegio 3</label>
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <p class="col-lg-2"></p>
-            <form class="col-lg-2">
-                <input type="checkbox" name="priv1" value="priv1"> Privilegio 1 <br>
-                <input type="checkbox" name="priv2" value="priv2"> Privilegio 2 <br>
-                <input type="checkbox" name="priv3" value="priv3"> Privilegio 3 <br>
-                <input type="checkbox" name="priv4" value="priv4"> Privilegio 4 <br>
-            </form>
-        </div>
-    </div>
+    </form>
     <br>
     <br>
     <div class="row mx-auto">
