@@ -1,135 +1,29 @@
 <?php include("partials/_header.html"); ?>
 <?php include("partials/_top_bar.html"); ?>
-<br /><br />
-<div class="container shadow">
-    <div class="row">
-        <div class="col-sm-12">
-                <div class="text-center">
-                    <div class="display-4">Entrada</div>
-                </div>
-        </div>
-    </div>
-    <form>
-    <div class="row">
-
-        <div class="col-sm-12">
-            <div class='form-group'>
-                <label for="user_number">Número de Usuario</label>
-                <div class="col-md-6">
-                    <input class="form-control" id="user_number" name="user[number]" size="30" type="number" placeholder="1234567"/>
-                </div>
-            </div>
-        </div>
-    </div>
-        <div class='row'>
-
-            <div class='col-sm-4'>
-                <div class='form-group'>
-                    <label for="user_name">Nombre(s).</label>
-                    <div class="col-md-12">
-                        <input class="form-control" id="user_name" name="user[name]" size="30" type="text" placeholder="Eduardo"/>
-                    </div>
-                </div>
-            </div>
-
-            <div class='col-sm-4'>
-                <div class='form-group'>
-                    <label for="user_paternal">Apellido P.</label>
-                    <div class="col-md-12">
-                        <input class="form-control" id="user_paternal" name="user[paternal]" required="true" size="30" type="text" placeholder="Cuesta"/>
-                    </div>
-                </div>
-            </div>
-
-            <div class='col-sm-4'>
-                <div class='form-group'>
-                    <label for="user_maternal">Apellido M.</label>
-                    <div class="col-md-12">
-                        <input class="form-control" id="user_maternal" name="user[maternal]" required="true" size="30" type="text" placeholder="Córdova"/>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class='row'>
-
-            <div class='col-sm-4'>
-                <div class='form-group'>
-                    <label for="user_age">Fecha de Nacimiento.</label>
-                    <div class="col-md-12">
-                        <input class="form-control" id="user_birthday" name="user[birthday]" required="true" size="30" type="date" placeholder="01/05/1998"/>
-                    </div>
-                </div>
-            </div>
-
-            <div class='col-sm-4'>
-                <div class='form-group'>
-                    <label for="user_grade">Grado de Estudio.</label>
-                    <div class="col-md-12">
-                        <select class="form-control" id="user_grade" name="user[user_grade]">
-                            <option value="" disabled selected>-- Grado de Estudio --</option>
-                            <option value="Secundaria">Ninguno</option>
-                            <option value="Preparatoria">Primaria</option>
-                            <option value="Secundaria">Secundaria</option>
-                            <option value="Preparatoria">Preparatoria</option>
-                            <option value="Universidad">Universidad</option>
-                            <option value="Universidad">Maestría</option>
-                            <option value="Universidad">Doctorado</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class='col-sm-4'>
-                <div class='form-group'>
-                    <label for="user_gender">Género.</label>
-                    <div class="col-md-12">
-                        <select class="form-control" id="user_gender" name="user[gender]">
-                            <option value="" disabled selected>-- Genero --</option>
-                            <option value="Hombre">Hombre</option>
-                            <option value="Mujer">Mujer</option>
-                            <option value="Null">Otro</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <div class="col-md-12">
-                    <a class="btn btn-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
-    <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <div class="col-md-12">
-
-                    <a class="btn btn-secondary mx-auto" href="visitants.php">Buscar Visitante</a>
-
-    <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-secondary mx-auto">Registrar entrada</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </form>
-
-</div>
+<?php include("html/entry.html");?>
 <?php include("partials/_footer.html"); ?>
+<?php
+    $usernum = isset($_POST["user"]["number"]) && is_numeric($_POST["user"]["number"]);
+    $name = isset($_POST["user"]["name"]) && !is_numeric($_POST["user"]["name"]);
+    $paternal = isset($_POST["user"]["paternal"]) && !is_numeric($_POST["user"]["paternal"]);
+    $maternal = isset($_POST["user"]["maternal"]) && !is_numeric($_POST["user"]["maternal"]);
+    $bday = isset($_POST["user"]["birthday"]);
+    $grade = isset($_POST["user"]["user_grade"]);
+    $gender = isset($_POST["user"]["gender"]);
+
+    if($usernum){
+        include("modals/modal_num.php");
+        echo "<script> $('#myModal').modal('show') </script>";
+    }
+    
+    else if($name && $paternal && $maternal && $bday && $grade && $gender){
+        include("modals/modal_new.php");
+        echo "<script> $('#myModal').modal('show') </script>";
+    }
+    
+    else{
+        include("modals/modal_fail.php");
+        echo "<script> $('#myModal').modal('show') </script>";
+    }
+?>
+
