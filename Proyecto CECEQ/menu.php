@@ -27,25 +27,7 @@ $perm["sanctions"] = 1;
 
 <div class="container">
     <div class="row text-center">
-        <?php 
-        if($perm["entry"]){
-            include("partials/buttons/_entry.html");
-        }
-        if($perm["lend"]){
-            include("partials/buttons/_lend.html");
-        }
-        if($perm["stats"]){
-            include("partials/buttons/_stats.html");
-        }
-        if($perm["dgb"]){
-            include("partials/buttons/_dgb.html");
-        }
-        if($perm["visitors"]){
-            include("partials/buttons/_visitors.html");
-        }
-        if($perm["users"]){
-            include("partials/buttons/_users.html");
-        }
+         <?php
         if($perm["act"]){
             include("partials/buttons/_activities.html");
         }
@@ -55,6 +37,25 @@ $perm["sanctions"] = 1;
         if($perm["control"]){
             include("partials/buttons/_control.html");
         }
+        if($perm["visitors"]){
+            include("partials/buttons/_visitors.html");
+        }
+        if($perm["entry"]){
+            include("partials/buttons/_entry.html");
+        }
+        if($perm["stats"]){
+            include("partials/buttons/_stats.html");
+        }
+        if($perm["users"]){
+            include("partials/buttons/_users.html");
+        }
+        if($perm["lend"]){
+            include("partials/buttons/_lend.html");
+        }
+        if($perm["dgb"]){
+            include("partials/buttons/_dgb.html");
+        }
+
         if($perm["sanctions"]){
             include("partials/buttons/_sanctions.html");
         }
