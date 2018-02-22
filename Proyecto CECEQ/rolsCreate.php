@@ -12,13 +12,13 @@
             <div class="col-sm-12 col-md-4 mx-auto">
                 <div class="form-group">
                     <label for="name">Nombre: </label>
-                    <input class="form-control" type="text" name="name">
+                    <input class="form-control" type="text" name="name" placeholder="Administrador">
                 </div>
             </div>
             <div class="col-sm-12 col-md-4 mx-auto">
                 <div class="form-group">
                     <label for="description">Descripción: </label>
-                    <input class="form-control" type="text" name="description">
+                    <input class="form-control" type="text" name="description" placeholder="Cuenta con todos los permisos">
                 </div>
             </div>
         </div><br /><br />
