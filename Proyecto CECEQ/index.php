@@ -1,4 +1,3 @@
-<?php include("partials/_header.html"); ?>
 <?php
 if(session_id()){
     session_unset();
@@ -60,8 +59,7 @@ function process($data){
 
 
 ?>
-
-<?php include("partials/_second_top_bar.html"); ?>
+<?php include("partials/_header.html"); ?>
 <?php include("login_form.html"); ?>
 
 
