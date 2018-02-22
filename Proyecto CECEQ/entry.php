@@ -10,20 +10,21 @@
     $bday = isset($_POST["user"]["birthday"]);
     $grade = isset($_POST["user"]["user_grade"]);
     $gender = isset($_POST["user"]["gender"]);
-
-    if($usernum){
-        include("modals/modal_num.php");
-        echo "<script> $('#myModal').modal('show') </script>";
-    }
-    
-    else if($name && $paternal && $maternal && $bday && $grade && $gender){
-        include("modals/modal_new.php");
-        echo "<script> $('#myModal').modal('show') </script>";
-    }
-    
-    else{
-        include("modals/modal_fail.php");
-        echo "<script> $('#myModal').modal('show') </script>";
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if($usernum){
+            include("modals/modal_num.php");
+            echo "<script> $('#myModal').modal('show') </script>";
+        }
+        
+        else if($name && $paternal && $maternal && $bday && $grade && $gender){
+            include("modals/modal_new.php");
+            echo "<script> $('#myModal').modal('show') </script>";
+        }
+        
+        else{
+            include("modals/modal_fail.php");
+            echo "<script> $('#myModal').modal('show') </script>";
+        }
     }
 ?>
 
