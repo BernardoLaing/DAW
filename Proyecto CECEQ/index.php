@@ -1,10 +1,8 @@
 <?php
-if(session_id()){
-    session_unset();
-    session_destroy();
-}
+session_start();
 $dbUser["blaing"] = "Awdvcft13509";
 $dbUser["jnino"] = "Peque01";
+$dbUser["angie"] = "Despedida1";
 ?>
 <?php
 $userError = "";
@@ -40,7 +38,6 @@ if(isset($_POST["submit"])){
         foreach($dbUser as $username => $pswd){
             if($user == $username &&
                $password == $pswd){
-                session_start();
                 $_SESSION["user"] = $user;
                 $_SESSION["password"] = $password;
                 header('Location: menu.php');
@@ -57,10 +54,12 @@ function process($data){
     return $data;
 }
 
-
+?>
+<?php 
+if(isset($_SESSION["user"])){
+    header('Location: menu.php');
+}
 ?>
 <?php include("partials/_header.html"); ?>
 <?php include("html/login_form.html"); ?>
-
-
 <?php include("partials/_footer.html"); ?>

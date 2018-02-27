@@ -93,3 +93,18 @@ a h2, h5{
     height: 0;
     transition: height 1s;    
 }
+
+
+/* Image Upload */
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#cred_img{
+    width: 100%;
+}
