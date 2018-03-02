@@ -12,19 +12,16 @@
     $gender = isset($_POST["user"]["gender"]);
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         if($usernum){
-            include("modals/modal_num.php");
-            echo "<script> $('#myModal').modal('show') </script>";
+            $_SESSION["entry_status"] = 1;
         }
-        
         else if($name && $paternal && $maternal && $bday && $grade && $gender){
-            include("modals/modal_new.php");
-            echo "<script> $('#myModal').modal('show') </script>";
+            $_SESSION["entry_status"] = 2;
         }
-        
         else{
-            include("modals/modal_fail.php");
-            echo "<script> $('#myModal').modal('show') </script>";
+            $_SESSION["entry_status"] = 3;
         }
+        include("modals/modal_entry.php");
+        echo "<script> $('#myModal').modal('show') </script>";
     }
 ?>
 
