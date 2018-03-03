@@ -6,93 +6,22 @@
     <br>
     <br>
     <div class="row text-center">
-        <div class="col-sm-12 col-md-4">
-            <div class="card-body shadow">
-                <p class="card-title"><b>Rol 1</b></p>
-                <div class="card-text">
-                    Esta es la descripcion del rol mas cool de ceceq
-                </div> <br>
-                <div class='projects-button btn btn-secondary'>Ver permisos</div>
-                <div class='projects'> <br>
-                    <p >Privilegio 1</p>
-                    <p>Privilegio 2</p>
-                    <p>Privilegio 3</p>
+        <?php while($row = mysqli_fetch_array($rols, MYSQLI_BOTH)) { ?>
+            <div class="col-sm-12 col-md-4 mb-3">
+                <div class="card-body shadow">
+                    <p class="card-title"><b><?php echo $row["nombre"]; ?></b></p>
+                    <div class="card-text">
+                        <?php echo $row["descripcion"]; ?>
+                    </div> <br>
+                    <div class='projects-button btn btn-secondary'>Ver permisos</div>
+                    <div class='projects'> <br>
+                        <p>Privilegio 1</p>
+                        <p>Privilegio 2</p>
+                        <p>Privilegio 3</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-12 col-md-4">
-            <div class="card-body shadow">
-                <p class="card-title"><b>Rol 1</b></p>
-                <div class="card-text">
-                    Esta es la descripcion del rol mas cool de ceceq
-                </div> <br>
-                <div class='projects-button btn btn-secondary'>Ver permisos</div>
-                <div class='projects'> <br>
-                    <p >Privilegio 1</p>
-                    <p>Privilegio 2</p>
-                    <p>Privilegio 3</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-4">
-            <div class="card-body shadow">
-                <p class="card-title"><b>Rol 1</b></p>
-                <div class="card-text">
-                    Esta es la descripcion del rol mas cool de ceceq
-                </div> <br>
-                <div class='projects-button btn btn-secondary'>Ver permisos</div>
-                <div class='projects'> <br>
-                    <p >Privilegio 1</p>
-                    <p>Privilegio 2</p>
-                    <p>Privilegio 3</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br><br>
-    <div class="row text-center">
-        <div class="col-sm-12 col-md-4">
-            <div class="card-body shadow">
-                <p class="card-title"><b>Rol 1</b></p>
-                <div class="card-text">
-                    Esta es la descripcion del rol mas cool de ceceq
-                </div> <br>
-                <div class='projects-button btn btn-secondary'>Ver permisos</div>
-                <div class='projects'> <br>
-                    <p >Privilegio 1</p>
-                    <p>Privilegio 2</p>
-                    <p>Privilegio 3</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-4">
-            <div class="card-body shadow">
-                <p class="card-title"><b>Rol 1</b></p>
-                <div class="card-text">
-                    Esta es la descripcion del rol mas cool de ceceq
-                </div> <br>
-                <div class='projects-button btn btn-secondary'>Ver permisos</div>
-                <div class='projects'> <br>
-                    <p >Privilegio 1</p>
-                    <p>Privilegio 2</p>
-                    <p>Privilegio 3</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-4">
-            <div class="card-body shadow">
-                <p class="card-title"><b>Rol 1</b></p>
-                <div class="card-text">
-                    Esta es la descripcion del rol mas cool de ceceq
-                </div> <br>
-                <div class='projects-button btn btn-secondary'>Ver permisos</div>
-                <div class='projects'> <br>
-                    <p >Privilegio 1</p>
-                    <p>Privilegio 2</p>
-                    <p>Privilegio 3</p>
-                </div>
-            </div>
-        </div>
+        <?php } ?>
     </div>
     <br />
     <div class="row">

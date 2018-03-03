@@ -128,6 +128,11 @@ a h2, h5{
     height: 48px;
 }
 
+.icon-choose-image:hover{
+    cursor: pointer;
+}
+
+/*
 .add-img-label{
     cursor: pointer;
     width: 100%;
@@ -137,7 +142,15 @@ a h2, h5{
 #cred_img{
     width: 100%;
 }
+*/
 
+#fileToUpload{
+    cursor: pointer;
+}
+
+.pointer{
+    cursor: pointer;
+}
 
 #targetOuter{	
 	position:relative;
