@@ -71,6 +71,24 @@
     }
 
     
+    function getUserRoles(){
+        $db = connect();
+        if($db != NULL){
+            //Specification of the SQL query
+            $query='SELECT u.user, u.nombre, r.nombre  
+                    FROM usuario u, usuario_rol ur, rol r
+                    WHERE u.user = ur.usuario AND ur.idRol = r.id';
+            $query;
+             // Query execution; returns identifier of the result group
+            $results = $db->query($query);
+            disconnect($db);
+            return $results;
+        }
+        return false;
+        
+    }
+
+    
     //var_dump(login('lalo', 'hockey'));
     //var_dump(login('joaquin', 'basket'));
     //var_dump(login('cesar', 'basket'));
