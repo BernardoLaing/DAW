@@ -1,6 +1,6 @@
 <br /><br />
 <div class="container shadow">
-    <form>
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <div class="row">
             <div class="col-sm-12">
                     <div class="text-center">
@@ -13,7 +13,7 @@
                 <div class='form-group'>
                     <label for="user_name">Titulo.</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="user_name" name="user[name]" size="30" type="text" placeholder="Mara y la cerveza"/>
+                        <input class="form-control" id="book_title" name="book[title]" size="30" type="text" placeholder="Mara y la cerveza"/>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                 <div class='form-group'>
                     <label for="user_paternal">Año.</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="user_paternal" name="user[paternal]" required="true" size="30" type="text" placeholder="2017"/>
+                        <input class="form-control" id="book_year" name="book[year]" size="30" type="text" placeholder="2017"/>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                 <div class='form-group'>
                     <label for="user_age">Autor</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="user_age" name="user[age]" required="true" size="30" type="text" placeholder="Laing, Bernardo"/>
+                        <input class="form-control" id="book_author" name="book[author]" size="30" type="text" placeholder="Laing, Bernardo"/>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                     <div class='form-group'>
                         <label for="user_grade">Editorial.</label>
                         <div class="col-md-12">
-                            <input class="form-control" id="user_grade" name="user[grade]" required="true" size="30" type="text" placeholder="Porrua"/>
+                            <input class="form-control" id="book_editorial" name="book[editorial]" size="30" type="text" placeholder="Porrua"/>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                     <div class='form-group'>
                         <label for="user_ocupation">ISBN.</label>
                         <div class="col-md-12">
-                            <input class="form-control" id="user_ocupation" name="user[ocupation]" required="true" size="30" type="text" placeholder="0-7645-26413" />
+                            <input class="form-control" id="book_isbn" name="book[isbn]" size="30" type="text" placeholder="0-7645-26413" />
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                 <div class='form-group'>
                     <label for="clasificacion">Clasificación</label>
                     <div class="col-md-12">
-                        <select class="form-control" name="clasificacion">
+                        <select class="form-control" name="clasification">
                         <option value="" disabled selected>-- Clasificación --</option>
                             <option value="generalidades">000 Generalidades</option>
                             <option value="filosofia">100 Filosofía y psicología</option>
@@ -84,7 +84,7 @@
                 <div class='form-group'>
                     <label for="clasificacion">Subclasificación</label>
                     <div class="col-md-12">
-                        <select class="form-control" name="clasificacion">
+                        <select class="form-control" name="subclasification">
                         <option value="" disabled selected>-- Subclasificación --</option>
                             <option value="generalidades">000 Generalidades</option>
                             <option value="filosofia">100 Filosofía y psicología</option>
@@ -110,7 +110,7 @@
                 <div class='form-group'>
                     <label for="clasificacion">Clasificación</label>
                     <div class="col-md-12">
-                        <select class="form-control" name="clasificacion">
+                        <select class="form-control" name="clasification1">
                         <option value="" disabled selected>-- Clasificación --</option>
                             <option value="generalidades">000 Generalidades</option>
                             <option value="filosofia">100 Filosofía y psicología</option>
@@ -130,7 +130,7 @@
                 <div class='form-group'>
                     <label for="clasificacion">Subclasificación</label>
                     <div class="col-md-12">
-                        <select class="form-control" name="clasificacion">
+                        <select class="form-control" name="subclasification1">
                         <option value="" disabled selected>-- Subclasificación --</option>
                             <option value="generalidades">000 Generalidades</option>
                             <option value="filosofia">100 Filosofía y psicología</option>
@@ -152,7 +152,7 @@
                 <div class='form-group'>
                     <label for="clasificacion">Clasificación</label>
                     <div class="col-md-12">
-                        <select class="form-control" name="clasificacion">
+                        <select class="form-control" name="clasification2">
                         <option value="" disabled selected>-- Clasificación --</option>
                             <option value="generalidades">000 Generalidades</option>
                             <option value="filosofia">100 Filosofía y psicología</option>
@@ -172,7 +172,7 @@
                 <div class='form-group'>
                     <label for="clasificacion">Subclasificación</label>
                     <div class="col-md-12">
-                        <select class="form-control" name="clasificacion">
+                        <select class="form-control" name="subclasification2">
                         <option value="" disabled selected>-- Subclasificación --</option>
                             <option value="generalidades">000 Generalidades</option>
                             <option value="filosofia">100 Filosofía y psicología</option>
