@@ -61,6 +61,7 @@ if(document.getElementById("sanctionTable")!=null){
     userTable = document.getElementById("sanctionTable");
 }
 
+
 addBookButton = document.getElementById("addBook");
 if(addBookButton != null) {
     addBookButton.onclick = addBookInput;
@@ -79,6 +80,23 @@ function addBookInput(){
 }
 
 
+addCatalogButton = document.getElementById("addCatalog");
+if(addCatalogButton != null) {
+    addCatalogButton.onclick = addCatalogInput;
+}
+var o = 0;
+catalogInputs = document.getElementsByClassName("catalog-input");
+
+function addCatalogInput(){
+    if(o < catalogInputs.length){
+        catalogInputs[o].style.height = "86px";
+        o = o+1;
+        if( o >= catalogInputs.length){
+            addCatalogButton.style.display = "none";
+        }
+    }
+}
+
 
 //AJAX UPLOAD IMAGE WITH PREVIEW
 
@@ -87,30 +105,30 @@ function showPreview(objFileInput) {
         var fileReader = new FileReader();
         fileReader.onload = function (e) {
             $("#targetLayer").html('<img src="'+e.target.result+'" width="200px" height="200px" class="upload-preview" />');
-			$("#targetLayer").css('opacity','0.7');
-			$(".icon-choose-image").css('opacity','0.5');
+            $("#targetLayer").css('opacity','0.7');
+            $(".icon-choose-image").css('opacity','0.5');
         }
-		fileReader.readAsDataURL(objFileInput.files[0]);
+        fileReader.readAsDataURL(objFileInput.files[0]);
     }
 }
 
 $(document).ready(function (e) {
-	$("#uploadForm").on('submit',(function(e) {
-		e.preventDefault();
-		$.ajax({
-        	url: "upload.php",
-			type: "POST",
-			data:  new FormData(this),
-			contentType: false,
-    	    processData:false,
-			success: function(data)
-		    {
-			$("#targetLayer").html(data);
-			$("#targetLayer").css('opacity','1');
-			},
-		  	error: function() 
-	    	{
-	    	} 	        
-	   });
-	}));
+    $("#uploadForm").on('submit',(function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: "upload.php",
+            type: "POST",
+            data:  new FormData(this),
+            contentType: false,
+            processData:false,
+            success: function(data)
+            {
+            $("#targetLayer").html(data);
+            $("#targetLayer").css('opacity','1');
+            },
+            error: function()
+            {
+            }
+       });
+    }));
 });
