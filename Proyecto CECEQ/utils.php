@@ -90,11 +90,15 @@
 
     function insertVisitante($name,$paternal,$maternal,$bday,$grade,$gender){
         $conn = connect();
-        $sql = "INSERT INTO fruit (nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,genero) VALUES (". "'" . $name . "', '" . $paternal . "', '"  . $maternal . "', " . $bday . ", '" . $grade . "', '". $gender . "');";
-        
+        $sql = 'INSERT INTO  visitante(idVisitante,nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,genero) VALUES (DEFAULT,'. '"' . $name . '", "' . $paternal . '", "'  . $maternal . '",' . $bday . ', "' .$gender . '");';
         if(mysqli_query($conn,$sql)){
-            echo "<p>New record created successfully</p>";
             disconnect($conn);
+            $idvisitante = getLastIdVisitante();
+            if($idvisitante != false){
+                if(_insertVisitante_Grado($idvisitante,$grade) == false){
+                    echo "<p>No se han ingresado los grados de estudio en la base de datos</p>";
+                }
+            }
             return true;
         }else{
             echo "<p>Error: " . $sql . "<br>" . mysqli_error($conn) ."</p>";
@@ -102,6 +106,33 @@
             return false;
         }
         disconnect($conn);
+}
+
+function getLastIdVisitante(){
+    $conn = connect();
+    $sql = "SELECT idVisitante FROM visitante ORDER BY idVisitante DESC LIMIT 1";
+    $results = mysqli_query($conn,$sql);
+    if($results){
+        return $results->fetch_assoc()["idVisitante"];
+    }else{
+        echo "<p>Error: " . $sql . "<br>" . mysqli_error($conn) ."</p>";
+        return false;
+    }
+}
+
+function _insertVisitante_Grado($idvisitante,$idgrado){
+    $conn = connect();
+    $sql = 'INSERT INTO  visitante_gradoestudios(idVisitante, idGrado, fecha) VALUES (' . $idvisitante . ',' . $idgrado . ',' . date("Y-m-d") . ');';
+    if(mysqli_query($conn,$sql)){
+        disconnect($conn);
+        return true;
+    }else{
+        echo "<p>Error: " . $sql . "<br>" . mysqli_error($conn) ."</p>";
+        disconnect($conn);
+        return false;
+    }
+    disconnect($conn);
+
 }
 
     
