@@ -60,12 +60,14 @@ else if($var_value == 2)
         <!-- Modal footer -->
         <div class="modal-footer">
           <div class="row">
+          <form method="post">
             <div class="col-sm-6 text-left">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+              <input type="submit" class="btn btn-danger" id="cancelar" name="cancelar" value="Cancelar"/>
             </div>
             <div class="col-sm-6 text-right">
-              <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+              <input type="submit" class="btn btn-success" id="aceptar" name="aceptar" value="Aceptar" />
             </div>
+          </form>
           </div>
         </div>
 

@@ -32,6 +32,7 @@ if(isset($_POST["submit"])){
         }
     }
     //Comparar usuario y contraseña con los almacenados
+
     if(!$incorrect){
         if(login($user, $password)){
             $_SESSION["user"] = $user;
