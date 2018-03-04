@@ -90,10 +90,9 @@
 
     function insertVisitante($name,$paternal,$maternal,$bday,$grade,$gender){
         $conn = connect();
-        $sql = "INSERT INTO fruit (nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,genero) VALUES (". "'" . $name . "', '" . $paternal . "', '"  . $maternal . "', " . $bday . ", '" . $grade . "', '". $gender . "');";
-        
+        $sql = 'INSERT INTO  visitante(idVisitante,nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,genero) VALUES (DEFAULT,'. '"' . $name . '", "' . $paternal . '", "'  . $maternal . '",' . $bday . ', "' .$gender . '");';
+
         if(mysqli_query($conn,$sql)){
-            echo "<p>New record created successfully</p>";
             disconnect($conn);
             return true;
         }else{
@@ -102,6 +101,10 @@
             return false;
         }
         disconnect($conn);
+}
+
+function insertVisitante_Grado($idvisitante,$idgrado){
+
 }
 
     
