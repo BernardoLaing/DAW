@@ -75,7 +75,7 @@
         $db = connect();
         if($db != NULL){
             //Specification of the SQL query
-            $query='SELECT u.user, u.nombre, r.nombre  
+            $query='SELECT u.usuario, u.nombre, r.nombre  
                     FROM usuario u, usuario_rol ur, rol r
                     WHERE u.user = ur.usuario AND ur.idRol = r.id';
             $query;
