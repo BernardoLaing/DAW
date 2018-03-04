@@ -40,6 +40,7 @@
             $aux_grade = $_SESSION["entry_register"]["user"]["user_grade"];
             $aux_gender= $_SESSION["entry_register"]["user"]["gender"];
             if(insertVisitante($aux_name,$aux_paternal,$aux_maternal,$aux_bday,$aux_grade,$aux_gender)){
+                
                 echo "Success";
             }else{
                 echo "Failure";
