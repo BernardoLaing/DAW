@@ -90,7 +90,7 @@
 
     function insertVisitante($name,$paternal,$maternal,$bday,$grade,$gender){
         $conn = connect();
-        $sql = 'INSERT INTO  visitante(idVisitante,nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,genero) VALUES (DEFAULT,'. '"' . $name . '", "' . $paternal . '", "'  . $maternal . '",' . $bday . ', "' .$gender . '");';
+        $sql = 'INSERT INTO  visitante(idVisitante,nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,genero) VALUES (DEFAULT,'. '"' . $name . '", "' . $paternal . '", "'  . $maternal . '",' . $bday . ', "' .$gender . '")';
         if(mysqli_query($conn,$sql)){
             disconnect($conn);
             $idvisitante = getLastIdVisitante();
