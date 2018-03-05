@@ -71,22 +71,22 @@
     }
 
     
-    function getUserRoles(){
-        $db = connect();
-        if($db != NULL){
-            //Specification of the SQL query
-            $query='SELECT u.usuario, u.nombre, r.nombre  
-                    FROM usuario u, usuario_rol ur, rol r
-                    WHERE u.user = ur.usuario AND ur.idRol = r.id';
-            $query;
-             // Query execution; returns identifier of the result group
-            $results = $db->query($query);
-            disconnect($db);
-            return $results;
-        }
-        return false;
-        
+function getUserRoles(){
+    $db = connect();
+    if($db != NULL){
+        //Specification of the SQL query
+        $query='SELECT u.usuario, u.nombre, r.nombre  
+                FROM usuario u, usuario_rol ur, rol r
+                WHERE u.usuario = ur.idUsuario AND ur.idRol = r.idRol';
+        $query;
+         // Query execution; returns identifier of the result group
+        $results = $db->query($query);
+        disconnect($db);
+        return $results;
     }
+    return false;
+
+}
 
     function insertVisitante($name,$paternal,$maternal,$bday,$grade,$gender){
         $conn = connect();
@@ -133,6 +133,54 @@ function _insertVisitante_Grado($idvisitante,$idgrado){
     }
     disconnect($conn);
 
+}
+
+function registerUser($user, $name, $password, $rol){
+    $db = connect();
+        if ($db != NULL) {
+            
+            $q='SELECT *
+                FROM rol
+                WHERE idRol=' . $rol;
+            $result = mysqli_query($db, $q);
+            if (mysqli_num_rows($result) > 0)  {
+                // insert command specification 
+                $query='INSERT INTO usuario (usuario, nombre, password) VALUES (?,?, ?) ';
+                // Preparing the statement 
+                if (!($statement = $db->prepare($query))) {
+                    die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
+                }
+                // Binding statement params 
+                if (!$statement->bind_param("sss", $user, $name, $password)) {
+                    die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+                }
+                 // Executing the statement
+                 if (!$statement->execute()) {
+                    die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+                  } 
+
+
+                $query='INSERT INTO usuario_rol (idUsuario, idRol, fecha) VALUES (?,?,CURDATE()) ';
+
+                if (!($statement = $db->prepare($query))) {
+                    die("Preparation 2 failed: (" . $db->errno . ") " . $db->error);
+                }
+                // Binding statement params 
+                if (!$statement->bind_param("si", $user, $rol)) {
+                    die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+                }
+                if (!$statement->execute()) {
+                    die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+                  } 
+
+
+                mysqli_free_result($results);
+                disconnect($db);
+                
+                return true;
+            }
+        } 
+        return false;
 }
 
     
