@@ -30,14 +30,16 @@
                     <th scope="col"> Nombre </th>
                     <th scope="col"> Usuario </th>
                     <th scope="col"> Rol </th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <?php while($row = mysqli_fetch_array($userList, MYSQLI_BOTH)) { ?>
             <tr>
-                <td><?php echo $count ?></td>
+                <td><a href="accountsEdit.php?user=<?php echo $row[0] ?>"><?php echo $count ?></a></td>
                 <td><?php echo $row[1]; ?></td>
                 <td><?php echo $row[0]; ?></td>
                 <td><?php echo $row[2]; ?></td>
+                <td><a href="deleteRegistry.php?user=<?php echo $row[0] ?>"><i class="material-icons delete">delete</i></a></td>
             </tr>
             <?php $count++; ?>
             <?php } ?>

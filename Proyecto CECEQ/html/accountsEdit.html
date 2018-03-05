@@ -1,0 +1,61 @@
+<br /><br />
+<div class="container mdiv shadow">
+    <div class="mx-auto text-center"> <!-- mx-auto da un padding y border automatico-->
+        <div class="display-3">Cuentas</div> <!--display son headdings mas grandes-->
+    </div>
+    <br>
+    <br>
+    <form method="post" action="editAccount.php">
+        <div class="form-row center-block mx-auto">
+            <div class="col-sm-12 col-md-4">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" name="name" required="true" class="form-control" value="<?php echo $user['name']; ?>">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="form-group">
+                    <label for="name">Usuario</label>
+                    <input type="text" name="user" required="true" disabled class="form-control" value="<?php echo $user['user']; ?>">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="form-group">
+                    <label for="name">Rol</label>
+                    <select name="rol" required class="form-control">
+                        <option value='<?php echo $user["idRol"]; ?>' disabled selected>----Rol----</option>
+                        <?php while($row = mysqli_fetch_array($rols, MYSQLI_BOTH)) { ?>
+                        <option value='<?php echo $row["idRol"]; ?>'><?php echo $row["nombre"]; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-12 col-md-4">
+                <div class="form-group">
+                    <label for="name">Contraseña</label>
+                    <input type="password" name="password" required class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="form-group">
+                    <label for="name">Validar Contraseña</label>
+                    <input type="password" name="passwordValidate" required class="form-control">
+                </div>
+            </div>
+        </div>
+        <button type="submit" name="submit" class="btn btn-secondary btn-block col-sm-12 col-md-2 offset-md-10"> Registrar</button>
+    </form>
+    <br>
+    <br>
+    <div class="row mx-auto">
+        <div class="col-sm-2 center-block"><a href="cuentas.php" class="btn btn-secondary py-0"><i class="material-icons alagin-middle">arrow_back</i></a></div>
+        <div class="col-lg-6 col-sm-4"></div>
+        <div class="col-lg-2 col-sm-4">
+
+        </div>
+        <div class="col-lg-5 col-sm-4"></div>
+    </div>
+    
+</div>

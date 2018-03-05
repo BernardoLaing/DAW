@@ -1,75 +1,61 @@
 <?php
-    function connect() {
-        $ENV = "dev";
-        if ($ENV == "dev") {
-            $mysql = mysqli_connect("localhost","root","","jambe");
-                                            //root si estan en windows
-        } else  if ($ENV == "prod"){
-            $mysql = mysqli_connect("localhost","blaing","awdvcft13509","jambe");
-        }
-        
-        $mysql->set_charset("utf8");
-        return $mysql;
-    }
-    
-    function disconnect($mysql) {
-        mysqli_close($mysql);
-    }
-    
-    function login($user, $passwd) {
-        $db = connect();
-        if ($db != NULL) {
-            
-            //Specification of the SQL query
-            $query="SELECT usuario 
-                    FROM usuario 
-                    WHERE usuario='" . $user . "' AND password='" . $passwd . "'";
-             // Query execution; returns identifier of the result group
-            $results = mysqli_query($db, $query);
-             // cycle to explode every line of the results
-             
-            if (mysqli_num_rows($results) > 0)  {
-                // it releases the associated results
-                mysqli_free_result($results);
-                disconnect($db);
-                return true;
-            }
-            return false;
-        } 
-        return false;
-    }
-    
-    function getTable($tableName) {
-        $db = connect();
-        if ($db != NULL) {
-            
-            //Specification of the SQL query
-            $query='SELECT * FROM ' . $tableName;
-            $query;
-             // Query execution; returns identifier of the result group
-            $results = $db->query($query);
-             // cycle to explode every line of the results
-            disconnect($db);
-            return $results;
-//           while ($fila = mysqli_fetch_array($results, MYSQLI_BOTH)) {
-//                                                // Options: MYSQLI_NUM to use only numeric indexes
-//                                                // MYSQLI_ASSOC to use only name (string) indexes
-//                                                // MYSQLI_BOTH, to use both
-//                    for($i=0; $i<count($fila); $i++) {
-//                        // use of numeric index
-//                        echo $fila[$i].' '; 
-//                    }
-//                    echo '<br>';
-//            }
-//                
-//            // it releases the associated results
-//            mysqli_free_result($results);
-//            disconnect($db);
-//            return true;
-        }
-        return false;
+function connect() {
+    $ENV = "dev";
+    if ($ENV == "dev") {
+        $mysql = mysqli_connect("localhost","root","","jambe");
+                                        //root si estan en windows
+    } else  if ($ENV == "prod"){
+        $mysql = mysqli_connect("localhost","blaing","awdvcft13509","jambe");
     }
 
+    $mysql->set_charset("utf8");
+    return $mysql;
+}
+
+function disconnect($mysql) {
+    mysqli_close($mysql);
+}
+
+function login($user, $passwd) {
+    $db = connect();
+    if ($db != NULL) {
+
+        //Specification of the SQL query
+        $query="SELECT usuario 
+                FROM usuario 
+                WHERE usuario='" . $user . "' AND password='" . $passwd . "'";
+         // Query execution; returns identifier of the result group
+        $results = mysqli_query($db, $query);
+         // cycle to explode every line of the results
+
+        if (mysqli_num_rows($results) > 0)  {
+            // it releases the associated results
+            mysqli_free_result($results);
+            disconnect($db);
+            return true;
+        }
+        return false;
+    } 
+    return false;
+}
+
+function getTable($tableName) {
+    $db = connect();
+    if ($db != NULL) {
+
+        //Specification of the SQL query
+        $query='SELECT * FROM ' . $tableName;
+        $query;
+         // Query execution; returns identifier of the result group
+        $results = $db->query($query);
+         // cycle to explode every line of the results
+        disconnect($db);
+        return $results;
+    }
+    return false;
+}
+
+//---------------------------------RBAC MODEL---------------------------------------------------------
     
 function getUserRoles(){
     $db = connect();
@@ -87,6 +73,181 @@ function getUserRoles(){
     return false;
 
 }
+
+function getUser($user){
+    $db = connect();
+    $user = $db->real_escape_string($user);
+    if($db != NULL){
+        //Specification of the SQL query
+        $query='SELECT u.usuario, u.nombre, r.nombre  
+                FROM usuario u, usuario_rol ur, rol r
+                WHERE u.usuario = ur.idUsuario AND ur.idRol = r.idRol
+                AND u.usuario = ?';
+        // Preparing the statement 
+        if (!($statement = $db->prepare($query))) {
+            die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
+        }
+        // Binding statement params 
+        if (!$statement->bind_param("s", $user)) {
+            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+        }
+         // Executing the statement
+         if (!$statement->execute()) {
+            die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+          } 
+        $statement->store_result();
+        if($statement->num_rows === 0) exit('No rows');
+        $statement->bind_result($user, $name, $rol);
+        $statement->fetch();
+        $result["user"] = $user;
+        $result["name"] = $name;
+        $result["rol"] = $rol;
+        disconnect($db);
+        return $result;
+    }
+    return false;
+
+}
+
+function registerUser($user, $name, $password, $rol){
+    $db = connect();
+    if ($db != NULL) {
+
+        $q='SELECT *
+            FROM rol
+            WHERE idRol=' . $rol;
+        $result = mysqli_query($db, $q);
+        if (mysqli_num_rows($result) > 0)  {
+            // insert command specification 
+            $query='INSERT INTO usuario (usuario, nombre, password) VALUES (?,?, ?) ';
+            // Preparing the statement 
+            if (!($statement = $db->prepare($query))) {
+                die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
+            }
+            // Binding statement params 
+            if (!$statement->bind_param("sss", $user, $name, $password)) {
+                die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+            }
+             // Executing the statement
+             if (!$statement->execute()) {
+                die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+              } 
+
+
+            $query='INSERT INTO usuario_rol (idUsuario, idRol, fecha) VALUES (?,?,CURDATE()) ';
+
+            if (!($statement = $db->prepare($query))) {
+                die("Preparation 2 failed: (" . $db->errno . ") " . $db->error);
+            }
+            // Binding statement params 
+            if (!$statement->bind_param("si", $user, $rol)) {
+                die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+            }
+            if (!$statement->execute()) {
+                die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+              } 
+
+
+            mysqli_free_result($results);
+            disconnect($db);
+
+            return true;
+        }
+    } 
+    return false;
+}
+
+function updateUser($user, $name, $password, $rol){
+    $db = connect();
+    if ($db != NULL) {
+
+        $q='SELECT *
+            FROM rol
+            WHERE idRol=' . $rol;
+        $result = mysqli_query($db, $q);
+        if (mysqli_num_rows($result) > 0)  {
+            // insert command specification 
+            $query='UPDATE usuario SET nombre = ?, password = ? WHERE usuario = ?';
+            // Preparing the statement 
+            if (!($statement = $db->prepare($query))) {
+                die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
+            }
+            // Binding statement params 
+            if (!$statement->bind_param("sss", $name, $password, $user)) {
+                die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+            }
+             // Executing the statement
+             if (!$statement->execute()) {
+                die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+              } 
+
+
+            $query='INSERT INTO usuario_rol (idUsuario, idRol, fecha) VALUES (?,?,CURDATE()) ';
+
+            if (!($statement = $db->prepare($query))) {
+                die("Preparation 2 failed: (" . $db->errno . ") " . $db->error);
+            }
+            // Binding statement params 
+            if (!$statement->bind_param("si", $user, $rol)) {
+                die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+            }
+            if (!$statement->execute()) {
+                die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+              } 
+
+
+            mysqli_free_result($results);
+            disconnect($db);
+
+            return true;
+        }
+    } 
+    return false;
+    
+//    $stmt = $mysqli->prepare("UPDATE myTable SET name = ? WHERE id = ?");
+//$stmt->bind_param("si", $_POST['name'], $_SESSION['id']);
+//$stmt->execute();
+//$stmt->close();
+}
+
+function deleteUser($user){
+    $db = connect();
+    
+    if($db != NULL){
+        $query="DELETE FROM usuario_rol WHERE idUsuario = ?";
+         if (!($statement = $db->prepare($query))) {
+             die("Preparation failed: (" . $db->errno . ") " . $db->error);
+         }
+        // Binding statement params 
+        if (!$statement->bind_param("s", $user)) {
+            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+        }
+         // Executing the statement
+         if (!$statement->execute()) {
+             echo "FAIL EXECUTE";
+             die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+         } 
+        
+        
+        $query="DELETE FROM usuario WHERE usuario = ?";
+         if (!($statement = $db->prepare($query))) {
+             die("Preparation failed: (" . $db->errno . ") " . $db->error);
+         }
+        // Binding statement params 
+        if (!$statement->bind_param("s", $user)) {
+            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+        }
+         // Executing the statement
+         if (!$statement->execute()) {
+             echo "FAIL EXECUTE";
+             die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+         } 
+        
+        disconnect($db);
+    }
+}
+
+// ---------------------------------------END RBAC MODEL-----------------------------------------
 
     function insertVisitante($name,$paternal,$maternal,$bday,$grade,$gender){
         $conn = connect();
@@ -135,53 +296,7 @@ function _insertVisitante_Grado($idvisitante,$idgrado){
 
 }
 
-function registerUser($user, $name, $password, $rol){
-    $db = connect();
-        if ($db != NULL) {
-            
-            $q='SELECT *
-                FROM rol
-                WHERE idRol=' . $rol;
-            $result = mysqli_query($db, $q);
-            if (mysqli_num_rows($result) > 0)  {
-                // insert command specification 
-                $query='INSERT INTO usuario (usuario, nombre, password) VALUES (?,?, ?) ';
-                // Preparing the statement 
-                if (!($statement = $db->prepare($query))) {
-                    die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
-                }
-                // Binding statement params 
-                if (!$statement->bind_param("sss", $user, $name, $password)) {
-                    die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
-                }
-                 // Executing the statement
-                 if (!$statement->execute()) {
-                    die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-                  } 
 
-
-                $query='INSERT INTO usuario_rol (idUsuario, idRol, fecha) VALUES (?,?,CURDATE()) ';
-
-                if (!($statement = $db->prepare($query))) {
-                    die("Preparation 2 failed: (" . $db->errno . ") " . $db->error);
-                }
-                // Binding statement params 
-                if (!$statement->bind_param("si", $user, $rol)) {
-                    die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
-                }
-                if (!$statement->execute()) {
-                    die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-                  } 
-
-
-                mysqli_free_result($results);
-                disconnect($db);
-                
-                return true;
-            }
-        } 
-        return false;
-}
 
     
     //var_dump(login('lalo', 'hockey'));
