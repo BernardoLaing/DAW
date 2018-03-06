@@ -1,257 +1,97 @@
 <?php
-function connect() {
-    $ENV = "dev";
-    if ($ENV == "dev") {
-        $mysql = mysqli_connect("localhost","root","","jambe");
-                                        //root si estan en windows
-    } else  if ($ENV == "prod"){
-        $mysql = mysqli_connect("localhost","blaing","awdvcft13509","jambe");
+    function connect() {
+        $ENV = "dev";
+        if ($ENV == "dev") {
+            $mysql = mysqli_connect("localhost","root","","jambe");
+                                            //root si estan en windows
+        } else  if ($ENV == "prod"){
+            $mysql = mysqli_connect("localhost","blaing","awdvcft13509","jambe");
+        }
+        
+        $mysql->set_charset("utf8");
+        return $mysql;
     }
-
-    $mysql->set_charset("utf8");
-    return $mysql;
-}
-
-function disconnect($mysql) {
-    mysqli_close($mysql);
-}
-
-function login($user, $passwd) {
-    $db = connect();
-    if ($db != NULL) {
-
-        //Specification of the SQL query
-        $query="SELECT usuario 
-                FROM usuario 
-                WHERE usuario='" . $user . "' AND password='" . $passwd . "'";
-         // Query execution; returns identifier of the result group
-        $results = mysqli_query($db, $query);
-         // cycle to explode every line of the results
-
-        if (mysqli_num_rows($results) > 0)  {
-            // it releases the associated results
-            mysqli_free_result($results);
+    
+    function disconnect($mysql) {
+        mysqli_close($mysql);
+    }
+    
+    function login($user, $passwd) {
+        $db = connect();
+        if ($db != NULL) {
+            
+            //Specification of the SQL query
+            $query="SELECT usuario 
+                    FROM usuario 
+                    WHERE usuario='" . $user . "' AND password='" . $passwd . "'";
+             // Query execution; returns identifier of the result group
+            $results = mysqli_query($db, $query);
+             // cycle to explode every line of the results
+             
+            if (mysqli_num_rows($results) > 0)  {
+                // it releases the associated results
+                mysqli_free_result($results);
+                disconnect($db);
+                return true;
+            }
+            return false;
+        } 
+        return false;
+    }
+    
+    function getTable($tableName) {
+        $db = connect();
+        if ($db != NULL) {
+            
+            //Specification of the SQL query
+            $query='SELECT * FROM ' . $tableName;
+            $query;
+             // Query execution; returns identifier of the result group
+            $results = $db->query($query);
+             // cycle to explode every line of the results
             disconnect($db);
-            return true;
+            return $results;
+//           while ($fila = mysqli_fetch_array($results, MYSQLI_BOTH)) {
+//                                                // Options: MYSQLI_NUM to use only numeric indexes
+//                                                // MYSQLI_ASSOC to use only name (string) indexes
+//                                                // MYSQLI_BOTH, to use both
+//                    for($i=0; $i<count($fila); $i++) {
+//                        // use of numeric index
+//                        echo $fila[$i].' '; 
+//                    }
+//                    echo '<br>';
+//            }
+//                
+//            // it releases the associated results
+//            mysqli_free_result($results);
+//            disconnect($db);
+//            return true;
         }
         return false;
-    } 
-    return false;
-}
-
-function getTable($tableName) {
-    $db = connect();
-    if ($db != NULL) {
-
-        //Specification of the SQL query
-        $query='SELECT * FROM ' . $tableName;
-        $query;
-         // Query execution; returns identifier of the result group
-        $results = $db->query($query);
-         // cycle to explode every line of the results
-        disconnect($db);
-        return $results;
     }
-    return false;
-}
 
-//---------------------------------RBAC MODEL---------------------------------------------------------
     
-function getUserRoles(){
-    $db = connect();
-    if($db != NULL){
-        //Specification of the SQL query
-        $query='SELECT u.usuario, u.nombre, r.nombre  
-                FROM usuario u, usuario_rol ur, rol r
-                WHERE u.usuario = ur.idUsuario AND ur.idRol = r.idRol';
-        $query;
-         // Query execution; returns identifier of the result group
-        $results = $db->query($query);
-        disconnect($db);
-        return $results;
-    }
-    return false;
-
-}
-
-function getUser($user){
-    $db = connect();
-    $user = $db->real_escape_string($user);
-    if($db != NULL){
-        //Specification of the SQL query
-        $query='SELECT u.usuario, u.nombre, r.nombre  
-                FROM usuario u, usuario_rol ur, rol r
-                WHERE u.usuario = ur.idUsuario AND ur.idRol = r.idRol
-                AND u.usuario = ?';
-        // Preparing the statement 
-        if (!($statement = $db->prepare($query))) {
-            die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
-        }
-        // Binding statement params 
-        if (!$statement->bind_param("s", $user)) {
-            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
-        }
-         // Executing the statement
-         if (!$statement->execute()) {
-            die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-          } 
-        $statement->store_result();
-        if($statement->num_rows === 0) exit('No rows');
-        $statement->bind_result($user, $name, $rol);
-        $statement->fetch();
-        $result["user"] = $user;
-        $result["name"] = $name;
-        $result["rol"] = $rol;
-        disconnect($db);
-        return $result;
-    }
-    return false;
-
-}
-
-function registerUser($user, $name, $password, $rol){
-    $db = connect();
-    if ($db != NULL) {
-
-        $q='SELECT *
-            FROM rol
-            WHERE idRol=' . $rol;
-        $result = mysqli_query($db, $q);
-        if (mysqli_num_rows($result) > 0)  {
-            // insert command specification 
-            $query='INSERT INTO usuario (usuario, nombre, password) VALUES (?,?, ?) ';
-            // Preparing the statement 
-            if (!($statement = $db->prepare($query))) {
-                die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
-            }
-            // Binding statement params 
-            if (!$statement->bind_param("sss", $user, $name, $password)) {
-                die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
-            }
-             // Executing the statement
-             if (!$statement->execute()) {
-                die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-              } 
-
-
-            $query='INSERT INTO usuario_rol (idUsuario, idRol, fecha) VALUES (?,?,CURDATE()) ';
-
-            if (!($statement = $db->prepare($query))) {
-                die("Preparation 2 failed: (" . $db->errno . ") " . $db->error);
-            }
-            // Binding statement params 
-            if (!$statement->bind_param("si", $user, $rol)) {
-                die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
-            }
-            if (!$statement->execute()) {
-                die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-              } 
-
-
-            mysqli_free_result($results);
+    function getUserRoles(){
+        $db = connect();
+        if($db != NULL){
+            //Specification of the SQL query
+            $query='SELECT u.user, u.nombre, r.nombre  
+                    FROM usuario u, usuario_rol ur, rol r
+                    WHERE u.user = ur.usuario AND ur.idRol = r.id';
+            $query;
+             // Query execution; returns identifier of the result group
+            $results = $db->query($query);
             disconnect($db);
-
-            return true;
+            return $results;
         }
-    } 
-    return false;
-}
-
-function updateUser($user, $name, $password, $rol){
-    $db = connect();
-    if ($db != NULL) {
-
-        $q='SELECT *
-            FROM rol
-            WHERE idRol=' . $rol;
-        $result = mysqli_query($db, $q);
-        if (mysqli_num_rows($result) > 0)  {
-            // insert command specification 
-            $query='UPDATE usuario SET nombre = ?, password = ? WHERE usuario = ?';
-            // Preparing the statement 
-            if (!($statement = $db->prepare($query))) {
-                die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
-            }
-            // Binding statement params 
-            if (!$statement->bind_param("sss", $name, $password, $user)) {
-                die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
-            }
-             // Executing the statement
-             if (!$statement->execute()) {
-                die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-              } 
-
-
-            $query='INSERT INTO usuario_rol (idUsuario, idRol, fecha) VALUES (?,?,CURDATE()) ';
-
-            if (!($statement = $db->prepare($query))) {
-                die("Preparation 2 failed: (" . $db->errno . ") " . $db->error);
-            }
-            // Binding statement params 
-            if (!$statement->bind_param("si", $user, $rol)) {
-                die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
-            }
-            if (!$statement->execute()) {
-                die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-              } 
-
-
-            mysqli_free_result($results);
-            disconnect($db);
-
-            return true;
-        }
-    } 
-    return false;
-    
-//    $stmt = $mysqli->prepare("UPDATE myTable SET name = ? WHERE id = ?");
-//$stmt->bind_param("si", $_POST['name'], $_SESSION['id']);
-//$stmt->execute();
-//$stmt->close();
-}
-
-function deleteUser($user){
-    $db = connect();
-    
-    if($db != NULL){
-        $query="DELETE FROM usuario_rol WHERE idUsuario = ?";
-         if (!($statement = $db->prepare($query))) {
-             die("Preparation failed: (" . $db->errno . ") " . $db->error);
-         }
-        // Binding statement params 
-        if (!$statement->bind_param("s", $user)) {
-            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
-        }
-         // Executing the statement
-         if (!$statement->execute()) {
-             echo "FAIL EXECUTE";
-             die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-         } 
+        return false;
         
-        
-        $query="DELETE FROM usuario WHERE usuario = ?";
-         if (!($statement = $db->prepare($query))) {
-             die("Preparation failed: (" . $db->errno . ") " . $db->error);
-         }
-        // Binding statement params 
-        if (!$statement->bind_param("s", $user)) {
-            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
-        }
-         // Executing the statement
-         if (!$statement->execute()) {
-             echo "FAIL EXECUTE";
-             die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-         } 
-        
-        disconnect($db);
     }
-}
 
-// ---------------------------------------END RBAC MODEL-----------------------------------------
-
+    /*
     function insertVisitante($name,$paternal,$maternal,$bday,$grade,$gender){
         $conn = connect();
-        $sql = 'INSERT INTO  visitante(idVisitante,nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,genero) VALUES (DEFAULT,'. '"' . $name . '", "' . $paternal . '", "'  . $maternal . '",' . $bday . ', "' .$gender . '")';
+        $sql = 'INSERT INTO  visitante(idVisitante,nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,genero) VALUES (DEFAULT,'. '"' . $name . '", "' . $paternal . '", "'  . $maternal . '",' . $bday . ', "' .$gender . '");';
         if(mysqli_query($conn,$sql)){
             disconnect($conn);
             $idvisitante = getLastIdVisitante();
@@ -267,6 +107,73 @@ function deleteUser($user){
             return false;
         }
         disconnect($conn);
+}*/
+function insertVisitante($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $gradoEstudios, $genero){
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    insert into visitante (nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, genero)
+    values (?, ?, ?, ?, ?);
+    ");
+    $statement->bind_param("sssss", $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero);
+    $statement->execute();
+
+    $statement = mysqli_prepare($connection,"
+    insert into visitante_gradoestudios values ((select idVisitante from visitante order by idVisitante desc limit 1), ?, current_timestamp());
+    ");
+    $statement->bind_param("i", $gradoEstudios);
+    $statement->execute();
+
+    $statement = mysqli_prepare($connection,"
+    insert into entrada (idVisitante) values ((select idVisitante from visitante order by idVisitante desc limit 1));
+    ");
+    $statement->execute();
+    disconnect($connection);
+
+}
+
+function queryVisitor($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios){
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', genero as 'Género', g.nombre as 'Grado de estudios' 
+    from visitante as v, visitante_gradoestudios as vg, gradoestudios as g 
+    where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
+    and (v.nombre = ? ".($nombre==""?"or 1":"").")
+    and (apellidoPaterno = ? ".($apellidoPaterno==""?"or 1":"").")
+    and (apellidoMaterno = ? ".($apellidoMaterno==""?"or 1":"").")
+    and (fechaNacimiento = ? ".($fechaNacimiento==""?"or 1":"").")
+    and (genero = ? ".($genero==""?"or 1":"").")
+    and v.idVisitante = vg.idVisitante
+    and vg.idGrado = g.idGrado
+    and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
+    ");
+    $statement->bind_param("isssssi", $idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+
+function buildTableData($result){
+    $table = "";
+    if(mysqli_num_rows($result)>0){
+        $fieldNumber = mysqli_num_fields($result);
+        $table .= "<thead>";
+        for($i = 0; $i < $fieldNumber; $i++){
+            $table .= "<td>".mysqli_fetch_field_direct($result, $i)->name."</td>";
+        }
+        $table .= "</thead><tbody>";
+        while($row = mysqli_fetch_assoc($result)){
+            $table .= "<tr>";
+            foreach($row as $data){
+                $table .= "<td>$data</td>";
+            }
+            $table .= "</tr>";
+        }
+        $table .= "</tbody>";
+    }else{
+        echo "<thead><td>No hay resultados</td></thead>";
+    }
+    return $table;
 }
 
 function getLastIdVisitante(){
@@ -293,9 +200,7 @@ function _insertVisitante_Grado($idvisitante,$idgrado){
         return false;
     }
     disconnect($conn);
-
 }
-
 
 
     

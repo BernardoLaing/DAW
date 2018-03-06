@@ -4,10 +4,12 @@
         <div class="col-sm-12">
                 <div class="text-center">
                     <div class="display-4">Entrada</div>
+                    <br>
+                    <span class="warning">Para registrar una entrada todos los campos deben estar llenos</span>
                 </div>
         </div>
     </div>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <form method="post" id="entry_form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <div class="row">
 
         <div class="col-sm-12">
@@ -17,6 +19,7 @@
                     <input class="form-control" id="user_number" name="user[number]" size="30" type="number" placeholder="1234567"/>
                 </div>
             </div>
+            <span class="warning">Este campo solo puede contener un número con cualquier cantidad de dígitos</span>
         </div>
     </div>
         <div class='row'>
@@ -27,6 +30,7 @@
                     <div class="col-md-12">
                         <input class="form-control" id="user_name" name="user[name]" size="30" type="text" placeholder="Eduardo"/>
                     </div>
+                    <span class="warning">Este campo no puede contener números ni caracteres especiales</span>
                 </div>
             </div>
 
@@ -36,6 +40,7 @@
                     <div class="col-md-12">
                         <input class="form-control" id="user_paternal" name="user[paternal]" size="30" type="text" placeholder="Cuesta"/>
                     </div>
+                    <span class="warning">Este campo no puede contener números ni caracteres especiales</span>
                 </div>
             </div>
 
@@ -45,6 +50,7 @@
                     <div class="col-md-12">
                         <input class="form-control" id="user_maternal" name="user[maternal]" size="30" type="text" placeholder="Córdova"/>
                     </div>
+                    <span class="warning">Este campo no puede contener números ni caracteres especiales</span>
                 </div>
             </div>
 
@@ -58,6 +64,7 @@
                     <div class="col-md-12">
                         <input class="form-control" id="user_birthday" name="user[birthday]" size="30" type="date" placeholder="01/05/1998"/>
                     </div>
+                    <span class="warning">Debes seleccionar una fecha de nacimiento</span>
                 </div>
             </div>
 
@@ -76,6 +83,7 @@
                             <option value=7>Doctorado</option>
                         </select>
                     </div>
+                    <span class="warning">Debes seleccionar un grado de estudios</span>
                 </div>
             </div>
 
@@ -90,9 +98,9 @@
                             <option value="O">Otro</option>
                         </select>
                     </div>
+                    <span class="warning">Debes seleccionar un género</span>
                 </div>
             </div>
-
         </div>
 
         <div class="row">
@@ -109,8 +117,7 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <div class="col-md-12">
-
-                    <a class="btn btn-secondary mx-auto" href="visitants.php">Buscar Visitante</a>
+                        <input id="buscarVisitante" type="submit" class="btn btn-secondary mx-auto" name="actionTypeEntry" value="Buscar Visitante"/>
 
     <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
                     </div>
@@ -120,13 +127,11 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <div class="col-md-12">
-                        <input type="submit" class="btn btn-secondary mx-auto" name="register" value="Registrar Entrada"/>
+                        <input id="registrarEntrada" type="submit" class="btn btn-secondary mx-auto" name="actionTypeEntry" value="Registrar Entrada"/>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </form>
 
 </div>

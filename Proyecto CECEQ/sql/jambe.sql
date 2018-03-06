@@ -2,10 +2,10 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 03, 2018 at 09:57 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 06-03-2018 a las 21:57:26
+-- Versión del servidor: 10.1.30-MariaDB
+-- Versión de PHP: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `jambe`
+-- Base de datos: `jambe`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `autor`
+-- Estructura de tabla para la tabla `autor`
 --
 
 CREATE TABLE `autor` (
@@ -38,18 +38,7 @@ CREATE TABLE `autor` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `autor_titulo`
---
-
-CREATE TABLE `autor_titulo` (
-  `idAutor` int(11) NOT NULL,
-  `idTitulo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categoria`
+-- Estructura de tabla para la tabla `categoria`
 --
 
 CREATE TABLE `categoria` (
@@ -60,7 +49,7 @@ CREATE TABLE `categoria` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `credencial`
+-- Estructura de tabla para la tabla `credencial`
 --
 
 CREATE TABLE `credencial` (
@@ -85,7 +74,7 @@ CREATE TABLE `credencial` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `credencial_fiador`
+-- Estructura de tabla para la tabla `credencial_fiador`
 --
 
 CREATE TABLE `credencial_fiador` (
@@ -97,7 +86,7 @@ CREATE TABLE `credencial_fiador` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ejemplar`
+-- Estructura de tabla para la tabla `ejemplar`
 --
 
 CREATE TABLE `ejemplar` (
@@ -113,7 +102,32 @@ CREATE TABLE `ejemplar` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `entrada`
+-- Estructura de tabla para la tabla `ejemplar_credencial`
+--
+
+CREATE TABLE `ejemplar_credencial` (
+  `idEjemplar` int(11) NOT NULL,
+  `idCredencial` int(11) NOT NULL,
+  `fechaPrestamo` datetime NOT NULL,
+  `fechaDevolucion` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ejemplar_estado`
+--
+
+CREATE TABLE `ejemplar_estado` (
+  `idEjemplar` int(11) NOT NULL,
+  `idEstado` int(11) NOT NULL,
+  `fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `entrada`
 --
 
 CREATE TABLE `entrada` (
@@ -121,10 +135,25 @@ CREATE TABLE `entrada` (
   `idVisitante` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `entrada`
+--
+
+INSERT INTO `entrada` (`timestamp`, `idVisitante`) VALUES
+('2018-03-05 23:59:07', 13),
+('2018-03-06 00:19:42', 14),
+('2018-03-06 00:19:46', 15),
+('2018-03-06 01:38:41', 16),
+('2018-03-06 01:40:51', 18),
+('2018-03-06 01:49:57', 19),
+('2018-03-06 02:01:17', 20),
+('2018-03-06 17:45:58', 21),
+('2018-03-06 20:16:54', 22);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `estado`
+-- Estructura de tabla para la tabla `estado`
 --
 
 CREATE TABLE `estado` (
@@ -136,19 +165,7 @@ CREATE TABLE `estado` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `estado_ejemplar`
---
-
-CREATE TABLE `estado_ejemplar` (
-  `idEjemplar` int(11) NOT NULL,
-  `idEstado` int(11) NOT NULL,
-  `fecha` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `fiador`
+-- Estructura de tabla para la tabla `fiador`
 --
 
 CREATE TABLE `fiador` (
@@ -162,6 +179,7 @@ CREATE TABLE `fiador` (
   `cp` int(5) NOT NULL,
   `telefono` varchar(12) NOT NULL,
   `correo` varchar(100) NOT NULL,
+  `ocupacion` varchar(50) NOT NULL,
   `nombreTrabajo` varchar(50) NOT NULL,
   `telefonoTrabajo` varchar(12) NOT NULL,
   `coloniaTrabajo` varchar(50) NOT NULL,
@@ -173,7 +191,7 @@ CREATE TABLE `fiador` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gradoestudios`
+-- Estructura de tabla para la tabla `gradoestudios`
 --
 
 CREATE TABLE `gradoestudios` (
@@ -181,10 +199,23 @@ CREATE TABLE `gradoestudios` (
   `nombre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `gradoestudios`
+--
+
+INSERT INTO `gradoestudios` (`idGrado`, `nombre`) VALUES
+(1, 'Ninguno'),
+(2, 'Primaria'),
+(3, 'Secundaria'),
+(4, 'Preparatoria'),
+(5, 'Universidad'),
+(6, 'Maestria'),
+(7, 'Doctorado');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `operacion`
+-- Estructura de tabla para la tabla `operacion`
 --
 
 CREATE TABLE `operacion` (
@@ -196,7 +227,7 @@ CREATE TABLE `operacion` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prestamo`
+-- Estructura de tabla para la tabla `prestamo`
 --
 
 CREATE TABLE `prestamo` (
@@ -209,7 +240,7 @@ CREATE TABLE `prestamo` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rol`
+-- Estructura de tabla para la tabla `rol`
 --
 
 CREATE TABLE `rol` (
@@ -221,19 +252,19 @@ CREATE TABLE `rol` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rol_operacion`
+-- Estructura de tabla para la tabla `rol_operacion`
 --
 
 CREATE TABLE `rol_operacion` (
-  `idOperacion` int(11) NOT NULL,
   `idRol` int(11) NOT NULL,
-  `fecha` date NOT NULL
+  `idOperacion` int(11) NOT NULL,
+  `fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sancion`
+-- Estructura de tabla para la tabla `sancion`
 --
 
 CREATE TABLE `sancion` (
@@ -247,7 +278,7 @@ CREATE TABLE `sancion` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `titulo`
+-- Estructura de tabla para la tabla `titulo`
 --
 
 CREATE TABLE `titulo` (
@@ -259,18 +290,29 @@ CREATE TABLE `titulo` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `titulo_categoria`
+-- Estructura de tabla para la tabla `titulo_autor`
 --
 
-CREATE TABLE `titulo_categoria` (
-  `idTitulo` int(11) NOT NULL,
-  `idCategoria` int(11) NOT NULL
+CREATE TABLE `titulo_autor` (
+  `idAutor` int(11) NOT NULL,
+  `idTitulo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estructura de tabla para la tabla `titulo_categoria`
+--
+
+CREATE TABLE `titulo_categoria` (
+  `idCategoria` int(11) NOT NULL,
+  `idTitulo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -279,22 +321,29 @@ CREATE TABLE `usuario` (
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`usuario`, `nombre`, `password`) VALUES
+('jorge', 'Jorge Niño', 'awdvcft13509');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario_rol`
+-- Estructura de tabla para la tabla `usuario_rol`
 --
 
 CREATE TABLE `usuario_rol` (
-  `idUsuario` varchar(25) NOT NULL,
+  `usuario` varchar(25) NOT NULL,
   `idRol` int(11) NOT NULL,
-  `fecha` date NOT NULL
+  `fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `visitante`
+-- Estructura de tabla para la tabla `visitante`
 --
 
 CREATE TABLE `visitante` (
@@ -306,51 +355,75 @@ CREATE TABLE `visitante` (
   `genero` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `visitante`
+--
+
+INSERT INTO `visitante` (`idVisitante`, `nombre`, `apellidoPaterno`, `apellidoMaterno`, `fechaNacimiento`, `genero`) VALUES
+(12, 'eduardo', 'cuesta', 'córdova', '0000-00-00', 'O'),
+(13, 'ed', 'cu', 'co', '2018-03-08', 'O'),
+(14, 'ed', 'cu', 'co', '2018-03-08', 'O'),
+(15, 'ed', 'cu', 'co', '2018-03-08', 'O'),
+(16, 'angie', 'perez', 'cordasdfasdf', '2018-04-07', '7'),
+(17, 'angie', 'perez', 'cordasdfasdf', '2018-04-07', 'O'),
+(18, 'oasdf', 'asdf', 'casdf', '2018-03-22', 'M'),
+(19, 'eduasdf', 'asdfasdf', 'asdf', '2018-03-15', 'M'),
+(20, 'edasdfasdf', 'asdfasdfasd', 'asdfasdfasdf', '2018-03-24', 'O'),
+(21, 'jorge', 'niño', 'cabal', '2018-02-28', 'O'),
+(22, 'edasdfasd', 'asdfa', 'prueba', '2018-03-16', 'M');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `visitante_gradoestudios`
+-- Estructura de tabla para la tabla `visitante_gradoestudios`
 --
 
 CREATE TABLE `visitante_gradoestudios` (
   `idVisitante` int(11) NOT NULL,
   `idGrado` int(11) NOT NULL,
-  `fecha` date NOT NULL
+  `fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Indexes for dumped tables
+-- Volcado de datos para la tabla `visitante_gradoestudios`
+--
+
+INSERT INTO `visitante_gradoestudios` (`idVisitante`, `idGrado`, `fecha`) VALUES
+(12, 2, '0000-00-00 00:00:00'),
+(13, 3, '2018-03-05 00:00:00'),
+(14, 3, '2018-03-05 00:00:00'),
+(15, 3, '2018-03-05 00:00:00'),
+(18, 3, '2018-03-05 00:00:00'),
+(19, 2, '2018-03-05 00:00:00'),
+(20, 3, '2018-03-05 00:00:00'),
+(21, 1, '2018-03-06 00:00:00'),
+(22, 3, '2018-03-06 14:16:54');
+
+--
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `autor`
+-- Indices de la tabla `autor`
 --
 ALTER TABLE `autor`
   ADD PRIMARY KEY (`idAutor`);
 
 --
--- Indexes for table `autor_titulo`
---
-ALTER TABLE `autor_titulo`
-  ADD PRIMARY KEY (`idAutor`,`idTitulo`),
-  ADD KEY `idAutor` (`idAutor`),
-  ADD KEY `idTitulo` (`idTitulo`);
-
---
--- Indexes for table `categoria`
+-- Indices de la tabla `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`idCategoria`);
 
 --
--- Indexes for table `credencial`
+-- Indices de la tabla `credencial`
 --
 ALTER TABLE `credencial`
   ADD PRIMARY KEY (`idCredencial`),
   ADD KEY `idVisitante` (`idVisitante`);
 
 --
--- Indexes for table `credencial_fiador`
+-- Indices de la tabla `credencial_fiador`
 --
 ALTER TABLE `credencial_fiador`
   ADD PRIMARY KEY (`idCredencial`,`idFiador`,`fecha`),
@@ -358,53 +431,53 @@ ALTER TABLE `credencial_fiador`
   ADD KEY `idFiador` (`idFiador`);
 
 --
--- Indexes for table `ejemplar`
+-- Indices de la tabla `ejemplar`
 --
 ALTER TABLE `ejemplar`
   ADD PRIMARY KEY (`idEjemplar`),
   ADD KEY `idTitulo` (`idTitulo`);
 
 --
--- Indexes for table `entrada`
+-- Indices de la tabla `ejemplar_estado`
+--
+ALTER TABLE `ejemplar_estado`
+  ADD PRIMARY KEY (`idEjemplar`,`idEstado`,`fecha`),
+  ADD KEY `idEjemplar` (`idEjemplar`),
+  ADD KEY `idEstado` (`idEstado`);
+
+--
+-- Indices de la tabla `entrada`
 --
 ALTER TABLE `entrada`
   ADD PRIMARY KEY (`timestamp`,`idVisitante`),
   ADD KEY `idVisitante` (`idVisitante`);
 
 --
--- Indexes for table `estado`
+-- Indices de la tabla `estado`
 --
 ALTER TABLE `estado`
   ADD PRIMARY KEY (`idEstado`);
 
 --
--- Indexes for table `estado_ejemplar`
---
-ALTER TABLE `estado_ejemplar`
-  ADD PRIMARY KEY (`idEjemplar`,`idEstado`,`fecha`),
-  ADD KEY `idEjemplar` (`idEjemplar`),
-  ADD KEY `idEstado` (`idEstado`);
-
---
--- Indexes for table `fiador`
+-- Indices de la tabla `fiador`
 --
 ALTER TABLE `fiador`
   ADD PRIMARY KEY (`idFiador`);
 
 --
--- Indexes for table `gradoestudios`
+-- Indices de la tabla `gradoestudios`
 --
 ALTER TABLE `gradoestudios`
   ADD PRIMARY KEY (`idGrado`);
 
 --
--- Indexes for table `operacion`
+-- Indices de la tabla `operacion`
 --
 ALTER TABLE `operacion`
   ADD PRIMARY KEY (`idOperacion`);
 
 --
--- Indexes for table `prestamo`
+-- Indices de la tabla `prestamo`
 --
 ALTER TABLE `prestamo`
   ADD PRIMARY KEY (`idCredencial`,`idEjemplar`,`fechaPrestamo`),
@@ -412,63 +485,71 @@ ALTER TABLE `prestamo`
   ADD KEY `idEjemplar` (`idEjemplar`);
 
 --
--- Indexes for table `rol`
+-- Indices de la tabla `rol`
 --
 ALTER TABLE `rol`
   ADD PRIMARY KEY (`idRol`);
 
 --
--- Indexes for table `rol_operacion`
+-- Indices de la tabla `rol_operacion`
 --
 ALTER TABLE `rol_operacion`
-  ADD PRIMARY KEY (`idOperacion`,`idRol`,`fecha`),
-  ADD KEY `idOperacion` (`idOperacion`),
-  ADD KEY `idRol` (`idRol`),
+  ADD PRIMARY KEY (`idRol`,`idOperacion`,`fecha`),
+  ADD KEY `idOperacion` (`idRol`),
+  ADD KEY `idRol` (`idOperacion`),
   ADD KEY `fecha` (`fecha`);
 
 --
--- Indexes for table `sancion`
+-- Indices de la tabla `sancion`
 --
 ALTER TABLE `sancion`
   ADD PRIMARY KEY (`idSancion`),
   ADD KEY `idVisitante` (`idVisitante`);
 
 --
--- Indexes for table `titulo`
+-- Indices de la tabla `titulo`
 --
 ALTER TABLE `titulo`
   ADD PRIMARY KEY (`idTitulo`);
 
 --
--- Indexes for table `titulo_categoria`
+-- Indices de la tabla `titulo_autor`
 --
-ALTER TABLE `titulo_categoria`
-  ADD PRIMARY KEY (`idTitulo`,`idCategoria`),
-  ADD KEY `idTitulo` (`idTitulo`),
-  ADD KEY `idCategoria` (`idCategoria`);
+ALTER TABLE `titulo_autor`
+  ADD PRIMARY KEY (`idAutor`,`idTitulo`),
+  ADD KEY `idAutor` (`idAutor`),
+  ADD KEY `idTitulo` (`idTitulo`);
 
 --
--- Indexes for table `usuario`
+-- Indices de la tabla `titulo_categoria`
+--
+ALTER TABLE `titulo_categoria`
+  ADD PRIMARY KEY (`idCategoria`,`idTitulo`),
+  ADD KEY `idTitulo` (`idCategoria`),
+  ADD KEY `idCategoria` (`idTitulo`);
+
+--
+-- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`usuario`);
 
 --
--- Indexes for table `usuario_rol`
+-- Indices de la tabla `usuario_rol`
 --
 ALTER TABLE `usuario_rol`
-  ADD PRIMARY KEY (`idUsuario`,`idRol`,`fecha`),
-  ADD KEY `idUsuario` (`idUsuario`),
+  ADD PRIMARY KEY (`usuario`,`idRol`,`fecha`),
+  ADD KEY `idUsuario` (`usuario`),
   ADD KEY `idRol` (`idRol`);
 
 --
--- Indexes for table `visitante`
+-- Indices de la tabla `visitante`
 --
 ALTER TABLE `visitante`
   ADD PRIMARY KEY (`idVisitante`);
 
 --
--- Indexes for table `visitante_gradoestudios`
+-- Indices de la tabla `visitante_gradoestudios`
 --
 ALTER TABLE `visitante_gradoestudios`
   ADD PRIMARY KEY (`idVisitante`,`idGrado`,`fecha`),
@@ -476,154 +557,154 @@ ALTER TABLE `visitante_gradoestudios`
   ADD KEY `idGrado` (`idGrado`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `autor`
+-- AUTO_INCREMENT de la tabla `autor`
 --
 ALTER TABLE `autor`
   MODIFY `idAutor` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `categoria`
+-- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
   MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `credencial`
+-- AUTO_INCREMENT de la tabla `credencial`
 --
 ALTER TABLE `credencial`
   MODIFY `idCredencial` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `ejemplar`
+-- AUTO_INCREMENT de la tabla `ejemplar`
 --
 ALTER TABLE `ejemplar`
   MODIFY `idEjemplar` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `estado`
+-- AUTO_INCREMENT de la tabla `estado`
 --
 ALTER TABLE `estado`
   MODIFY `idEstado` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `fiador`
+-- AUTO_INCREMENT de la tabla `fiador`
 --
 ALTER TABLE `fiador`
   MODIFY `idFiador` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `gradoestudios`
+-- AUTO_INCREMENT de la tabla `gradoestudios`
 --
 ALTER TABLE `gradoestudios`
-  MODIFY `idGrado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idGrado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `operacion`
+-- AUTO_INCREMENT de la tabla `operacion`
 --
 ALTER TABLE `operacion`
   MODIFY `idOperacion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `rol`
+-- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
   MODIFY `idRol` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `sancion`
+-- AUTO_INCREMENT de la tabla `sancion`
 --
 ALTER TABLE `sancion`
   MODIFY `idSancion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `titulo`
+-- AUTO_INCREMENT de la tabla `titulo`
 --
 ALTER TABLE `titulo`
   MODIFY `idTitulo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `visitante`
+-- AUTO_INCREMENT de la tabla `visitante`
 --
 ALTER TABLE `visitante`
-  MODIFY `idVisitante` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idVisitante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `autor_titulo`
---
-ALTER TABLE `autor_titulo`
-  ADD CONSTRAINT `fkAutor` FOREIGN KEY (`idAutor`) REFERENCES `autor` (`idAutor`),
-  ADD CONSTRAINT `fkTituloAutor` FOREIGN KEY (`idTitulo`) REFERENCES `titulo` (`idTitulo`);
-
---
--- Constraints for table `credencial_fiador`
+-- Filtros para la tabla `credencial_fiador`
 --
 ALTER TABLE `credencial_fiador`
   ADD CONSTRAINT `fkCredencial` FOREIGN KEY (`idCredencial`) REFERENCES `credencial` (`idCredencial`),
   ADD CONSTRAINT `fkFiador` FOREIGN KEY (`idFiador`) REFERENCES `fiador` (`idFiador`);
 
 --
--- Constraints for table `ejemplar`
+-- Filtros para la tabla `ejemplar`
 --
 ALTER TABLE `ejemplar`
   ADD CONSTRAINT `fkTituloEjemplar` FOREIGN KEY (`idTitulo`) REFERENCES `titulo` (`idTitulo`);
 
 --
--- Constraints for table `entrada`
+-- Filtros para la tabla `ejemplar_estado`
+--
+ALTER TABLE `ejemplar_estado`
+  ADD CONSTRAINT `fkEjemplar` FOREIGN KEY (`idEjemplar`) REFERENCES `ejemplar` (`idEjemplar`),
+  ADD CONSTRAINT `fkEstado` FOREIGN KEY (`idEstado`) REFERENCES `estado` (`idEstado`);
+
+--
+-- Filtros para la tabla `entrada`
 --
 ALTER TABLE `entrada`
   ADD CONSTRAINT `fkVisitanteEntra` FOREIGN KEY (`idVisitante`) REFERENCES `visitante` (`idVisitante`);
 
 --
--- Constraints for table `estado_ejemplar`
---
-ALTER TABLE `estado_ejemplar`
-  ADD CONSTRAINT `fkEjemplar` FOREIGN KEY (`idEjemplar`) REFERENCES `ejemplar` (`idEjemplar`),
-  ADD CONSTRAINT `fkEstado` FOREIGN KEY (`idEstado`) REFERENCES `estado` (`idEstado`);
-
---
--- Constraints for table `prestamo`
+-- Filtros para la tabla `prestamo`
 --
 ALTER TABLE `prestamo`
   ADD CONSTRAINT `fkPrestamoCredencial` FOREIGN KEY (`idCredencial`) REFERENCES `credencial` (`idCredencial`),
   ADD CONSTRAINT `fkPrestamoEjemplar` FOREIGN KEY (`idEjemplar`) REFERENCES `ejemplar` (`idEjemplar`);
 
 --
--- Constraints for table `rol_operacion`
+-- Filtros para la tabla `rol_operacion`
 --
 ALTER TABLE `rol_operacion`
-  ADD CONSTRAINT `fkOperacion` FOREIGN KEY (`idOperacion`) REFERENCES `operacion` (`idOperacion`),
-  ADD CONSTRAINT `foreignKeyRol` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`);
+  ADD CONSTRAINT `fkOperacion` FOREIGN KEY (`idRol`) REFERENCES `operacion` (`idOperacion`),
+  ADD CONSTRAINT `foreignKeyRol` FOREIGN KEY (`idOperacion`) REFERENCES `rol` (`idRol`);
 
 --
--- Constraints for table `sancion`
+-- Filtros para la tabla `sancion`
 --
 ALTER TABLE `sancion`
   ADD CONSTRAINT `fkVisitanteSancion` FOREIGN KEY (`idVisitante`) REFERENCES `visitante` (`idVisitante`);
 
 --
--- Constraints for table `titulo_categoria`
+-- Filtros para la tabla `titulo_autor`
 --
-ALTER TABLE `titulo_categoria`
-  ADD CONSTRAINT `fkCategoria` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`),
-  ADD CONSTRAINT `fkTitulo` FOREIGN KEY (`idTitulo`) REFERENCES `titulo` (`idTitulo`);
+ALTER TABLE `titulo_autor`
+  ADD CONSTRAINT `fkAutor` FOREIGN KEY (`idAutor`) REFERENCES `autor` (`idAutor`),
+  ADD CONSTRAINT `fkTituloAutor` FOREIGN KEY (`idTitulo`) REFERENCES `titulo` (`idTitulo`);
 
 --
--- Constraints for table `usuario_rol`
+-- Filtros para la tabla `titulo_categoria`
+--
+ALTER TABLE `titulo_categoria`
+  ADD CONSTRAINT `fkCategoria` FOREIGN KEY (`idTitulo`) REFERENCES `categoria` (`idCategoria`),
+  ADD CONSTRAINT `fkTitulo` FOREIGN KEY (`idCategoria`) REFERENCES `titulo` (`idTitulo`);
+
+--
+-- Filtros para la tabla `usuario_rol`
 --
 ALTER TABLE `usuario_rol`
   ADD CONSTRAINT `fkRol` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`),
-  ADD CONSTRAINT `fkUsuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`usuario`);
+  ADD CONSTRAINT `fkUsuario` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`usuario`);
 
 --
--- Constraints for table `visitante_gradoestudios`
+-- Filtros para la tabla `visitante_gradoestudios`
 --
 ALTER TABLE `visitante_gradoestudios`
   ADD CONSTRAINT `fkGrado` FOREIGN KEY (`idGrado`) REFERENCES `gradoestudios` (`idGrado`),
