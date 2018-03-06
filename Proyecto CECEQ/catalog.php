@@ -21,4 +21,9 @@
             echo "<script> $('#myModal').modal('show') </script>";
         }
     }
+<<<<<<< HEAD
     ?>
+=======
+    echo '<br> <br>';
+    ?>
+>>>>>>> Angie

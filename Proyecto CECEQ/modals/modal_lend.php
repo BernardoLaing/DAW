@@ -1,9 +1,12 @@
 <?php
-$hoy = getdate();
-$d=strtotime("+7 Days");
+$diaPrestamo = getdate();
+$diaRegreso=strtotime("+7 Days");
 $var_value = $_SESSION['ok'];
+$var_credencial = $_SESSION['credencial'];
+$var_libro = $_SESSION['libro'];
+$var_tipo = $_SESSION['tipo'];
 
-if($var_value){
+if($var_value == true){
   echo '
    <div class="modal fade" id="myModal">
      <div class="modal-dialog">
@@ -11,27 +14,29 @@ if($var_value){
 
          <!-- Modal Header -->
          <div class="modal-header">
-           <h3 class="modal-title"> Préstamo </h3>
+           <h3 class="modal-title">'. $var_tipo .'</h3>
            <button type="button" class="close" data-dismiss="modal">&times;</button>
          </div>
 
          <!-- Modal body -->
          <div class="modal-body">
-           <p><strong>Ejemplar: </strong>'.'El titulo del ejemplar'.'</p>
-           <p><strong>Prestamo a: </strong>'.'El nombre del suario'.'</p>
-           <p><strong>Fecha de préstamo: </strong>'.date("d/m/Y").'</p>
-           <p><strong>Fecha de retorno: </strong>'.date("d/m/Y", $d) .'</p>
+           <p><strong>Ejemplar: </strong>'.$var_libro.'</p>
+           <p><strong>Prestamo a: </strong>'.$var_credencial.'</p>
+           <p><strong>Fecha de préstamo: </strong>'.date("Y-m-d").'</p>
+           <p><strong>Fecha de retorno: </strong>'.date("Y-m-d", $diaRegreso) .'</p>
          </div>
 
          <!-- Modal footer -->
          <div class="modal-footer">
            <div class="row">
+           <form method="post">
              <div class="col-sm-6 text-left">
-               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar préstamo</button>
+               <input type="submit" id="cancelar" class="btn btn-danger" name="cancelar" value="Cancelar" />
              </div>
              <div class="col-sm-6 text-right">
-               <button type="button" class="btn btn-success" data-dismiss="modal">Guardar préstamo</button>
+               <input type="submit" id="aceptar" class="btn btn-success"  name="aceptar" value="Aceptar" />
              </div>
+            </form>
            </div>
          </div>
 

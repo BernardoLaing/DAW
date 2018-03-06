@@ -129,10 +129,10 @@
           <!--SEXO-->
           <div class='col-sm-4'>
               <div class='form-group'>
-                  <label for="user_ocupation">Sexo</label>
+                  <label for="user_ocupation">Género</label>
                   <div class="col-md-12">
                     <select class="form-control" name="user[gender]">
-                        <option value=""></option>
+                        <option value="" disabled selected>-- Género --</option>
                         <option value="Hombre">Hombre</option>
                         <option value="Mujer">Mujer</option>
                         <option value="otro">Otro</option>
@@ -157,7 +157,7 @@
                   <label for="user_ocupation">Mes</label>
                   <div class="col-md-12">
                     <select class="form-control" name="user[month]">
-                        <option value=""></option>
+                        <option value="" disabled selected>-- Mes --</option>
                         <option value="Enero">Enero</option>
                         <option value="Febrero">Febrero</option>
                         <option value="Marzo">Marzo</option>
@@ -180,7 +180,7 @@
                   <label for="user_ocupation">Año</label>
                   <div class="col-md-12">
                     <select class="form-control " name="user[year]">
-                        <option value="">
+                        <option value="" disabled selected>-- Año --</option>
                         <?php
                         $firstYear = 2018;
                         for($year = $firstYear; $year <= date("Y"); $year++) {
