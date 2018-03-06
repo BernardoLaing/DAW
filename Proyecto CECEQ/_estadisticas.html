@@ -1,0 +1,213 @@
+<br><br>
+<div class="container shadow">
+  <!--Titulo de estadísticas-->
+  <div class="container">
+    <div class="row text-center">
+        <div class="col col-sm-12 col-md-6 mx-auto">
+          <br>
+            <div class="display-3">Estadísticas</div>
+        </div>
+    </div>
+  </div>
+      <!--Columna con tabla y grafica-->
+      <div class="row">
+        <div class="col-sm-12 col-md-7"> <br>
+          <div class="shadow">
+            <div class="table-responsive" id="stats-table">
+
+              <table class="table table-hover">
+                <thead class="text-center">
+                  <tr class="">
+
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col">Ocupacion</th>
+                    <th scope="col">Mes</th>
+                    <th scope="col">Año</th>
+                  </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr>
+                        <td>#</td>
+                        <td>#</td>
+                        <td>#</td>
+                        <td>#</td>
+                        <td>#</td>
+                        <td>#</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr><tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <br>
+          <div class="text-center">
+            <img src="src/chart.png" alt="Aqui habrá una gráfica" width="300px" style="max-width: 100%;">
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <!--Formulario-->
+      <form>
+        <div class="row">
+          <!--OCUPACION-->
+          <div class='col-sm-4'>
+              <div class='form-group'>
+                  <label for="user_ocupation">Ocupación</label>
+                  <div class="col-md-12">
+                      <input class="form-control" id="user_ocupation" name="user[ocupation]" required="false" size="30" type="text" />
+                  </div>
+              </div>
+          </div>
+          <!--EDAD-->
+          <div class='col-sm-4'>
+              <div class='form-group'>
+                  <label for="user_ocupation">Edad</label>
+                  <div class="col-md-12">
+                      <input class="form-control" id="user_age" name="user[age]" required="false" type="number" min="1" max="100"/>
+                  </div>
+              </div>
+          </div>
+          <!--SEXO-->
+          <div class='col-sm-4'>
+              <div class='form-group'>
+                  <label for="user_ocupation">Sexo</label>
+                  <div class="col-md-12">
+                    <select class="form-control" name="Sexo">
+                        <option value=""></option>
+                        <option value="Hombre">Hombre</option>
+                        <option value="Mujer">Mujer</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <!--CIUDAD-->
+        <div class="row">
+          <div class='col-sm-4'>
+              <div class='form-group'>
+                  <label for="user_ocupation">Ciudad</label>
+                  <div class="col-md-12">
+                      <input class="form-control" id="user_ocupation" name="user[ocupation]" required="true" size="30" type="text" />
+                  </div>
+              </div>
+          </div>
+          <!--MES-->
+          <div class='col-sm-4'>
+              <div class='form-group'>
+                  <label for="user_ocupation">Mes</label>
+                  <div class="col-md-12">
+                    <select class="form-control" name="Mes">
+                        <option value=""></option>
+                        <option value="Enero">Enero</option>
+                        <option value="Febrero">Febrero</option>
+                        <option value="Marzo">Marzo</option>
+                        <option value="Abril">Abril</option>
+                        <option value="Mayo">Mayo</option>
+                        <option value="Junio">Junio</option>
+                        <option value="Julio">Julio</option>
+                        <option value="Agosto">Agosto</option>
+                        <option value="Septiembre">Septiembre</option>
+                        <option value="Octubre">Octubre</option>
+                        <option value="Noviembre">Noviembre</option>
+                        <option value="Diciembre">Diciembre</option>
+                    </select>
+                  </div>
+              </div>
+          </div>
+          <!--AÑO-->
+          <div class='col-sm-4'>
+              <div class='form-group'>
+                  <label for="user_ocupation">Año</label>
+                  <div class="col-md-12">
+                    <select class="form-control " name="Mes">
+                        <option value="">
+                        <?php
+                        $firstYear = 2018;
+                        for($year = $firstYear; $year <= date("Y"); $year++) {
+                            echo "<option value='$year'> $year </option>";
+                        }
+                        ?>
+                    </select>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <!--Boton Filtrar-->
+        <div class="row">
+          <br><br>
+          <div class="col-sm-4">
+            <a class="btn btn-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
+          </div>
+          <div class='col-sm-4'>
+              <div class='form-group'>
+                  <div class="text-center">
+                      <button type="button" name="button" class="btn btn-secondary mx-auto">Filtrar</button>
+                  </div>
+              </div>
+          </div>
+          <div class="col-sm-4"></div>
+          <br>
+        </div>
+      </form>
+  </div>
+  <br><br>
