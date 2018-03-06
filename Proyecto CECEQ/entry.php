@@ -7,7 +7,7 @@
 
 <?php
     include("utils.php");
-<<<<<<< HEAD
+
     if(count($_POST)>0){
         if(!isset($_POST["user"]["gender"]) || !test($GENDER, $_POST["user"]["gender"]))
             $_POST["user"]["gender"] = null;
@@ -96,7 +96,7 @@
         echo "<script> $('#myModal').modal('show') </script>";
 <<<<<<< HEAD
 =======
-        
+
 >>>>>>> Angie
     }
     if(isset($_POST["aceptar"])){
@@ -115,16 +115,5 @@
             $_SESSION["entry_register"] = null;
         }
         */
-=======
-            if(insertVisitante($aux_name,$aux_paternal,$aux_maternal,$aux_bday,$aux_grade,$aux_gender)){
-                
-                echo "Success";
-            }else{
-                echo "Failure";
-            }
-        }else if(isset($_POST["cancelar"])){
-            echo "<p>Canceled</p>";
-            $_SESSION["entry_register"] = null;
-        }
->>>>>>> Angie
+
 ?>
