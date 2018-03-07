@@ -4,9 +4,25 @@ var DATE_MESSAGE = "Este campo debe contener una fecha válida <br><br><br>";
 var ISBN_MESSAGE = "Este campo debe contener un ISBN o ISSN válido <br><br><br>";
 var SCHOOLING_MESSAGE = "Selecciona un grado de estudios <br><br><br>";
 var GENDER_MESSAGE = "Selecciona un género <br><br><br>";
+var CLASSIFICATION_MESSAGE = "Selecciona una clasificación <br><br><br>";
+var YEAR_MESSAGE = "Escribe un año válido <br><br><br>";
 
-console.log("js in ");
-document.getElementById("csubmit").onclick = function(event){
+console.log("validations in");
+
+var j;
+var searchElems = document.getElementsByClassName("csearch");
+if(searchElems != null){
+    for(j = 0; j<searchElems.length; j++)
+        searchElems[j].onclick = validateSearch;
+}
+
+var insertElems = document.getElementsByClassName("cinsert");
+if(insertElems != null){
+    for(j = 0; j<insertElems.length; j++)
+        insertElems[j].onclick = validateInsert;
+}
+
+function validateSearch(event){
     var v = document.getElementsByClassName("cvalidate");
     if(v!=null){
         var cpassed = true;
@@ -16,11 +32,11 @@ document.getElementById("csubmit").onclick = function(event){
             cvalue = element.value;
             if(cvalue != null && cvalue != ""){
                 if(element.classList.contains("cname")){
-                    w = element.parentElement.parentElement.parentElement.getElementsByClassName("warning")[0];
+                    w = element.parentElement.parentElement.getElementsByClassName("warning")[0];
                     if(w == null){
                         w = document.createElement("span");
                         w.classList.add("warning");
-                        element.parentElement.parentElement.parentElement.appendChild(w);
+                        element.parentElement.parentElement.appendChild(w);
                     }
                     if(!test(NAME, cvalue)){
                         cpassed = false;
@@ -30,11 +46,11 @@ document.getElementById("csubmit").onclick = function(event){
                         w.style.display = "none";
                     }
                 }else if(element.classList.contains("cnumber")){
-                    w = element.parentElement.parentElement.parentElement.getElementsByClassName("warning")[0];
+                    w = element.parentElement.parentElement.getElementsByClassName("warning")[0];
                     if(w == null){
                         w = document.createElement("span");
                         w.classList.add("warning");
-                        element.parentElement.parentElement.parentElement.appendChild(w);
+                        element.parentElement.parentElement.appendChild(w);
                     }
                     if(!test(NUMBER, cvalue)){
                         cpassed = false;
@@ -44,11 +60,11 @@ document.getElementById("csubmit").onclick = function(event){
                         w.style.display = "none";
                     }
                 }else if(element.classList.contains("cdate")){
-                    w = element.parentElement.parentElement.parentElement.getElementsByClassName("warning")[0];
+                    w = element.parentElement.parentElement.getElementsByClassName("warning")[0];
                     if(w == null){
                         w = document.createElement("span");
                         w.classList.add("warning");
-                        element.parentElement.parentElement.parentElement.appendChild(w);
+                        element.parentElement.parentElement.appendChild(w);
                     }
                     if(!test(DATE, cvalue)){
                         cpassed = false;
@@ -58,11 +74,11 @@ document.getElementById("csubmit").onclick = function(event){
                         w.style.display = "none";
                     }
                 }else if(element.classList.contains("cschooling")){
-                    w = element.parentElement.parentElement.parentElement.getElementsByClassName("warning")[0];
+                    w = element.parentElement.parentElement.getElementsByClassName("warning")[0];
                     if(w == null){
                         w = document.createElement("span");
                         w.classList.add("warning");
-                        element.parentElement.parentElement.parentElement.appendChild(w);
+                        element.parentElement.parentElement.appendChild(w);
                     }
                     if(!test(SCHOOLING, cvalue)){
                         cpassed = false;
@@ -72,11 +88,11 @@ document.getElementById("csubmit").onclick = function(event){
                         w.style.display = "none";
                     }
                 }else if(element.classList.contains("cgender")){
-                    w = element.parentElement.parentElement.parentElement.getElementsByClassName("warning")[0];
+                    w = element.parentElement.parentElement.getElementsByClassName("warning")[0];
                     if(w == null){
                         w = document.createElement("span");
                         w.classList.add("warning");
-                        element.parentElement.parentElement.parentElement.appendChild(w);
+                        element.parentElement.parentElement.appendChild(w);
                     }
                     if(!test(GENDER, cvalue)){
                         cpassed = false;
@@ -86,16 +102,44 @@ document.getElementById("csubmit").onclick = function(event){
                         w.style.display = "none";
                     }
                 }else if(element.classList.contains("cisbn")){
-                    w = element.parentElement.parentElement.parentElement.getElementsByClassName("warning")[0];
+                    w = element.parentElement.parentElement.getElementsByClassName("warning")[0];
                     if(w == null){
                         w = document.createElement("span");
                         w.classList.add("warning");
-                        element.parentElement.parentElement.parentElement.appendChild(w);
+                        element.parentElement.parentElement.appendChild(w);
                     }
                     if(!test(ISBN, cvalue)){
                         cpassed = false;
                         w.style.display = "inline-block";
                         w.innerHTML = ISBN_MESSAGE;
+                    }else{
+                        w.style.display = "none";
+                    }
+                }else if(element.classList.contains("cyear")){ //<<-----------------------------------------------------
+                    w = element.parentElement.parentElement.getElementsByClassName("warning")[0];
+                    if(w == null){
+                        w = document.createElement("span");
+                        w.classList.add("warning");
+                        element.parentElement.parentElement.appendChild(w);
+                    }
+                    if(!test(YEAR, cvalue)){//<<------------------------------------------------------------------------
+                        cpassed = false;
+                        w.style.display = "inline-block";
+                        w.innerHTML = YEAR_MESSAGE;//<<-----------------------------------------------------------------
+                    }else{
+                        w.style.display = "none";
+                    }
+                }else if(element.classList.contains("cclassification")){ //<<-----------------------------------------------------
+                    w = element.parentElement.parentElement.getElementsByClassName("warning")[0];
+                    if(w == null){
+                        w = document.createElement("span");
+                        w.classList.add("warning");
+                        element.parentElement.parentElement.appendChild(w);
+                    }
+                    if(!test(CLASSIFICATION, cvalue)){//<<------------------------------------------------------------------------
+                        cpassed = false;
+                        w.style.display = "inline-block";
+                        w.innerHTML = CLASSIFICATION_MESSAGE;//<<-----------------------------------------------------------------
                     }else{
                         w.style.display = "none";
                     }
@@ -105,4 +149,18 @@ document.getElementById("csubmit").onclick = function(event){
         if(!cpassed)
            event.preventDefault();
     }
-};
+}
+
+function validateInsert(event){
+    var v = document.getElementsByClassName("cvalidate");
+    if(v!=null){
+        for(var i = 0; i < v.length; i++){
+            if(v[i].value == null || v[i].value == ""){
+                event.preventDefault();
+                return;
+            }
+        }
+        validateSearch(event);
+    }
+}
+

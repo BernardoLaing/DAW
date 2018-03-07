@@ -103,7 +103,7 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">
-                    <input id="buscarVisitante" type="submit" class="btn btn-secondary mx-auto" value="Buscar"/>
+                    <input id="buscarVisitante" type="submit" class="btn btn-secondary mx-auto csearch" value="Buscar"/>
                 </div>
             </div>
         </div>
@@ -163,6 +163,5 @@
         </div>
         <!--end of controls-->
     </form>
-<script src="js/validtest.js"></script>
 </div>
 <?php include("partials/_footer.html"); ?>

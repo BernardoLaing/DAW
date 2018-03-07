@@ -9,23 +9,23 @@
         <div class='col-sm-12 col-md-4'>
             <div class='form-group'>
                 <label for="user_name">Nombre:</label>
-                <input name="name" class="form-control" id="name" size="30" type="text" placeholder="Juan Pérez Rosales" />
+                <input name="name" class="form-control cvalidate cname" id="name" size="30" type="text" placeholder="Juan Pérez Rosales" />
             </div>
         </div>
         <div class='col-sm-12 col-md-4'>
             <div class='form-group'>
                 <label for="user_paternal">Nombre usuario:</label>
-                <input name="user" class="form-control" id="user" size="30" type="text" placeholder="Jperez" />
+                <input name="user" class="form-control cvalidate cname" id="user" size="30" type="text" placeholder="Jperez" />
             </div>
         </div>
         <div class='col-sm-12 col-md-4'>
             <div class='form-group'>
                 <label for="user_maternal">Rol:</label>
-                <select name="rol" class="form-control" id="rol">
+                <select name="rol" class="form-control cvalidate cnumber" id="rol">
                     <option value="" disabled selected>-- Rol --</option>
-                    <option value="r1">Rol 1</option>
-                    <option value="r2">Rol 2</option>
-                    <option value="r3">Rol 3</option>
+                    <option value="1">Rol 1</option>
+                    <option value="2">Rol 2</option>
+                    <option value="3">Rol 3</option>
 
                 </select>
             </div>
@@ -35,7 +35,7 @@
     <div class="row mx-auto">
         <div class="col-lg-5 col-sm-4"></div>
         <div class="col-lg-2 col-sm-4">
-            <button type="button" class="btn btn-secondary btn-lg btn-block"> Buscar </button>
+            <input type="button" class="btn btn-secondary btn-lg btn-block csearch" value="Buscar">
         </div>
         <div class="col-lg-5 col-sm-4"></div>
     </div>
