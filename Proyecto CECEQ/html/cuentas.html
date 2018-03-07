@@ -5,12 +5,32 @@
     </div>
     <br>
     <br>
-    <div class="row text-center center-block mx-auto">
-        <div class="col-sm-12 col-md-4">Nombre: <input type="text" name="name"></div>
-        <div class="col-sm-12 col-md-4">Nombre Usuario: <input type="text" name="user"></div>
-        <div class="col-sm-12 col-md-4">Rol: <input type="text" name="rol"></div>
+    <div class='form-row'>
+        <div class='col-sm-12 col-md-4'>
+            <div class='form-group'>
+                <label for="user_name">Nombre:</label>
+                <input name="name" class="form-control" id="name" size="30" type="text" placeholder="Juan Pérez Rosales" />
+            </div>
+        </div>
+        <div class='col-sm-12 col-md-4'>
+            <div class='form-group'>
+                <label for="user_paternal">Nombre usuario:</label>
+                <input name="user" class="form-control" id="user" size="30" type="text" placeholder="Jperez" />
+            </div>
+        </div>
+        <div class='col-sm-12 col-md-4'>
+            <div class='form-group'>
+                <label for="user_maternal">Rol:</label>
+                <select name="rol" class="form-control" id="rol">
+                    <option value="" disabled selected>-- Rol --</option>
+                    <option value="r1">Rol 1</option>
+                    <option value="r2">Rol 2</option>
+                    <option value="r3">Rol 3</option>
+
+                </select>
+            </div>
+        </div>
     </div>
-    <br>
     <br>
     <div class="row mx-auto">
         <div class="col-lg-5 col-sm-4"></div>
@@ -19,8 +39,9 @@
         </div>
         <div class="col-lg-5 col-sm-4"></div>
     </div>
-    
+
     <br>
+
     <br>
     <div class="">
         <table class="table table-hover">
@@ -57,7 +78,7 @@
         </div>
     </div>
     <br>
-    
+
 </div>
 <br /><br />
 <!--
