@@ -21,5 +21,4 @@
             echo "<script> $('#myModal').modal('show') </script>";
         }
     }
-    echo '<br> <br>';
     ?>

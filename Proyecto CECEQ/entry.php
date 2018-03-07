@@ -7,7 +7,6 @@
 
 <?php
     include("utils.php");
-
     if(count($_POST)>0){
         if(!isset($_POST["user"]["gender"]) || !test($GENDER, $_POST["user"]["gender"]))
             $_POST["user"]["gender"] = null;
@@ -68,8 +67,6 @@
 
 /*
     include("utils.php");
-=======
->>>>>>> Angie
     $usernum = isset($_POST["user"]["number"]) && $_POST["user"]["number"] != null;
     $name = isset($_POST["user"]["name"]) && $_POST["user"]["name"] != null;
     $paternal = isset($_POST["user"]["paternal"]) && $_POST["user"]["paternal"] != null;
@@ -94,10 +91,6 @@
         }
         include("modals/modal_entry.php");
         echo "<script> $('#myModal').modal('show') </script>";
-<<<<<<< HEAD
-=======
-
->>>>>>> Angie
     }
     if(isset($_POST["aceptar"])){
             echo "<p>New record created successfully</p>";
@@ -107,7 +100,6 @@
             $aux_bday = $_SESSION["entry_register"]["user"]["birthday"];
             $aux_grade = $_SESSION["entry_register"]["user"]["user_grade"];
             $aux_gender= $_SESSION["entry_register"]["user"]["gender"];
-<<<<<<< HEAD
             insertVisitante($aux_name,$aux_paternal,$aux_maternal,$aux_bday,$aux_grade,$aux_gender);
         }
         else if(isset($_POST["cancelar"])){
@@ -115,5 +107,4 @@
             $_SESSION["entry_register"] = null;
         }
         */
-
 ?>
