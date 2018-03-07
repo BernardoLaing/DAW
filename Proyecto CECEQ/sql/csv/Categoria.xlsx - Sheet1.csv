@@ -1,100 +1,99 @@
-idCategoria,nombre
 0,Generalidades
-10,BibliografÃ­a
-20,BibliotecologÃ­a y ciencias de la informaciÃ³n
-30,Obras enciclopÃ©dicas generales
+10,Bibliografía
+20,Bibliotecnología y ciencias de la información
+30,Obras enciclopédicas generales
 50,Publicaciones seriadas generales
-60,Organizaciones generales y museologÃ­a
-70,"Medios noticiosos, periodismo, publicaciÃ³n"
+60,Organizaciones generales y museología
+70,"Medios noticiosos, periodismo, publicación"
 80,Colecciones generales
 90,Manuscritos y libros raros
-100,FilosofÃ­a y psicologÃ­a
-110,MetafÃ­sica
-120,"EpistemologÃ­a, causalidad, gÃ©nero humano"
-130,FenÃ³menos paranormales
-140,Escuelas filosÃ³ficas especÃ­ficas
-150,PsicologÃ­a
-160,LÃ³gica
-170,Etica (FilosofÃ­a moral)
-180,"FilosofÃ­a antigua, medieval, oriental"
-190,FilosofÃ­a moderna occidental
-200,ReligiÃ³n
-210,FilosofÃ­a y teorÃ­a de la religiÃ³n
+100,Filosofía y psicología
+110,Metafísica
+120,"Epistemología, causalidad, género humano"
+130,Fenómenos paranormales
+140,Escuelas filosóficas específicas
+150,Psicología
+160,Lógica
+170,Etica (Filosofía moral)
+180,"Filosofía antigua, medieval, oriental"
+190,Filosofía moderna occidental
+200,Religión
+210,Filosofía y teoría de la religión
 220,La Biblia
-230,Cristianismo TeologÃ­a cristiana
-240,Moral cristiana y teologÃ­a piadosa
-250,Ã“rdenes cristianas e iglesia local
-260,TeologÃ­a social y eclesiÃ¡stica
+230,Cristianismo Teología cristiana
+240,Moral cristiana y teología piadosa
+250,Órdenes cristianas e iglesia local
+260,Teología social y eclesiástica
 270,Historia del cristianismo y de la iglesia cristiana
 280,Confesiones y sectas cristianas
-290,ReligiÃ³n comparada y otras religiones
+290,Religión comparada y otras religiones
 300,Ciencias sociales
-310,Colecciones de estadÃ­stica general
-320,Ciencia polÃ­tica
-330,EconomÃ­a
+310,Colecciones de estadística general
+320,Ciencia política
+330,Economía
 340,Derecho
-350,AdministraciÃ³n pÃºblica y ciencia militar
+350,Administración pública y ciencia militar
 360,Problemas y servicios sociales; asociaciones
-370,EducaciÃ³n
+370,Educación
 380,"Comercio, comunicaciones, transporte"
 390,"Costumbres, etiqueta, folclor"
 400,Lenguas
-410,LingÃ¼Ã­stica
-420,InglÃ©s e inglÃ©s antiguo
-430,Lenguas germÃ¡nicas AlemÃ¡n
-440,Lenguas romances FrancÃ©s
+410,Lingüística
+420,Inglés e inglés antiguo
+430,Lenguas germánicas Alemán
+440,Lenguas romances Francés
 450,"Italiano, rumano, retorromano"
-460,Lengua espaÃ±ola y portuguesa
-470,Lenguas itÃ¡licas LatÃ­n
-480,Lenguas helÃ©nicas Griego clÃ¡sico
+460,Lengua española y portuguesa
+470,Lenguas itálicas Latín
+480,Lenguas helénicas Griego clásico
 490,Otras lenguas
-500,Ciencias naturales y matemÃ¡ticas
-510,MatemÃ¡ticas
-520,AstronomÃ­a y ciencias afines
-530,FÃ­sica
-540,QuÃ­mica y ciencias afines
+500,Ciencias naturales y matemáticas
+510,Matemáticas
+520,Astronomía y ciencias afines
+530,Física
+540,Química y ciencias afines
 550,Ciencias de la tierra
-560,PaleontologÃ­a PaleozoologÃ­a
-570,Ciencias de la vida BiologÃ­a
+560,Paleontología Paleozoología
+570,Ciencias de la vida Biología
 580,Plantas
 590,Animales
-600,TecnologÃ­a (Ciencias aplicadas)
-610,Ciencias mÃ©dicas Medicina
-620,IngenierÃ­a y operaciones afines
-630,Agricultura y tecnologÃ­a relacionadas
-640,EconomÃ­a domÃ©stica y vida familiar
+600,Tecnología (Ciencias aplicadas)
+610,Ciencias médicas Medicina
+620,Ingenieríaa y operaciones afines
+630,Agricultura y tecnología relacionadas
+640,Economía doméstica y vida familiar
 650,Gerencia y servicios auxiliares
-660,IngenierÃ­a quÃ­mica
+660,Ingeniería química
 670,Manufactura
-680,Manufactura para usos especÃ­ficos
-690,ConstrucciÃ³n
+680,Manufactura para usos específicos
+690,Construcción
 700,Las artes Bellas artes y artes decorativas
-710,Urbanismo y arte paisajÃ­stico
+710,Urbanismo y arte paisajístico
 720,Arquitectura
-730,Artes plÃ¡sticas Escultura
+730,Artes plásticas Escultura
 740,Dibujo y artes decorativas
 750,Pintura y pinturas
-760,Artes grÃ¡ficas Arte de grabar y grabados
-770,FotografÃ­a y fotografÃ­as
-780,MÃºsica
-790,Artes recreativas y de la actuaciÃ³n
-800,Literatura y retÃ³rica
-810,Literatura norteamericana en inglÃ©s
+760,Artes gráficas Arte de grabar y grabados
+770,Fotografía y fotografías
+780,Música
+790,Artes recreativas y de la actuación
+800,Literatura y retórica
+810,Literatura norteamericana en inglés
 820,Literaturas inglesa e inglesa antigua
-830,Literaturas de lenguas germÃ¡nicas
+830,Literaturas de lenguas germánicas
 840,Literaturas de lenguas romances
 850,"Literaturas italiana, rumana, retorromana"
-860,Literaturas espaÃ±ola y portuguesa
-870,Literaturas itÃ¡licas Literatura latina
-880,Literaturas helÃ©nicas Literatura griega clÃ¡sica
+860,Literaturas española y portuguesa
+870,Literaturas itálicas Literatura latina
+880,Literaturas helánicas Literatura griega clásica
 890,Literaturas de otras lenguas
-900,GeografÃ­a e historia
-910,GeografÃ­a y viajes
-920,"BiografÃ­a genealogÃ­a, insignias"
+900,Geografía e historia
+910,Geografía y viajes
+920,"Biografía genealogía, insignias"
 930,Historia del mundo antiguo hasta ca. 499
 940,Historia general de Europa
 950,Historia general de Asia Lejano Oriente
-960,Historia general de Ãfrica
-970,Historia general de AmÃ©rica del Norte
-980,Historia general de AmÃ©rica del Sur
-990,Historia general de otras Ã¡reas
+960,Historia general de África
+970,Historia general de América del Norte
+980,Historia general de América del Sur
+990,Historia general de otras Áreas
