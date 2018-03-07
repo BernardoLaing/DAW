@@ -3,7 +3,7 @@ $NUMBER = "/^[0-9]+$/";
 $NAME = "/^([ÑA-Zña-z']+(\s*))+$/";
 $DATE = "DATE";
 $SCHOOLING = "/^[1-9]$/";
-$GENDER = "/^(M|F|O)$/";
+$GENDER = "/^(H|M|O)$/";
 
 function test($type, $subject){
     if($subject == null || $type == null)

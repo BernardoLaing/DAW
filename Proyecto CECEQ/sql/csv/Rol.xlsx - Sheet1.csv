@@ -1,0 +1,6 @@
+idRol,nombre,descripcion
+1,administrador,"Puede utilizar todas las funciones del sistema, puede dar de alta y baja a otros administradores, pero no quitarse los permisos a sí mismo."
+2,subadministrador,Puede hacer todo excepto dar de alta o baja a otro administrador.
+3,bibliotecario,No puede gestionar usuarios ni roles ni editar la información de libros.
+4,becario,"No puede gestionar usuarios ni roles, tampoco editar la información de libros ni cambiar los datos de fiadores, visitantes y credenciales."
+5,usuario anónimo,Solo puede acceder al catálogo de libros y buscar en él.

@@ -1,0 +1,37 @@
+idOperacion,nombre,descripcion
+1,Consultar Actividades,Acceder a la interfaz que contiene el calendario de google.
+2,Consultar catalogo de libros,"Ver el catálogo completo de libros registrados, buscar libros en el catálogo."
+3,Registrar entrada,Registrar la entrada de una persona a la biblioteca.
+4,Tramitar credencial,"Asignar una credencial a un usuario, ingresando los datos necesarios."
+5,Visualizar usuarios,Visualizar la lista de usuarios.
+6,Buscar visitante,Obtener la información completa de un visitante buscándolo con algunos de sus datos.
+7,Actualizar información de un visitante,"Modificar la información asociada con un visitante y su credencial, en caso de que la haya tramitado."
+8,Imprimir credencial,Obtener un formato para imprimir una credencial con los datos del usuario.
+9,Consultar estadisticas,Consultar las estadísticas de entradas a la biblioteca.
+10,Imprimir estadísticas,Obtener un formato para imprimir el reporte estadístico.
+11,Generar reporte de DGB,Generar un reporte con los datos que se reportan a la DGB.
+12,Imprimir reporte de DGB,Crear un formato para imprimir el reporte de la DGB.
+13,Exportar estadísticas de DBG a excel,Exportar el reporte par la DGB a un documento de excel.
+14,Registrar préstamo de libro (s),Registrar el préstamo de un libro a un usuario.
+15,Registrar devolución de libro(s),Registrar la devolución de un libro prestado a un usuario.
+16,Fijar fecha de fin de suspensión,Determinar la fecha en que un usuario que entregó un libro tradíamente podrá volver a pedir libros.
+17,Imprimir códigos de barras,Imprimir una hoja con una lista filtrada de códigos de barras.
+18,Consultar listado de cuentas,Consultar la lista de cuentahabientes del sistema.
+19,Consultar usuarios con sanciones,Consultar la lista de usuarios sancionados.
+20,Agregar sanción a usuario,"Agregar una sanción a un usuario, incluyendo la fecha de fin de sanción."
+21,Quitar sanción a usuario,Eliminar la sanción de un usuario. 
+22,Editar ejemplar,Editar los datos de un ejemplar.
+23,Agregar ejemplar de libro,Agregar un ejemplar a la base de datos.
+24,Eliminar ejemplares,Eliminar un ejemplar específico.
+25,Importar libros desde archivo de Excel,Registrar libros en la base de datos importando desde un archivo de Excel.
+26,Agregar cuenta,Dar de alta a un cuentahabiente para que pueda hacer log in al sistema
+27,Eliminar cuenta,Dar de baja a un cuentahabiente para que ya no pueda acceder al sistema
+28,Editar cuenta,"Editar el perfil de un cuentahabiente para cambiar su usuario, contraseña o rol"
+29,Consultar roles,Consultar los roles que han sido creados.
+30,Agregar rol,"Se crea un nuevo rol, por ejemplo: Asistente de biblioteca..."
+31,Quitar rol,Se elimina un rol.
+32,Editar rol,"Edita atributos del rol, como el nombre, descripción y permisos."
+33,Asignar rol a cuenta,Asignarle a un cuentahabiente en especifico su rol.
+34,Quitar rol de cuenta,Quitarle a un cuentahabiente en especifico su rol.
+35,Asignar permiso a rol,Agregarle a un rol un permiso.
+36,Quitar permiso a rol,Quitarle a un rol uno de sus permisos.

@@ -2,7 +2,7 @@ var NUMBER = /^[0-9]+$/;
 var NAME = /^([ÑA-Zña-z']+(\s*))+$/;
 var DATE = "DATE";
 var SCHOOLING = /^[1-9]$/;
-var GENDER = /^(M|F|O)$/;
+var GENDER = /^(M|H|O)$/;
 
 function test(type, subject){
     if(subject == null || type == null)
