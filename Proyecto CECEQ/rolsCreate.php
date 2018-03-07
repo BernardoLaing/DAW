@@ -12,13 +12,13 @@
             <div class="col-sm-12 col-md-4 mx-auto">
                 <div class="form-group">
                     <label for="name">Nombre: </label>
-                    <input class="form-control" type="text" name="name" placeholder="Administrador">
+                    <input class="form-control cvalidate cname" type="text" name="name" placeholder="Administrador">
                 </div>
             </div>
             <div class="col-sm-12 col-md-4 mx-auto">
                 <div class="form-group">
                     <label for="description">Descripción: </label>
-                    <input class="form-control" type="text" name="description" placeholder="Cuenta con todos los permisos">
+                    <input class="form-control cvalidate cname" type="text" name="description" placeholder="Cuenta con todos los permisos">
                 </div>
             </div>
         </div><br /><br />
@@ -46,7 +46,7 @@
         <div class="col-sm-2 center-block"><a href="rols.php" class="btn btn-secondary py-0"><i class="material-icons alagin-middle">arrow_back</i></a></div>
         <div class="col-sm-5"></div>
         <div class="col-lg-2 col-sm-4">
-            <button type="button" class="btn btn-secondary  btn-block"> Registrar</button>
+            <button type="button" class="btn btn-secondary  btn-block cinsert"> Registrar</button>
         </div>
         <div class="col-lg-5 col-sm-4"></div>
     </div>
