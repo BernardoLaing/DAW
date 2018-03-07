@@ -99,6 +99,7 @@ function getUser($user){
                 FROM usuario u, usuario_rol ur, rol r
                 WHERE u.usuario = ur.idUsuario AND ur.idRol = r.idRol
                 AND u.usuario = ?';
+        
         // Preparing the statement 
         if (!($statement = $db->prepare($query))) {
             die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
@@ -221,10 +222,6 @@ function updateUser($user, $name, $password, $rol){
     } 
     return false;
     
-//    $stmt = $mysqli->prepare("UPDATE myTable SET name = ? WHERE id = ?");
-//$stmt->bind_param("si", $_POST['name'], $_SESSION['id']);
-//$stmt->execute();
-//$stmt->close();
 }
 
 function deleteUser($user){
@@ -269,7 +266,7 @@ function createRol($name, $description, $permissions){
     if ($db != NULL) {
 
         // insert command specification 
-        $query='INSERT INTO rol (idRol, nombre, descripcion) VALUES (DEFAULT,?, ?) ';
+        $query='INSERT INTO rol (nombre, descripcion) VALUES (?, ?) ';
         // Preparing the statement 
         if (!($statement = $db->prepare($query))) {
             die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
@@ -283,8 +280,24 @@ function createRol($name, $description, $permissions){
             die("Execution failed: (" . $statement->errno . ") " . $statement->error);
         } 
         
-        
-
+        $query='SELECT idRol 
+                FROM rol 
+                WHERE nombre = ?';
+        if (!($statement = $db->prepare($query))) {
+            die("Preparation failed: (" . $db->errno . ") " . $db->error);
+        }
+        // Binding statement params 
+        if (!$statement->bind_param("s",$name)) {
+            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+        }
+         // Executing the statement
+         if (!$statement->execute()) {
+            die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+        } 
+        $statement->store_result();
+        if($statement->num_rows === 0) exit('No rows');
+        $statement->bind_result($idRol);
+        $statement->fetch();
 
         $query='INSERT INTO rol_operacion (idRol, idOperacion, fecha) VALUES (?,?,CURDATE()) ';
 
@@ -292,7 +305,7 @@ function createRol($name, $description, $permissions){
             die("Preparation 2 failed: (" . $db->errno . ") " . $db->error);
         }
         // Binding statement params 
-        if (!$statement->bind_param("si", $user, $rol)) {
+        if (!$statement->bind_param("si", $user, $idRol)) {
             die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
         }
         if (!$statement->execute()) {
