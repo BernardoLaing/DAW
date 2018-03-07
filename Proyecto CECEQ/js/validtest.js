@@ -6,21 +6,30 @@ var SCHOOLING_MESSAGE = "Selecciona un grado de estudios <br><br><br>";
 var GENDER_MESSAGE = "Selecciona un género <br><br><br>";
 var CLASSIFICATION_MESSAGE = "Selecciona una clasificación <br><br><br>";
 var YEAR_MESSAGE = "Escribe un año válido <br><br><br>";
+var PASSWORD_MESSAGE = "La contraseña debe tener al menos una minúscula y un número, y tener al menos seis caracteres <br><br><br>";
 
 console.log("validations in");
 
 var j;
-var searchElems = document.getElementsByClassName("csearch");
+var searchElems = document.getElementsByClassName("csearch");//any number of parameters is valid
 if(searchElems != null){
     for(j = 0; j<searchElems.length; j++)
         searchElems[j].onclick = validateSearch;
 }
 
-var insertElems = document.getElementsByClassName("cinsert");
+var insertElems = document.getElementsByClassName("cinsert");//required inputs need the "required" class
 if(insertElems != null){
     for(j = 0; j<insertElems.length; j++)
         insertElems[j].onclick = validateInsert;
 }
+
+
+var hInsertElems = document.getElementsByClassName("chinsert");//doesn't need required class, user has to fill all fields first
+if(hInsertElems != null){
+    for(j = 0; j<hInsertElems.length; j++)
+        hInsertElems[j].onclick = validateNullAndInsert;
+}
+
 
 function validateSearch(event){
     var v = document.getElementsByClassName("cvalidate");
@@ -143,6 +152,20 @@ function validateSearch(event){
                     }else{
                         w.style.display = "none";
                     }
+                }else if(element.classList.contains("cpassword")){ //<<-----------------------------------------------------
+                    w = element.parentElement.parentElement.getElementsByClassName("warning")[0];
+                    if(w == null){
+                        w = document.createElement("span");
+                        w.classList.add("warning");
+                        element.parentElement.parentElement.appendChild(w);
+                    }
+                    if(!test(PASSWORD, cvalue)){//<<------------------------------------------------------------------------
+                        cpassed = false;
+                        w.style.display = "inline-block";
+                        w.innerHTML = PASSWORD_MESSAGE;//<<-----------------------------------------------------------------
+                    }else{
+                        w.style.display = "none";
+                    }
                 }
             }
         }
@@ -151,7 +174,7 @@ function validateSearch(event){
     }
 }
 
-function validateInsert(event){
+function validateNullAndInsert(event){
     var v = document.getElementsByClassName("cvalidate");
     if(v!=null){
         for(var i = 0; i < v.length; i++){
@@ -164,3 +187,18 @@ function validateInsert(event){
     }
 }
 
+function validateAtLeastOne(event){
+    var v = document.getElementsByClassName("cvalidate");
+    if(v!=null){
+        for(var i = 0; i < v.length; i++){
+            if(v[i].value != null || v[i].value != ""){
+                validateSearch(event);
+                break;
+            }
+        }
+    }
+}
+
+function validateInsert(event){
+    validateSearch(event);
+}

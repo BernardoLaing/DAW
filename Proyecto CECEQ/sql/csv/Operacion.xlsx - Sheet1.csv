@@ -1,4 +1,3 @@
-idOperacion,nombre,descripcion
 1,Consultar Actividades,Acceder a la interfaz que contiene el calendario de google.
 2,Consultar catalogo de libros,"Ver el catálogo completo de libros registrados, buscar libros en el catálogo."
 3,Registrar entrada,Registrar la entrada de una persona a la biblioteca.
