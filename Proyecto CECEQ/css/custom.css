@@ -173,3 +173,23 @@ a h2, h5{
 	border-radius: 4px;
     cursor: pointer;
 }
+
+
+/*
+#row-book-input-2{
+    overflow-y: hidden;
+    height: 0;
+    transition: height 1s;
+}
+*/
+
+.book-input{
+    overflow-y: hidden;
+    height: 0;
+    transition: height 1s;    
+}
+
+.warning{
+    color: red !important;
+    display: none;
+}
