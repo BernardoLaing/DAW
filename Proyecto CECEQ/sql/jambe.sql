@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-03-2018 a las 21:57:26
+-- Tiempo de generación: 07-03-2018 a las 03:57:37
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -148,7 +148,9 @@ INSERT INTO `entrada` (`timestamp`, `idVisitante`) VALUES
 ('2018-03-06 01:49:57', 19),
 ('2018-03-06 02:01:17', 20),
 ('2018-03-06 17:45:58', 21),
-('2018-03-06 20:16:54', 22);
+('2018-03-06 20:16:54', 22),
+('2018-03-07 01:26:06', 23),
+('2018-03-07 01:30:10', 24);
 
 -- --------------------------------------------------------
 
@@ -370,7 +372,9 @@ INSERT INTO `visitante` (`idVisitante`, `nombre`, `apellidoPaterno`, `apellidoMa
 (19, 'eduasdf', 'asdfasdf', 'asdf', '2018-03-15', 'M'),
 (20, 'edasdfasdf', 'asdfasdfasd', 'asdfasdfasdf', '2018-03-24', 'O'),
 (21, 'jorge', 'niño', 'cabal', '2018-02-28', 'O'),
-(22, 'edasdfasd', 'asdfa', 'prueba', '2018-03-16', 'M');
+(22, 'edasdfasd', 'asdfa', 'prueba', '2018-03-16', 'M'),
+(23, 'lino', 'erftgh', 'yrq', '1996-03-23', 'M'),
+(24, 'lino', 'erftgh', 'yrq', '1996-03-23', 'M');
 
 -- --------------------------------------------------------
 
@@ -397,7 +401,9 @@ INSERT INTO `visitante_gradoestudios` (`idVisitante`, `idGrado`, `fecha`) VALUES
 (19, 2, '2018-03-05 00:00:00'),
 (20, 3, '2018-03-05 00:00:00'),
 (21, 1, '2018-03-06 00:00:00'),
-(22, 3, '2018-03-06 14:16:54');
+(22, 3, '2018-03-06 14:16:54'),
+(23, 7, '2018-03-06 19:26:06'),
+(24, 7, '2018-03-06 19:30:10');
 
 --
 -- Índices para tablas volcadas
@@ -436,6 +442,14 @@ ALTER TABLE `credencial_fiador`
 ALTER TABLE `ejemplar`
   ADD PRIMARY KEY (`idEjemplar`),
   ADD KEY `idTitulo` (`idTitulo`);
+
+--
+-- Indices de la tabla `ejemplar_credencial`
+--
+ALTER TABLE `ejemplar_credencial`
+  ADD PRIMARY KEY (`idEjemplar`,`idCredencial`,`fechaPrestamo`),
+  ADD KEY `idEjemplar` (`idEjemplar`),
+  ADD KEY `idCredencial` (`idCredencial`);
 
 --
 -- Indices de la tabla `ejemplar_estado`
@@ -630,7 +644,7 @@ ALTER TABLE `titulo`
 -- AUTO_INCREMENT de la tabla `visitante`
 --
 ALTER TABLE `visitante`
-  MODIFY `idVisitante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `idVisitante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Restricciones para tablas volcadas
@@ -648,6 +662,13 @@ ALTER TABLE `credencial_fiador`
 --
 ALTER TABLE `ejemplar`
   ADD CONSTRAINT `fkTituloEjemplar` FOREIGN KEY (`idTitulo`) REFERENCES `titulo` (`idTitulo`);
+
+--
+-- Filtros para la tabla `ejemplar_credencial`
+--
+ALTER TABLE `ejemplar_credencial`
+  ADD CONSTRAINT `fkidCredencial` FOREIGN KEY (`idCredencial`) REFERENCES `credencial` (`idCredencial`),
+  ADD CONSTRAINT `fkidEjemplar` FOREIGN KEY (`idEjemplar`) REFERENCES `ejemplar` (`idEjemplar`);
 
 --
 -- Filtros para la tabla `ejemplar_estado`
