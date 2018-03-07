@@ -50,7 +50,7 @@
                                         ));
                 echo "</table></div></div>";
 
-
+echo '</div>';
             } else if ($_POST["actionTypeEntry"] == "Registrar Entrada") {
                 if($nulls == 0){
                     insertVisitante(
@@ -62,6 +62,7 @@
                         $info["gender"]);
                 }
             }
+
         }
     }
 
