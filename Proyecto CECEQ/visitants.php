@@ -22,9 +22,10 @@
                 <div class='form-group'>
                     <label for="user_id">Número de Usuario</label>
                     <div class="col-md-10">
-                        <input class="form-control" id="user_id" name="user[id]" size="30" type="text" placeholder="1234567"/>
+                        <input class="form-control cvalidate cnumber" id="user_id" name="user[id]" size="30" type="text" placeholder="1234567"/>
                     </div>
                 </div>
+                <span class="warning">tasmal</span>
             </div>
         </div>
         <!--end of id-->
@@ -35,9 +36,10 @@
                 <div class='form-group'>
                     <label for="user_name">Nombre(s):</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="user_name" name="user[name]" size="30" type="text" placeholder="Eduardo"/>
+                        <input class="form-control cvalidate cname" id="user_name" name="user[name]" size="30" type="text" placeholder="Eduardo"/>
                     </div>
                 </div>
+                <span class="warning">tasmal</span>
             </div>
             <div class='col-sm-4'>
                 <div class='form-group'>
@@ -100,9 +102,9 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">
-                    <div class="col-lg-12">
+                    < class="col-lg-12">
 
-                        <a id="buscarVisitante"><button type="button" class="btn btn-secondary btn-block"> Buscar Visitante</button></a>
+                        <input id="csubmit" type="submit" <button type="button" class="btn btn-secondary btn-block"> Buscar Visitante</button>>
                     </div>
                 </div>
             </div>
