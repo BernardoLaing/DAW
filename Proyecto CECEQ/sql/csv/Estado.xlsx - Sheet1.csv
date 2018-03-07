@@ -1,0 +1,6 @@
+idEstado,Nombre,Descripcion
+1,Prestado,El libro está prestado
+2,En Reparación,El libro está en reparación
+3,Descarte,El libro está por ser eliminado
+4,Dañado,El libro está dañado
+5,Disponible,El libro está disponible

@@ -1,7 +1,7 @@
 <?php include("partials/_header.html"); ?>
 <?php include("partials/_top_bar.html"); ?>
 <br /><br />
-<?php 
+<?php
 #permisos admin
 $perm["edit"] = 1;
 /*
@@ -22,8 +22,8 @@ $perm["edit"] = 0;*/
         <div class="col-sm-2"></div>
         <div class="col-sm-2 center-block"><a href="menu.php" class="btn btn-secondary py-0"><i class="material-icons alagin-middle">arrow_back</i></a></div>
         <div class="col-sm-4"></div>
-        
-        <?php 
+
+        <?php
         /*
         if($perm["edit"]){
             include("_editActivities.html");
@@ -32,4 +32,5 @@ $perm["edit"] = 0;*/
     </div>
     <br>
 </div>
+<br><br>
 <?php include("partials/_footer.html"); ?>
