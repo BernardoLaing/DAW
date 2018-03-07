@@ -282,6 +282,8 @@ function createRol($name, $description, $permissions){
          if (!$statement->execute()) {
             die("Execution failed: (" . $statement->errno . ") " . $statement->error);
         } 
+        
+        
 
 
         $query='INSERT INTO rol_operacion (idRol, idOperacion, fecha) VALUES (?,?,CURDATE()) ';
