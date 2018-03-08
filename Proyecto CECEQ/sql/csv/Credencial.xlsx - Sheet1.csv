@@ -1,21 +1,20 @@
-idCredencial,idVisitante,fechaExpedicion,foto,colonia,calle,numero,cp,telefono,correo,nombreTrabajo,telefonoTrabajo,coloniaTrabajo,calleTrabajo,numeroTrabajo,cpTrabajo
-1,2,,fakepath/1.jpg,Valverde,Tota Carbjal,151,76898,4427856434,asdfasdfa_adsf@hotmail.com,Instituto Juan Carlos Valverde,4422497771,Las Brujas,Roncopollo,,
-2,3,,fakepath/2.jpg,Menchaca,Olímpica,6,76435,4426789876,asdfa.sfda@gmail.com,ITESM,4423222341,Alamos,Castilla,,
-3,4,,fakepath/3.jpg,Brisas del Rincón,Grecia,474,76483,4423637389,asdfasdf.asdf@gmail.com,Maicrosof,4427678877,Jurica,Cedros,,
-4,5,,fakepath/4.jpg,Pedregal del Cármen,Pino,56,76494,4423635343,ji.ji.ji@hotmail.com,Oracle,4428765432,Las Brujas,Roncopollo,,
-5,6,,fakepath/5.jpg,Viscaíno,Benito Juárez,76,76023,4428765463,asdf2334@hotmail.com,Facebook,4429998877,Alamos,Castilla,,
-6,7,,fakepath/6.jpg,Pie de la Cuesta,Guanajuato,867,76835,4427879567,gigigi345@gmail.com,Tesla Motors,4422223344,Jurica,Cedros,,
-7,8,,fakepath/7.jpg,Calcio,Colina,5,76534,4421234122,ji.3.4ñlkajf@hotmail.com,Amazon,4421112323,Las Brujas,Roncopollo,,
-8,9,,fakepath/8.jpg,Valverde,Monte,67,76111,4436565758,añaña@gmail.com,National Instruments,4421232211,Alamos,Castilla,,
-9,10,,fakepath/9.jpg,Bellavista,Quetzal,999,76222,4421615243,jojojojojijiji@gmail.com,Tata Consulting Services,4420991212,Jurica,Cedros,,
-10,11,,fakepath/10.jpg,Coníferas,Villa de las flores,7,76321,4420009878,gogoliko@gmail.com,Tata Consulting Services,4427877766,Las Brujas,Roncopollo,,
-11,12,,fakepath/11.jpg,Fray Junípero Serra,Sor Juana Inés de la Cruz,456,76453,4427870008,nino.nino.nino@outlook.com,Tata Consulting Services,4420987667,Alamos,Castilla,,
-12,13,,fakepath/12.jpg,Conín,Pilares,467,76333,4429090901,ja.je.ji.jo.ju@outlook.com,Space X,4420909988,Jurica,Cedros,,
-13,14,,fakepath/13.jpg,Juan Pablo II,Atlantes,45,76444,4429879871,asdf34@gmail.com@outlook.com,X.com,4421112323,Las Brujas,Roncopollo,,
-14,15,,fakepath/14.jpg,San José,Pirámide del sol,2435,76454,4421234567,xxxkiritoxxx@outlook.com,Facebook,4420009988,Alamos,Castilla,,
-15,16,,fakepath/15.jpg,Colón,Juan Martín González,151,76445,4428977509,golongolito@gmail.com,Google,4425330909,Jurica,Cedros,,
-16,17,,fakepath/16.jpg,San Bartolomé de las Casas,Epigmenio González,2,76888,4420099009,juan.pineda_loko@yahoo.mx,Amazon,4421112211,Las Brujas,Roncopollo,,
-17,18,,fakepath/17.jpg,Fray José Iturruguía,Pingüinos,2,76889,4423113311,gonzalezpuku@gmail.com,National Instruments,4424422497,Alamos,Castilla,,
-18,19,,fakepath/18.jpg,Pinos,Cormoranes,1,76988,4428899008,juancarlosmaney13@gmail.com,Tata Consulting Services,4421230909,Jurica,Cedros,,
-19,20,,fakepath/19.jpg,Jarabe,Tucán,100,76999,4421111123,mamey3215@yahoo.mx,The Boring Company,4422717942,Las Brujas,Roncopollo,,
-20,1,,fakepath/20.jpg,Dulzura,Ballena Azul,151,76808,4685656561,kirito7814@yahoo.mx,The Boring Company,4427776012,Alamos,Castilla,,
+1,2,2017-11-26,fakepath/1.jpg,Valverde,Tota Carbjal,151,76898,4427856434,asdfasdfa_adsf@hotmail.com,Instituto Juan Carlos Valverde,4422497771,Las Brujas,Roncopollo,8,4422367436
+2,3,2017-11-27,fakepath/2.jpg,Menchaca,Ol�mpica,6,76435,4426789876,asdfa.sfda@gmail.com,ITESM,4423222341,Alamos,Castilla,134,4426020967
+3,4,2017-11-28,"fakepath/3.jpg","Brisas del Rinc�n","Grecia",474,76483,4423637389,"asdfasdf.asdf@gmail.com","Maicrosof",4427678877,"Jurica","Cedros",152,4421020853
+4,5,2017-11-29,fakepath/4.jpg,Pedregal del C�rmen,Pino,56,76494,4423635343,ji.ji.ji@hotmail.com,Oracle,4428765432,Las Brujas,Roncopollo,4321,4420851481
+5,6,2017-11-30,fakepath/5.jpg,Visca�no,Benito Ju�rez,76,76023,4428765463,asdf2334@hotmail.com,Facebook,4429998877,Alamos,Castilla,5415,4425265970
+6,7,2017-12-01,fakepath/6.jpg,Pie de la Cuesta,Guanajuato,867,76835,4427879567,gigigi345@gmail.com,Tesla Motors,4422223344,Jurica,Cedros,153,4420831262
+7,8,2017-12-02,fakepath/7.jpg,Calcio,Colina,5,76534,4421234122,ji.3.4ñlkajf@hotmail.com,Amazon,4421112323,Las Brujas,Roncopollo,657,4421363171
+8,9,2017-12-03,fakepath/8.jpg,Valverde,Monte,67,76111,4436565758,añaña@gmail.com,National Instruments,4421232211,Alamos,Castilla,874,4421668030
+9,10,2017-12-04,fakepath/9.jpg,Bellavista,Quetzal,999,76222,4421615243,jojojojojijiji@gmail.com,Tata Consulting Services,4420991212,Jurica,Cedros,347,4423815863
+10,11,2017-12-05,fakepath/10.jpg,Con�feras,Villa de las flores,7,76321,4420009878,gogoliko@gmail.com,Tata Consulting Services,4427877766,Las Brujas,Roncopollo,232,4425214716
+11,12,2017-12-06,fakepath/11.jpg,Fray Jun�pero Serra,Sor Juana Inés de la Cruz,456,76453,4427870008,nino.nino.nino@outlook.com,Tata Consulting Services,4420987667,Alamos,Castilla,654,4421520183
+12,13,2017-12-07,fakepath/12.jpg,Con�n,Pilares,467,76333,4429090901,ja.je.ji.jo.ju@outlook.com,Space X,4420909988,Jurica,Cedros,941,4424319201
+13,14,2017-12-08,fakepath/13.jpg,Juan Pablo II,Atlantes,45,76444,4429879871,asdf34@gmail.com@outlook.com,X.com,4421112323,Las Brujas,Roncopollo,456,4427628943
+14,15,2017-12-09,fakepath/14.jpg,San Jos�,Pir�mide del sol,2435,76454,4421234567,xxxkiritoxxx@outlook.com,Facebook,4420009988,Alamos,Castilla,24,4426505998
+15,16,2017-12-10,fakepath/15.jpg,Col�n,Juan Mart�n Gonz�lez,151,76445,4428977509,golongolito@gmail.com,Google,4425330909,Jurica,Cedros,154,4427250654
+16,17,2017-12-11,fakepath/16.jpg,San Bartolomé de las Casas,Epigmenio Gonz�lez,2,76888,4420099009,juan.pineda_loko@yahoo.mx,Amazon,4421112211,Las Brujas,Roncopollo,5,4420039813
+17,18,2017-12-12,fakepath/17.jpg,Fray Jos� Iturrugu�a,Ping�inos,2,76889,4423113311,gonzalezpuku@gmail.com,National Instruments,4424422497,Alamos,Castilla,2,4424763358
+18,19,2017-12-13,fakepath/18.jpg,Pinos,Cormoranes,1,76988,4428899008,juancarlosmaney13@gmail.com,Tata Consulting Services,4421230909,Jurica,Cedros,234,4422118385
+19,20,2017-12-14,fakepath/19.jpg,Jarabe,Tuc�n,100,76999,4421111123,mamey3215@yahoo.mx,The Boring Company,4422717942,Las Brujas,Roncopollo,105,4421791598
+20,1,2017-12-15,fakepath/20.jpg,Dulzura,Ballena Azul,151,76808,4685656561,kirito7814@yahoo.mx,The Boring Company,4427776012,Alamos,Castilla,2357,4425793872

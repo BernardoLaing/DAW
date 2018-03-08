@@ -5,7 +5,7 @@
                 <div class="text-center">
                     <div class="display-4">Entrada</div>
                     <br>
-                    <span class="warning">Para registrar una entrada todos los campos deben estar llenos</span>
+                    <span class="warning cnullalert">Debes llenar todos los campos</span>
                 </div>
         </div>
     </div>
@@ -14,43 +14,39 @@
 
         <div class="col-sm-12">
             <div class='form-group'>
-                <label for="user_number">Número de Usuario</label>
+                <label for="user_number">Número de Usuario:</label>
                 <div class="col-md-6">
-                    <input class="form-control" id="user_number" name="user[number]" size="30" type="number" placeholder="1234567"/>
+                    <input  class="form-control cvalidate cnumber" id="user_number" name="user[number]" size="30" type="number" placeholder="1234567"/>
                 </div>
             </div>
-            <span class="warning">Este campo solo puede contener un número con cualquier cantidad de dígitos</span>
         </div>
     </div>
         <div class='row'>
 
             <div class='col-sm-4'>
                 <div class='form-group'>
-                    <label for="user_name">Nombre(s).</label>
+                    <label for="user_name">Nombre:</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="user_name" name="user[name]" size="30" type="text" placeholder="Eduardo"/>
+                        <input  class="form-control cvalidate cname" id="user_name" name="user[name]" size="30" type="text" placeholder="Eduardo"/>
                     </div>
-                    <span class="warning">Este campo no puede contener números ni caracteres especiales</span>
                 </div>
             </div>
 
             <div class='col-sm-4'>
                 <div class='form-group'>
-                    <label for="user_paternal">Apellido P.</label>
+                    <label for="user_paternal">Apellido P:</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="user_paternal" name="user[paternal]" size="30" type="text" placeholder="Cuesta"/>
+                        <input  class="form-control cvalidate cname" id="user_paternal" name="user[paternal]" size="30" type="text" placeholder="Cuesta"/>
                     </div>
-                    <span class="warning">Este campo no puede contener números ni caracteres especiales</span>
                 </div>
             </div>
 
             <div class='col-sm-4'>
                 <div class='form-group'>
-                    <label for="user_maternal">Apellido M.</label>
+                    <label for="user_maternal">Apellido M:</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="user_maternal" name="user[maternal]" size="30" type="text" placeholder="Córdova"/>
+                        <input class="form-control cvalidate cname" id="user_maternal" name="user[maternal]" size="30" type="text" placeholder="Córdova"/>
                     </div>
-                    <span class="warning">Este campo no puede contener números ni caracteres especiales</span>
                 </div>
             </div>
 
@@ -60,9 +56,9 @@
 
             <div class='col-sm-4'>
                 <div class='form-group'>
-                    <label for="user_age">Fecha de Nacimiento.</label>
+                    <label for="user_birthday">Fecha de Nacimiento:</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="user_birthday" name="user[birthday]" size="30" type="date" placeholder="01/05/1998"/>
+                        <input  class="form-control cvalidate cdate" id="user_birthday" name="user[birthday]" size="30" type="date" placeholder="01/05/1998"/>
                     </div>
                     <span class="warning">Debes seleccionar una fecha de nacimiento</span>
                 </div>
@@ -70,9 +66,9 @@
 
             <div class='col-sm-4'>
                 <div class='form-group'>
-                    <label for="user_grade">Grado de Estudio.</label>
+                    <label for="user_grade">Grado de Estudio:</label>
                     <div class="col-md-12">
-                        <select class="form-control" id="user_grade" name="user[user_grade]">
+                        <select  class="form-control cvalidate cschooling" id="user_grade" name="user[user_grade]">
                             <option value="" disabled selected>-- Grado de Estudio --</option>
                             <option value=1>Ninguno</option>
                             <option value=2>Primaria</option>
@@ -83,22 +79,20 @@
                             <option value=7>Doctorado</option>
                         </select>
                     </div>
-                    <span class="warning">Debes seleccionar un grado de estudios</span>
                 </div>
             </div>
 
             <div class='col-sm-4'>
                 <div class='form-group'>
-                    <label for="user_gender">Género.</label>
+                    <label for="user_gender">Género:</label>
                     <div class="col-md-12">
-                        <select class="form-control" id="user_gender" name="user[gender]">
+                        <select  class="form-control cvalidate cgender" id="user_gender" name="user[gender]">
                             <option value="" disabled selected>-- Genero --</option>
                             <option value="H">Hombre</option>
                             <option value="M">Mujer</option>
                             <option value="O">Otro</option>
                         </select>
                     </div>
-                    <span class="warning">Debes seleccionar un género</span>
                 </div>
             </div>
         </div>
@@ -117,7 +111,7 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <div class="col-md-12">
-                        <input id="buscarVisitante" type="submit" class="btn btn-secondary mx-auto" name="actionTypeEntry" value="Buscar Visitante"/>
+                        <input id="buscarVisitante" type="submit" class="btn btn-secondary mx-auto csearch" name="actionTypeEntry" value="Buscar Visitante"/>
 
     <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
                     </div>
@@ -127,11 +121,9 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <div class="col-md-12">
-                        <input id="registrarEntrada" type="submit" class="btn btn-secondary mx-auto" name="actionTypeEntry" value="Registrar Entrada"/>
+                        <input id="registrarEntrada" type="submit" class="btn btn-secondary mx-auto chinsert" name="actionTypeEntry" value="Registrar Entrada"/>
                     </div>
                 </div>
             </div>
         </div>
     </form>
-
-</div>

@@ -26,7 +26,7 @@ if(isset($_POST["submit"])){
 //        $number    = preg_match('@[0-9]@', $password);
 //        if()){
 //            $password = "La contraseña es invalida";
-        if(!preg_match("/^\S*(?=\S{6,})(?=\S*[a-z])(?=\S*[\d])\S*$/", $password)){
+        if(!preg_match("/^\S*(?=\S{6,})(?=\S*[a-z])(?=\S*[\d])\S*$/", $password)){//min una minúscula, mínimo un dígito, mínimo long 6
             $passwordError = "La contraseña es invalida";
             $incorrect = 1;
         }
