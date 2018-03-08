@@ -204,7 +204,7 @@ function _insertVisitante_Grado($idvisitante,$idgrado){
 function insertAutor($nombre, $apellidoPaterno, $apellidoMaterno)
 {
     $connection = connect();
-    $statement = mysqli_prepare($conection, "INSERT INTO autor(nombre, apellidoPaterno, apellidoMaterno)
+    $statement = mysqli_prepare($connection, "INSERT INTO autor(nombre, apellidoPaterno, apellidoMaterno)
     VALUES(?,?,?);
     ");
     $statement ->bind_param("sss", $nombre, $apellidoPaterno, $apellidoMaterno);
@@ -216,7 +216,7 @@ function buscarAutor($nombre, $apellidoPaterno, $apellidoMaterno)
 {
     $connection = connect();
     $statement = mysqli_prepare($connection,"
-    select nombre, apellidoPaterno, apellidoMaterno
+    select idAutor, nombre, apellidoPaterno, apellidoMaterno
     from autor 
     where (nombre = ? ".($nombre==""?"or 1":"").")
     and (apellidoPaterno = ? ".($apellidoPaterno==""?"or 1":"").")
@@ -231,7 +231,7 @@ function buscarAutor($nombre, $apellidoPaterno, $apellidoMaterno)
 function insertTitulo($titulo, $year)
 {
     $connection = connect();
-    $statement = mysqli_prepare($conection, "INSERT INTO titulo(titulo, year)
+    $statement = mysqli_prepare($connection, "INSERT INTO titulo(titulo, year)
     VALUES(?,?);
     ");
     $statement ->bind_param("si", $titulo, $year);
@@ -244,12 +244,69 @@ function buscarTitulo($titulo, $year)
 {
     $connection = connect();
     $statement = mysqli_prepare($connection,"
-    select titulo, year
+    select idTitulo, titulo, year
     from titulo
     where (titulo = ? ".($titulo==""?"or 1":"").")
     and (year = ? ".($year==""?"or 1":"").")
     ");
     $statement->bind_param("si", $titulo, $year);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+function insertEjemplar($ISBN, $estante, $editorial, $year, $volumen, $idTitulo)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection, "INSERT INTO ejemplar(ISBN, estante, editorial, year, volumen, idTitulo)
+    VALUES(?,?,?,?,?,?);
+    ");
+    $statement ->bind_param("sssiii", $ISBN, $estante, $editorial, $year, $volumen, $idTitulo);
+    $retorno = $statement->execute();
+    disconnect($connection);
+    return($retorno);
+
+}
+function buscarEjemplar($ISBN, $estante, $editorial, $year, $volumen)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    select ISBN, estante, editorial, year, volumen
+    from ejemplar
+    where (ISBN = ? ".($ISBN==""?"or 1":"").")
+    and (estante = ? ".($estante==""?"or 1":"").")
+    and (editorial = ? ".($editorial==""?"or 1":"").")
+    and (year = ? ".($year==""?"or 1":"").")
+    and (volumen = ? ".($volumen==""?"or 1":"").")
+    ");
+    $statement ->bind_param("sssii", $ISBN, $estante, $editorial, $year, $volumen);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+function insertAutorTitulo($idTitulo, $idAutor)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection, "INSERT INTO autor_titulo(idAutor, idTitulo)
+    VALUES(?,?);
+    ");
+    $statement ->bind_param("ii", $idTitulo, $idAutor);
+    $retorno = $statement->execute();
+    disconnect($connection);
+    return($retorno);
+
+}
+function buscarAutorTitulo($idTitulo, $idAutor)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    select idAutor, idTitulo
+    from autor_titulo
+    where (idTitulo = ? ".($idTitulo==""?"or 1":"").")
+    and (idAutor = ? ".($idAutor==""?"or 1":"").")
+    ");
+    $statement ->bind_param("ii", $idTitulo, $idAutor);
     $statement->execute();
     $result = $statement->get_result();
     disconnect($connection);
