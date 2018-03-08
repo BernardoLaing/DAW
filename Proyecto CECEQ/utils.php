@@ -201,6 +201,60 @@ function _insertVisitante_Grado($idvisitante,$idgrado){
     }
     disconnect($conn);
 }
+function insertAutor($nombre, $apellidoPaterno, $apellidoMaterno)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($conection, "INSERT INTO autor(nombre, apellidoPaterno, apellidoMaterno)
+    VALUES(?,?,?);
+    ");
+    $statement ->bind_param("sss", $nombre, $apellidoPaterno, $apellidoMaterno);
+    $retorno = $statement->execute();
+    disconnect($connection);
+    return($retorno);
+}
+function buscarAutor($nombre, $apellidoPaterno, $apellidoMaterno)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    select nombre, apellidoPaterno, apellidoMaterno
+    from autor 
+    where (nombre = ? ".($nombre==""?"or 1":"").")
+    and (apellidoPaterno = ? ".($apellidoPaterno==""?"or 1":"").")
+    and (apellidoMaterno = ? ".($apellidoMaterno==""?"or 1":"").")
+    ");
+    $statement->bind_param("sss", $nombre, $apellidoPaterno, $apellidoMaterno);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+function insertTitulo($titulo, $year)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($conection, "INSERT INTO titulo(titulo, year)
+    VALUES(?,?);
+    ");
+    $statement ->bind_param("si", $titulo, $year);
+    $retorno = $statement->execute();
+    disconnect($connection);
+    return($retorno);
+
+}
+function buscarTitulo($titulo, $year)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    select titulo, year
+    from titulo
+    where (titulo = ? ".($titulo==""?"or 1":"").")
+    and (year = ? ".($year==""?"or 1":"").")
+    ");
+    $statement->bind_param("si", $titulo, $year);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
 
 
     
