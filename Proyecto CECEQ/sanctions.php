@@ -22,7 +22,7 @@
                 <div class='form-group'>
                     <label for="user_name">Nombre(s):</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="user_name" name="user[name]" size="30" type="text" placeholder="Eduardo"/>
+                        <input class="form-control cvalidate cname" id="user_name" name="user[name]" size="30" type="text" placeholder="Eduardo"/>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 <div class='form-group'>
                     <label for="user_paternal">Apellido paterno:</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="user_paternal" name="user[paternal]" size="30" type="text" placeholder="Cuesta"/>
+                        <input class="form-control cvalidate cname" id="user_paternal" name="user[paternal]" size="30" type="text" placeholder="Cuesta"/>
                     </div>
                 </div>
             </div>
@@ -51,33 +51,35 @@
                 <div class='form-group'>
                     <label for="user_age">Fecha de nacimiento:</label>
                     <div class="col-md-12">
-                        <input class="form-control" id="user_age" name="user[birth]" size="30" type="date"/>
+                        <input class="form-control cvalidate cdate" id="user_age" name="user[birth]" size="30" type="date"/>
                     </div>
                 </div>
             </div>
             <div class='col-sm-4'>
                 <div class='form-group'>
                     <label for="user_schooling">Grado de estudio:</label>
-                    <select name="user[schooling]" class="form-control" id="user_schooling">
+                    <select name="user[schooling]" class="form-control cvalidate cschooling" id="user_schooling">
                         <option value="" disabled selected>...</option>
-                        <option value="NINGUNO">Ninguno</option>
-                        <option value="PREESCOLAR">Preescolar</option>
-                        <option value="PRIMARIA">Primaria</option>
-                        <option value="SECUNDARIA">Secundaria</option>
-                        <option value="PREPARATORIA">Preparatoria</option>
-                        <option value="UNIVERSIDAD">Universidad</option>
-                        <option value="MAESTRIA">Maestría</option>
-                        <option value="DOCTORADO">Doctorado</option>
+                        <option value="1">Ninguno</option>
+                        <option value="2">Preescolar</option>
+                        <option value="3">Primaria</option>
+                        <option value="4">Secundaria</option>
+                        <option value="5">Preparatoria</option>
+                        <option value="6">Universidad</option>
+                        <option value="7">Maestría</option>
+                        <option value="8">Doctorado</option>
+                        <option value="9">Postdoctorado</option>
                     </select>
                 </div>
             </div>
             <div class='col-sm-4'>
                 <div class='form-group'>
                     <label for="user_genre">Género:</label>
-                    <select name="user[genere]" class="form-control" id="user_genre">
+                    <select name="user[genere]" class="form-control cvalidate cgender" id="user_genre">
                         <option value="" disabled selected>...</option>
-                        <option value="MASCULINO">Masculino</option>
-                        <option value="FEMENINO">Femenino</option>
+                        <option value="H>Masculino</option>
+                        <option value="M">Femenino</option>
+                        <option value="O">Otro</option>
                     </select>
                 </div>
             </div>
@@ -88,7 +90,7 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <div class="col-lg-12">
-                        <a id="searchSanctions"><button type="button" class="btn btn-secondary btn-block"> Buscar sanciones</button></a>
+                        <input type="submit" class="btn btn-secondary btn-block csearch" value="Buscar sanciones">
                     </div>
                 </div>
             </div>

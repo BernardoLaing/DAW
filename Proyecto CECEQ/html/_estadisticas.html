@@ -113,7 +113,7 @@
               <div class='form-group'>
                   <label for="user_ocupation">Ocupación:</label>
                   <div class="col-md-12">
-                      <input class="form-control" id="user_ocupation" name="user[ocupation]" size="30" type="text" />
+                      <input class="form-control cvalidate cname" id="user_ocupation" name="user[ocupation]" size="30" type="text" />
                   </div>
               </div>
           </div>
@@ -122,7 +122,7 @@
               <div class='form-group'>
                   <label for="user_ocupation">Edad:</label>
                   <div class="col-md-12">
-                      <input class="form-control" id="user_age" name="user[age]" type="number" min="1" max="100"/>
+                      <input  class="form-control cvalidate cnumber" id="user_age" name="user[age]" type="number" min="1" max="100"/>
                   </div>
               </div>
           </div>
@@ -131,11 +131,11 @@
               <div class='form-group'>
                   <label for="user_ocupation">Sexo:</label>
                   <div class="col-md-12">
-                    <select class="form-control" name="user[gender]">
+                    <select  class="form-control cvalidate cgender" name="user[gender]">
                         <option value=""></option>
-                        <option value="Hombre">Hombre</option>
-                        <option value="Mujer">Mujer</option>
-                        <option value="otro">Otro</option>
+                        <option value="H">Hombre</option>
+                        <option value="M">Mujer</option>
+                        <option value="O">Otro</option>
                     </select>
                   </div>
               </div>
@@ -147,7 +147,7 @@
               <div class='form-group'>
                   <label for="user_ocupation">Ciudad:</label>
                   <div class="col-md-12">
-                      <input class="form-control" id="user_ocupation" name="user[city]"  size="30" type="text" />
+                      <input class="form-control cvalidate cname" id="user_ocupation" name="user[city]"  size="30" type="text" />
                   </div>
               </div>
           </div>
@@ -156,20 +156,20 @@
               <div class='form-group'>
                   <label for="user_ocupation">Mes:</label>
                   <div class="col-md-12">
-                    <select class="form-control" name="user[month]">
+                    <select class="form-control cvalidate cnumber" name="user[month]">
                         <option value=""></option>
-                        <option value="Enero">Enero</option>
-                        <option value="Febrero">Febrero</option>
-                        <option value="Marzo">Marzo</option>
-                        <option value="Abril">Abril</option>
-                        <option value="Mayo">Mayo</option>
-                        <option value="Junio">Junio</option>
-                        <option value="Julio">Julio</option>
-                        <option value="Agosto">Agosto</option>
-                        <option value="Septiembre">Septiembre</option>
-                        <option value="Octubre">Octubre</option>
-                        <option value="Noviembre">Noviembre</option>
-                        <option value="Diciembre">Diciembre</option>
+                        <option value="01">Enero</option>
+                        <option value="02">Febrero</option>
+                        <option value="03">Marzo</option>
+                        <option value="04">Abril</option>
+                        <option value="05">Mayo</option>
+                        <option value="06">Junio</option>
+                        <option value="07">Julio</option>
+                        <option value="08">Agosto</option>
+                        <option value="09">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
                     </select>
                   </div>
               </div>
@@ -179,7 +179,7 @@
               <div class='form-group'>
                   <label for="user_ocupation">Año:</label>
                   <div class="col-md-12">
-                    <select class="form-control " name="user[year]">
+                    <select class="form-control cvalidate cyear" name="user[year]">
                         <option value="">
                         <?php
                         $firstYear = 2018;
@@ -201,7 +201,7 @@
           <div class='col-sm-4'>
               <div class='form-group'>
                   <div class="text-center">
-                      <button type="submit" name="button" class="btn btn-secondary mx-auto">Mostrar estadísticas</button>
+                      <input type="submit" name="button" class="btn btn-secondary mx-auto csearch" value="Mostrar Estadísticas">
                   </div>
               </div>
           </div>

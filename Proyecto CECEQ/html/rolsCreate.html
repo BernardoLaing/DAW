@@ -4,18 +4,18 @@
         <div class="display-3">Roles</div> <!--display son headdings mas grandes-->
     </div>
     <br>
-    <form>
+    <form method="post" action="">
         <div class="form-row">
             <div class="col-sm-12 col-md-4 mx-auto">
                 <div class="form-group">
                     <label for="name">Nombre: </label>
-                    <input class="form-control cvalidate cname" type="text" name="name" placeholder="Administrador">
+                    <input required class="form-control cvalidate cname" type="text" name="name" placeholder="Administrador">
                 </div>
             </div>
             <div class="col-sm-12 col-md-4 mx-auto">
                 <div class="form-group">
                     <label for="description">Descripción: </label>
-                    <input class="form-control cvalidate cname" type="text" name="description" placeholder="Cuenta con todos los permisos">
+                    <input required class="form-control cvalidate cname" type="text" name="description" placeholder="Cuenta con todos los permisos">
                 </div>
             </div>
         </div><br /><br />
@@ -68,7 +68,7 @@
         <div class="col-sm-2 center-block"><a href="rols.php" class="btn btn-secondary py-0"><i class="material-icons alagin-middle">arrow_back</i></a></div>
         <div class="col-sm-5"></div>
         <div class="col-lg-2 col-sm-4">
-            <button type="button" class="btn btn-secondary  btn-block cinsert"> Registrar</button>
+            <input type="submit" class="btn btn-secondary btn-block cinsert" value="Registrar">
         </div>
         <div class="col-lg-5 col-sm-4"></div>
     </div>
