@@ -9,15 +9,18 @@
         <?php while($row = mysqli_fetch_array($rols, MYSQLI_BOTH)) { ?>
             <div class="col-sm-12 col-md-4 mb-3">
                 <div class="card-body shadow">
-                    <p class="card-title"><b><?php echo $row["nombre"]; ?></b></p>
+                    <p class=""><b><?php echo $row["nombre"]; ?></b></p>
+                    <a class="edit" href="rolsEdit.php?idRol=<?php echo $row[0] ?>"><i class="material-icons">mode_edit</i></a>
                     <div class="card-text">
                         <?php echo $row["descripcion"]; ?>
                     </div> <br>
                     <div class='projects-button btn btn-secondary'>Ver permisos</div>
                     <div class='projects'> <br>
-                        <p>Privilegio 1</p>
-                        <p>Privilegio 2</p>
-                        <p>Privilegio 4</p>
+                        <!--      Obtiene los permisos asociados con el Rol      -->
+                        <?php $perms = getPermissionsForRol($row["idRol"]); ?> 
+                        <?php while($rowperm = mysqli_fetch_array($perms, MYSQLI_BOTH)) { ?>
+                        <p><?php echo $rowperm["nombre"]; ?></p>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
