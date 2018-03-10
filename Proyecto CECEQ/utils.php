@@ -70,23 +70,11 @@
         return false;
     }
 
+    
+//---------------------------------RBAC MODEL---------------------------------------------------------
+require_once('model/RBAC-utils.php');
 
-    function getUserRoles(){
-        $db = connect();
-        if($db != NULL){
-            //Specification of the SQL query
-            $query='SELECT u.user, u.nombre, r.nombre
-                    FROM usuario u, usuario_rol ur, rol r
-                    WHERE u.user = ur.usuario AND ur.idRol = r.id';
-            $query;
-             // Query execution; returns identifier of the result group
-            $results = $db->query($query);
-            disconnect($db);
-            return $results;
-        }
-        return false;
-
-    }
+// ---------------------------------------END RBAC MODEL-----------------------------------------
 
     /*
     function insertVisitante($name,$paternal,$maternal,$bday,$grade,$gender){

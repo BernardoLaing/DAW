@@ -17,7 +17,7 @@ if(isset($_POST["submit"])){
           $passwd == $passwdValidate &&
           is_numeric($rol)){
             if(updateUser($user, $name, $passwd, $rol)){
-                echo "registerUser validado";
+                echo "updateUser validado";
                 header('Location: cuentas.php');
             }else{
                 echo "NO FUNCIONA";

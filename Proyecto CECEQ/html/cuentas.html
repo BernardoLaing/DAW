@@ -54,7 +54,7 @@
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <?php while($row = mysqli_fetch_array($userList, MYSQLI_BOTH)) { ?>
+            <?php if (mysqli_num_rows($userList) > 0){ while($row = mysqli_fetch_array($userList, MYSQLI_BOTH)) { ?>
             <tr>
                 <td><a href="accountsEdit.php?user=<?php echo $row[0] ?>"><?php echo $count ?></a></td>
                 <td><?php echo $row[1]; ?></td>
@@ -63,7 +63,7 @@
                 <td><a href="deleteRegistry.php?user=<?php echo $row[0] ?>"><i class="material-icons delete">delete</i></a></td>
             </tr>
             <?php $count++; ?>
-            <?php } ?>
+            <?php }} ?>
         </table>
         <br />
         <div class="row">
