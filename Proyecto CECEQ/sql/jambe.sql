@@ -68,7 +68,7 @@ CREATE TABLE `credencial` (
   `coloniaTrabajo` varchar(50) NOT NULL,
   `calleTrabajo` varchar(50) NOT NULL,
   `numeroTrabajo` varchar(50) NOT NULL,
-  `cpTrabajo` int(5) NOT NULL
+  `cpTrabajo` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -96,6 +96,8 @@ CREATE TABLE `ejemplar` (
   `editorial` varchar(50) NOT NULL,
   `year` int(11) NOT NULL,
   `volumen` int(11) DEFAULT NULL,
+  `fechaIngreso` datetime NOT NULL,
+  `claveIngreso` varchar(10) NOT NULL,
   `idTitulo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
