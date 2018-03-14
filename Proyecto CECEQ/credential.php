@@ -5,3 +5,4 @@
 <?php include("html/credential.html"); ?>
 <?php include("partials/_footer.html"); ?>
 <?php include("upload.php"); ?>
+<?php ?>
