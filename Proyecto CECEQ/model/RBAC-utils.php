@@ -17,6 +17,35 @@ function getUserRoles(){
 
 }
 
+function getUserPermissions($user) {
+    $db = connect();
+    if($db != NULL){
+        $query='SELECT rO.idOperacion
+                FROM usuario u, usuario_rol uR, rol_operacion rO
+                WHERE u.usuario=uR.usuario AND uR.idRol=rO.idRol
+                AND u.usuario = ?';
+        
+        if(!($stmt = $db->prepare($query))) {
+            die("Preparation failed: (" . $db->errno . ") " . $db->error);
+        }
+        if (!$stmt->bind_param("s", $user)) {
+            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+        }
+        if (!$stmt->execute()) {
+            die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+        } 
+        
+        $result = $stmt->get_result();
+        if($result->num_rows === 0) exit('No rows');
+        while($row = $result->fetch_assoc()) {
+            $permissions[$row['idOperacion']] = 1;
+        }
+        disconnect($db);
+        return $permissions;
+    }
+    
+}
+
 function getUser($user){
     $db = connect();
     $user = $db->real_escape_string($user);
@@ -29,7 +58,7 @@ function getUser($user){
         
         // Preparing the statement 
         if (!($statement = $db->prepare($query))) {
-            die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
+            die("Preparation failed: (" . $db->errno . ") " . $db->error);
         }
         // Binding statement params 
         if (!$statement->bind_param("s", $user)) {
