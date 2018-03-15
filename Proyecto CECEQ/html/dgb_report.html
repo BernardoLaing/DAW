@@ -12,7 +12,7 @@
                 <form>
                     <div class="row text-center">
                         <div class="col-sm-12 col-md-4 offset-md-1 my-1">
-                            <select class="form-control shadow" name="Mes">
+                            <select class="form-control shadow" id="month" name="Month">
                                 <option value="" disabled selected>-- Mes --</option>
                                 <option value="01">Enero</option>
                                 <option value="02">Febrero</option>
@@ -29,7 +29,7 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4 offset-md-1 my-1">
-                            <select class="form-control shadow" name="Mes">
+                            <select class="form-control shadow" id="year" name="Year">
                                 <option value="" disabled selected>-- Año --</option>
                                 <?php
                                 $firstYear = 2018;
@@ -52,12 +52,15 @@
         <div class="row px-2">
             <div class="col-sm-12 col-md-4">
                 <b>Niños:</b>
+                <p id="ninos" class="d-inline"></p>
             </div>
             <div class="col-sm-12 col-md-4">
                 <b>Jóvenes:</b>
+                <p id="jovenes" class="d-inline"></p>
             </div>
             <div class="col-sm-12 col-md-4">
                 <b>Adultos:</b>
+                <p id="adultos" class="d-inline"></p>
             </div>
         </div>
         <hr>
@@ -69,9 +72,11 @@
         <div class="row px-2">
             <div class="col-sm-12 col-md-6">
                 <b>Credenciales expedidas:</b>
+                <p id="credenciales" class="d-inline"></p>
             </div>
             <div class="col-sm-12 col-md-6">
                 <b>Libros prestados a domicilio:</b>
+                <p id="libros" class="d-inline"></p>
             </div>
         </div>
         <br /><br />
@@ -86,3 +91,5 @@
         <br />
     </div>
 </div>
+
+<script src="js/dgbQueries.js"></script>

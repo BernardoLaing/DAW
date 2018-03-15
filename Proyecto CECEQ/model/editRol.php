@@ -17,7 +17,7 @@ if(isset($_POST["submit"])){
             if(updateRol($idRol, $name, $description, $permissions)){
                 header('Location: ../rols.php');
             }else{
-                echo "Valiste vergas";
+                echo "ERROR";
             }
             
         }

@@ -76,6 +76,8 @@ require_once('model/RBAC-utils.php');
 
 // ---------------------------------------END RBAC MODEL-----------------------------------------
 
+require_once('model/DGB-utils.php');
+
     /*
     function insertVisitante($name,$paternal,$maternal,$bday,$grade,$gender){
         $conn = connect();
