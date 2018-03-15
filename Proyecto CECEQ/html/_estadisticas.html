@@ -108,15 +108,27 @@
       <!--Formulario-->
       <form class="" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <div class="row">
-          <!--OCUPACION-->
+          <!--Grado estudios-->
           <div class='col-sm-4'>
               <div class='form-group'>
-                  <label for="user_ocupation">Ocupación:</label>
-                  <div class="col-md-12">
-                      <input class="form-control cvalidate cname" id="user_ocupation" name="user[ocupation]" size="30" type="text" />
+                <label class="mr-3 col-lg-5" for="credential_schooling">Escolaridad:</label>
+                <div class="col-md-12">
+                <select required name="user[schooling]" class="form-control cvalidate cschooling" id="user_schooling">
+                      <option value="" disabled selected>-- Escolaridad --</option>
+                      <option value="1">Ninguno</option>
+                      <option value="2">Preescolar</option>
+                      <option value="3">Primaria</option>
+                      <option value="4">Secundaria</option>
+                      <option value="5">Preparatoria</option>
+                      <option value="6">Universidad</option>
+                      <option value="7">Maestría</option>
+                      <option value="8">Doctorado</option>
+                      <option value="9">Postdoctorado</option>
+                    </select>
                   </div>
               </div>
           </div>
+
           <!--EDAD-->
           <div class='col-sm-4'>
               <div class='form-group'>
@@ -132,7 +144,7 @@
                   <label for="user_ocupation">Sexo:</label>
                   <div class="col-md-12">
                     <select  class="form-control cvalidate cgender" name="user[gender]">
-                        <option value=""></option>
+                        <option value="" disabled selected>-- Sexo --</option>
                         <option value="H">Hombre</option>
                         <option value="M">Mujer</option>
                         <option value="O">Otro</option>
@@ -157,7 +169,7 @@
                   <label for="user_ocupation">Mes:</label>
                   <div class="col-md-12">
                     <select class="form-control cvalidate cnumber" name="user[month]">
-                        <option value=""></option>
+                        <option value="" disabled selected>-- Mes --</option>
                         <option value="01">Enero</option>
                         <option value="02">Febrero</option>
                         <option value="03">Marzo</option>
@@ -180,7 +192,7 @@
                   <label for="user_ocupation">Año:</label>
                   <div class="col-md-12">
                     <select class="form-control cvalidate cyear" name="user[year]">
-                        <option value="">
+                        <option value="" disabled selected>-- Año --</option>
                         <?php
                         $firstYear = 2018;
                         for($year = $firstYear; $year <= date("Y"); $year++) {

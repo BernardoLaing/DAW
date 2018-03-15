@@ -70,7 +70,7 @@
         return false;
     }
 
-    
+
 //---------------------------------RBAC MODEL---------------------------------------------------------
 require_once('model/RBAC-utils.php');
 
@@ -192,7 +192,7 @@ function buildTableData($result){
         $fieldNumber = mysqli_num_fields($result);
         $table .= "<thead>";
         for($i = 0; $i < $fieldNumber; $i++){
-            $table .= "<td>".mysqli_fetch_field_direct($result, $i)->name."</td>";
+              $table .= "<td><strong>  ".mysqli_fetch_field_direct($result, $i)->name." </strong> </td>";
         }
         $table .= "</thead><tbody>";
         while($row = mysqli_fetch_assoc($result)){
@@ -346,28 +346,67 @@ function buscarAutorTitulo($idTitulo, $idAutor)
     return $result;
 }
 
-//De interfaz Lend_Return
-function Registrar_Prestamo_Devolucion($idCredencial, $idEjemplar){
+//**************************   De interfaz Lend_Return   **********************************
+function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
   $conn = connect();
-  $diaPrestamo = getdate();
-  $diaRegreso=strtotime("+7 Days");
+  if(!$conn){
+    die("No se pudo conectar a la Base de Datos");
+  }
 
-  $sql = mysqli_prepare($conn, "INSERT INTO Ejemplar_Credencial(idCredencial, idEjemplar, fechaPrestamo, fechaDevolucion)
-  VALUES(?,?, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
-  ");
-  $sql ->bind_param("ii", $idCredencial, $idEjemplar);
-
-//  if(mysqli_query($conn,$sql)){
-//      disconnect($conn);
-//      return "true";
-//  }else{
-//      echo "<p>Error: " . $sql . "<br>" . mysqli_error($conn) ."</p>";
-//      return "false";
-//  }
+  $sql = "INSERT INTO ejemplar_credencial(idEjemplar, idCredencial, fechaPrestamo, fechaDevolucion)
+  VALUES(?,?, ?, ?)";
+        // Preparing the statement 
+        if (!($statement = $conn->prepare($sql))) {
+           die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
+        }
+         // Binding statement params 
+        if (!$statement->bind_param("iiss", $idEjemplar, $idCredencial, $dateLend, $dateReturn)) {
+            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+        }
+         // Executing the statement
+         if (!$statement->execute()) {
+            die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+          } 
   disconnect($conn);
-  $retorno = $sql ->execute();
-  return($retorno);
 }
+
+function insertReturn( $idEjemplar, $idCredencial, $fechaDevolucionReal){
+    $conn = connect();
+    if(!$conn){
+      die("No se pudo conectar a la Base de Datos");
+    }
+
+    $sql = "UPDATE ejemplar_credencial 
+            SET fechaDevolucionReal=(?)     
+            WHERE idEjemplar=(?) 
+            AND idCredencial=(?) ";
+          // Preparing the statement 
+          if (!($statement = $conn->prepare($sql))) {
+             die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
+          }
+           // Binding statement params 
+          if (!$statement->bind_param("sii",$fechaDevolucionReal, $idEjemplar, $idCredencial)) {
+              die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+          }
+           // Executing the statement
+           if (!$statement->execute()) {
+              die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+            } 
+    disconnect($conn);
+  }
+
+function buscarPrestamoDevolucion($idCredencial){
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"");
+
+    $statement ->bind_param("i", $idCredencial);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+
+
 
 
     //var_dump(login('lalo', 'hockey'));
