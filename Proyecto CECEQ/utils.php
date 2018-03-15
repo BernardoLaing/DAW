@@ -370,12 +370,11 @@ function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
   disconnect($conn);
 }
 
-function insertReturn( $idEjemplar, $idCredencial, $fechaDevolucionReal){
+function insertReturn($idEjemplar, $idCredencial, $fechaDevolucionReal){
     $conn = connect();
     if(!$conn){
       die("No se pudo conectar a la Base de Datos");
     }
-
     $sql = "UPDATE ejemplar_credencial 
             SET fechaDevolucionReal=(?)     
             WHERE idEjemplar=(?) 
@@ -395,19 +394,16 @@ function insertReturn( $idEjemplar, $idCredencial, $fechaDevolucionReal){
     disconnect($conn);
   }
 
+
 function buscarPrestamoDevolucion($idCredencial){
     $connection = connect();
     $statement = mysqli_prepare($connection,"");
-
     $statement ->bind_param("i", $idCredencial);
     $statement->execute();
     $result = $statement->get_result();
     disconnect($connection);
     return $result;
 }
-
-
-
 
     //var_dump(login('lalo', 'hockey'));
     //var_dump(login('joaquin', 'basket'));
