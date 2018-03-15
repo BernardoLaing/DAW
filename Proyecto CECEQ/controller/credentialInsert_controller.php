@@ -12,13 +12,13 @@
 
     
     if(count($_POST)>0
-        && (($_POST["user"]["number"] == null) || test($NUMBER, $_POST["user"]["number"]))
-        && (($_POST["user"]["name"] == null) || test($NAME, $_POST["user"]["name"]))
-        && (($_POST["user"]["paternal"] == null) || test($NAME, $_POST["user"]["paternal"]))
-        && (($_POST["user"]["maternal"] == null) || test($NAME, $_POST["user"]["maternal"]))
-        && (($_POST["user"]["birthday"] == null) || test($DATE, $_POST["user"]["birthday"]))
-        && (($_POST["user"]["gender"] == null) || test($GENDER, $_POST["user"]["gender"]))
-        && (($_POST["user"]["user_grade"] == null) || test($SCHOOLING, $_POST["user"]["user_grade"]))
+        && (($_POST["credential"]["name"] == null) || test($NAME, $_POST["credential"]["name"]))
+        && (($_POST["credential"]["paternal"] == null) || test($NAME, $_POST["credential"]["paternal"]))
+        && (($_POST["credential"]["paternal"]  == null) || test($NAME, $_POST["credential"]["paternal"] ))
+        && (($_POST["credential"]["paternal"]  == null) || test($NAME, $_POST["credential"]["paternal"] ))
+        && (($_POST["credential"]["paternal"]  == null) || test($DATE, $_POST["credential"]["paternal"] ))
+        && (($_POST["credential"]["paternal"]  == null) || test($GENDER, $_POST["credential"]["paternal"] ))
+        && (($_POST["credential"]["paternal"]  == null) || test($SCHOOLING, $_POST["credential"]["paternal"] ))
     ){
         $nulls = 0;
         foreach($_POST["user"] as $key => $value){
@@ -42,7 +42,6 @@
             }
         }
     }
-    //displey za modal :v
-    header("Location: ../entry.php");
 
+    header("Location: ../entry.php");
     ?>
