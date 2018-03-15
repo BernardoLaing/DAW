@@ -207,7 +207,7 @@ function validateNullAndInsert(event){
     var ws = document.getElementsByClassName("cnullalert")[0];
     if(v!=null){
         for(var i = 0; i < v.length; i++){
-            if(v[i].value == null || v[i].value == ""){
+            if(v[i].value == null || v[i].value == "" && v[i].id != "user_number"){
                 event.preventDefault();
                 ws.style.display = "inline-block";
                 return;

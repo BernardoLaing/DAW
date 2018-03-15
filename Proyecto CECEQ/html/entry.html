@@ -9,7 +9,7 @@
                 </div>
         </div>
     </div>
-    <form method="post" id="entry_form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <form method="post" id="entry_form" action="controller/entryInsert_controller.php"><!-- action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">-->
     <div class="row">
 
         <div class="col-sm-12">
@@ -121,9 +121,17 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <div class="col-md-12">
-                        <input id="registrarEntrada" type="submit" class="btn btn-secondary mx-auto chinsert" name="actionTypeEntry" value="Registrar Entrada"/>
+                        <input id="registrarEntrada" type="submit" class="btn btn-secondary mx-auto chinsert"/>
                     </div>
                 </div>
             </div>
         </div>
     </form>
+    <br><br><br>
+    <div class='row'>
+        <div id="user_table" class='col-12'>
+
+        </div>
+    </div>
+
+<script src="js/dynamicqueries.js"></script>

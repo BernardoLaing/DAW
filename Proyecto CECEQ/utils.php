@@ -119,15 +119,59 @@ function insertVisitante($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNaci
 
 }
 
+function insertCredential($idCredencial, 
+                            $idVisitante,
+                            $fechaExpedicion,
+                            $foto,
+                            $colonia,
+                            $calle,
+                            $numero,
+                            $cp,
+                            $telefono,
+                            $correo,
+                            $nombreTrabajo,
+                            $telefonoTrabajo,
+                            $coloniaTrabajo,
+                            $calleTrabajo,
+                            $numeroTrabajo,
+                            $cpTrabajo){
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    insert into visitante (idCredencial,
+                            idVisitante,
+                            fechaExpedicion,
+                            foto,
+                            colonia,
+                            calle,
+                            numero,
+                            cp,
+                            telefono,
+                            correo, 
+                            nombreTrabajo,
+                            telefonoTrabajo,
+                            coloniaTrabajo,
+                            calleTrabajo,
+                            numeroTrabajo,
+                            cpTrabajo)
+    values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    ");
+    $statement->bind_param("iisssiiississii", $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero);
+    $statement->execute();
+    
+}
+
 function queryVisitor($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios){
     $connection = connect();
+    $nombre .="%";
+    $apellidoPaterno .="%";
+    $apellidoMaterno .="%";
     $statement = mysqli_prepare($connection,"
     select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', genero as 'Género', g.nombre as 'Grado de estudios'
     from visitante as v, visitante_gradoestudios as vg, gradoestudios as g
     where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
-    and (v.nombre = ? ".($nombre==""?"or 1":"").")
-    and (apellidoPaterno = ? ".($apellidoPaterno==""?"or 1":"").")
-    and (apellidoMaterno = ? ".($apellidoMaterno==""?"or 1":"").")
+    and (v.nombre like ? ".($nombre==""?"or 1":"").")
+    and (apellidoPaterno like ? ".($apellidoPaterno==""?"or 1":"").")
+    and (apellidoMaterno like ? ".($apellidoMaterno==""?"or 1":"").")
     and (fechaNacimiento = ? ".($fechaNacimiento==""?"or 1":"").")
     and (genero = ? ".($genero==""?"or 1":"").")
     and v.idVisitante = vg.idVisitante
@@ -140,6 +184,7 @@ function queryVisitor($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno,
     disconnect($connection);
     return $result;
 }
+
 
 function buildTableData($result){
     $table = "";
