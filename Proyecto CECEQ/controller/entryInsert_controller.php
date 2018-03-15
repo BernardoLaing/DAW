@@ -30,15 +30,17 @@
                     $nulls++;
             }
         }
-        if ($_POST["actionTypeEntry"] == "Registrar Entrada") {
-            if($nulls == 0){
-                insertVisitante(
-                    $info["name"],
-                    $info["paternal"],
-                    $info["maternal"],
-                    $info["birthday"],
-                    $info["user_grade"],
-                    $info["gender"]);
+        if(isset($info)) {
+            if ($_POST["actionTypeEntry"] == "Registrar Entrada") {
+                if($nulls == 0){
+                    insertVisitante(
+                        $info["name"],
+                        $info["paternal"],
+                        $info["maternal"],
+                        $info["birthday"],
+                        $info["user_grade"],
+                        $info["gender"]);
+                }
             }
         }
     }
