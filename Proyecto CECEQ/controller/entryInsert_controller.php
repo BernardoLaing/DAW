@@ -1,6 +1,6 @@
 <?php 
-    include("regexps.php");
-    include("utils.php");
+    include("../regexps.php");
+    include("../utils.php");
     if(count($_POST)>0){
         if(!isset($_POST["user"]["gender"]) || !test($GENDER, $_POST["user"]["gender"])){
             $_POST["user"]["gender"] = null;
@@ -31,16 +31,16 @@
             }
         }
         if(isset($info)) {
-            if ($_POST["actionTypeEntry"] == "Registrar Entrada") {
-                if($nulls == 0){
-                    insertVisitante(
-                        $info["name"],
-                        $info["paternal"],
-                        $info["maternal"],
-                        $info["birthday"],
-                        $info["user_grade"],
-                        $info["gender"]);
-                }
+            if($nulls == 0){
+                insertVisitante(
+                    $info["name"],
+                    $info["paternal"],
+                    $info["maternal"],
+                    $info["birthday"],
+                    $info["user_grade"],
+                    $info["gender"]);
             }
         }
     }
+    //displey za modal :v
+    header("Location: ../entry.php");

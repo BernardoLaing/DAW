@@ -3,8 +3,6 @@
 <?php include("partials/_top_bar.html"); ?>
 <?php include("html/entry.html");?>
 <?php include("partials/_footer.html"); ?>
-<?php include("controller/entryInsert_controller.php");?>
-
 <?php
 /*
     include("utils.php");
