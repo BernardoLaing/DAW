@@ -212,7 +212,6 @@ function insertCredential(  //Visitante
                             $gradoEstudios,
                             $genero,
                             //Credencial
-                            $fechaExpedicion,
                             $foto,
                             $colonia,
                             $calle,
@@ -230,7 +229,7 @@ function insertCredential(  //Visitante
                             $nombreF,
                             $apellidoPaternoF,
                             $apellidoMaternoF,
-                            $correfoF,
+                            $correoF,
                             $telefonoF,
                             $calleF,
                             $numeroF,
@@ -266,13 +265,13 @@ function insertCredential(  //Visitante
                             calleTrabajo,
                             numeroTrabajo,
                             cpTrabajo)
-    values ((select idVisitante from visitante order by idVisitante desc limit 1), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    values ((select idVisitante from visitante order by idVisitante desc limit 1), date('Y-m-d'), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
     ");
-    $statement->bind_param("isssssisssssssi", $fechaExpedicion, $foto, $colonia, $calle, $numero, $cp, $telefono, $correo,
+    $statement->bind_param("ssssisssssssi", $foto, $colonia, $calle, $numero, $cp, $telefono, $correo,
     $nombreTrabajo, $telefonoTrabajo, $coloniaTrabajo, $calleTrabajo, $numeroTrabajo, $cpTrabajo);
     $statement->execute();
 
-    insertFiador($connection, $nombreF, $apellidoPaternoF, $apellidoMaternoF, $correfoF, $telefonoF, $calleF, $numeroF, $coloniaF, $cpF, $nombreTrabajoF, 
+    insertFiador($connection, $nombreF, $apellidoPaternoF, $apellidoMaternoF, $correoF, $telefonoF, $calleF, $numeroF, $coloniaF, $cpF, $nombreTrabajoF, 
     $telefonoTrabajoF, $calleTrabajoF, $numeroTrabajoF, $coloniaTrabajoF, $cpTrabajoF, $gradoEstudiosF);
 
     insertCredencialFiador($connection);

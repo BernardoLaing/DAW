@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-03-2018 a las 21:05:57
+-- Tiempo de generación: 16-03-2018 a las 04:16:12
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -522,7 +522,6 @@ CREATE TABLE `fiador` (
   `cp` int(5) NOT NULL,
   `telefono` varchar(12) NOT NULL,
   `correo` varchar(100) NOT NULL,
-  `ocupacion` varchar(50) NOT NULL,
   `nombreTrabajo` varchar(50) NOT NULL,
   `telefonoTrabajo` varchar(12) NOT NULL,
   `coloniaTrabajo` varchar(50) NOT NULL,
@@ -535,27 +534,65 @@ CREATE TABLE `fiador` (
 -- Volcado de datos para la tabla `fiador`
 --
 
-INSERT INTO `fiador` (`idFiador`, `nombre`, `apellidoPaterno`, `apellidoMaterno`, `colonia`, `calle`, `numero`, `cp`, `telefono`, `correo`, `ocupacion`, `nombreTrabajo`, `telefonoTrabajo`, `coloniaTrabajo`, `calleTrabajo`, `numeroTrabajo`, `cpTrabajo`) VALUES
-(1, 'Emilio', 'Lopez', 'Gutierrez', 'Calesa', 'Avenida 5 de Febrero', '334', 76020, '6455068143', 'augurare@fornari.gov', 'Cient?fico de datos', 'Maleficiau plan?ssim fembrer SLU', '8829335892', 'Carolina', 'Avenida 5 de Febrero', '765', 76177),
-(2, 'Natalia ', 'Buedo', 'Mangas', 'Carolina', 'Abasolo', '700', 76177, '6380447423', 'halurgies@arpegen.gov', 'Especialista en SEO', 'Desestanyant bronquinej?veu debateg?ssiu SA', '8635122373', 'Calesa', 'Abasolo', '544', 76020),
-(3, 'Berthana ', 'Tufio ', 'Cortaza', 'Casa Blanca', 'Abelardo Ávila', '500', 76224, '6186496839', 'edipiques@diligenciarien.es', 'Dise?ador de videojuegos', 'Caracterol?giques forcons SL', '7499508681', 'El Campanario', 'Abelardo ?vila', '537', 76146),
-(4, 'Eddy ', 'Ballugera ', 'Cabanela', 'El Arco', 'Abedul', '456', 76134, '8759996217', 'animosos@ecliptic.es', 'Comprador/vendedor de acciones', 'Desavenien neonatologies SA', '8398212739', 'El Carrizal', 'Abedul', '654', 76030),
-(5, 'Juan ', 'Gabi ', 'Remolino', 'El Campanario', 'Abetal', '321', 76146, '7316257605', 'residissin@pobretejarem.eu', 'Bombero', 'Desempolain? tombassejaves atrevida SLU', '816271255', 'Jacarandas', 'Abetal', '234', 76029),
-(6, 'Virgilio ', 'Raon ', 'Garate', 'El Carrizal', 'De Los Arquitos', '453', 76030, '796519563', 'voltegi@reingressarieu.net', 'Profesional en comunicaciones corporativas', 'Llotejant perxers eric?ssem', '6182565221', 'Industrial', 'De Los Arquitos', '634', 76130),
-(7, 'Laila', 'O?iderra', 'Aldana', 'Eucaliptos I', 'De los Jesuitas', '963', 76160, '6254014051', 'esprintas@amansir.gov', 'Salvavidas', 'Esperonarien vesessen psicofisi?loga SA', '8278884795', 'Jacarandas', 'De los Jesuitas', '897', 76029),
-(8, 'Laureano ', 'Mayllar ', 'Maria', 'Fray Juan P', 'Felipe Luna', '1513', 76036, '7144082397', 'pencut@sintetitzesses.eu', 'Gu?a tur?stico', 'Futur?logues accentuarà invents SL', '866644802', 'Insurgentes', 'Felipe Luna', '1523', 76117),
-(9, 'Evangelina', 'Mendieta', 'Vi?ales', 'Hidalgo', 'Felipe Carrillo', '549', 76057, '6547455781', 'executaven@desentestau.es', 'Ayudante de oficina', 'Laiter Development', '8964720483', 'Industrial', 'Felipe Carrillo', '2134', 76130),
-(10, 'Rainier ', 'Roson ', 'Acitores', 'Huertas La Joya', 'Izcoatl', '348', 76137, '8638489602', 'patronegeu@xilles.com', 'Analista de inversiones', 'Maltractaria borroners circumnavegam SL', '6588856338', 'Independencia', 'Izcoatl', '2456', 76147),
-(11, 'Yamila ', 'Dobale ', 'Badas', 'Calesa', 'Jacaranda', '95', 76020, '7493808678', 'inaugurarien@desordenaven.net', 'Help-desk technician', 'Suspendre xemicava SA', '7640387549', 'Casa Blanca', 'Jacaranda', '974', 76224),
-(12, 'Cirilo ', 'Perea', 'Quintairos', 'Casa Blanca', 'Jacinto', '115', 76224, '8341585821', 'destorbs@retrovenguis.gov', 'Ayudante de oficina', 'Xaparan moquejar? sobreafeg?sseu SA', '8365916296', 'Calesa', 'Jacinto', '234', 76020),
-(13, 'Amargura ', 'Leyte ', 'Arizmendi', 'Independencia', 'Acceso Norte', '653', 76147, '8511548191', 'apletassim@cintre.gov', 'Notario', 'Boscada aflorarem margo', '8611829233', 'Huertas La Joya', 'Acceso Norte', '541', 76137),
-(14, 'Perla', 'Reigadas', 'Balbas', 'Industrial', 'Bel?n', '536', 76130, '7828078027', 'reproduixen@presumptiu.org', 'Instructor de fitness', 'Xorr? reu apinyat SA', '8755280898', 'Hidalgo', 'Bel?n', '365', 76057),
-(15, 'Pr?xedes ', 'Zubeldia', 'Alzola', 'Insurgentes', 'Berenice', '981', 76117, '8884629692', 'escloscavem@deflegmaveu.eu', 'Dise?ador de videojuegos', 'Laqui blasquisme SLU', '6821863442', 'Fray Juan P', 'Berenice', '234', 76036),
-(16, 'Ryan ', 'Folgueral ', 'Cainzos', 'Jacarandas', 'Adolfo De La Huerta', '1345', 76029, '8810230781', 'voluntaris@puntualitzaveu.net', 'Cientifico', 'Rossejar?eu doloreig SL', '6452189012', 'Eucaliptos I', 'Adolfo De La Huerta', '356', 76160),
-(17, 'Neudis ', 'Lezama ', 'Abad?a', 'Industrial', 'Acero', '875', 76130, '7998485655', 'desnatat@malcriem.org', 'Maestro sustituto', 'Enrandes espolseu distorsion? SL', '6921092363', 'El Campanario', 'Acero', '986', 76146),
-(18, 'Ricardo ', 'Chave ', 'Mariategui', 'Jacarandas', 'Argentina', '932', 76029, '6737434542', 'testamentaria@entremesclessis.net', 'Ingeniero de Software', 'Remugaments esmorteixin SA', '6816393316', 'El Carrizal', 'Argentina', '235', 76030),
-(19, 'Rita', 'Lombana ', 'Mugica', 'El Carrizal', 'Aries', '324', 76030, '7454203769', 'doble@bretxifiqueu.eu', 'Help-desk technician', 'Saltironeg?s parrell SL', '7214468080', 'El Arco', 'Aries', '2124', 76134),
-(20, 'Brandol ', 'Congey ', 'Viz', 'El Campanario', 'Arist?teles', '563', 76146, '8606826404', 'sedavienques@retrogradarien.net', 'Profesional en comunicaciones corporativas', 'Bogu?ssim arrel', '6229028586', 'Casa Blanca', 'Arist?teles', '5212', 76224);
+INSERT INTO `fiador` (`idFiador`, `nombre`, `apellidoPaterno`, `apellidoMaterno`, `colonia`, `calle`, `numero`, `cp`, `telefono`, `correo`, `nombreTrabajo`, `telefonoTrabajo`, `coloniaTrabajo`, `calleTrabajo`, `numeroTrabajo`, `cpTrabajo`) VALUES
+(1, 'Emilio', 'Lopez', 'Gutierrez', 'Calesa', 'Avenida 5 de Febrero', '334', 76020, '6455068143', 'augurare@fornari.gov', 'Maleficiau plan?ssim fembrer SLU', '8829335892', 'Carolina', 'Avenida 5 de Febrero', '765', 76177),
+(2, 'Natalia ', 'Buedo', 'Mangas', 'Carolina', 'Abasolo', '700', 76177, '6380447423', 'halurgies@arpegen.gov', 'Desestanyant bronquinej?veu debateg?ssiu SA', '8635122373', 'Calesa', 'Abasolo', '544', 76020),
+(3, 'Berthana ', 'Tufio ', 'Cortaza', 'Casa Blanca', 'Abelardo Ávila', '500', 76224, '6186496839', 'edipiques@diligenciarien.es', 'Caracterol?giques forcons SL', '7499508681', 'El Campanario', 'Abelardo ?vila', '537', 76146),
+(4, 'Eddy ', 'Ballugera ', 'Cabanela', 'El Arco', 'Abedul', '456', 76134, '8759996217', 'animosos@ecliptic.es', 'Desavenien neonatologies SA', '8398212739', 'El Carrizal', 'Abedul', '654', 76030),
+(5, 'Juan ', 'Gabi ', 'Remolino', 'El Campanario', 'Abetal', '321', 76146, '7316257605', 'residissin@pobretejarem.eu', 'Desempolain? tombassejaves atrevida SLU', '816271255', 'Jacarandas', 'Abetal', '234', 76029),
+(6, 'Virgilio ', 'Raon ', 'Garate', 'El Carrizal', 'De Los Arquitos', '453', 76030, '796519563', 'voltegi@reingressarieu.net', 'Llotejant perxers eric?ssem', '6182565221', 'Industrial', 'De Los Arquitos', '634', 76130),
+(7, 'Laila', 'O?iderra', 'Aldana', 'Eucaliptos I', 'De los Jesuitas', '963', 76160, '6254014051', 'esprintas@amansir.gov', 'Esperonarien vesessen psicofisi?loga SA', '8278884795', 'Jacarandas', 'De los Jesuitas', '897', 76029),
+(8, 'Laureano ', 'Mayllar ', 'Maria', 'Fray Juan P', 'Felipe Luna', '1513', 76036, '7144082397', 'pencut@sintetitzesses.eu', 'Futur?logues accentuarà invents SL', '866644802', 'Insurgentes', 'Felipe Luna', '1523', 76117),
+(9, 'Evangelina', 'Mendieta', 'Vi?ales', 'Hidalgo', 'Felipe Carrillo', '549', 76057, '6547455781', 'executaven@desentestau.es', 'Laiter Development', '8964720483', 'Industrial', 'Felipe Carrillo', '2134', 76130),
+(10, 'Rainier ', 'Roson ', 'Acitores', 'Huertas La Joya', 'Izcoatl', '348', 76137, '8638489602', 'patronegeu@xilles.com', 'Maltractaria borroners circumnavegam SL', '6588856338', 'Independencia', 'Izcoatl', '2456', 76147),
+(11, 'Yamila ', 'Dobale ', 'Badas', 'Calesa', 'Jacaranda', '95', 76020, '7493808678', 'inaugurarien@desordenaven.net', 'Suspendre xemicava SA', '7640387549', 'Casa Blanca', 'Jacaranda', '974', 76224),
+(12, 'Cirilo ', 'Perea', 'Quintairos', 'Casa Blanca', 'Jacinto', '115', 76224, '8341585821', 'destorbs@retrovenguis.gov', 'Xaparan moquejar? sobreafeg?sseu SA', '8365916296', 'Calesa', 'Jacinto', '234', 76020),
+(13, 'Amargura ', 'Leyte ', 'Arizmendi', 'Independencia', 'Acceso Norte', '653', 76147, '8511548191', 'apletassim@cintre.gov', 'Boscada aflorarem margo', '8611829233', 'Huertas La Joya', 'Acceso Norte', '541', 76137),
+(14, 'Perla', 'Reigadas', 'Balbas', 'Industrial', 'Bel?n', '536', 76130, '7828078027', 'reproduixen@presumptiu.org', 'Xorr? reu apinyat SA', '8755280898', 'Hidalgo', 'Bel?n', '365', 76057),
+(15, 'Pr?xedes ', 'Zubeldia', 'Alzola', 'Insurgentes', 'Berenice', '981', 76117, '8884629692', 'escloscavem@deflegmaveu.eu', 'Laqui blasquisme SLU', '6821863442', 'Fray Juan P', 'Berenice', '234', 76036),
+(16, 'Ryan ', 'Folgueral ', 'Cainzos', 'Jacarandas', 'Adolfo De La Huerta', '1345', 76029, '8810230781', 'voluntaris@puntualitzaveu.net', 'Rossejar?eu doloreig SL', '6452189012', 'Eucaliptos I', 'Adolfo De La Huerta', '356', 76160),
+(17, 'Neudis ', 'Lezama ', 'Abad?a', 'Industrial', 'Acero', '875', 76130, '7998485655', 'desnatat@malcriem.org', 'Enrandes espolseu distorsion? SL', '6921092363', 'El Campanario', 'Acero', '986', 76146),
+(18, 'Ricardo ', 'Chave ', 'Mariategui', 'Jacarandas', 'Argentina', '932', 76029, '6737434542', 'testamentaria@entremesclessis.net', 'Remugaments esmorteixin SA', '6816393316', 'El Carrizal', 'Argentina', '235', 76030),
+(19, 'Rita', 'Lombana ', 'Mugica', 'El Carrizal', 'Aries', '324', 76030, '7454203769', 'doble@bretxifiqueu.eu', 'Saltironeg?s parrell SL', '7214468080', 'El Arco', 'Aries', '2124', 76134),
+(20, 'Brandol ', 'Congey ', 'Viz', 'El Campanario', 'Arist?teles', '563', 76146, '8606826404', 'sedavienques@retrogradarien.net', 'Bogu?ssim arrel', '6229028586', 'Casa Blanca', 'Arist?teles', '5212', 76224);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fiador_gradoestudios`
+--
+
+CREATE TABLE `fiador_gradoestudios` (
+  `idFiador` int(11) NOT NULL,
+  `idGrado` int(11) NOT NULL,
+  `fecha` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `fiador_gradoestudios`
+--
+
+INSERT INTO `fiador_gradoestudios` (`idFiador`, `idGrado`, `fecha`) VALUES
+(1, 1, '0000-00-00 00:00:00'),
+(9, 1, '0000-00-00 00:00:00'),
+(17, 1, '0000-00-00 00:00:00'),
+(2, 2, '0000-00-00 00:00:00'),
+(10, 2, '0000-00-00 00:00:00'),
+(18, 2, '0000-00-00 00:00:00'),
+(3, 3, '0000-00-00 00:00:00'),
+(11, 3, '0000-00-00 00:00:00'),
+(19, 3, '0000-00-00 00:00:00'),
+(4, 4, '0000-00-00 00:00:00'),
+(12, 4, '0000-00-00 00:00:00'),
+(20, 4, '0000-00-00 00:00:00'),
+(5, 5, '0000-00-00 00:00:00'),
+(13, 5, '0000-00-00 00:00:00'),
+(6, 6, '0000-00-00 00:00:00'),
+(14, 6, '0000-00-00 00:00:00'),
+(7, 7, '0000-00-00 00:00:00'),
+(15, 7, '0000-00-00 00:00:00'),
+(8, 8, '0000-00-00 00:00:00'),
+(16, 8, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -908,9 +945,7 @@ INSERT INTO `titulo_autor` (`idAutor`, `idTitulo`) VALUES
 (27, 22),
 (28, 23),
 (29, 24),
-(30, 25),
-(31, 26),
-(32, 28);
+(30, 25);
 
 -- --------------------------------------------------------
 
@@ -978,27 +1013,27 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`usuario`, `nombre`, `password`) VALUES
-('Admin', 'Admin1', 'Elon Musk'),
-('Agonzales', '7iNxm', 'Andrea González Pérez'),
-('Bmartinez', '7iNxm', 'Brenda Eugenia Martínez Pérez'),
-('Cmunoz', '7iNxm', 'Catalina Muñoz Pérez'),
-('Cvazquez', 'hS6#8', 'Claudia Guadalupe Vázquez Vázquez'),
-('diegoB', 'Lagatadelaiter#1', 'Diego Betanzos'),
-('Dlopez', 'Ea@7!', 'Daniel López Correa'),
-('Dojeda', 'hS6#8', 'Daniel Ojeda Pérez'),
-('Ecabrera', 'Ea@7!', 'Ernestina Cabrera Ramírez'),
-('Elopez', 'Ea@7!', 'Eugenio López Cardona'),
-('Fsolis', '7iNxm', 'Fernando Solís Perea'),
-('Jgonzales', 'hS6#8', 'Juana Guadalupe González de la Cruz'),
-('Jmartinez', 'hS6#8', 'Juan Carlos Martínez López'),
-('Jperez', 'hS6#8', 'Juan Pérez Rosales'),
-('Lgonzales', '7iNxm', 'Luz Elena González Martínez'),
-('Mcruz', '7iNxm', 'María del Carmen de la Cruz Martínez'),
-('Mguadaluoe', 'hS6#8', 'María Guadalupe Ramírez Castro'),
-('Mguitierrez', 'hS6#8', 'Manuel Gutiérrez Pérez'),
-('Mlopez', 'Ea@7!', 'Margarita López Correa'),
-('Mperez', 'Ea@7!', 'María Pérez López'),
-('Rcruz', 'Ea@7!', 'Roberto Cruz Pérez');
+('Admin', 'Elon Musk', 'Admin1'),
+('Agonzales', 'Andrea González Pérez', '7iNxm'),
+('Bmartinez', 'Brenda Eugenia Martínez Pérez', '7iNxm'),
+('Cmunoz', 'Catalina Muñoz Pérez', '7iNxm'),
+('Cvazquez', 'Claudia Guadalupe Vázquez Vázquez', 'hS6#8'),
+('diegoB', 'Diego Betanzos', 'Lagatadelaiter#1'),
+('Dlopez', 'Daniel López Correa', 'Ea@7!'),
+('Dojeda', 'Daniel Ojeda Pérez', 'hS6#8'),
+('Ecabrera', 'Ernestina Cabrera Ramírez', 'Ea@7!'),
+('Elopez', 'Eugenio López Cardona', 'Ea@7!'),
+('Fsolis', 'Fernando Solís Perea', '7iNxm'),
+('Jgonzales', 'Juana Guadalupe González de la Cruz', 'hS6#8'),
+('Jmartinez', 'Juan Carlos Martínez López', 'hS6#8'),
+('Jperez', 'Juan Pérez Rosales', 'hS6#8'),
+('Lgonzales', 'Luz Elena González Martínez', '7iNxm'),
+('Mcruz', 'María del Carmen de la Cruz Martínez', '7iNxm'),
+('Mguadaluoe', 'María Guadalupe Ramírez Castro', 'hS6#8'),
+('Mguitierrez', 'Manuel Gutiérrez Pérez', 'hS6#8'),
+('Mlopez', 'Margarita López Correa', 'Ea@7!'),
+('Mperez', 'María Pérez López', 'Ea@7!'),
+('Rcruz', 'Roberto Cruz Pérez', 'Ea@7!');
 
 -- --------------------------------------------------------
 
@@ -1125,7 +1160,7 @@ INSERT INTO `visitante_gradoestudios` (`idVisitante`, `idGrado`, `fecha`) VALUES
 -- Indices de la tabla `autor`
 --
 ALTER TABLE `autor`
-  ADD PRIMARY KEY (`idAutor`);
+  ADD PRIMARY KEY (`idAutor`) USING BTREE;
 
 --
 -- Indices de la tabla `categoria`
@@ -1189,6 +1224,12 @@ ALTER TABLE `estado`
 --
 ALTER TABLE `fiador`
   ADD PRIMARY KEY (`idFiador`);
+
+--
+-- Indices de la tabla `fiador_gradoestudios`
+--
+ALTER TABLE `fiador_gradoestudios`
+  ADD PRIMARY KEY (`idGrado`,`idFiador`);
 
 --
 -- Indices de la tabla `gradoestudios`
@@ -1347,7 +1388,7 @@ ALTER TABLE `titulo`
 -- AUTO_INCREMENT de la tabla `visitante`
 --
 ALTER TABLE `visitante`
-  MODIFY `idVisitante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `idVisitante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas
@@ -1400,32 +1441,11 @@ ALTER TABLE `sancion`
   ADD CONSTRAINT `fkVisitanteSancion` FOREIGN KEY (`idVisitante`) REFERENCES `visitante` (`idVisitante`);
 
 --
--- Filtros para la tabla `titulo_autor`
---
-ALTER TABLE `titulo_autor`
-  ADD CONSTRAINT `fkAutor` FOREIGN KEY (`idAutor`) REFERENCES `autor` (`idAutor`) ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fkTituloAutor` FOREIGN KEY (`idTitulo`) REFERENCES `titulo` (`idTitulo`) ON UPDATE NO ACTION;
-
---
 -- Filtros para la tabla `titulo_categoria`
 --
 ALTER TABLE `titulo_categoria`
   ADD CONSTRAINT `fkCategoria` FOREIGN KEY (`idTitulo`) REFERENCES `categoria` (`idCategoria`),
   ADD CONSTRAINT `fkTitulo` FOREIGN KEY (`idCategoria`) REFERENCES `titulo` (`idTitulo`);
-
---
--- Filtros para la tabla `usuario_rol`
---
-ALTER TABLE `usuario_rol`
-  ADD CONSTRAINT `fkRol` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`),
-  ADD CONSTRAINT `fkUsuario` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`usuario`);
-
---
--- Filtros para la tabla `visitante_gradoestudios`
---
-ALTER TABLE `visitante_gradoestudios`
-  ADD CONSTRAINT `fkGrado` FOREIGN KEY (`idGrado`) REFERENCES `gradoestudios` (`idGrado`),
-  ADD CONSTRAINT `fkVisitanteG` FOREIGN KEY (`idVisitante`) REFERENCES `visitante` (`idVisitante`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
