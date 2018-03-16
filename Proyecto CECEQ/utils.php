@@ -125,7 +125,7 @@ function insertVisitante($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNaci
     insertVisitanteGradoEstudios($connection,$gradoEstudios);
 
     insertEntrada($connection);
-    
+
     disconnect($connection);
 }
 
@@ -141,7 +141,7 @@ function insertFiadorGradoEstudios($connection, $gradoEstudios){
     $statement->execute();
 }
 
-function insertFiador(  
+function insertFiador(
                         $connection,
                         $nombreF,
                         $apellidoPaternoF,
@@ -168,7 +168,7 @@ function insertFiador(
                             numero,
                             cp,
                             telefono,
-                            correo, 
+                            correo,
                             nombreTrabajo,
                             telefonoTrabajo,
                             coloniaTrabajo,
@@ -195,7 +195,7 @@ function insertVisitanteTramitandoCredencial($nombre, $apellidoPaterno, $apellid
     $statement->execute();
 
     insertVisitanteGradoEstudios($connection,$gradoEstudios);
-    
+
     disconnect($connection);
 }
 
@@ -245,8 +245,8 @@ function insertCredential(  //Visitante
                             $cpTrabajoF,
                             $gradoEstudiosF
                             ){
-    
-    
+
+
     insertVisitanteTramitandoCredencial($nombre,$apellidoPaterno,$apellidoMaterno,$fechaNacimiento,$gradoEstudios,$genero);
 
 
@@ -260,7 +260,7 @@ function insertCredential(  //Visitante
                             numero,
                             cp,
                             telefono,
-                            correo, 
+                            correo,
                             nombreTrabajo,
                             telefonoTrabajo,
                             coloniaTrabajo,
@@ -273,12 +273,12 @@ function insertCredential(  //Visitante
     $nombreTrabajo, $telefonoTrabajo, $coloniaTrabajo, $calleTrabajo, $numeroTrabajo, $cpTrabajo);
     $statement->execute();
 
-    insertFiador($connection, $nombreF, $apellidoPaternoF, $apellidoMaternoF, $correoF, $telefonoF, $calleF, $numeroF, $coloniaF, $cpF, $nombreTrabajoF, 
+    insertFiador($connection, $nombreF, $apellidoPaternoF, $apellidoMaternoF, $correoF, $telefonoF, $calleF, $numeroF, $coloniaF, $cpF, $nombreTrabajoF,
     $telefonoTrabajoF, $calleTrabajoF, $numeroTrabajoF, $coloniaTrabajoF, $cpTrabajoF, $gradoEstudiosF);
 
     insertCredencialFiador($connection);
 
-    disconnect($connection);    
+    disconnect($connection);
 }
 
 function queryVisitor($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios){
@@ -505,18 +505,18 @@ function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
 
   $sql = "INSERT INTO ejemplar_credencial(idEjemplar, idCredencial, fechaPrestamo, fechaDevolucion)
   VALUES(?,?, ?, ?)";
-        // Preparing the statement 
+        // Preparing the statement
         if (!($statement = $conn->prepare($sql))) {
            die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
         }
-         // Binding statement params 
+         // Binding statement params
         if (!$statement->bind_param("iiss", $idEjemplar, $idCredencial, $dateLend, $dateReturn)) {
-            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
         }
          // Executing the statement
          if (!$statement->execute()) {
             die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-          } 
+          }
   disconnect($conn);
 }
 
@@ -525,25 +525,24 @@ function insertReturn($idEjemplar, $idCredencial, $fechaDevolucionReal){
     if(!$conn){
       die("No se pudo conectar a la Base de Datos");
     }
-    $sql = "UPDATE ejemplar_credencial 
-            SET fechaDevolucionReal=(?)     
-            WHERE idEjemplar=(?) 
+    $sql = "UPDATE ejemplar_credencial
+            SET fechaDevolucionReal=(?)
+            WHERE idEjemplar=(?)
             AND idCredencial=(?) ";
-          // Preparing the statement 
+          // Preparing the statement
           if (!($statement = $conn->prepare($sql))) {
              die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
           }
-           // Binding statement params 
+           // Binding statement params
           if (!$statement->bind_param("sii",$fechaDevolucionReal, $idEjemplar, $idCredencial)) {
-              die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+              die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
           }
            // Executing the statement
            if (!$statement->execute()) {
               die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-            } 
+            }
     disconnect($conn);
   }
-
 
 function buscarPrestamoDevolucion($idCredencial){
     $connection = connect();
@@ -553,6 +552,100 @@ function buscarPrestamoDevolucion($idCredencial){
     $result = $statement->get_result();
     disconnect($connection);
     return $result;
+}
+
+function getNameVisitor($var_credencial){
+  $db = connect();
+  if($db != NULL){
+    $query='SELECT v.nombre, v.apellidoPaterno, v.apellidoMaterno
+            FROM visitante v, credencial c
+            WHERE c.idVisitante = v.idVisitante
+            AND c.idVisitante = (?)';
+
+      if(!($stmt = $db->prepare($query))) {
+          die("Preparation failed: (" . $db->errno . ") " . $db->error);
+      }
+      if (!$stmt->bind_param("i", $var_credencial)) {
+          die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
+      }
+      if (!$stmt->execute()) {
+          die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+      }
+
+      $result = $stmt->get_result();
+      if($result->num_rows === 0) exit('No rows');
+      while($row = $result->fetch_assoc()) {
+          $nombre =  $row['nombre'];
+          $aPaterno =  $row['apellidoPaterno'];
+          $aMaterno =  $row['apellidoMaterno'];
+      }
+      disconnect($db);
+      return $nombre.' '.$aPaterno.' '.$aMaterno;
+  }
+}
+
+function getNameBook($var_libro){
+  $db = connect();
+  if($db != NULL){
+    $query='SELECT t.titulo
+            FROM titulo t, ejemplar e
+            WHERE e.idtitulo = t.idtitulo
+            AND e.idEjemplar = (?)';
+
+      if(!($stmt = $db->prepare($query))) {
+          die("Preparation failed: (" . $db->errno . ") " . $db->error);
+      }
+      if (!$stmt->bind_param("i", $var_libro)) {
+          die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
+      }
+      if (!$stmt->execute()) {
+          die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+      }
+
+      $result = $stmt->get_result();
+      if($result->num_rows === 0) exit('No rows');
+      while($row = $result->fetch_assoc()) {
+          $titulo =  $row['titulo'];
+      }
+      disconnect($db);
+      return $titulo;
+  }
+}
+
+function getReturnData($var_libro, $var_credencial){
+  $db = connect();
+  if($db != NULL){
+    $query='SELECT fechaDevolucion
+            FROM ejemplar_credencial
+            WHERE idEjemplar = (?)
+            AND idCredencial = (?)';
+
+      if(!($stmt = $db->prepare($query))) {
+          die("Preparation failed: (" . $db->errno . ") " . $db->error);
+      }
+      if (!$stmt->bind_param("ii", $var_libro, $var_credencial)) {
+          die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
+      }
+      if (!$stmt->execute()) {
+          die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+      }
+
+      $result = $stmt->get_result();
+      if($result->num_rows === 0) exit('No rows');
+      while($row = $result->fetch_assoc()) {
+          $returnDay =  $row['fechaDevolucion'];
+      }
+      //echo 'returnDay: '.$returnDay;
+      $returnDAY= new DateTime($returnDay);
+      $DATE = new DateTime();
+      $interval = $returnDAY->diff($DATE);
+      disconnect($db);
+      if($interval->format('%R')=='-'){
+        return '0 días';
+      }else{
+        return $interval->format('%R %m mes, %d días');
+      }
+  }
 }
 
     //var_dump(login('lalo', 'hockey'));
