@@ -87,8 +87,7 @@ $(".input").each(function(){
                 tableContent = tableContent.concat("<tr><td><a href='accountsEdit.php?user=" + value.user + "'>" + value.nombre + "</a></td>");
                 tableContent = tableContent.concat("<td>" + value.user + "</td>");
                 tableContent = tableContent.concat("<td>" + value.rol + "</td>");
-                tableContent = tableContent.concat("<td><a href='deleteAccount.php?user=" + value.user + "'><i class='material-icons delete'>delete</i></a></td></tr>")
-                console.log(tableContent);
+                tableContent = tableContent.concat("<td><a href='deleteAccount.php?user=" + value.user + "'><i class='material-icons delete'>delete</i></a></td></tr>");
                 $("#user-table").html(tableContent);
             })
 //            console.log(obj);
