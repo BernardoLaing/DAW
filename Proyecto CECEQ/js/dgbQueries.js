@@ -1,16 +1,6 @@
 
 $("select").each(function(){
     $(this).change(function(){
-//        $.ajax({
-//            url: "controller/dgb_search.php",
-//            type: "GET",
-//            dataType: 'json',
-//            success: function(data){
-//                $.each(data, function(key, index){
-//                    console.log(data[key].index);
-//                })
-//            }
-//        });
         $.get("controller/dgb_search.php",{
             Month : $("#month").val(),
             Year : $("#year").val()

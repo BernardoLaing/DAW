@@ -5,48 +5,40 @@
     </div>
     <br>
     <br>
+    <form>
     <div class='form-row'>
         <div class='col-sm-12 col-md-4'>
             <div class='form-group'>
-                <label for="user_name">Nombre:</label>
-                <input name="name" class="form-control cvalidate cname" id="name" size="30" type="text" placeholder="Juan Pérez Rosales" />
+                <label for="name">Nombre:</label>
+                <input name="name" class="form-control cvalidate cname input" id="name" type="text" placeholder="Juan Pérez Rosales" />
             </div>
         </div>
         <div class='col-sm-12 col-md-4'>
             <div class='form-group'>
-                <label for="user_paternal">Nombre usuario:</label>
-                <input name="user" class="form-control cvalidate cname" id="user" size="30" type="text" placeholder="Jperez" />
+                <label for="user">Usuario:</label>
+                <input name="user" class="form-control cvalidate cname input" id="user" type="text" placeholder="Jperez" />
             </div>
         </div>
         <div class='col-sm-12 col-md-4'>
             <div class='form-group'>
-                <label for="user_maternal">Rol:</label>
-                <select name="rol" class="form-control">
-                    <option value="" disabled selected>-- Roles --</option>
+                <label for="rol">Rol:</label>
+                <select name="rol" class="form-control input" id="rol">
+                    <option value="" selected>-- Roles --</option>
                     <?php while($row = mysqli_fetch_array($rols, MYSQLI_BOTH)) { ?>
-                    <option value='<?php echo $row["idRol"]; ?>'><?php echo $row["nombre"]; ?></option>
+                    <option value="<?php echo $row['idRol']; ?>" ><?php echo $row["nombre"]; ?></option>
                     <?php } ?>
                 </select>
             </div>
         </div>
     </div>
-    <br>
-    <div class="row mx-auto">
-        <div class="col-lg-5 col-sm-4"></div>
-        <div class="col-lg-2 col-sm-4">
-            <input type="button" class="btn btn-secondary btn-lg btn-block csearch" value="Buscar">
-        </div>
-        <div class="col-lg-5 col-sm-4"></div>
-    </div>
-
+    </form>
     <br>
 
     <br>
     <div class="">
-        <table class="table table-hover">
+        <table class="table table-hover" id="user-table">
             <thead>
                 <tr>
-                    <th scope="col"> # </th>
                     <th scope="col"> Nombre </th>
                     <th scope="col"> Usuario </th>
                     <th scope="col"> Rol </th>
@@ -55,8 +47,7 @@
             </thead>
             <?php if (mysqli_num_rows($userList) > 0){ while($row = mysqli_fetch_array($userList, MYSQLI_BOTH)) { ?>
             <tr>
-                <td><a href="accountsEdit.php?user=<?php echo $row[0] ?>"><?php echo $count ?></a></td>
-                <td><?php echo $row[1]; ?></td>
+                <td><a href="accountsEdit.php?user=<?php echo $row[0] ?>"><?php echo $row[1]; ?></a></td>
                 <td><?php echo $row[0]; ?></td>
                 <td><?php echo $row[2]; ?></td>
                 <td><a href="deleteAccount.php?user=<?php echo $row[0] ?>"><i class="material-icons delete">delete</i></a></td>
@@ -80,17 +71,29 @@
 
 </div>
 <br /><br />
-<!--
-<div class="row fixed-bottom mdiv2" id="marBot">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2 center-block">
-            <a href="accessControl.php" class="btn btn-outline-secondary"><i class="material-icons alagin-middle">arrow_back</i></a>
-        </div>
-        <div class="col-sm-4"></div>
-        <div class="col-sm-2">
-            <a href="accountCreate.php">
-            <button type="button" class="btn btn-secondary btn-block"> Agregar cuenta </button>
-            </a>
-        </div>
-    </div>
--->
+<script>
+$(".input").each(function(){
+    $(this).change(function(){
+        $.get("controller/cuentas_search.php",{
+            user : $("#user").val(),
+            name : $("#name").val(),
+            rol : $("#rol").val()
+        },
+        function(data){
+            var obj = JSON.parse(data);
+            var tableContent = '<thead><tr><th scope="col"> Nombre </th><th scope="col"> Usuario </th><th scope="col"> Rol </th><th scope="col"></th></tr></thead>';
+            $.each(obj, function(key, value){
+//                console.log(value);
+                tableContent = tableContent.concat("<tr><td><a href='accountsEdit.php?user=" + value.user + "'>" + value.nombre + "</a></td>");
+                tableContent = tableContent.concat("<td>" + value.user + "</td>");
+                tableContent = tableContent.concat("<td>" + value.rol + "</td>");
+                tableContent = tableContent.concat("<td><a href='deleteAccount.php?user=" + value.user + "'><i class='material-icons delete'>delete</i></a></td></tr>")
+                console.log(tableContent);
+                $("#user-table").html(tableContent);
+            })
+//            console.log(obj);
+        });
+    });
+});
+
+</script>
