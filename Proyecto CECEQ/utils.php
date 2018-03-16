@@ -288,7 +288,7 @@ function queryVisitor($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno,
     $apellidoPaterno .="%";
     $apellidoMaterno .="%";
     $statement = mysqli_prepare($connection,"
-    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', genero as 'Género', g.nombre as 'Grado de estudios'
+    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', g.nombre as 'Grado de estudios', genero as 'Género'
     from visitante as v, visitante_gradoestudios as vg, gradoestudios as g
     where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
     and (v.nombre like ? ".($nombre==""?"or 1":"").")

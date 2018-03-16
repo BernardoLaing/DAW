@@ -188,7 +188,7 @@
             <div class="col-5"></div>
             <div class="col-2">
                 <div class="form-group">
-                    <a class="btn btn-outline-secondary mr-0" href="visitants.php">Eliminar usuario</a>
+                    <a class="btn btn-outline-secondary mr-0" href="visitors.php">Eliminar usuario</a>
                 </div>
             </div>
             <div class="col-5"></div>

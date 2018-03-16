@@ -1,0 +1,131 @@
+<br /><br />
+<div class="container shadow">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="text-center">
+                <div class="display-4">Búsqueda de usuarios sancionados</div>
+                <br>
+                <span class="warning cnullalert">Debes llenar todos los campos</span>
+            </div>
+        </div>
+    </div>
+    <form id="entry_form">
+        <div class="row">
+
+            <div class="col-sm-12">
+                <div class='form-group'>
+                    <label for="user_number">Número de Usuario:</label>
+                    <div class="col-md-6">
+                        <input  class="form-control cvalidate cnumber" id="user_number" name="user[number]" size="30" type="number" placeholder="1234567"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="user_name">Nombre:</label>
+                    <div class="col-md-12">
+                        <input  class="form-control cvalidate cname" id="user_name" name="user[name]" size="30" type="text" placeholder="Eduardo"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="user_paternal">Apellido P:</label>
+                    <div class="col-md-12">
+                        <input  class="form-control cvalidate cname" id="user_paternal" name="user[paternal]" size="30" type="text" placeholder="Cuesta"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="user_maternal">Apellido M:</label>
+                    <div class="col-md-12">
+                        <input class="form-control cvalidate cname" id="user_maternal" name="user[maternal]" size="30" type="text" placeholder="Córdova"/>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class='row'>
+
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="user_birthday">Fecha de Nacimiento:</label>
+                    <div class="col-md-12">
+                        <input  class="form-control cvalidate cdate" id="user_birthday" name="user[birthday]" size="30" type="date" placeholder="01/05/1998"/>
+                    </div>
+                    <span class="warning">Debes seleccionar una fecha de nacimiento</span>
+                </div>
+            </div>
+
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="user_grade">Grado de Estudio:</label>
+                    <div class="col-md-12">
+                        <select  class="form-control cvalidate cschooling" id="user_grade" name="user[user_grade]">
+                            <option value="" disabled selected>-- Grado de Estudio --</option>
+                            <option value=1>Ninguno</option>
+                            <option value=2>Primaria</option>
+                            <option value=3>Secundaria</option>
+                            <option value=4>Preparatoria</option>
+                            <option value=5>Universidad</option>
+                            <option value=6>Maestría</option>
+                            <option value=7>Doctorado</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="user_gender">Género:</label>
+                    <div class="col-md-12">
+                        <select  class="form-control cvalidate cgender" id="user_gender" name="user[gender]">
+                            <option value="" disabled selected>-- Genero --</option>
+                            <option value="H">Hombre</option>
+                            <option value="M">Mujer</option>
+                            <option value="O">Otro</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <a class="btn btn-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
+                        <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button class="btn btn-secondary creload">Limpiar campos</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <br><br><br>
+    <div class='row'>
+        <div id="user_table" class='col-12'>
+
+        </div>
+    </div>
+
+    <script src="js/dynamicqueries_viewInfo.js"></script>
