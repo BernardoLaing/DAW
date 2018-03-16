@@ -6,31 +6,31 @@
     <br>
     <br>
     <form>
-    <div class='form-row'>
-        <div class='col-sm-12 col-md-4'>
-            <div class='form-group'>
-                <label for="name">Nombre:</label>
-                <input name="name" class="form-control cvalidate cname input" id="name" type="text" placeholder="Juan Pérez Rosales" />
+        <div class='form-row'>
+            <div class='col-sm-12 col-md-4'>
+                <div class='form-group'>
+                    <label for="name">Nombre:</label>
+                    <input name="name" class="form-control cvalidate cname input" id="name" type="text" placeholder="Juan Pérez Rosales" />
+                </div>
+            </div>
+            <div class='col-sm-12 col-md-4'>
+                <div class='form-group'>
+                    <label for="user">Usuario:</label>
+                    <input name="user" class="form-control cvalidate cname input" id="user" type="text" placeholder="Jperez" />
+                </div>
+            </div>
+            <div class='col-sm-12 col-md-4'>
+                <div class='form-group'>
+                    <label for="rol">Rol:</label>
+                    <select name="rol" class="form-control input" id="rol">
+                        <option value="" selected>-- Roles --</option>
+                        <?php while($row = mysqli_fetch_array($rols, MYSQLI_BOTH)) { ?>
+                        <option value="<?php echo $row['idRol']; ?>" ><?php echo $row["nombre"]; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
             </div>
         </div>
-        <div class='col-sm-12 col-md-4'>
-            <div class='form-group'>
-                <label for="user">Usuario:</label>
-                <input name="user" class="form-control cvalidate cname input" id="user" type="text" placeholder="Jperez" />
-            </div>
-        </div>
-        <div class='col-sm-12 col-md-4'>
-            <div class='form-group'>
-                <label for="rol">Rol:</label>
-                <select name="rol" class="form-control input" id="rol">
-                    <option value="" selected>-- Roles --</option>
-                    <?php while($row = mysqli_fetch_array($rols, MYSQLI_BOTH)) { ?>
-                    <option value="<?php echo $row['idRol']; ?>" ><?php echo $row["nombre"]; ?></option>
-                    <?php } ?>
-                </select>
-            </div>
-        </div>
-    </div>
     </form>
     <br>
 
