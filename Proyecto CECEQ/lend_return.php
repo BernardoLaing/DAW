@@ -16,7 +16,7 @@
     if ($idLibroUno || $idLibroDos || $idLibroTres) {
         $ingresoLibro=true;
     }
-   
+
     if($idCredencial && $ingresoLibro && isset($_POST["prestamo"])){
       //echo "PRESIONO PRESTAMO";
         $aux_librouno = $_POST["user"]["libroUno"];
@@ -25,13 +25,15 @@
         $_SESSION['tipo'] = 'Préstamo';
         $_SESSION['libro'] = $aux_librouno;
         $_SESSION['credencial'] = $aux_credencial;
-      
+
         $date = new DateTime();
         $dateLend = $date->format('Y-m-d H:i:s');
+        $_SESSION['hoy'] = $dateLend;
 
         $date2 = new DateTime();
         $date2 = $date2->modify('+7 day');
         $dateReturn = $date2->format('Y-m-d H:i:s');
+        $_SESSION['hoy2'] = $dateReturn ;
 
   }else if($idCredencial && $ingresoLibro && isset($_POST["devolucion"])){
     //echo "PRESIONO RETORNO";
@@ -53,9 +55,9 @@
      insertLend($_SESSION["libro"], $_SESSION["credencial"], $_SESSION['hoy'], $_SESSION['hoy2']);
      $_SESSION["credencial"] = null;
      $_SESSION["libro"] = null;
-  }else if(isset($_POST["aceptar"]) && ($_SESSION['tipo'] == 'Devolución')){//El cuenta habiente esta ACEPTANDO una DEVOLUCION
-    //echo 'ACEPTO DEVOLUCION';
-    insertReturn($_SESSION["libro"], $_SESSION["credencial"], $_SESSION['hoy']);
+  }else if( (isset($_POST["aceptar1"]) || isset($_POST["aceptar2"]) )&& ($_SESSION['tipo'] == 'Devolución')){//El cuenta habiente esta ACEPTANDO una DEVOLUCION
+    echo 'ACEPTO DEVOLUCION';
+    insertReturn($_SESSION["libro"], $_SESSION['hoy']);
      $_SESSION["credencial"] = null;
      $_SESSION["libro"] = null;
   }else if(isset($_POST["cancelar"]) && ($_SESSION['tipo'] == 'Préstamo')){ //El cuenta habiente esta CANCELANDO un PRESTAMO

@@ -520,21 +520,20 @@ function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
   disconnect($conn);
 }
 
-function insertReturn($idEjemplar, $idCredencial, $fechaDevolucionReal){
+function insertReturn($idEjemplar, $fechaDevolucionReal){
     $conn = connect();
     if(!$conn){
       die("No se pudo conectar a la Base de Datos");
     }
     $sql = "UPDATE ejemplar_credencial
             SET fechaDevolucionReal=(?)
-            WHERE idEjemplar=(?)
-            AND idCredencial=(?) ";
+            WHERE idEjemplar=(?)";
           // Preparing the statement
           if (!($statement = $conn->prepare($sql))) {
              die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
           }
            // Binding statement params
-          if (!$statement->bind_param("sii",$fechaDevolucionReal, $idEjemplar, $idCredencial)) {
+          if (!$statement->bind_param("si",$fechaDevolucionReal, $idEjemplar)) {
               die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
           }
            // Executing the statement
@@ -554,7 +553,7 @@ function buscarPrestamoDevolucion($idCredencial){
     return $result;
 }
 
-function getNameVisitor($var_credencial){
+function getNameVisitor($var_credencial){ //AQUI ESTA EL ERROR
   $db = connect();
   if($db != NULL){
     $query='SELECT v.nombre, v.apellidoPaterno, v.apellidoMaterno

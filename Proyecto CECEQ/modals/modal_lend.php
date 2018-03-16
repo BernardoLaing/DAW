@@ -67,29 +67,31 @@ if($var_value && $var_tipo == 'Préstamo'){
         </div>
 
         <!-- Modal footer -->
-        <div class="modal-footer text-center">
+    <div class="modal-footer">
+      <div class="row">
+        <form method="post">
+         <div class="row">
+             <div class="col-md-12">
+              <p class="text-left"> ¿Esta en buen estado el libro?</p>
+             </div>
+         </div>
           <div class="row">
-            <form method="post">
-              <div class="row text-center">
-                  <p class="text-center">¿El libro esta en buen estado?</p>
-              </div>
-              <div class="row">
-                <div class="col-sm-3">
-                  <input type="submit" id="cancelar" class="btn btn-secondary" name="malEstado" value="Sí" />
-                </div>
-                <div class="col-sm-3">
-                   <input type="submit" id="aceptar" class="btn btn-secondary"  name="buenEstado" value="No" />
-                </div>
-                <div class="col-sm-6">
-                   <input type="submit" id="aceptar" class="btn btn-danger"  name="cancelar" value="Cancelar devolución" />
-                </div>
-              </div>
-            </form>
+            <div class="col-sm-4 text-left">
+              <input type="submit" id="cancelar" class="btn btn-success" name="aceptar1" value="Sí" />
+            </div>
+            <div class="col-sm-4 text-left ">
+               <input type="submit" id="aceptar" class="btn btn-danger"  name="aceptar2" value="No" />
+            </div>
+            <div class="col-sm-4 text-left">
+              <input type="submit" id="cancelar" class="btn btn-danger" name="cancelar" value="Cancelar Devolución" />
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
-  </div>';
+  </div>
+</div>
+</div>';
 }else{
   echo '
    <div class="modal fade" id="myModal">
