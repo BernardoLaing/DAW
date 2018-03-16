@@ -47,7 +47,7 @@
               <div class='form-group'>
                   <label for="user_ocupation">Sexo:</label>
                   <div class="col-md-12">
-                    <select  class="form-control cvalidate cgender" name="user[gender]">
+                    <select  class="form-control cvalidate cgender" name="user[gender]" id="user_gender">
                         <option value="" disabled selected>-- Sexo --</option>
                         <option value="H">Hombre</option>
                         <option value="M">Mujer</option>
@@ -64,7 +64,7 @@
               <div class='form-group'>
                   <label for="user_ocupation">Mes:</label>
                   <div class="col-md-12">
-                    <select class="form-control cvalidate cnumber" name="user[month]">
+                    <select class="form-control cvalidate cnumber" name="user[month]" id="user_month">
                         <option value="" disabled selected>-- Mes --</option>
                         <option value="01">Enero</option>
                         <option value="02">Febrero</option>
@@ -87,7 +87,7 @@
               <div class='form-group'>
                   <label for="user_ocupation">Año:</label>
                   <div class="col-md-12">
-                    <select class="form-control cvalidate cyear" name="user[year]">
+                    <select class="form-control cvalidate cyear" name="user[year]" id="user_year">
                         <option value="" disabled selected>-- Año --</option>
                         <?php
                         $firstYear = 2018;
@@ -109,7 +109,7 @@
           <div class='col-sm-4'>
               <div class='form-group'>
                   <div class="text-center">
-                      <input type="submit" name="button" class="btn btn-secondary mx-auto csearch" value="Mostrar Estadísticas">
+                <input type="submit" name="button" class="btn btn-secondary mx-auto csearch creload" value="Mostrar Estadísticas">  
                   </div>
               </div>
           </div>
