@@ -88,7 +88,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <div class="col-md-12">
-                    <a class="btn btn-outline-secondary py-0" href="visitants.php"><i class="material-icons align-middle">arrow_back</i></a>
+                    <a class="btn btn-outline-secondary py-0" href="visitors.php"><i class="material-icons align-middle">arrow_back</i></a>
                     </div>
                 </div>
             </div>

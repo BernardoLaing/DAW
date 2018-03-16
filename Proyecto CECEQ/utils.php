@@ -76,6 +76,8 @@ require_once('model/RBAC-utils.php');
 
 // ---------------------------------------END RBAC MODEL-----------------------------------------
 
+require_once('model/DGB-utils.php');
+
     /*
     function insertVisitante($name,$paternal,$maternal,$bday,$grade,$gender){
         $conn = connect();
@@ -96,6 +98,21 @@ require_once('model/RBAC-utils.php');
         }
         disconnect($conn);
 }*/
+function insertVisitanteGradoEstudios($connection, $gradoEstudios){
+    $statement = mysqli_prepare($connection,"
+    insert into visitante_gradoestudios values ((select idVisitante from visitante order by idVisitante desc limit 1), ?, current_timestamp());
+    ");
+    $statement->bind_param("i", $gradoEstudios);
+    $statement->execute();
+}
+
+function insertEntrada($connection){
+    $statement = mysqli_prepare($connection,"
+    insert into entrada (idVisitante) values ((select idVisitante from visitante order by idVisitante desc limit 1));
+    ");
+    $statement->execute();
+}
+
 function insertVisitante($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $gradoEstudios, $genero){
     $connection = connect();
     $statement = mysqli_prepare($connection,"
@@ -105,23 +122,98 @@ function insertVisitante($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNaci
     $statement->bind_param("sssss", $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero);
     $statement->execute();
 
+    insertVisitanteGradoEstudios($connection,$gradoEstudios);
+
+    insertEntrada($connection);
+    
+    disconnect($connection);
+}
+
+/*
+        TRAMITAR CREDENCIAL
+*/
+
+function insertFiadorGradoEstudios($connection, $gradoEstudios){
     $statement = mysqli_prepare($connection,"
-    insert into visitante_gradoestudios values ((select idVisitante from visitante order by idVisitante desc limit 1), ?, current_timestamp());
+    insert into Fiador_GradoEstudios values ((select idFiador from Fiador order by idFiador desc limit 1), ?, current_timestamp());
     ");
     $statement->bind_param("i", $gradoEstudios);
     $statement->execute();
+}
 
+function insertFiador(  
+                        $connection,
+                        $nombreF,
+                        $apellidoPaternoF,
+                        $apellidoMaternoF,
+                        $coloniaF,
+                        $calleF,
+                        $numeroF,
+                        $cpF,
+                        $telefonoF,
+                        $correoF,
+                        $nombreTrabajoF,
+                        $telefonoTrabajoF,
+                        $coloniaTrabajoF,
+                        $calleTrabajoF,
+                        $numeroTrabajoF,
+                        $cpTrabajoF,
+                        $gradoEstudiosF){
     $statement = mysqli_prepare($connection,"
-    insert into entrada (idVisitante) values ((select idVisitante from visitante order by idVisitante desc limit 1));
+    insert into fiador (    nombre,
+                            apellidoPaterno,
+                            apellidoMaterno,
+                            colonia,
+                            calle,
+                            numero,
+                            cp,
+                            telefono,
+                            correo, 
+                            nombreTrabajo,
+                            telefonoTrabajo,
+                            coloniaTrabajo,
+                            calleTrabajo,
+                            numeroTrabajo,
+                            cpTrabajo)
+    values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
     ");
+    $statement->bind_param("ssssssisssssssi", $nombreF, $apellidoPaternoF, $apellidoMaternoF, $coloniaF, $calleF, $numeroF, $cpF, $telefonoF, $correoF,
+    $nombreTrabajoF, $telefonoTrabajoF, $coloniaTrabajoF, $calleTrabajoF, $numeroTrabajoF, $cpTrabajoF);
     $statement->execute();
-    disconnect($connection);
+
+    insertFiadorGradoEstudios($connection,$gradoEstudiosF);
 
 }
 
-function insertCredential($idCredencial, 
-                            $idVisitante,
-                            $fechaExpedicion,
+function insertVisitanteTramitandoCredencial($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $gradoEstudios, $genero){
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    insert into visitante (nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, genero)
+    values (?, ?, ?, ?, ?);
+    ");
+    $statement->bind_param("sssss", $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero);
+    $statement->execute();
+
+    insertVisitanteGradoEstudios($connection,$gradoEstudios);
+    
+    disconnect($connection);
+}
+
+function insertCredencialFiador($connection){
+    $statement = mysqli_prepare($connection,"
+    insert into credencial_fiador values ((select idCredencial from Credencial order by idCredencial desc limit 1), (select idFiador from Fiador order by idFiador desc limit 1), date('Y-m-d');
+    ");
+    $statement->execute();
+}
+
+function insertCredential(  //Visitante
+                            $nombre,
+                            $apellidoPaterno,
+                            $apellidoMaterno,
+                            $fechaNacimiento,
+                            $gradoEstudios,
+                            $genero,
+                            //Credencial
                             $foto,
                             $colonia,
                             $calle,
@@ -134,11 +226,33 @@ function insertCredential($idCredencial,
                             $coloniaTrabajo,
                             $calleTrabajo,
                             $numeroTrabajo,
-                            $cpTrabajo){
+                            $cpTrabajo,
+                            //Fiador
+                            $nombreF,
+                            $apellidoPaternoF,
+                            $apellidoMaternoF,
+                            $correoF,
+                            $telefonoF,
+                            $calleF,
+                            $numeroF,
+                            $coloniaF,
+                            $cpF,
+                            $nombreTrabajoF,
+                            $telefonoTrabajoF,
+                            $calleTrabajoF,
+                            $numeroTrabajoF,
+                            $coloniaTrabajoF,
+                            $cpTrabajoF,
+                            $gradoEstudiosF
+                            ){
+    
+    
+    insertVisitanteTramitandoCredencial($nombre,$apellidoPaterno,$apellidoMaterno,$fechaNacimiento,$gradoEstudios,$genero);
+
+
     $connection = connect();
     $statement = mysqli_prepare($connection,"
-    insert into visitante (idCredencial,
-                            idVisitante,
+    insert into credencial (idVisitante,
                             fechaExpedicion,
                             foto,
                             colonia,
@@ -153,11 +267,18 @@ function insertCredential($idCredencial,
                             calleTrabajo,
                             numeroTrabajo,
                             cpTrabajo)
-    values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    values ((select idVisitante from visitante order by idVisitante desc limit 1), date('Y-m-d'), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
     ");
-    $statement->bind_param("iisssiiississii", $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero);
+    $statement->bind_param("ssssisssssssi", $foto, $colonia, $calle, $numero, $cp, $telefono, $correo,
+    $nombreTrabajo, $telefonoTrabajo, $coloniaTrabajo, $calleTrabajo, $numeroTrabajo, $cpTrabajo);
     $statement->execute();
-    
+
+    insertFiador($connection, $nombreF, $apellidoPaternoF, $apellidoMaternoF, $correoF, $telefonoF, $calleF, $numeroF, $coloniaF, $cpF, $nombreTrabajoF, 
+    $telefonoTrabajoF, $calleTrabajoF, $numeroTrabajoF, $coloniaTrabajoF, $cpTrabajoF, $gradoEstudiosF);
+
+    insertCredencialFiador($connection);
+
+    disconnect($connection);    
 }
 
 function queryVisitor($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios){
@@ -166,7 +287,7 @@ function queryVisitor($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno,
     $apellidoPaterno .="%";
     $apellidoMaterno .="%";
     $statement = mysqli_prepare($connection,"
-    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', genero as 'Género', g.nombre as 'Grado de estudios'
+    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', g.nombre as 'Grado de estudios', genero as 'Género'
     from visitante as v, visitante_gradoestudios as vg, gradoestudios as g
     where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
     and (v.nombre like ? ".($nombre==""?"or 1":"").")

@@ -5,6 +5,7 @@ include("partials/_header.html");
 include("partials/_top_bar.html"); 
 ?>
 <?php
+$rols = getTable('rol');
 $userList = getUserRoles();
 $count = 1;
 ?>

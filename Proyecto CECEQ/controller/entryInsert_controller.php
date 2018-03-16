@@ -44,3 +44,5 @@
     }
     //displey za modal :v
     header("Location: ../entry.php");
+
+    ?>

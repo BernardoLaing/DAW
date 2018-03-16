@@ -38,7 +38,6 @@ if(isset($_POST["submit"])){
             $_SESSION["user"] = $user;
             $_SESSION["password"] = $password;
             $_SESSION["permisos"] = getUserPermissions($user);
-            //$_SESSION["permisos"] = getUserPermissions("admin");
             header('Location: menu.php');
         }
     }
