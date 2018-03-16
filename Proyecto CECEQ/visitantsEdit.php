@@ -1,5 +1,9 @@
-<?php include("partials/_header.html"); ?>
-<?php include("partials/_top_bar.html"); ?>
+<?php
+include("partials/_header.html");
+include("partials/_top_bar.html");
+include ("")
+?>
+
 <br /><br />
 <div class="container shadow">
     <!--header-->

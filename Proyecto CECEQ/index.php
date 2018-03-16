@@ -34,13 +34,19 @@ if(isset($_POST["submit"])){
     //Comparar usuario y contraseña con los almacenados
 
     if(!$incorrect){
+
+            $_SESSION["user"] = $user;
+            $_SESSION["password"] = $password;
+            $_SESSION["permisos"] = getUserPermissions("admin");
+            header('Location: menu.php');
+        /*
         if(login($user, $password)){
             $_SESSION["user"] = $user;
             $_SESSION["password"] = $password;
             $_SESSION["permisos"] = getUserPermissions($user);
-            //$_SESSION["permisos"] = getUserPermissions("admin");
             header('Location: menu.php');
         }
+        */
     }
 }
 
