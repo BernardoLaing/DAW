@@ -6,6 +6,7 @@
 
 
 <?php
+/*
 $ocupation = isset($_POST["user"]["ocupation"]) && ($_POST["user"]["ocupation"]);
 $age = isset($_POST["user"]["age"]) && is_numeric($_POST["user"]["age"]);
 $gender = isset($_POST["user"]["gender"]) && ($_POST["user"]["gender"]);
@@ -24,5 +25,5 @@ $year = isset($_POST["user"]["year"]) && ($_POST["user"]["year"]);
       include("modals/modal_statistics.php");
       echo "<script> $('#myModal').modal('show') </script>";
     }
-  }
+  }*/
  ?>

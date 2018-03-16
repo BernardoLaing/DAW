@@ -185,6 +185,30 @@ function queryVisitor($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno,
     return $result;
 }
 
+function queryStatistics($schooling, $age, $gender, $month, $year){
+    $connection = connect();
+    $age .="%";
+    /*
+    $statement = mysqli_prepare($connection,"
+    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', genero as 'Género', g.nombre as 'Grado de estudios'
+    from visitante as v, visitante_gradoestudios as vg, gradoestudios as g
+    where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
+    and (v.nombre like ? ".($nombre==""?"or 1":"").")
+    and (apellidoPaterno like ? ".($apellidoPaterno==""?"or 1":"").")
+    and (apellidoMaterno like ? ".($apellidoMaterno==""?"or 1":"").")
+    and (fechaNacimiento = ? ".($fechaNacimiento==""?"or 1":"").")
+    and (genero = ? ".($genero==""?"or 1":"").")
+    and v.idVisitante = vg.idVisitante
+    and vg.idGrado = g.idGrado
+    and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
+    ");
+    $statement->bind_param("isssssi", $idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;*/
+}
+
 
 function buildTableData($result){
     $table = "";
