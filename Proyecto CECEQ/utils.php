@@ -347,6 +347,11 @@ function buscarAutorTitulo($idTitulo, $idAutor)
 }
 
 //**************************   De interfaz Lend_Return   **********************************
+function checkBookAvailability(){
+    //si availability da true llama a la funcion insertLend
+    // si availability da falso llama/incluye a un modal que marque erro
+}
+
 function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
   $conn = connect();
   if(!$conn){

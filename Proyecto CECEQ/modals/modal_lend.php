@@ -5,8 +5,7 @@ $var_value = $_SESSION['ok'];
 $var_credencial = $_SESSION['credencial'];  //Id Credencial
 $var_libro = $_SESSION['libro'];            //Id libro
 $var_tipo = $_SESSION['tipo'];              //Prestamo o Devolucion
-//getNameVisitor($_SESSION['credencial']);
-//Obtener el nombre del visitante
+
 function getNameVisitor($var_credencial){
   $db = connect();
   if($db != NULL){
@@ -66,16 +65,8 @@ function getNameBook($var_libro){
 }
 
 function getReturnData($var_libro, $var_credencial){
-  //$datetime1 = new DateTime('2009-10-11');
-  //$datetime2 = new DateTime('2009-10-13');
-  //$interval = $datetime1->diff($datetime2);
-  //echo $interval->format('%R%a días');
   $db = connect();
   if($db != NULL){
-    //$date = new DateTime();
-    //$dateReturn = $date->format('Y-m-d H:i:s');
-    //echo 'Date Return: '.$dateReturn;
-    //return;
     $query='SELECT fechaDevolucion
             FROM ejemplar_credencial
             WHERE idEjemplar = (?)
@@ -94,17 +85,18 @@ function getReturnData($var_libro, $var_credencial){
       $result = $stmt->get_result();
       if($result->num_rows === 0) exit('No rows');
       while($row = $result->fetch_assoc()) {
-          //$lendDay =  $row['fechaPrestamo'];
           $returnDay =  $row['fechaDevolucion'];
       }
-      //echo 'Prestamo '.$lendDay;
-      $actualReturnDay= new DateTime(date("Y-m-d H:i:s"));
-      echo 'returnDay: '.$returnDay;
-      echo 'actualReturnDay: '.$actualReturnDay;
-      $interval = $returnDay->diff($actualReturnDay);
-      echo $interval->format('%R%a días');
+      //echo 'returnDay: '.$returnDay;
+      $returnDAY= new DateTime($returnDay);
+      $DATE = new DateTime();
+      $interval = $returnDAY->diff($DATE);
       disconnect($db);
-      return $titulo;
+      if($interval->format('%R')=='-'){
+        return '0 días';
+      }else{
+        return $interval->format('%R %m mes, %d días');
+      }
   }
 }
 
@@ -165,7 +157,7 @@ if($var_value && $var_tipo == 'Préstamo'){
           <p><strong>Prestamo a: </strong>' . getNameVisitor($_SESSION['credencial']) .'</p>
           <p><strong>Fecha de préstamo: </strong>'.date("Y-m-d").'</p>
           <p><strong>Fecha de retorno: </strong>'.date("Y-m-d", $diaRegreso) .'</p>
-          <p><strong>Días de retraso: </strong>'. getReturnData($_SESSION['libro'], $_SESSION['credencial']).'</p>
+          <p><strong>Días de retraso: </strong>'.  getReturnData($_SESSION['libro'], $_SESSION['credencial']) .'</p>
         </div>
 
         <!-- Modal footer -->
