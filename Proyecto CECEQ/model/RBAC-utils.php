@@ -57,24 +57,23 @@ function getUser($user){
                 AND u.usuario = ?';
         
         // Preparing the statement 
-        if (!($statement = $db->prepare($query))) {
+        if (!($stmt = $db->prepare($query))) {
             die("Preparation failed: (" . $db->errno . ") " . $db->error);
         }
         // Binding statement params 
-        if (!$statement->bind_param("s", $user)) {
+        if (!$stmt->bind_param("s", $user)) {
             die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
         }
          // Executing the statement
-         if (!$statement->execute()) {
+         if (!$stmt->execute()) {
             die("Execution failed: (" . $statement->errno . ") " . $statement->error);
           } 
-        $statement->store_result();
-        if($statement->num_rows === 0) exit('No rows');
-        $statement->bind_result($user, $name, $rol);
-        $statement->fetch();
-        $result["user"] = $user;
-        $result["name"] = $name;
-        $result["rol"] = $rol;
+        $result = $stmt->get_result();
+        if($result->num_rows === 0) exit('No rows');
+        while($row = $result->fetch_assoc()) {
+            $users["user"] = 1;
+        }
+        disconnect($db);
         disconnect($db);
         return $result;
     }
@@ -215,6 +214,58 @@ function deleteUser($user){
         
         disconnect($db);
     }
+}
+
+function searchUser($user, $name, $idRol){
+    $db = connect();
+    if($db != NULL){
+        
+        $user = "%" . $user . "%";
+        $name = "%" . $name . "%";
+        
+        $query="SELECT u.usuario, u.nombre, r.nombre as 'rol' 
+                FROM usuario u, usuario_rol ur, rol r
+                WHERE u.usuario = ur.usuario AND ur.idRol = r.idRol
+                AND u.usuario LIKE ?
+                and u.nombre LIKE ?";
+        if($idRol != 0){
+            $query .= " AND r.idRol=?";
+            if(!($stmt = $db->prepare($query))) {
+                die("Preparation failed: (" . $db->errno . ") " . $db->error);
+            }
+            if (!$stmt->bind_param("ssi", $user, $name, $idRol)) {
+                die("Parameter vinculation failed: (" . $stmt->errno . ") " . $statement->error); 
+            }
+            if (!$stmt->execute()) {
+                die("Execution failed: (" . $stmt->errno . ") " . $statement->error);
+            } 
+        }else{
+            if(!($stmt = $db->prepare($query))) {
+                die("Preparation failed: (" . $db->errno . ") " . $db->error);
+            }
+            if (!$stmt->bind_param("ss", $user, $name)) {
+                die("Parameter vinculation failed: (" . $stmt->errno . ") " . $statement->error); 
+            }
+            if (!$stmt->execute()) {
+                die("Execution failed: (" . $stmt->errno . ") " . $statement->error);
+            }
+        }
+        
+        $result = $stmt->get_result();
+        if($result->num_rows === 0) exit('No rows');
+        $i = 0;
+        while($row = $result->fetch_assoc()) {
+            $table[$i]['user'] = $row['usuario'];
+            $table[$i]['nombre'] = $row['nombre'];
+            $table[$i]['rol'] = $row['rol'];
+            $i += 1;
+        }
+        
+        
+        disconnect($db);
+        return $table;
+    }
+    return "";
 }
 
 // -------------------------------------Roles-------------------------------------------------
