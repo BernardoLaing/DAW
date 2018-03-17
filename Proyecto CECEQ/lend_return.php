@@ -18,12 +18,12 @@
     }
 
     if($idCredencial && $ingresoLibro && isset($_POST["prestamo"])){
-      //echo "PRESIONO PRESTAMO";
         $aux_librouno = $_POST["user"]["libroUno"];
         $aux_credencial = $_POST["user"]["credencial"];
         $_SESSION['libro'] = $aux_librouno;
         $_SESSION['credencial'] = $aux_credencial;
-        $_SESSION['tipo'] = checkBookLimit($_SESSION['credencial'], $_SESSION['libro']); //Préstamo, Devolución, excedePrestamos, usuarioInexistente, libroInexistente
+        //Préstamo, Devolución, excedePrestamos, usuarioInexistente, libroInexistente
+        $_SESSION['tipo'] = setTipo($_SESSION['credencial'], $_SESSION['libro'], true);
 
         $_SESSION['ok'] = true;
 
@@ -37,14 +37,10 @@
         $_SESSION['hoy2'] = $dateReturn ;
 
   }else if($ingresoLibro && isset($_POST["devolucion"])){
-    echo "PRESIONO RETORNO";
     $aux_librouno = $_POST["user"]["libroUno"];
-    $aux_credencial = $_POST["user"]["credencial"];
     $_SESSION['ok'] = true;
-    $_SESSION['tipo'] = 'Devolución';
     $_SESSION['libro'] = $aux_librouno;
-    $_SESSION['credencial'] = $aux_credencial;
-
+    $_SESSION['tipo'] = setTipo(NULL, $_SESSION['libro'], false);
 
   }else if(!($idCredencial && $ingresoLibro)){
         $_SESSION['ok'] = false;
@@ -54,19 +50,18 @@
 
     include("modals/modal_lend.php");
     echo "<script> $('#myModal').modal('show') </script>";
-
   }
 
-  // OPCIONES EN EL MODAL
+  ////////// OPCIONES EN EL MODAL ///////////////
   if(isset($_POST["aceptar"]) && ($_SESSION['tipo'] == 'Préstamo')){ //El cuenta habiente esta ACEPTANDO un PRESTAMO
     //echo 'ACEPTO PRESTAMO ';
      insertLend($_SESSION["libro"], $_SESSION["credencial"], $_SESSION['hoy'], $_SESSION['hoy2']);
      $_SESSION["credencial"] = null;
      $_SESSION["libro"] = null;
      $_SESSION['tipo'] = NULL;
-  }else if( (isset($_POST["aceptar1"]) || isset($_POST["aceptar2"]) )&& ($_SESSION['tipo'] == 'Devolución')){//El cuenta habiente esta ACEPTANDO una DEVOLUCION
-    echo 'ACEPTO DEVOLUCION';
-    insertReturn($_SESSION["libro"], $_SESSION['hoy']);
+  }else if( (isset($_POST["buenEstado"]) || isset($_POST["malEstado"]) )&& ($_SESSION['tipo'] == 'Devolución')){//El cuenta habiente esta ACEPTANDO una DEVOLUCION
+    //echo 'ACEPTO DEVOLUCION'; //echo " buen estado: ".isset($_POST["buenEstado"]). "   Mal estado: ". isset($_POST["malEstado"]);
+    insertReturn($_SESSION["libro"], $_SESSION['hoy'], isset($_POST["buenEstado"]), isset($_POST["malEstado"]));
      $_SESSION["credencial"] = null;
      $_SESSION["libro"] = null;
      $_SESSION['tipo'] = NULL;

@@ -1,48 +1,69 @@
 <?php
 //**************************   De interfaz Lend_Return   **********************************
-function checkBookLimit($idCredencial, $idEjemplar){ //Estable el valor de la variable sesión tipo. //Préstamo, Devolución, excedePrestamos, usuarioInexistente, libroInexistente
+ //Estable el valor de la variable sesión tipo.
+ //Préstamo, Devolución, excedePrestamos, usuarioInexistente, libroInexistente, libroActualmentePrestado
+function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
     $conn = connect();
     if(!$conn){ die("No se pudo conectar a la Base de Datos");}
-    ///////////// REVISA QUE NO TENGA 3 PRESTAMOS //////////////////////
-    $sql='SELECT *
-            FROM ejemplar_credencial ec
-            WHERE ec.idCredencial = (?)
-            AND fechaDevolucionReal is null';
-    // Preparing the statement
-    if (!($statement = $conn->prepare($sql))) {
-        die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
-    }
-    // Binding statement params
-    if (!$statement->bind_param("i", $idCredencial)) {
-        die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
-    }
-    // Executing the statement
-    if (!$statement->execute()) {
-        die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-    }
-    $result = $statement->get_result();
-    if($result->num_rows === 3){
-      return 'excedePrestamos';
-    }
-    ///////////// REVISA QUE EXISTA USUARIO //////////////////////
-    $sql='SELECT *
-            FROM credencial c
-            WHERE c.idCredencial = (?)';
-    // Preparing the statement
-    if (!($statement = $conn->prepare($sql))) {
-        die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
-    }
-    // Binding statement params
-    if (!$statement->bind_param("i", $idCredencial)) {
-        die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
-    }
-    // Executing the statement
-    if (!$statement->execute()) {
-        die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-    }
-    $result = $statement->get_result();
-    if($result->num_rows === 0){
-      return 'usuarioInexistente';
+    if ($boolPrestamo == true) {
+      ///////////// REVISA QUE NO TENGA 3 PRESTAMOS //////////////////////
+      $sql='SELECT *
+              FROM ejemplar_credencial ec
+              WHERE ec.idCredencial = (?)
+              AND fechaDevolucionReal is null';
+      // Preparing the statement
+      if (!($statement = $conn->prepare($sql))) {
+          die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
+      }
+      // Binding statement params
+      if (!$statement->bind_param("i", $idCredencial)) {
+          die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
+      }
+      // Executing the statement
+      if (!$statement->execute()) {
+          die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+      }
+      $result = $statement->get_result();
+      if($result->num_rows === 3){
+        return 'excedePrestamos';
+      }
+      ///////////// REVISA QUE EXISTA USUARIO //////////////////////
+      $sql='SELECT *
+              FROM credencial c
+              WHERE c.idCredencial = (?)';
+      // Preparing the statement
+      if (!($statement = $conn->prepare($sql))) {
+          die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
+      }
+      // Binding statement params
+      if (!$statement->bind_param("i", $idCredencial)) {
+          die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
+      }
+      // Executing the statement
+      if (!$statement->execute()) {
+          die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+      }
+      $result = $statement->get_result();
+      if($result->num_rows === 0){
+        return 'usuarioInexistente';
+      }
+      ///////////// REVISA QUE NO ESTE ACTUALMENTE EN LA TABLA EJEMPLAR_CREDENCIAL  //////////////////////
+      $sql='SELECT *
+              FROM ejemplar_credencial ec
+              WHERE ec.idEjemplar = (?)
+              AND ec.fechaDevolucionReal is null';
+      // Preparing the statement
+      if (!($statement = $conn->prepare($sql))) {die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);}
+      // Binding statement params
+      if (!$statement->bind_param("i", $idEjemplar)) {
+          die("Parameter vinculation failed: (" .$statement->errno . ") " . $statement->error);
+      }
+      // Executing the statement
+      if (!$statement->execute()) {
+          die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+      }
+      $result = $statement->get_result();
+      if($result->num_rows === 1){return 'libroActualmentePrestado';}
     }
     ///////////// REVISA QUE EXISTA LIBRO //////////////////////
     $sql='SELECT *
@@ -65,7 +86,12 @@ function checkBookLimit($idCredencial, $idEjemplar){ //Estable el valor de la va
       return 'libroInexistente';
     }
 
-    return 'Préstamo';
+    if ($boolPrestamo==true) {
+        return 'Préstamo';
+    }else{
+      return 'Devolución';
+    }
+    disconnect($conn);
 }
 
 function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
@@ -73,7 +99,7 @@ function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
   if(!$conn){ die("No se pudo conectar a la Base de Datos");}
 
   $sql = "INSERT INTO ejemplar_credencial(idEjemplar, idCredencial, fechaPrestamo, fechaDevolucion)
-  VALUES(?,?, ?, ?)";
+          VALUES(?,?, ?, ?)";
         // Preparing the statement
         if (!($statement = $conn->prepare($sql))) {
            die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
@@ -86,16 +112,18 @@ function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
          if (!$statement->execute()) {
             die("Execution failed: (" . $statement->errno . ") " . $statement->error);
           }
+  cambiarEstado(1, $idEjemplar);
   disconnect($conn);
 }
 
-function insertReturn($idEjemplar, $fechaDevolucionReal){
+function insertReturn($idEjemplar, $fechaDevolucionReal, $buenEstado, $malEstado){
     $conn = connect();
     if(!$conn){ die("No se pudo conectar a la Base de Datos");}
+    //////////////// PONER FECHA DE DEVOLUCION REAL ///////////////////
+      $sql = "UPDATE ejemplar_credencial
+              SET fechaDevolucionReal=(?)
+              WHERE idEjemplar=(?)";
 
-    $sql = "UPDATE ejemplar_credencial
-            SET fechaDevolucionReal=(?)
-            WHERE idEjemplar=(?)";
           // Preparing the statement
           if (!($statement = $conn->prepare($sql))) {
              die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
@@ -108,6 +136,12 @@ function insertReturn($idEjemplar, $fechaDevolucionReal){
            if (!$statement->execute()) {
               die("Execution failed: (" . $statement->errno . ") " . $statement->error);
             }
+      //////////////// CAMBIA EL ESTADO A DAÑADO O DISPONIBLE ///////////////////
+      if ($buenEstado == true)
+          cambiarEstado(5, $idEjemplar);
+      else
+        cambiarEstado(4, $idEjemplar);
+
     disconnect($conn);
   }
 
@@ -147,6 +181,7 @@ function getNameVisitor($idCampo, $boolCredencial){
 
       return $nombre.' '.$aPaterno.' '.$aMaterno;
   }
+  disconnect($db);
 }
 
 function getNameBook($var_libro){
@@ -185,32 +220,84 @@ function getLateDays($var_libro){
             WHERE idEjemplar = (?)
             AND fechaDevolucionReal is NULL';
 
-      if(!($stmt = $db->prepare($query))) {
-          die("Preparation failed: (" . $db->errno . ") " . $db->error);
-      }
-      if (!$stmt->bind_param("i", $var_libro)) {
-          die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
-      }
-      if (!$stmt->execute()) {
-          die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-      }
+      if(!($stmt = $db->prepare($query))) {die("Preparation failed: (" . $db->errno . ") " . $db->error);}
+      if (!$stmt->bind_param("i", $var_libro)) {die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);}
+      if (!$stmt->execute()) {die("Execution failed: (" . $statement->errno . ") " . $statement->error);}
 
       $result = $stmt->get_result();
       if($result->num_rows === 0) exit('No rows');
       while($row = $result->fetch_assoc()) {
           $returnDay =  $row['fechaDevolucion'];
       }
-      //echo 'returnDay: '.$returnDay;
       $returnDAY= new DateTime($returnDay);
       $DATE = new DateTime();
       $interval = $returnDAY->diff($DATE);
-      disconnect($db);
       if($interval->format('%R')=='-'){
         return '0 días';
-      }else{
+      }else
         return $interval->format('%R %m mes, %d días');
-      }
+      disconnect($db);
   }
 }
 
+//true para recibir fecha lend, false para recibir fecha devolucion
+function getDateInfo($idLibro, $lend ){
+  $db = connect();
+  if($db != NULL){
+    if ($lend ==true ) {
+      $query='SELECT fechaPrestamo
+              FROM ejemplar_credencial
+              WHERE idEjemplar = (?)
+              AND fechaDevolucionReal is NULL';
+    }else{
+      $query='SELECT fechaDevolucion
+              FROM ejemplar_credencial
+              WHERE idEjemplar = (?)
+              AND fechaDevolucionReal is NULL';
+    }
+      if(!($stmt = $db->prepare($query))) {die("Preparation failed: (" . $db->errno . ") " . $db->error);}
+      if (!$stmt->bind_param("i", $idLibro)){die("Parameter vinculation failed: (".$statement->errno.")".$statement->error);}
+      if (!$stmt->execute()) {die("Execution failed: (" . $statement->errno . ") " . $statement->error);}
+
+      $result = $stmt->get_result();
+      if($result->num_rows === 0) exit('No rows');
+
+      if ($lend ==true) {
+        while($row = $result->fetch_assoc()) {
+            $returnDay =  $row['fechaPrestamo'];
+        }
+      }else{
+        while($row = $result->fetch_assoc()) {
+            $returnDay =  $row['fechaDevolucion'];
+        }
+      }
+      $returnDAY= new DateTime($returnDay);
+      $returnDay = $returnDAY->format('Y-m-d');
+      return $returnDay;
+      disconnect($db);
+  }
+}
+
+function cambiarEstado($numEstado, $idEjemplar){
+  $conn = connect();
+  if(!$conn){ die("No se pudo conectar a la Base de Datos");}
+
+  $sql = "UPDATE ejemplar_estado
+          SET idEstado = (?)
+          WHERE idEjemplar=(?)";
+
+      // Preparing the statement
+      if (!($statement = $conn->prepare($sql))) {
+         die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
+      }
+       // Binding statement params
+      if (!$statement->bind_param("ii",$numEstado, $idEjemplar)) {
+          die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
+      }
+       // Executing the statement
+       if (!$statement->execute()) {
+          die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+        }
+  disconnect($conn);
+}
  ?>

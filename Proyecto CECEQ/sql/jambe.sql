@@ -356,7 +356,8 @@ CREATE TABLE `ejemplar_credencial` (
   `idEjemplar` int(11) NOT NULL,
   `idCredencial` int(11) NOT NULL,
   `fechaPrestamo` datetime NOT NULL,
-  `fechaDevolucion` datetime NOT NULL
+  `fechaDevolucion` datetime NOT NULL,
+  `fechaDevolucionReal` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
