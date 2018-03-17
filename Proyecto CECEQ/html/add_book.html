@@ -40,18 +40,66 @@
             </div>
 
         </div>
+        <div class='row'>
+
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="book_vol">Vol:</label>
+                    <div class="col-md-12">
+                        <input class="form-control" id="book_vol" name="book[vol]" required size="30" type="text" placeholder="1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="book_edicion">Edición:</label>
+                    <div class="col-md-12">
+                        <input class="form-control" id="book_edicion" name="book[edicion]" required size="30" type="text" placeholder="4" />
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="book_yeare">Año de edición:</label>
+                    <div class="col-md-12">
+                        <input class="form-control cvalidate cyear" id="book_yeare" name="book[yeare]" required size="30" type="text" placeholder="1996"/>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
         <div class='row'>
 
             <div class='col-sm-4'>
                 <div class='form-group'>
-                    <label for="book_author">Autor:</label>
+                    <label for="book_author">Nombre autor:</label>
                     <div class="col-md-12">
-                        <input class="form-control cvalidate cname" id="book_author" name="book[author]" required size="30" type="text" placeholder="Hugo, Victor"/>
+                        <input class="form-control cvalidate cname" id="book_author" name="book[author]" required size="30" type="text" placeholder="Juan"/>
                     </div>
                 </div>
             </div>
 
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="book_apaterno">Apellido paterno:</label>
+                    <div class="col-md-12">
+                        <input class="form-control cvalidate cname" id="book_apaterno" name="book[apaterno]" size="30" type="text" placeholder="Rowling"/>
+                    </div>
+                </div>
+            </div>
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="book_amaterno">Apellido Materno:</label>
+                    <div class="col-md-12">
+                        <input class="form-control cvalidate cname" id="book_amaterno" name="book[amaterno]" size="30" type="text" placeholder="Hulgo"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
             <div class='col-sm-4'>
                 <div class='form-group'>
                     <label for="book_editorial">Editorial:</label>
@@ -60,12 +108,19 @@
                     </div>
                 </div>
             </div>
-
             <div class='col-sm-4 mx-auto'>
                 <div class='form-groupr'>
                     <label for="book_year">Año:</label>
                     <div class="col-md-12">
                         <input class="form-control cvalidate cyear" id="book_year" name="book[year]" required size="30" type="text" placeholder="1998"/>
+                    </div>
+                </div>
+            </div>
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="book_colection">Colección:</label>
+                    <div class="col-md-12">
+                        <input class="form-control" id="book_colection" name="book[colection]" required size="30" type="text" placeholder="0-7645-26413" />
                     </div>
                 </div>
             </div>
@@ -77,26 +132,6 @@
                         <div class="col-md-12">
                             <select class="form-control cvalidate cclassification" name="clasificacion" id="clasificacion">
                             <option value="" disabled selected>-- Clasificación --</option>
-                                <option value="000">000 Generalidades</option>
-                                <option value="100">100 Filosofía y psicología</option>
-                                <option value="200">200 Religión</option>
-                                <option value="300">300 Ciencias sociales</option>
-                                <option value="400">400 Lenguas</option>
-                                <option value="500">500 Ciencias naturales y matemáticas</option>
-                                <option value="600">600 Tecnología</option>
-                                <option value="700">700 Las artes. Bellas artes y artes decorativas</option>
-                                <option value="800">800 Literatura y retórica</option>
-                                <option value="900">900 Geografía e historia</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class='col-sm-5'>
-                    <div class='form-group'>
-                        <label for="clasificacion">Subclasificación:</label>
-                        <div class="col-md-12">
-                            <select class="form-control cvalidate cclassification" name="clasificacion">
-                            <option value="" disabled selected>-- Subclasificación --</option>
                                 <option value="000">000 Generalidades</option>
                                 <option value="100">100 Filosofía y psicología</option>
                                 <option value="200">200 Religión</option>
@@ -137,25 +172,6 @@
                     </div>
                 </div>
             </div>
-            <div class='col-sm-5'>
-                <div class='form-group'>
-                    <div class="col-md-12">
-                        <select class="form-control" name="subclasification1">
-                        <option value="" disabled selected>-- Subclasificación --</option>
-                            <option value="generalidades">000 Generalidades</option>
-                            <option value="filosofia">100 Filosofía y psicología</option>
-                            <option value="religion">200 Religión</option>
-                            <option value="cienciassoc">300 Ciencias sociales</option>
-                            <option value="lenguas">400 Lenguas</option>
-                            <option value="cienciasnat">500 Ciencias naturales y matemáticas</option>
-                            <option value="tecno">600 Tecnología</option>
-                            <option value="artes">700 Las artes. Bellas artes y artes decorativas</option>
-                            <option value="literatura">800 Literatura y retórica</option>
-                            <option value="geografia">900 Geografía e historia</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="row catalog-input">
             <div class='col-sm-5'>
@@ -163,25 +179,6 @@
                     <div class="col-md-12">
                         <select class="form-control" name="clasification2">
                         <option value="" disabled selected>-- Clasificación --</option>
-                            <option value="generalidades">000 Generalidades</option>
-                            <option value="filosofia">100 Filosofía y psicología</option>
-                            <option value="religion">200 Religión</option>
-                            <option value="cienciassoc">300 Ciencias sociales</option>
-                            <option value="lenguas">400 Lenguas</option>
-                            <option value="cienciasnat">500 Ciencias naturales y matemáticas</option>
-                            <option value="tecno">600 Tecnología</option>
-                            <option value="artes">700 Las artes. Bellas artes y artes decorativas</option>
-                            <option value="literatura">800 Literatura y retórica</option>
-                            <option value="geografia">900 Geografía e historia</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class='col-sm-5'>
-                <div class='form-group'>
-                    <div class="col-md-12">
-                        <select class="form-control" name="subclasification2">
-                        <option value="" disabled selected>-- Subclasificación --</option>
                             <option value="generalidades">000 Generalidades</option>
                             <option value="filosofia">100 Filosofía y psicología</option>
                             <option value="religion">200 Religión</option>
