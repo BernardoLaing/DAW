@@ -8,8 +8,9 @@ $ISBN = "/^([0-9]+-)*[0-9]+$/";
 $YEAR = "/^([0-9]){4}$/";
 $CLASSIFICATION = "/^([0-9]){3}$/";
 $PASSWORD  = "/^\S*(?=\S{6,})(?=\S*[a-z])(?=\S*[\d])\S*$/"; //funciona? :v
-$HOUSENUM = "[0-9]+([A-Z]){0, 1}";
+$HOUSENUM = "/^[0-9]+([A-Z]){0, 1}$/";
 $EMAIL = "/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/"; // Hay que checar esta regex, no funciona
+$MONTH = "/^((0[0-9])|(1[0-2]))$/";
 
 function test($type, $subject){
     if($subject == null || $type == null)

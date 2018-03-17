@@ -125,7 +125,7 @@ function insertVisitante($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNaci
     insertVisitanteGradoEstudios($connection,$gradoEstudios);
 
     insertEntrada($connection);
-    
+
     disconnect($connection);
 }
 
@@ -141,7 +141,7 @@ function insertFiadorGradoEstudios($connection, $gradoEstudios){
     $statement->execute();
 }
 
-function insertFiador(  
+function insertFiador(
                         $connection,
                         $nombreF,
                         $apellidoPaternoF,
@@ -168,7 +168,7 @@ function insertFiador(
                             numero,
                             cp,
                             telefono,
-                            correo, 
+                            correo,
                             nombreTrabajo,
                             telefonoTrabajo,
                             coloniaTrabajo,
@@ -195,7 +195,7 @@ function insertVisitanteTramitandoCredencial($nombre, $apellidoPaterno, $apellid
     $statement->execute();
 
     insertVisitanteGradoEstudios($connection,$gradoEstudios);
-    
+
     disconnect($connection);
 }
 
@@ -245,8 +245,8 @@ function insertCredential(  //Visitante
                             $cpTrabajoF,
                             $gradoEstudiosF
                             ){
-    
-    
+
+
     insertVisitanteTramitandoCredencial($nombre,$apellidoPaterno,$apellidoMaterno,$fechaNacimiento,$gradoEstudios,$genero);
 
 
@@ -260,7 +260,7 @@ function insertCredential(  //Visitante
                             numero,
                             cp,
                             telefono,
-                            correo, 
+                            correo,
                             nombreTrabajo,
                             telefonoTrabajo,
                             coloniaTrabajo,
@@ -273,12 +273,12 @@ function insertCredential(  //Visitante
     $nombreTrabajo, $telefonoTrabajo, $coloniaTrabajo, $calleTrabajo, $numeroTrabajo, $cpTrabajo);
     $statement->execute();
 
-    insertFiador($connection, $nombreF, $apellidoPaternoF, $apellidoMaternoF, $correoF, $telefonoF, $calleF, $numeroF, $coloniaF, $cpF, $nombreTrabajoF, 
+    insertFiador($connection, $nombreF, $apellidoPaternoF, $apellidoMaternoF, $correoF, $telefonoF, $calleF, $numeroF, $coloniaF, $cpF, $nombreTrabajoF,
     $telefonoTrabajoF, $calleTrabajoF, $numeroTrabajoF, $coloniaTrabajoF, $cpTrabajoF, $gradoEstudiosF);
 
     insertCredencialFiador($connection);
 
-    disconnect($connection);    
+    disconnect($connection);
 }
 
 function queryVisitor($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios){
@@ -304,6 +304,30 @@ function queryVisitor($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno,
     $result = $statement->get_result();
     disconnect($connection);
     return $result;
+}
+
+function queryStatistics($schooling, $age, $gender, $month, $year){
+    $connection = connect();
+    $age .="%";
+    /*
+    $statement = mysqli_prepare($connection,"
+    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', genero as 'Género', g.nombre as 'Grado de estudios'
+    from visitante as v, visitante_gradoestudios as vg, gradoestudios as g
+    where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
+    and (v.nombre like ? ".($nombre==""?"or 1":"").")
+    and (apellidoPaterno like ? ".($apellidoPaterno==""?"or 1":"").")
+    and (apellidoMaterno like ? ".($apellidoMaterno==""?"or 1":"").")
+    and (fechaNacimiento = ? ".($fechaNacimiento==""?"or 1":"").")
+    and (genero = ? ".($genero==""?"or 1":"").")
+    and v.idVisitante = vg.idVisitante
+    and vg.idGrado = g.idGrado
+    and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
+    ");
+    $statement->bind_param("isssssi", $idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;*/
 }
 
 
@@ -409,13 +433,13 @@ function buscarTitulo($titulo, $year)
     disconnect($connection);
     return $result;
 }
-function insertEjemplar($ISBN, $estante, $editorial, $year, $volumen, $idTitulo)
+function insertEjemplar($ISBN, $estante, $editorial, $year, $volumen, $idTitulo, $colection, $edition, $idUsuario)
 {
     $connection = connect();
-    $statement = mysqli_prepare($connection, "INSERT INTO ejemplar(ISBN, estante, editorial, year, volumen, idTitulo)
-    VALUES(?,?,?,?,?,?);
+    $statement = mysqli_prepare($connection, "INSERT INTO ejemplar(ISBN, estante, editorial, year, volumen, idTitulo, coleccion, edicion, idUsuario)
+    VALUES(?,?,?,?,?,?,?,?,?);
     ");
-    $statement ->bind_param("sssiii", $ISBN, $estante, $editorial, $year, $volumen, $idTitulo);
+    $statement ->bind_param("sssiiisis", $ISBN, $estante, $editorial, $year, $volumen, $idTitulo, $colection, $edition, $idUsuario);
     $retorno = $statement->execute();
     disconnect($connection);
     return($retorno);
@@ -442,7 +466,7 @@ function buscarEjemplar($ISBN, $estante, $editorial, $year, $volumen)
 function insertAutorTitulo($idTitulo, $idAutor)
 {
     $connection = connect();
-    $statement = mysqli_prepare($connection, "INSERT INTO autor_titulo(idAutor, idTitulo)
+    $statement = mysqli_prepare($connection, "INSERT INTO titulo_autor(idAutor, idTitulo)
     VALUES(?,?);
     ");
     $statement ->bind_param("ii", $idTitulo, $idAutor);
@@ -456,7 +480,7 @@ function buscarAutorTitulo($idTitulo, $idAutor)
     $connection = connect();
     $statement = mysqli_prepare($connection,"
     select idAutor, idTitulo
-    from autor_titulo
+    from titulo_autor
     where (idTitulo = ? ".($idTitulo==""?"or 1":"").")
     and (idAutor = ? ".($idAutor==""?"or 1":"").")
     ");
@@ -467,65 +491,8 @@ function buscarAutorTitulo($idTitulo, $idAutor)
     return $result;
 }
 
-//**************************   De interfaz Lend_Return   **********************************
-function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
-  $conn = connect();
-  if(!$conn){
-    die("No se pudo conectar a la Base de Datos");
-  }
-
-  $sql = "INSERT INTO ejemplar_credencial(idEjemplar, idCredencial, fechaPrestamo, fechaDevolucion)
-  VALUES(?,?, ?, ?)";
-        // Preparing the statement 
-        if (!($statement = $conn->prepare($sql))) {
-           die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
-        }
-         // Binding statement params 
-        if (!$statement->bind_param("iiss", $idEjemplar, $idCredencial, $dateLend, $dateReturn)) {
-            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
-        }
-         // Executing the statement
-         if (!$statement->execute()) {
-            die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-          } 
-  disconnect($conn);
-}
-
-function insertReturn($idEjemplar, $idCredencial, $fechaDevolucionReal){
-    $conn = connect();
-    if(!$conn){
-      die("No se pudo conectar a la Base de Datos");
-    }
-    $sql = "UPDATE ejemplar_credencial 
-            SET fechaDevolucionReal=(?)     
-            WHERE idEjemplar=(?) 
-            AND idCredencial=(?) ";
-          // Preparing the statement 
-          if (!($statement = $conn->prepare($sql))) {
-             die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
-          }
-           // Binding statement params 
-          if (!$statement->bind_param("sii",$fechaDevolucionReal, $idEjemplar, $idCredencial)) {
-              die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
-          }
-           // Executing the statement
-           if (!$statement->execute()) {
-              die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-            } 
-    disconnect($conn);
-  }
-
-
-function buscarPrestamoDevolucion($idCredencial){
-    $connection = connect();
-    $statement = mysqli_prepare($connection,"");
-    $statement ->bind_param("i", $idCredencial);
-    $statement->execute();
-    $result = $statement->get_result();
-    disconnect($connection);
-    return $result;
-}
-
+//---------------------------------LEND RETURN MODEL---------------------------------------------------------
+require_once('model/lendReturn-utils.php');
     //var_dump(login('lalo', 'hockey'));
     //var_dump(login('joaquin', 'basket'));
     //var_dump(login('cesar', 'basket'));

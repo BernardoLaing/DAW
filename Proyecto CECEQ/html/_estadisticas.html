@@ -8,105 +8,9 @@
             <div class="display-3">Estadísticas</div>
         </div>
     </div>
-  </div>
-      <!--Columna con tabla y grafica-->
-      <div class="row">
-        <div class="col-sm-12 col-md-7"> <br>
-          <div class="shadow">
-            <div class="table-responsive" id="stats-table">
-
-              <table class="table table-hover">
-                <thead class="text-center">
-                  <tr class="">
-
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Edad</th>
-                    <th scope="col">Ocupacion</th>
-                    <th scope="col">Mes</th>
-                    <th scope="col">Año</th>
-                  </tr>
-                </thead>
-                <tbody class="text-center">
-                    <tr>
-                        <td>#</td>
-                        <td>#</td>
-                        <td>#</td>
-                        <td>#</td>
-                        <td>#</td>
-                        <td>#</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr><tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <br>
-          <div class="text-center">
-            <img src="src/chart.png" alt="Aqui habrá una gráfica" width="300px" style="max-width: 100%;">
-          </div>
-        </div>
-      </div>
-
-      <br>
+  </div> <br>
       <!--Formulario-->
-      <form class="" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+      <form method="post" id="statistics_form" action="controller/statisticsInsert_controller.php">
         <div class="row">
           <!--Grado estudios-->
           <div class='col-sm-4'>
@@ -143,7 +47,7 @@
               <div class='form-group'>
                   <label for="user_ocupation">Sexo:</label>
                   <div class="col-md-12">
-                    <select  class="form-control cvalidate cgender" name="user[gender]">
+                    <select  class="form-control cvalidate cgender" name="user[gender]" id="user_gender">
                         <option value="" disabled selected>-- Sexo --</option>
                         <option value="H">Hombre</option>
                         <option value="M">Mujer</option>
@@ -155,20 +59,12 @@
         </div>
         <!--CIUDAD-->
         <div class="row">
-          <div class='col-sm-4'>
-              <div class='form-group'>
-                  <label for="user_ocupation">Ciudad:</label>
-                  <div class="col-md-12">
-                      <input class="form-control cvalidate cname" id="user_ocupation" name="user[city]"  size="30" type="text" />
-                  </div>
-              </div>
-          </div>
           <!--MES-->
-          <div class='col-sm-4'>
+          <div class='col-sm-4 offset-md-2'>
               <div class='form-group'>
                   <label for="user_ocupation">Mes:</label>
                   <div class="col-md-12">
-                    <select class="form-control cvalidate cnumber" name="user[month]">
+                    <select class="form-control cvalidate cnumber" name="user[month]" id="user_month">
                         <option value="" disabled selected>-- Mes --</option>
                         <option value="01">Enero</option>
                         <option value="02">Febrero</option>
@@ -191,7 +87,7 @@
               <div class='form-group'>
                   <label for="user_ocupation">Año:</label>
                   <div class="col-md-12">
-                    <select class="form-control cvalidate cyear" name="user[year]">
+                    <select class="form-control cvalidate cyear" name="user[year]" id="user_year">
                         <option value="" disabled selected>-- Año --</option>
                         <?php
                         $firstYear = 2018;
@@ -204,7 +100,7 @@
               </div>
           </div>
         </div>
-        <!--Boton Filtrar-->
+        <!--Boton Filtrar--> <br><br>
         <div class="row">
           <br><br>
           <div class="col-sm-4">
@@ -213,7 +109,7 @@
           <div class='col-sm-4'>
               <div class='form-group'>
                   <div class="text-center">
-                      <input type="submit" name="button" class="btn btn-secondary mx-auto csearch" value="Mostrar Estadísticas">
+                <input type="submit" name="button" class="btn btn-secondary mx-auto csearch creload" value="Mostrar Estadísticas">  
                   </div>
               </div>
           </div>
@@ -221,5 +117,14 @@
           <br>
         </div>
       </form>
-  </div>
+            <!--Columna con tabla y grafica-->
+            <div class='row'>
+                <div id="user_table" class='col-12'>
+                        AQUI HABRA UNA GRAFICA
+                </div>
+            </div>
+              <br>
+    </div>
   <br><br>
+
+  <script src="js/dynamicqueries.js"></script>
