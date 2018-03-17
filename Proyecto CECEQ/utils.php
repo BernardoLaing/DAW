@@ -409,13 +409,13 @@ function buscarTitulo($titulo, $year)
     disconnect($connection);
     return $result;
 }
-function insertEjemplar($ISBN, $estante, $editorial, $year, $volumen, $idTitulo)
+function insertEjemplar($ISBN, $estante, $editorial, $year, $volumen, $idTitulo, $colection, $edition, $idUsuario)
 {
     $connection = connect();
-    $statement = mysqli_prepare($connection, "INSERT INTO ejemplar(ISBN, estante, editorial, year, volumen, idTitulo)
-    VALUES(?,?,?,?,?,?);
+    $statement = mysqli_prepare($connection, "INSERT INTO ejemplar(ISBN, estante, editorial, year, volumen, idTitulo, coleccion, edicion, idUsuario)
+    VALUES(?,?,?,?,?,?,?,?,?);
     ");
-    $statement ->bind_param("sssiii", $ISBN, $estante, $editorial, $year, $volumen, $idTitulo);
+    $statement ->bind_param("sssiiisis", $ISBN, $estante, $editorial, $year, $volumen, $idTitulo, $colection, $edition, $idUsuario);
     $retorno = $statement->execute();
     disconnect($connection);
     return($retorno);
@@ -442,7 +442,7 @@ function buscarEjemplar($ISBN, $estante, $editorial, $year, $volumen)
 function insertAutorTitulo($idTitulo, $idAutor)
 {
     $connection = connect();
-    $statement = mysqli_prepare($connection, "INSERT INTO autor_titulo(idAutor, idTitulo)
+    $statement = mysqli_prepare($connection, "INSERT INTO titulo_autor(idAutor, idTitulo)
     VALUES(?,?);
     ");
     $statement ->bind_param("ii", $idTitulo, $idAutor);
@@ -456,7 +456,7 @@ function buscarAutorTitulo($idTitulo, $idAutor)
     $connection = connect();
     $statement = mysqli_prepare($connection,"
     select idAutor, idTitulo
-    from autor_titulo
+    from titulo_autor
     where (idTitulo = ? ".($idTitulo==""?"or 1":"").")
     and (idAutor = ? ".($idAutor==""?"or 1":"").")
     ");
@@ -524,6 +524,18 @@ function buscarPrestamoDevolucion($idCredencial){
     $result = $statement->get_result();
     disconnect($connection);
     return $result;
+}
+function insertCategoriaTitulo($idTitulo, $idCategoria)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection, "INSERT INTO titulo_categoria(idTitulo, idCategoria)
+    VALUES(?,?);
+    ");
+    $statement ->bind_param("ii", $idTitulo, $idCategoria);
+    $retorno = $statement->execute();
+    disconnect($connection);
+    return($retorno);
+
 }
 
     //var_dump(login('lalo', 'hockey'));
