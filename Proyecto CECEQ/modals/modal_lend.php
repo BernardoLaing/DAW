@@ -79,10 +79,10 @@ if($var_value && $var_tipo == 'Devolución'){
          </div>
           <div class="row">
             <div class="col-sm-4 text-left">
-              <input type="submit" id="cancelar" class="btn btn-success" name="aceptar1" value="Sí" />
+              <input type="submit" id="cancelar" class="btn btn-success" name="buenEstado" value="Sí" />
             </div>
             <div class="col-sm-4 text-left ">
-               <input type="submit" id="aceptar" class="btn btn-danger"  name="aceptar2" value="No" />
+               <input type="submit" id="aceptar" class="btn btn-danger"  name="malEstado" value="No" />
             </div>
             <div class="col-sm-4 text-left">
               <input type="submit" id="cancelar" class="btn btn-danger" name="cancelar" value="Cancelar Devolución" />
@@ -119,21 +119,40 @@ else{
            <div class="modal-body">
              <p>Se debe ingresar un libro.</p>
            </div>';
-  }else if($var_tipo == 'excedePrestamos'){ //Presionó devolución sin ingresar un libro
+  }else if($var_tipo == 'excedePrestamos'){ //Presionó prestamo de usuario que ya tiene 3 libros en posecion
         $modalMissingData .= '
           <!-- Modal body -->
            <div class="modal-body">
              <p class="text-center">No se puede realizar el préstamo.</p>
              <p class="text-center">Este usuario tiene tres libros prestados actualmente.</p>
            </div>';
-  }else if($var_tipo == 'usuarioInexistente'){ //Presionó devolución sin ingresar un libro
+  }else if($var_tipo == 'usuarioInexistente'){ //Presionó préstamo a un usuario que no esta dado de alta
         $modalMissingData .= '
           <!-- Modal body -->
            <div class="modal-body">
              <p class="text-center">No. de usuario inexistente.</p>
              <p class="text-center">Por favor, revise los datos nuevamente.</p>
            </div>';
+  }else if($var_tipo == 'libroInexistente'){ //Presionó devolución sin ingresar un libro
+        $modalMissingData .= '
+          <!-- Modal body -->
+           <div class="modal-body">
+             <p class="text-center">Id. de libro inexistente.</p>
+             <p class="text-center">Por favor, revise los datos nuevamente.</p>
+           </div>';
+  }else if($var_tipo == 'libroActualmentePrestado'){ //Presionó préstamo de un libro actualmente prestado
+        $modalMissingData .= '
+          <!-- Modal body -->
+           <div class="modal-body">
+             <h5 class="text-center">Este libro esta actualmente prestado. <br> Por favor, revise los datos nuevamente</h5>
+             <p class="text-left"> <strong>  Datos del préstamo  </strong> </p>
+             <p><strong>Ejemplar: </strong>' . getNameBook($_SESSION['libro'], false) . '</p>
+             <p><strong>Prestamo a: </strong>' . getNameVisitor($_SESSION['libro'], false) .'</p>
+             <p><strong>Fecha de préstamo: </strong>'.getDateInfo($_SESSION['libro'], true).'</p>
+             <p><strong>Fecha de retorno: </strong>'.getDateInfo($_SESSION['libro'], false).'</p>
+           </div>';
   }
+
   $modalMissingData .=
   ' <!-- Modal footer -->
        <div class="modal-footer">

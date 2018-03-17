@@ -123,7 +123,7 @@ function insertVisitante($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNaci
     $statement->execute();
 
     insertVisitanteGradoEstudios($connection,$gradoEstudios);
-
+echo "HOLA";
     insertEntrada($connection);
 
     disconnect($connection);
