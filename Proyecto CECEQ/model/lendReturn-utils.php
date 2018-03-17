@@ -1,6 +1,6 @@
 <?php
 //**************************   De interfaz Lend_Return   **********************************
-function checkBookLimit($idCredencial){
+function checkBookLimit($idCredencial, $idEjemplar){ //Estable el valor de la variable sesión tipo. //Préstamo, Devolución, excedePrestamos, usuarioInexistente, libroInexistente
     $conn = connect();
     if(!$conn){ die("No se pudo conectar a la Base de Datos");}
     ///////////// REVISA QUE NO TENGA 3 PRESTAMOS //////////////////////
@@ -43,6 +43,26 @@ function checkBookLimit($idCredencial){
     $result = $statement->get_result();
     if($result->num_rows === 0){
       return 'usuarioInexistente';
+    }
+    ///////////// REVISA QUE EXISTA LIBRO //////////////////////
+    $sql='SELECT *
+            FROM ejemplar e
+            WHERE e.idEjemplar = (?)';
+    // Preparing the statement
+    if (!($statement = $conn->prepare($sql))) {
+        die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
+    }
+    // Binding statement params
+    if (!$statement->bind_param("i", $idEjemplar)) {
+        die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
+    }
+    // Executing the statement
+    if (!$statement->execute()) {
+        die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+    }
+    $result = $statement->get_result();
+    if($result->num_rows === 0){
+      return 'libroInexistente';
     }
 
     return 'Préstamo';

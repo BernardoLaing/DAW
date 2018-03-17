@@ -21,10 +21,11 @@
       //echo "PRESIONO PRESTAMO";
         $aux_librouno = $_POST["user"]["libroUno"];
         $aux_credencial = $_POST["user"]["credencial"];
-        $_SESSION['ok'] = true;
         $_SESSION['libro'] = $aux_librouno;
         $_SESSION['credencial'] = $aux_credencial;
-        $_SESSION['tipo'] = checkBookLimit($_SESSION['credencial']);
+        $_SESSION['tipo'] = checkBookLimit($_SESSION['credencial'], $_SESSION['libro']); //Préstamo, Devolución, excedePrestamos, usuarioInexistente, libroInexistente
+
+        $_SESSION['ok'] = true;
 
         $date = new DateTime();
         $dateLend = $date->format('Y-m-d H:i:s');
@@ -43,11 +44,14 @@
     $_SESSION['tipo'] = 'Devolución';
     $_SESSION['libro'] = $aux_librouno;
     $_SESSION['credencial'] = $aux_credencial;
+
+
   }else if(!($idCredencial && $ingresoLibro)){
         $_SESSION['ok'] = false;
         if(isset($_POST["devolucion"])){  $_SESSION['tipo'] = 'Devolución';}
         else{$_SESSION['tipo'] = 'Préstamo';}
   }
+
     include("modals/modal_lend.php");
     echo "<script> $('#myModal').modal('show') </script>";
 
