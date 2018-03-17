@@ -1,11 +1,11 @@
 <?php
-$diaPrestamo = getdate();
 $diaRegreso=strtotime("+7 Days");
-$var_value = $_SESSION['ok'];
+$var_value = $_SESSION['ok'];               //Booleano para ver verificar que halla ingresado un libro
 $var_credencial = $_SESSION['credencial'];  //Id Credencial
 $var_libro = $_SESSION['libro'];            //Id libro
-$var_tipo = $_SESSION['tipo'];              //Prestamo o Devolucion
+$var_tipo = $_SESSION['tipo'];              //Préstamo, Devolución, excedePrestamos, o usuarioInexistente
 
+//Succesfull lend
 if($var_value && $var_tipo == 'Préstamo'){
   echo '
   <div class="modal fade" id="myModal">
@@ -20,8 +20,8 @@ if($var_value && $var_tipo == 'Préstamo'){
 
         <!-- Modal body -->
         <div class="modal-body">
-          <p><strong>Ejemplar: </strong>' . getNameBook($_SESSION['libro']) . '</p>
-          <p><strong>Prestamo a: </strong>' . getNameVisitor($_SESSION['credencial']) .'</p>
+          <p><strong>Ejemplar: </strong>' . getNameBook($_SESSION['libro'], false) . '</p>
+          <p><strong>Prestamo a: </strong>' . getNameVisitor($_SESSION['credencial'], true) .'</p>
           <p><strong>Fecha de préstamo: </strong>'.date("Y-m-d").'</p>
           <p><strong>Fecha de retorno: </strong>'.date("Y-m-d", $diaRegreso) .'</p>
         </div>
@@ -45,7 +45,9 @@ if($var_value && $var_tipo == 'Préstamo'){
     </div>
   </div>';
 
-}else if($var_value && $var_tipo == 'Devolución'){
+}else
+//Succesfull Return
+if($var_value && $var_tipo == 'Devolución'){
   echo '
   <div class="modal fade" id="myModal">
     <div class="modal-dialog">
@@ -59,11 +61,11 @@ if($var_value && $var_tipo == 'Préstamo'){
 
         <!-- Modal body -->
         <div class="modal-body">
-          <p><strong>Ejemplar: </strong>' . getNameBook($_SESSION['libro']) . '</p>
-          <p><strong>Prestamo a: </strong>' . getNameVisitor($_SESSION['credencial']) .'</p>
+          <p><strong>Ejemplar: </strong>' . getNameBook($_SESSION['libro'], false) . '</p>
+          <p><strong>Prestamo a: </strong>' . getNameVisitor($_SESSION['libro'], false) .'</p>
           <p><strong>Fecha de préstamo: </strong>'.date("Y-m-d").'</p>
           <p><strong>Fecha de retorno: </strong>'.date("Y-m-d", $diaRegreso) .'</p>
-          <p><strong>Días de retraso: </strong>'.  getReturnData($_SESSION['libro'], $_SESSION['credencial']) .'</p>
+          <p><strong>Días de retraso: </strong>'.  getLateDays($_SESSION['libro']) .'</p>
         </div>
 
         <!-- Modal footer -->
@@ -92,34 +94,58 @@ if($var_value && $var_tipo == 'Préstamo'){
   </div>
 </div>
 </div>';
-}else{
-  echo '
-   <div class="modal fade" id="myModal">
-     <div class="modal-dialog">
-       <div class="modal-content">
+}
+//missing inputs or exceeds amount of books lend
+else{
+  $modalMissingData = '<div class="modal fade" id="myModal">
+                         <div class="modal-dialog">
+                           <div class="modal-content">
 
-         <!-- Modal Header -->
-         <div class="modal-header">
-           <h3 class="modal-title"> Alerta </h3>
-           <button type="button" class="close" data-dismiss="modal">&times;</button>
-         </div>
+                             <!-- Modal Header -->
+                             <div class="modal-header">
+                               <h3 class="modal-title"> Alerta </h3>
+                               <button type="button" class="close" data-dismiss="modal">&times;</button>
+                             </div>';
+  if ($var_tipo == 'Préstamo') { //Presionó prestamo sin ingresar los datos necesarios
+      $modalMissingData .=
+          '<!-- Modal body -->
+           <div class="modal-body">
+             <p>Se debe ingresar el Id del usuario y por lo menos un libro.</p>
+           </div>';
 
-         <!-- Modal body -->
-         <div class="modal-body">
-           <p>Se debe ingresar el Id del usuario y por lo menos un libro.</p>
-         </div>
-
-         <!-- Modal footer -->
-         <div class="modal-footer">
-           <div class="row">
-             <div class="col-sm-6 text-right">
-               <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
-             </div>
+  }else if($var_tipo == 'Devolución'){ //Presionó devolución sin ingresar un libro
+        $modalMissingData .= '
+          <!-- Modal body -->
+           <div class="modal-body">
+             <p>Se debe ingresar un libro.</p>
+           </div>';
+  }else if($var_tipo == 'excedePrestamos'){ //Presionó devolución sin ingresar un libro
+        $modalMissingData .= '
+          <!-- Modal body -->
+           <div class="modal-body">
+             <p class="text-center">No se puede realizar el préstamo.</p>
+             <p class="text-center">Este usuario tiene tres libros prestados actualmente.</p>
+           </div>';
+  }else if($var_tipo == 'usuarioInexistente'){ //Presionó devolución sin ingresar un libro
+        $modalMissingData .= '
+          <!-- Modal body -->
+           <div class="modal-body">
+             <p class="text-center">No. de usuario inexistente.</p>
+             <p class="text-center">Por favor, revise los datos nuevamente.</p>
+           </div>';
+  }
+  $modalMissingData .=
+  ' <!-- Modal footer -->
+       <div class="modal-footer">
+         <div class="row">
+           <div class="col-sm-6 text-right">
+             <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
            </div>
          </div>
-
        </div>
      </div>
-   </div>';
+   </div>
+ </div>';
+ echo $modalMissingData;
 }
  ?>
