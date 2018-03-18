@@ -363,7 +363,7 @@ CREATE TABLE `ejemplar_credencial` (
 --
 -- Volcado de datos para la tabla `ejemplar_credencial`
 --
-
+/*
 INSERT INTO `ejemplar_credencial` (`idEjemplar`, `idCredencial`, `fechaPrestamo`, `fechaDevolucion`) VALUES
 (1, 20, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (2, 19, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -385,7 +385,7 @@ INSERT INTO `ejemplar_credencial` (`idEjemplar`, `idCredencial`, `fechaPrestamo`
 (18, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (19, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (20, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-
+*/
 -- --------------------------------------------------------
 
 --
