@@ -137,7 +137,7 @@ else{
         $modalMissingData .= '
           <!-- Modal body -->
            <div class="modal-body">
-             <p class="text-center">Id. de libro inexistente.</p>
+             <p class="text-center"> Este Id. de libro es inexistente o no esta actualmente prestado.</p>
              <p class="text-center">Por favor, revise los datos nuevamente.</p>
            </div>';
   }else if($var_tipo == 'libroActualmentePrestado'){ //Presionó préstamo de un libro actualmente prestado

@@ -1,5 +1,4 @@
-<?php
-//**************************   De interfaz Lend_Return   **********************************
+<?php //**************************   De interfaz Lend_Return   **********************************
  //Estable el valor de la variable sesión tipo.
  //Préstamo, Devolución, excedePrestamos, usuarioInexistente, libroInexistente, libroActualmentePrestado
 function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
@@ -64,6 +63,27 @@ function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
       }
       $result = $statement->get_result();
       if($result->num_rows === 1){return 'libroActualmentePrestado';}
+    }else{
+      ///////////// REVISA QUE EL LIBRO SI ESUVIERA PRESTADO //////////////////////
+      $sql='SELECT *
+              FROM ejemplar_credencial ec
+              WHERE ec.idEjemplar = (?)';
+      // Preparing the statement
+      if (!($statement = $conn->prepare($sql))) {
+          die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
+      }
+      // Binding statement params
+      if (!$statement->bind_param("i", $idEjemplar)) {
+          die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
+      }
+      // Executing the statement
+      if (!$statement->execute()) {
+          die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+      }
+      $result = $statement->get_result();
+      if($result->num_rows === 0){
+        return 'libroInexistente';
+      }
     }
     ///////////// REVISA QUE EXISTA LIBRO //////////////////////
     $sql='SELECT *
@@ -85,6 +105,7 @@ function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
     if($result->num_rows === 0){
       return 'libroInexistente';
     }
+
 
     if ($boolPrestamo==true) {
         return 'Préstamo';
@@ -281,9 +302,9 @@ function getDateInfo($idLibro, $lend ){
 function cambiarEstado($numEstado, $idEjemplar){
   $conn = connect();
   if(!$conn){ die("No se pudo conectar a la Base de Datos");}
-
+  $hoy = date("Y-m-d");
   $sql = "UPDATE ejemplar_estado
-          SET idEstado = (?)
+          SET idEstado = (?), fecha = (?)
           WHERE idEjemplar=(?)";
 
       // Preparing the statement
@@ -291,7 +312,7 @@ function cambiarEstado($numEstado, $idEjemplar){
          die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
       }
        // Binding statement params
-      if (!$statement->bind_param("ii",$numEstado, $idEjemplar)) {
+      if (!$statement->bind_param("isi",$numEstado, $hoy, $idEjemplar)) {
           die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
       }
        // Executing the statement
