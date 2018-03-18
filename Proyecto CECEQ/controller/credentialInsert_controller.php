@@ -20,7 +20,7 @@
         && (($_POST["credential"]["gender"]  == null) || test($GENDER, $_POST["credential"]["gender"] ))
         && (($_POST["credential"]["schooling"]  == null) || test($SCHOOLING, $_POST["credential"]["schooling"] ))
         // Credencial
-        && (($_POST["credential"]["fileToUpload"]  == null) || test($EMAIL, $_POST["credential"]["fileToUpload"] ))
+        && (($_POST["credential"]["fileToUpload"]  != null))
         && (($_POST["credential"]["email"]  == null) /*|| test($EMAIL, $_POST["credential"]["email"] )*/)
         && (($_POST["credential"]["street"]  == null) || test($NAME, $_POST["credential"]["street"] ))
         && (($_POST["credential"]["number"]  == null) || test($HOUSENUM, $_POST["credential"]["number"] ))
