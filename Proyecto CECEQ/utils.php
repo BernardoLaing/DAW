@@ -123,9 +123,9 @@ function insertVisitante($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNaci
     $statement->execute();
 
     insertVisitanteGradoEstudios($connection,$gradoEstudios);
-echo "HOLA";
-    insertEntrada($connection);
 
+    insertEntrada($connection);
+    
     disconnect($connection);
 }
 
@@ -141,7 +141,7 @@ function insertFiadorGradoEstudios($connection, $gradoEstudios){
     $statement->execute();
 }
 
-function insertFiador(
+function insertFiador(  
                         $connection,
                         $nombreF,
                         $apellidoPaternoF,
@@ -168,7 +168,7 @@ function insertFiador(
                             numero,
                             cp,
                             telefono,
-                            correo,
+                            correo, 
                             nombreTrabajo,
                             telefonoTrabajo,
                             coloniaTrabajo,
@@ -195,7 +195,7 @@ function insertVisitanteTramitandoCredencial($nombre, $apellidoPaterno, $apellid
     $statement->execute();
 
     insertVisitanteGradoEstudios($connection,$gradoEstudios);
-
+    
     disconnect($connection);
 }
 
@@ -245,8 +245,8 @@ function insertCredential(  //Visitante
                             $cpTrabajoF,
                             $gradoEstudiosF
                             ){
-
-
+    
+    
     insertVisitanteTramitandoCredencial($nombre,$apellidoPaterno,$apellidoMaterno,$fechaNacimiento,$gradoEstudios,$genero);
 
 
@@ -260,7 +260,7 @@ function insertCredential(  //Visitante
                             numero,
                             cp,
                             telefono,
-                            correo,
+                            correo, 
                             nombreTrabajo,
                             telefonoTrabajo,
                             coloniaTrabajo,
@@ -273,12 +273,12 @@ function insertCredential(  //Visitante
     $nombreTrabajo, $telefonoTrabajo, $coloniaTrabajo, $calleTrabajo, $numeroTrabajo, $cpTrabajo);
     $statement->execute();
 
-    insertFiador($connection, $nombreF, $apellidoPaternoF, $apellidoMaternoF, $correoF, $telefonoF, $calleF, $numeroF, $coloniaF, $cpF, $nombreTrabajoF,
+    insertFiador($connection, $nombreF, $apellidoPaternoF, $apellidoMaternoF, $correoF, $telefonoF, $calleF, $numeroF, $coloniaF, $cpF, $nombreTrabajoF, 
     $telefonoTrabajoF, $calleTrabajoF, $numeroTrabajoF, $coloniaTrabajoF, $cpTrabajoF, $gradoEstudiosF);
 
     insertCredencialFiador($connection);
 
-    disconnect($connection);
+    disconnect($connection);    
 }
 
 function queryVisitor($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios){
@@ -304,30 +304,6 @@ function queryVisitor($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno,
     $result = $statement->get_result();
     disconnect($connection);
     return $result;
-}
-
-function queryStatistics($schooling, $age, $gender, $month, $year){
-    $connection = connect();
-    $age .="%";
-    /*
-    $statement = mysqli_prepare($connection,"
-    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', genero as 'Género', g.nombre as 'Grado de estudios'
-    from visitante as v, visitante_gradoestudios as vg, gradoestudios as g
-    where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
-    and (v.nombre like ? ".($nombre==""?"or 1":"").")
-    and (apellidoPaterno like ? ".($apellidoPaterno==""?"or 1":"").")
-    and (apellidoMaterno like ? ".($apellidoMaterno==""?"or 1":"").")
-    and (fechaNacimiento = ? ".($fechaNacimiento==""?"or 1":"").")
-    and (genero = ? ".($genero==""?"or 1":"").")
-    and v.idVisitante = vg.idVisitante
-    and vg.idGrado = g.idGrado
-    and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
-    ");
-    $statement->bind_param("isssssi", $idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios);
-    $statement->execute();
-    $result = $statement->get_result();
-    disconnect($connection);
-    return $result;*/
 }
 
 
@@ -491,10 +467,6 @@ function buscarAutorTitulo($idTitulo, $idAutor)
     return $result;
 }
 
-
-//---------------------------------LEND RETURN MODEL---------------------------------------------------------
-require_once('model/lendReturn-utils.php');
-
 //**************************   De interfaz Lend_Return   **********************************
 function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
   $conn = connect();
@@ -570,15 +542,17 @@ function buscarGeneral($nombre, $apellidoPaterno, $apellidoMaterno, $titulo)
 {
     $connection = connect();
     $statement = mysqli_prepare($connection,"
-    select nombre, apellidoPaterno, titulo, t.year, estante, editorial
-    from autor a, titulo t, titulo_autor ta, ejemplar e
-    where (a.nombre = ? ".($nombre==""?"or 1":"").") 
+    select a.nombre AS nombreA, apellidoPaterno, titulo, t.year, estante, editorial, es.nombre
+    from autor a, titulo t, titulo_autor ta, ejemplar e, ejemplar_estado ee, estado es
+    where (a.nombre LIKE ? ".($nombre==""?"or 1":"").") 
     and (apellidoPaterno = ? ".($apellidoPaterno==""?"or 1":"").")
     and (apellidoMaterno = ? ".($apellidoMaterno==""?"or 1":"").")
     and a.idAutor=ta.idAutor
     and t.idTitulo=ta.idTitulo
-    and (t.titulo = ? ".($titulo==""?"or 1":"").")
+    and (t.titulo LIKE ? ".($titulo==""?"or 1":"").")
     and t.idTitulo = e.idTitulo
+    and ee.idEjemplar=e.idEjemplar
+    and ee.idEstado=es.idEstado
     ");
     $statement->bind_param("ssss", $nombre, $apellidoPaterno, $apellidoMaterno, $titulo);
     $statement->execute();
@@ -592,8 +566,8 @@ function buscarGeneralLike($nombre, $apellidoPaterno, $apellidoMaterno, $titulo)
 {
     $connection = connect();
     $statement = mysqli_prepare($connection,"
-    select nombre, apellidoPaterno, titulo, t.year, estante, editorial
-    from autor a, titulo t, titulo_autor ta, ejemplar e
+    select a.nombre AS nombreA, apellidoPaterno, titulo, t.year, estante, editorial, es.nombre, c.nombre AS nombreC
+    from autor a, titulo t, titulo_autor ta, ejemplar e, ejemplar_estado ee, estado es, titulo_categoria tc, categoria c
     where (a.nombre LIKE ? ".($nombre==""?"or 1":"").") 
     and (apellidoPaterno = ? ".($apellidoPaterno==""?"or 1":"").")
     and (apellidoMaterno = ? ".($apellidoMaterno==""?"or 1":"").")
@@ -601,6 +575,10 @@ function buscarGeneralLike($nombre, $apellidoPaterno, $apellidoMaterno, $titulo)
     and t.idTitulo=ta.idTitulo
     and (t.titulo LIKE ? ".($titulo==""?"or 1":"").")
     and t.idTitulo = e.idTitulo
+    and ee.idEjemplar=e.idEjemplar
+    and ee.idEstado=es.idEstado
+    and t.idTitulo=tc.idTitulo
+    and tc.idCategoria=c.idCategoria
     ");
     $statement->bind_param("ssss", $nombre, $apellidoPaterno, $apellidoMaterno, $titulo);
     $statement->execute();
@@ -652,4 +630,8 @@ function buscarAutorN($nombre, $apellidoPaterno, $apellidoMaterno)
     return $result;
 }
 
+
+    //var_dump(login('lalo', 'hockey'));
+    //var_dump(login('joaquin', 'basket'));
+    //var_dump(login('cesar', 'basket'));
 ?>

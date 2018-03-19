@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-03-2018 a las 19:24:51
+-- Tiempo de generación: 19-03-2018 a las 20:49:36
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -70,7 +70,8 @@ INSERT INTO `autor` (`idAutor`, `nombre`, `apellidoPaterno`, `apellidoMaterno`) 
 (28, 'TOM', 'SHELDON', ''),
 (29, 'DOUGLAS ', 'LIND', ''),
 (30, 'JOHN L.', 'GRAHAM', ''),
-(40, 'Martin', '', '');
+(40, 'Martin', '', ''),
+(41, 'MartinVivanco', '', '');
 
 -- --------------------------------------------------------
 
@@ -348,7 +349,8 @@ INSERT INTO `ejemplar` (`idEjemplar`, `ISBN`, `estante`, `editorial`, `year`, `v
 (43, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL),
 (44, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL),
 (45, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL),
-(46, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL);
+(46, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL),
+(86, '1', '1', 'prueba', 1111, 1, '2018-03-19 19:48:21', '', 51, '1', 1, 'martin');
 
 -- --------------------------------------------------------
 
@@ -451,7 +453,8 @@ INSERT INTO `ejemplar_estado` (`idEjemplar`, `idEstado`, `fecha`) VALUES
 (43, 5, '0000-00-00 00:00:00'),
 (44, 5, '0000-00-00 00:00:00'),
 (45, 5, '0000-00-00 00:00:00'),
-(46, 5, '0000-00-00 00:00:00');
+(46, 5, '0000-00-00 00:00:00'),
+(86, 5, '2018-03-19 19:48:21');
 
 -- --------------------------------------------------------
 
@@ -903,7 +906,8 @@ INSERT INTO `titulo` (`idTitulo`, `titulo`, `year`) VALUES
 (30, 'REGIONES PRIORITARIAS', 1999),
 (31, 'PSICOTERAPIA FAMILIAR', 1982),
 (32, 'ESTRATEGIA DE MARKETING SUN TZU', 2004),
-(50, 'prueba', 1235);
+(50, 'prueba', 1235),
+(51, 'prueba2', 1111);
 
 -- --------------------------------------------------------
 
@@ -952,7 +956,8 @@ INSERT INTO `titulo_autor` (`idAutor`, `idTitulo`) VALUES
 (28, 23),
 (29, 24),
 (30, 25),
-(40, 50);
+(40, 50),
+(41, 51);
 
 -- --------------------------------------------------------
 
@@ -1003,7 +1008,8 @@ INSERT INTO `titulo_categoria` (`idCategoria`, `idTitulo`) VALUES
 (29, 900),
 (30, 900),
 (31, 150),
-(32, 670);
+(32, 670),
+(100, 51);
 
 -- --------------------------------------------------------
 
@@ -1295,9 +1301,7 @@ ALTER TABLE `titulo_autor`
 ALTER TABLE `titulo_categoria`
   ADD PRIMARY KEY (`idCategoria`,`idTitulo`),
   ADD KEY `idTitulo` (`idTitulo`) USING BTREE,
-  ADD KEY `idCategoria` (`idCategoria`) USING BTREE,
-  ADD KEY `idCategoria_2` (`idCategoria`),
-  ADD KEY `idCategoria_3` (`idCategoria`,`idTitulo`);
+  ADD KEY `idCategoria` (`idCategoria`) USING BTREE;
 
 --
 -- Indices de la tabla `usuario`
@@ -1335,7 +1339,7 @@ ALTER TABLE `visitante_gradoestudios`
 -- AUTO_INCREMENT de la tabla `autor`
 --
 ALTER TABLE `autor`
-  MODIFY `idAutor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `idAutor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -1353,7 +1357,7 @@ ALTER TABLE `credencial`
 -- AUTO_INCREMENT de la tabla `ejemplar`
 --
 ALTER TABLE `ejemplar`
-  MODIFY `idEjemplar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `idEjemplar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT de la tabla `estado`
@@ -1395,7 +1399,7 @@ ALTER TABLE `sancion`
 -- AUTO_INCREMENT de la tabla `titulo`
 --
 ALTER TABLE `titulo`
-  MODIFY `idTitulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `idTitulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT de la tabla `visitante`

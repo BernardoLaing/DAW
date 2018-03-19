@@ -11,9 +11,8 @@ function funcBuscarLibro(){
     let amaterno = $('#book_amaterno');
     let titulo = $('#book_title');
     let categoria = $('#clasificacionBusqueda');
-    alert(categoria.val());
-    $.get("searchBookAjax.php", { name: nombre.val(), apellidop: apaterno.val(), apellidom: amaterno.val(), title: titulo.val() , pagina: pagina}, function(data){
-         alert(data);
+    $.get("searchBookAjax.php", { name: nombre.val(), apellidop: apaterno.val(), apellidom: amaterno.val(), title: titulo.val() , pagina: pagina, categoria: categoria.val()}, function(data){
+         //alert(data);
         $('#respuestaLibros').html(data);
     });
 }
