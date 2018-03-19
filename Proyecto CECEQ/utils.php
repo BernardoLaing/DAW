@@ -491,9 +491,165 @@ function buscarAutorTitulo($idTitulo, $idAutor)
     return $result;
 }
 
+
 //---------------------------------LEND RETURN MODEL---------------------------------------------------------
 require_once('model/lendReturn-utils.php');
-    //var_dump(login('lalo', 'hockey'));
-    //var_dump(login('joaquin', 'basket'));
-    //var_dump(login('cesar', 'basket'));
+
+//**************************   De interfaz Lend_Return   **********************************
+function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
+  $conn = connect();
+  if(!$conn){
+    die("No se pudo conectar a la Base de Datos");
+  }
+
+  $sql = "INSERT INTO ejemplar_credencial(idEjemplar, idCredencial, fechaPrestamo, fechaDevolucion)
+  VALUES(?,?, ?, ?)";
+        // Preparing the statement 
+        if (!($statement = $conn->prepare($sql))) {
+           die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
+        }
+         // Binding statement params 
+        if (!$statement->bind_param("iiss", $idEjemplar, $idCredencial, $dateLend, $dateReturn)) {
+            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+        }
+         // Executing the statement
+         if (!$statement->execute()) {
+            die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+          } 
+  disconnect($conn);
+}
+
+function insertReturn($idEjemplar, $idCredencial, $fechaDevolucionReal){
+    $conn = connect();
+    if(!$conn){
+      die("No se pudo conectar a la Base de Datos");
+    }
+    $sql = "UPDATE ejemplar_credencial 
+            SET fechaDevolucionReal=(?)     
+            WHERE idEjemplar=(?) 
+            AND idCredencial=(?) ";
+          // Preparing the statement 
+          if (!($statement = $conn->prepare($sql))) {
+             die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
+          }
+           // Binding statement params 
+          if (!$statement->bind_param("sii",$fechaDevolucionReal, $idEjemplar, $idCredencial)) {
+              die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+          }
+           // Executing the statement
+           if (!$statement->execute()) {
+              die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+            } 
+    disconnect($conn);
+  }
+
+
+function buscarPrestamoDevolucion($idCredencial){
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"");
+    $statement ->bind_param("i", $idCredencial);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+function insertCategoriaTitulo($idTitulo, $idCategoria)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection, "INSERT INTO titulo_categoria (idCategoria, idTitulo) 
+    VALUES(?,?);
+    ");
+    $statement ->bind_param("ii", $idCategoria, $idTitulo);
+    $retorno = $statement->execute();
+    disconnect($connection);
+    return($retorno);
+
+}
+/********************************* Funcion para busqueda de libros **********************************/
+function buscarGeneral($nombre, $apellidoPaterno, $apellidoMaterno, $titulo)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    select nombre, apellidoPaterno, titulo, t.year, estante, editorial
+    from autor a, titulo t, titulo_autor ta, ejemplar e
+    where (a.nombre = ? ".($nombre==""?"or 1":"").") 
+    and (apellidoPaterno = ? ".($apellidoPaterno==""?"or 1":"").")
+    and (apellidoMaterno = ? ".($apellidoMaterno==""?"or 1":"").")
+    and a.idAutor=ta.idAutor
+    and t.idTitulo=ta.idTitulo
+    and (t.titulo = ? ".($titulo==""?"or 1":"").")
+    and t.idTitulo = e.idTitulo
+    ");
+    $statement->bind_param("ssss", $nombre, $apellidoPaterno, $apellidoMaterno, $titulo);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+    
+}
+
+function buscarGeneralLike($nombre, $apellidoPaterno, $apellidoMaterno, $titulo) /**en proceso**/
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    select nombre, apellidoPaterno, titulo, t.year, estante, editorial
+    from autor a, titulo t, titulo_autor ta, ejemplar e
+    where (a.nombre LIKE ? ".($nombre==""?"or 1":"").") 
+    and (apellidoPaterno = ? ".($apellidoPaterno==""?"or 1":"").")
+    and (apellidoMaterno = ? ".($apellidoMaterno==""?"or 1":"").")
+    and a.idAutor=ta.idAutor
+    and t.idTitulo=ta.idTitulo
+    and (t.titulo LIKE ? ".($titulo==""?"or 1":"").")
+    and t.idTitulo = e.idTitulo
+    ");
+    $statement->bind_param("ssss", $nombre, $apellidoPaterno, $apellidoMaterno, $titulo);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+    
+}
+function lastIndexEjemplar()
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection, "SELECT MAX( idEjemplar )  FROM ejemplar");
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    if($row = mysqli_fetch_assoc($result))
+    {
+        $results = $row['MAX( idEjemplar )'];
+        //echo $results;
+    }
+    return $results;  
+}
+function insertEjemplarEstado($idEjemplar, $idEstado)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection, "INSERT INTO ejemplar_estado(idEjemplar, idEstado)
+    VALUES(?,?);
+    ");
+    $statement ->bind_param("ii", $idEjemplar, $idEstado);
+    $retorno = $statement->execute();
+    disconnect($connection);
+    return($retorno);
+
+}
+function buscarAutorN($nombre, $apellidoPaterno, $apellidoMaterno)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    select idAutor, nombre, apellidoPaterno, apellidoMaterno
+    from autor
+    where (nombre = ? )
+    and (apellidoPaterno = ?)
+    and (apellidoMaterno = ? )
+    ");
+    $statement->bind_param("sss", $nombre, $apellidoPaterno, $apellidoMaterno);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+
 ?>
