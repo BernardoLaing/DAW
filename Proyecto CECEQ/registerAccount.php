@@ -16,6 +16,9 @@ if(isset($_POST["submit"])){
           strlen($name) <= 50 &&
           $passwd == $passwdValidate &&
           is_numeric($rol)){
+            
+            // $passwd = password_hash($passwd, PASSWORD_BCRYPT);
+            
             if(registerUser($user, $name, $passwd, $rol)){
                 echo "registerUser validado";
                 header('Location: cuentas.php');
