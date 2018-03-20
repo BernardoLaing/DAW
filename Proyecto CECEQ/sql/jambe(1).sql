@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-03-2018 a las 21:19:27
+-- Tiempo de generación: 19-03-2018 a las 20:49:36
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -69,7 +69,9 @@ INSERT INTO `autor` (`idAutor`, `nombre`, `apellidoPaterno`, `apellidoMaterno`) 
 (27, 'GERALD A.', 'MICHAELSON', ''),
 (28, 'TOM', 'SHELDON', ''),
 (29, 'DOUGLAS ', 'LIND', ''),
-(30, 'JOHN L.', 'GRAHAM', '');
+(30, 'JOHN L.', 'GRAHAM', ''),
+(40, 'Martin', '', ''),
+(41, 'MartinVivanco', '', '');
 
 -- --------------------------------------------------------
 
@@ -347,7 +349,8 @@ INSERT INTO `ejemplar` (`idEjemplar`, `ISBN`, `estante`, `editorial`, `year`, `v
 (43, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL),
 (44, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL),
 (45, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL),
-(46, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL);
+(46, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL),
+(86, '1', '1', 'prueba', 1111, 1, '2018-03-19 19:48:21', '', 51, '1', 1, 'martin');
 
 -- --------------------------------------------------------
 
@@ -397,7 +400,7 @@ INSERT INTO `ejemplar_credencial` (`idEjemplar`, `idCredencial`, `fechaPrestamo`
 CREATE TABLE `ejemplar_estado` (
   `idEjemplar` int(11) NOT NULL,
   `idEstado` int(11) NOT NULL,
-  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -450,7 +453,8 @@ INSERT INTO `ejemplar_estado` (`idEjemplar`, `idEstado`, `fecha`) VALUES
 (43, 5, '0000-00-00 00:00:00'),
 (44, 5, '0000-00-00 00:00:00'),
 (45, 5, '0000-00-00 00:00:00'),
-(46, 5, '0000-00-00 00:00:00');
+(46, 5, '0000-00-00 00:00:00'),
+(86, 5, '2018-03-19 19:48:21');
 
 -- --------------------------------------------------------
 
@@ -962,15 +966,15 @@ INSERT INTO `titulo_autor` (`idAutor`, `idTitulo`) VALUES
 --
 
 CREATE TABLE `titulo_categoria` (
-  `idTitulo` int(11) NOT NULL,
-  `idCategoria` int(11) NOT NULL
+  `idCategoria` int(11) NOT NULL,
+  `idTitulo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `titulo_categoria`
 --
 
-INSERT INTO `titulo_categoria` (`idTitulo`, `idCategoria`) VALUES
+INSERT INTO `titulo_categoria` (`idCategoria`, `idTitulo`) VALUES
 (1, 190),
 (2, 600),
 (3, 720),
@@ -1004,7 +1008,8 @@ INSERT INTO `titulo_categoria` (`idTitulo`, `idCategoria`) VALUES
 (29, 900),
 (30, 900),
 (31, 150),
-(32, 670);
+(32, 670),
+(100, 51);
 
 -- --------------------------------------------------------
 
@@ -1294,9 +1299,9 @@ ALTER TABLE `titulo_autor`
 -- Indices de la tabla `titulo_categoria`
 --
 ALTER TABLE `titulo_categoria`
-  ADD PRIMARY KEY (`idTitulo`,`idCategoria`),
-  ADD KEY `idTitulo` (`idCategoria`) USING BTREE,
-  ADD KEY `idCategoria` (`idTitulo`) USING BTREE;
+  ADD PRIMARY KEY (`idCategoria`,`idTitulo`),
+  ADD KEY `idTitulo` (`idTitulo`) USING BTREE,
+  ADD KEY `idCategoria` (`idCategoria`) USING BTREE;
 
 --
 -- Indices de la tabla `usuario`
