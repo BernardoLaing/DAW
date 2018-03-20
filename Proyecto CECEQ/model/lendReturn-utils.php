@@ -3,19 +3,19 @@
  //Préstamo, Devolución, excedePrestamos, usuarioInexistente, libroInexistente, libroActualmentePrestado
 function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
     $conn = connect();
+    $estadoDisponible = true;
     if(!$conn){ die("No se pudo conectar a la Base de Datos");}
     if ($boolPrestamo == true) {
-      ///////////// REVISA QUE NO TENGA 3 PRESTAMOS //////////////////////
-      $sql='SELECT *
-              FROM ejemplar_credencial ec
-              WHERE ec.idCredencial = (?)
-              AND fechaDevolucionReal is null';
+      ///////////// REVISA QUE ESTE EN ESTADO DISPONIBLE //////////////////////
+      $sql='SELECT idEstado
+              FROM ejemplar_estado ee
+              WHERE ee.idEjemplar = (?)';
       // Preparing the statement
       if (!($statement = $conn->prepare($sql))) {
           die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
       }
       // Binding statement params
-      if (!$statement->bind_param("i", $idCredencial)) {
+      if (!$statement->bind_param("i", $idEjemplar)) {
           die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
       }
       // Executing the statement
@@ -23,8 +23,12 @@ function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
           die("Execution failed: (" . $statement->errno . ") " . $statement->error);
       }
       $result = $statement->get_result();
-      if($result->num_rows === 3){
-        return 'excedePrestamos';
+      if($result->num_rows === 0) exit('No rows');
+      while($row = $result->fetch_assoc()) {
+          $returnEstado =  $row['idEstado'];
+      }
+      if ($returnEstado != 5) {
+          return 'noDisponible';
       }
       ///////////// REVISA QUE EXISTA USUARIO //////////////////////
       $sql='SELECT *
@@ -115,6 +119,34 @@ function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
     disconnect($conn);
 }
 
+function checkLendTimes($idCredencial){
+  $conn = connect();
+  $estadoDisponible = true;
+  if(!$conn){ die("No se pudo conectar a la Base de Datos");}
+
+  ///////////// REVISA QUE NO TENGA 3 PRESTAMOS //////////////////////
+  $sql='SELECT *
+          FROM ejemplar_credencial ec
+          WHERE ec.idCredencial = (?)
+          AND fechaDevolucionReal is null';
+  // Preparing the statement
+  if (!($statement = $conn->prepare($sql))) {
+      die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
+  }
+  // Binding statement params
+  if (!$statement->bind_param("i", $idCredencial)) {
+      die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
+  }
+  // Executing the statement
+  if (!$statement->execute()) {
+      die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+  }
+  $result = $statement->get_result();
+  if($result->num_rows >= 3){
+    return '<p class="text-center">¡Este usuario ya tiene tres libros prestados!</p>';
+  }
+  disconnect($conn);
+}
 function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
   $conn = connect();
   if(!$conn){ die("No se pudo conectar a la Base de Datos");}

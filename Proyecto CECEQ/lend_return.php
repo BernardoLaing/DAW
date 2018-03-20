@@ -40,6 +40,7 @@
     $aux_librouno = $_POST["user"]["libroUno"];
     $_SESSION['ok'] = true;
     $_SESSION['libro'] = $aux_librouno;
+    //Préstamo, Devolución, excedePrestamos, usuarioInexistente, libroInexistente
     $_SESSION['tipo'] = setTipo(NULL, $_SESSION['libro'], false);
 
   }else if(!($idCredencial && $ingresoLibro)){
@@ -51,7 +52,6 @@
     include("modals/modal_lend.php");
     echo "<script> $('#myModal').modal('show') </script>";
   }
-
   ////////// OPCIONES EN EL MODAL ///////////////
   if(isset($_POST["aceptar"]) && ($_SESSION['tipo'] == 'Préstamo')){ //El cuenta habiente esta ACEPTANDO un PRESTAMO
     //echo 'ACEPTO PRESTAMO ';

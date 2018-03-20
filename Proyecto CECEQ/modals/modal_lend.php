@@ -20,6 +20,7 @@ if($var_value && $var_tipo == 'Préstamo'){
 
         <!-- Modal body -->
         <div class="modal-body">
+          <p>' . checkLendTimes($_SESSION['credencial']) . '</p>
           <p><strong>Ejemplar: </strong>' . getNameBook($_SESSION['libro'], false) . '</p>
           <p><strong>Prestamo a: </strong>' . getNameVisitor($_SESSION['credencial'], true) .'</p>
           <p><strong>Fecha de préstamo: </strong>'.date("Y-m-d").'</p>
@@ -150,6 +151,13 @@ else{
              <p><strong>Prestamo a: </strong>' . getNameVisitor($_SESSION['libro'], false) .'</p>
              <p><strong>Fecha de préstamo: </strong>'.getDateInfo($_SESSION['libro'], true).'</p>
              <p><strong>Fecha de retorno: </strong>'.getDateInfo($_SESSION['libro'], false).'</p>
+           </div>';
+  }else if($var_tipo == 'noDisponible'){ //Presionó préstamo de un libro actualmente prestado
+        $modalMissingData .= '
+          <!-- Modal body -->
+           <div class="modal-body">
+             <h5 class="text-center">Este libro no tiene estado disponible.</h5>
+             <h5 class="text-center">Por favor, revise los datos.</h5>
            </div>';
   }
 
