@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-03-2018 a las 04:16:12
+-- Tiempo de generación: 20-03-2018 a las 21:19:27
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -289,62 +289,65 @@ CREATE TABLE `ejemplar` (
   `editorial` varchar(50) NOT NULL,
   `year` int(11) NOT NULL,
   `volumen` int(11) DEFAULT NULL,
-  `fechaIngreso` date NOT NULL,
+  `fechaIngreso` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `claveIngreso` varchar(50) NOT NULL,
-  `idTitulo` int(11) NOT NULL
+  `idTitulo` int(11) NOT NULL,
+  `coleccion` varchar(50) DEFAULT NULL,
+  `edicion` int(11) DEFAULT NULL,
+  `idUsuario` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ejemplar`
 --
 
-INSERT INTO `ejemplar` (`idEjemplar`, `ISBN`, `estante`, `editorial`, `year`, `volumen`, `fechaIngreso`, `claveIngreso`, `idTitulo`) VALUES
-(1, '968-19-1080-X', 'N/A', 'ALAMAH', 2002, 0, '0000-00-00', 'CL', 1),
-(2, '968-19-1080-X', 'N/A', 'ALAMAH', 2002, 0, '0000-00-00', 'CL', 1),
-(3, '84-481-2124-4', 'N/A', 'MC GRAW HILL', 1999, 0, '0000-00-00', 'DG 242', 2),
-(4, '970-10-2628-4', 'N/A', 'MC GRAW HILL', 2000, 0, '0000-00-00', 'DG 243', 3),
-(5, '84-95318-59-8', 'N/A', 'INFOR BOOKS', 2000, 0, '0000-00-00', 'DG248', 4),
-(6, '0-07-212433-4', 'N/A', 'OSBORNE', 2001, 0, '0000-00-00', 'DG 340', 5),
-(7, '1-861002-53-X', 'N/A', 'WROX PRESS', 1999, 0, '0000-00-00', 'DG 357', 6),
-(8, '978-0-07-1105', 'N/A', 'MC GRAW HILL', 2007, 0, '0000-00-00', 'DG 422', 7),
-(9, '970-10-3632-8', 'N/A', 'MC GRAW HILL', 2003, 0, '0000-00-00', 'DG 431', 8),
-(10, '968-439-058-0', 'N/A', 'PC', 1970, 0, '0000-00-00', 'DG 433', 9),
-(11, '0-07-286824-4', 'N/A', 'MC GRAW HILL', 2006, 0, '0000-00-00', 'DG 1182', 10),
-(12, '978-84-782-90', 'N/A', 'PEARSON EDUCACIÓN', 2007, 0, '0000-00-00', 'CL 54', 11),
-(13, 'SN', 'N/A', 'MCGRAW-HILL', 1961, 0, '0000-00-00', 'DG', 12),
-(14, '978-607-462-0', 'N/A', 'EEL COLEGIO DE MEXICO', 2009, 0, '0000-00-00', 'DG', 13),
-(15, 'SN', 'N/A', 'EL COLEGIO DE MEXICO', 1980, 0, '0000-00-00', 'DG', 14),
-(16, 'SN', 'N/A', 'IEEQ', 2005, 0, '0000-00-00', 'DG', 15),
-(17, '84-02-04361-5', 'N/A', 'BRUGUERA', 1975, 0, '0000-00-00', 'DG', 16),
-(18, 'SN', 'N/A', 'INEGI', 2004, 0, '0000-00-00', 'DG', 17),
-(19, '968-19-0933-X', 'N/A', 'TAURUS', 2003, 0, '0000-00-00', 'CL', 18),
-(20, '968-19-0933-X', 'N/A', 'TAURUS', 2003, 0, '0000-00-00', 'CL', 18),
-(21, '968-19-0933-X', 'N/A', 'TAURUS', 2003, 0, '0000-00-00', 'CL', 18),
-(22, '968-19-0933-X', 'N/A', 'TAURUS', 2003, 0, '0000-00-00', 'CL', 18),
-(23, '968-19-0933-X', 'N/A', 'TAURUS', 2003, 0, '0000-00-00', 'CL', 18),
-(24, '968-19-0933-X', 'N/A', 'TAURUS', 2003, 0, '0000-00-00', 'CL', 18),
-(25, '968-16-4976-1', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1996, 27, '0000-00-00', 'DO', 19),
-(26, '968-16-4738-6', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1995, 26, '0000-00-00', 'DO', 20),
-(27, '968-16-4710-6', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1995, 25, '0000-00-00', 'DO', 21),
-(28, '968-16-4478-6', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1994, 24, '0000-00-00', 'DO', 22),
-(29, 'SN', 'N/A', 'DIANA', 1976, 0, '0000-00-00', 'DG', 23),
-(30, '968-6361-49-9', 'N/A', 'CONSEJO ESTATAL PARA LA CULTURA', 1996, 0, '0000-00-00', 'DG', 24),
-(31, 'SN', 'N/A', 'PLAZA & JANÉS', 1980, 6, '0000-00-00', 'DG', 25),
-(32, '968-16-1697-9', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1984, 0, '0000-00-00', 'DG', 26),
-(33, '968-16-1697-9', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1984, 0, '0000-00-00', 'DG', 26),
-(34, '968-16-6717-4', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 2002, 0, '0000-00-00', 'CL', 27),
-(35, 'SN', 'N/A', 'TRILLAS', 1968, 0, '0000-00-00', 'DG', 28),
-(36, 'SN', 'N/A', 'UTEHA', 1967, 0, '0000-00-00', 'DG', 29),
-(37, '970-9026-40-2', 'N/A', 'SECRETARIA DE DESARROLLO SOCIAL', 1999, 0, '0000-00-00', 'DG', 30),
-(38, '970-9026-40-2', 'N/A', 'SECRETARIA DE DESARROLLO SOCIAL', 1999, 0, '0000-00-00', 'DG', 30),
-(39, '970-9026-40-2', 'N/A', 'SECRETARIA DE DESARROLLO SOCIAL', 1999, 0, '0000-00-00', 'DG', 30),
-(40, '968-16-1063-6', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1982, 0, '0000-00-00', 'DG', 31),
-(41, '968-16-1063-6', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1982, 0, '0000-00-00', 'DG', 31),
-(42, '968-16-1063-6', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1982, 0, '0000-00-00', 'DG', 31),
-(43, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00', 'CL', 32),
-(44, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00', 'CL', 32),
-(45, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00', 'CL', 32),
-(46, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00', 'CL', 32);
+INSERT INTO `ejemplar` (`idEjemplar`, `ISBN`, `estante`, `editorial`, `year`, `volumen`, `fechaIngreso`, `claveIngreso`, `idTitulo`, `coleccion`, `edicion`, `idUsuario`) VALUES
+(1, '968-19-1080-X', 'N/A', 'ALAMAH', 2002, 0, '0000-00-00 00:00:00', 'CL', 1, NULL, NULL, NULL),
+(2, '968-19-1080-X', 'N/A', 'ALAMAH', 2002, 0, '0000-00-00 00:00:00', 'CL', 1, NULL, NULL, NULL),
+(3, '84-481-2124-4', 'N/A', 'MC GRAW HILL', 1999, 0, '0000-00-00 00:00:00', 'DG 242', 2, NULL, NULL, NULL),
+(4, '970-10-2628-4', 'N/A', 'MC GRAW HILL', 2000, 0, '0000-00-00 00:00:00', 'DG 243', 3, NULL, NULL, NULL),
+(5, '84-95318-59-8', 'N/A', 'INFOR BOOKS', 2000, 0, '0000-00-00 00:00:00', 'DG248', 4, NULL, NULL, NULL),
+(6, '0-07-212433-4', 'N/A', 'OSBORNE', 2001, 0, '0000-00-00 00:00:00', 'DG 340', 5, NULL, NULL, NULL),
+(7, '1-861002-53-X', 'N/A', 'WROX PRESS', 1999, 0, '0000-00-00 00:00:00', 'DG 357', 6, NULL, NULL, NULL),
+(8, '978-0-07-1105', 'N/A', 'MC GRAW HILL', 2007, 0, '0000-00-00 00:00:00', 'DG 422', 7, NULL, NULL, NULL),
+(9, '970-10-3632-8', 'N/A', 'MC GRAW HILL', 2003, 0, '0000-00-00 00:00:00', 'DG 431', 8, NULL, NULL, NULL),
+(10, '968-439-058-0', 'N/A', 'PC', 1970, 0, '0000-00-00 00:00:00', 'DG 433', 9, NULL, NULL, NULL),
+(11, '0-07-286824-4', 'N/A', 'MC GRAW HILL', 2006, 0, '0000-00-00 00:00:00', 'DG 1182', 10, NULL, NULL, NULL),
+(12, '978-84-782-90', 'N/A', 'PEARSON EDUCACIÓN', 2007, 0, '0000-00-00 00:00:00', 'CL 54', 11, NULL, NULL, NULL),
+(13, 'SN', 'N/A', 'MCGRAW-HILL', 1961, 0, '0000-00-00 00:00:00', 'DG', 12, NULL, NULL, NULL),
+(14, '978-607-462-0', 'N/A', 'EEL COLEGIO DE MEXICO', 2009, 0, '0000-00-00 00:00:00', 'DG', 13, NULL, NULL, NULL),
+(15, 'SN', 'N/A', 'EL COLEGIO DE MEXICO', 1980, 0, '0000-00-00 00:00:00', 'DG', 14, NULL, NULL, NULL),
+(16, 'SN', 'N/A', 'IEEQ', 2005, 0, '0000-00-00 00:00:00', 'DG', 15, NULL, NULL, NULL),
+(17, '84-02-04361-5', 'N/A', 'BRUGUERA', 1975, 0, '0000-00-00 00:00:00', 'DG', 16, NULL, NULL, NULL),
+(18, 'SN', 'N/A', 'INEGI', 2004, 0, '0000-00-00 00:00:00', 'DG', 17, NULL, NULL, NULL),
+(19, '968-19-0933-X', 'N/A', 'TAURUS', 2003, 0, '0000-00-00 00:00:00', 'CL', 18, NULL, NULL, NULL),
+(20, '968-19-0933-X', 'N/A', 'TAURUS', 2003, 0, '0000-00-00 00:00:00', 'CL', 18, NULL, NULL, NULL),
+(21, '968-19-0933-X', 'N/A', 'TAURUS', 2003, 0, '0000-00-00 00:00:00', 'CL', 18, NULL, NULL, NULL),
+(22, '968-19-0933-X', 'N/A', 'TAURUS', 2003, 0, '0000-00-00 00:00:00', 'CL', 18, NULL, NULL, NULL),
+(23, '968-19-0933-X', 'N/A', 'TAURUS', 2003, 0, '0000-00-00 00:00:00', 'CL', 18, NULL, NULL, NULL),
+(24, '968-19-0933-X', 'N/A', 'TAURUS', 2003, 0, '0000-00-00 00:00:00', 'CL', 18, NULL, NULL, NULL),
+(25, '968-16-4976-1', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1996, 27, '0000-00-00 00:00:00', 'DO', 19, NULL, NULL, NULL),
+(26, '968-16-4738-6', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1995, 26, '0000-00-00 00:00:00', 'DO', 20, NULL, NULL, NULL),
+(27, '968-16-4710-6', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1995, 25, '0000-00-00 00:00:00', 'DO', 21, NULL, NULL, NULL),
+(28, '968-16-4478-6', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1994, 24, '0000-00-00 00:00:00', 'DO', 22, NULL, NULL, NULL),
+(29, 'SN', 'N/A', 'DIANA', 1976, 0, '0000-00-00 00:00:00', 'DG', 23, NULL, NULL, NULL),
+(30, '968-6361-49-9', 'N/A', 'CONSEJO ESTATAL PARA LA CULTURA', 1996, 0, '0000-00-00 00:00:00', 'DG', 24, NULL, NULL, NULL),
+(31, 'SN', 'N/A', 'PLAZA & JANÉS', 1980, 6, '0000-00-00 00:00:00', 'DG', 25, NULL, NULL, NULL),
+(32, '968-16-1697-9', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1984, 0, '0000-00-00 00:00:00', 'DG', 26, NULL, NULL, NULL),
+(33, '968-16-1697-9', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1984, 0, '0000-00-00 00:00:00', 'DG', 26, NULL, NULL, NULL),
+(34, '968-16-6717-4', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 2002, 0, '0000-00-00 00:00:00', 'CL', 27, NULL, NULL, NULL),
+(35, 'SN', 'N/A', 'TRILLAS', 1968, 0, '0000-00-00 00:00:00', 'DG', 28, NULL, NULL, NULL),
+(36, 'SN', 'N/A', 'UTEHA', 1967, 0, '0000-00-00 00:00:00', 'DG', 29, NULL, NULL, NULL),
+(37, '970-9026-40-2', 'N/A', 'SECRETARIA DE DESARROLLO SOCIAL', 1999, 0, '0000-00-00 00:00:00', 'DG', 30, NULL, NULL, NULL),
+(38, '970-9026-40-2', 'N/A', 'SECRETARIA DE DESARROLLO SOCIAL', 1999, 0, '0000-00-00 00:00:00', 'DG', 30, NULL, NULL, NULL),
+(39, '970-9026-40-2', 'N/A', 'SECRETARIA DE DESARROLLO SOCIAL', 1999, 0, '0000-00-00 00:00:00', 'DG', 30, NULL, NULL, NULL),
+(40, '968-16-1063-6', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1982, 0, '0000-00-00 00:00:00', 'DG', 31, NULL, NULL, NULL),
+(41, '968-16-1063-6', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1982, 0, '0000-00-00 00:00:00', 'DG', 31, NULL, NULL, NULL),
+(42, '968-16-1063-6', 'N/A', 'FONDO DE CULTURA ECONÓMICA', 1982, 0, '0000-00-00 00:00:00', 'DG', 31, NULL, NULL, NULL),
+(43, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL),
+(44, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL),
+(45, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL),
+(46, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -394,7 +397,7 @@ INSERT INTO `ejemplar_credencial` (`idEjemplar`, `idCredencial`, `fechaPrestamo`
 CREATE TABLE `ejemplar_estado` (
   `idEjemplar` int(11) NOT NULL,
   `idEstado` int(11) NOT NULL,
-  `fecha` date NOT NULL
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -402,52 +405,52 @@ CREATE TABLE `ejemplar_estado` (
 --
 
 INSERT INTO `ejemplar_estado` (`idEjemplar`, `idEstado`, `fecha`) VALUES
-(1, 5, '0000-00-00'),
-(2, 5, '0000-00-00'),
-(3, 5, '0000-00-00'),
-(4, 5, '0000-00-00'),
-(5, 5, '0000-00-00'),
-(6, 5, '0000-00-00'),
-(7, 5, '0000-00-00'),
-(8, 5, '0000-00-00'),
-(9, 5, '0000-00-00'),
-(10, 5, '0000-00-00'),
-(11, 5, '0000-00-00'),
-(12, 5, '0000-00-00'),
-(13, 5, '0000-00-00'),
-(14, 5, '0000-00-00'),
-(15, 5, '0000-00-00'),
-(16, 5, '0000-00-00'),
-(17, 5, '0000-00-00'),
-(18, 5, '0000-00-00'),
-(19, 5, '0000-00-00'),
-(20, 5, '0000-00-00'),
-(21, 5, '0000-00-00'),
-(22, 5, '0000-00-00'),
-(23, 5, '0000-00-00'),
-(24, 5, '0000-00-00'),
-(25, 5, '0000-00-00'),
-(26, 5, '0000-00-00'),
-(27, 5, '0000-00-00'),
-(28, 5, '0000-00-00'),
-(29, 5, '0000-00-00'),
-(30, 5, '0000-00-00'),
-(31, 5, '0000-00-00'),
-(32, 5, '0000-00-00'),
-(33, 5, '0000-00-00'),
-(34, 5, '0000-00-00'),
-(35, 5, '0000-00-00'),
-(36, 5, '0000-00-00'),
-(37, 5, '0000-00-00'),
-(38, 5, '0000-00-00'),
-(39, 5, '0000-00-00'),
-(40, 5, '0000-00-00'),
-(41, 5, '0000-00-00'),
-(42, 5, '0000-00-00'),
-(43, 5, '0000-00-00'),
-(44, 5, '0000-00-00'),
-(45, 5, '0000-00-00'),
-(46, 5, '0000-00-00');
+(1, 5, '0000-00-00 00:00:00'),
+(2, 5, '0000-00-00 00:00:00'),
+(3, 5, '0000-00-00 00:00:00'),
+(4, 5, '0000-00-00 00:00:00'),
+(5, 5, '0000-00-00 00:00:00'),
+(6, 5, '0000-00-00 00:00:00'),
+(7, 5, '0000-00-00 00:00:00'),
+(8, 5, '0000-00-00 00:00:00'),
+(9, 5, '0000-00-00 00:00:00'),
+(10, 5, '0000-00-00 00:00:00'),
+(11, 5, '0000-00-00 00:00:00'),
+(12, 5, '0000-00-00 00:00:00'),
+(13, 5, '0000-00-00 00:00:00'),
+(14, 5, '0000-00-00 00:00:00'),
+(15, 5, '0000-00-00 00:00:00'),
+(16, 5, '0000-00-00 00:00:00'),
+(17, 5, '0000-00-00 00:00:00'),
+(18, 5, '0000-00-00 00:00:00'),
+(19, 5, '0000-00-00 00:00:00'),
+(20, 5, '0000-00-00 00:00:00'),
+(21, 5, '0000-00-00 00:00:00'),
+(22, 5, '0000-00-00 00:00:00'),
+(23, 5, '0000-00-00 00:00:00'),
+(24, 5, '0000-00-00 00:00:00'),
+(25, 5, '0000-00-00 00:00:00'),
+(26, 5, '0000-00-00 00:00:00'),
+(27, 5, '0000-00-00 00:00:00'),
+(28, 5, '0000-00-00 00:00:00'),
+(29, 5, '0000-00-00 00:00:00'),
+(30, 5, '0000-00-00 00:00:00'),
+(31, 5, '0000-00-00 00:00:00'),
+(32, 5, '0000-00-00 00:00:00'),
+(33, 5, '0000-00-00 00:00:00'),
+(34, 5, '0000-00-00 00:00:00'),
+(35, 5, '0000-00-00 00:00:00'),
+(36, 5, '0000-00-00 00:00:00'),
+(37, 5, '0000-00-00 00:00:00'),
+(38, 5, '0000-00-00 00:00:00'),
+(39, 5, '0000-00-00 00:00:00'),
+(40, 5, '0000-00-00 00:00:00'),
+(41, 5, '0000-00-00 00:00:00'),
+(42, 5, '0000-00-00 00:00:00'),
+(43, 5, '0000-00-00 00:00:00'),
+(44, 5, '0000-00-00 00:00:00'),
+(45, 5, '0000-00-00 00:00:00'),
+(46, 5, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -898,7 +901,9 @@ INSERT INTO `titulo` (`idTitulo`, `titulo`, `year`) VALUES
 (29, 'LA DEMOGRACIA EN LA ACTUALIDAD', 1967),
 (30, 'REGIONES PRIORITARIAS', 1999),
 (31, 'PSICOTERAPIA FAMILIAR', 1982),
-(32, 'ESTRATEGIA DE MARKETING SUN TZU', 2004);
+(32, 'ESTRATEGIA DE MARKETING SUN TZU', 2004),
+(50, 'prueba', 1235),
+(51, 'prueba2', 1111);
 
 -- --------------------------------------------------------
 
@@ -917,6 +922,7 @@ CREATE TABLE `titulo_autor` (
 
 INSERT INTO `titulo_autor` (`idAutor`, `idTitulo`) VALUES
 (1, 2),
+(1, 37),
 (2, 3),
 (3, 16),
 (4, 6),
@@ -945,7 +951,9 @@ INSERT INTO `titulo_autor` (`idAutor`, `idTitulo`) VALUES
 (27, 22),
 (28, 23),
 (29, 24),
-(30, 25);
+(30, 25),
+(40, 50),
+(41, 51);
 
 -- --------------------------------------------------------
 
@@ -954,15 +962,15 @@ INSERT INTO `titulo_autor` (`idAutor`, `idTitulo`) VALUES
 --
 
 CREATE TABLE `titulo_categoria` (
-  `idCategoria` int(11) NOT NULL,
-  `idTitulo` int(11) NOT NULL
+  `idTitulo` int(11) NOT NULL,
+  `idCategoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `titulo_categoria`
 --
 
-INSERT INTO `titulo_categoria` (`idCategoria`, `idTitulo`) VALUES
+INSERT INTO `titulo_categoria` (`idTitulo`, `idCategoria`) VALUES
 (1, 190),
 (2, 600),
 (3, 720),
@@ -972,6 +980,8 @@ INSERT INTO `titulo_categoria` (`idCategoria`, `idTitulo`) VALUES
 (7, 70),
 (8, 70),
 (9, 660),
+(10, 10),
+(10, 100),
 (10, 310),
 (11, 150),
 (12, 120),
@@ -1028,6 +1038,7 @@ INSERT INTO `usuario` (`usuario`, `nombre`, `password`) VALUES
 ('Jmartinez', 'Juan Carlos Martínez López', 'hS6#8'),
 ('Jperez', 'Juan Pérez Rosales', 'hS6#8'),
 ('Lgonzales', 'Luz Elena González Martínez', '7iNxm'),
+('martin', 'Martin Vivanco', 'Martin#123'),
 ('Mcruz', 'María del Carmen de la Cruz Martínez', '7iNxm'),
 ('Mguadaluoe', 'María Guadalupe Ramírez Castro', 'hS6#8'),
 ('Mguitierrez', 'Manuel Gutiérrez Pérez', 'hS6#8'),
@@ -1066,6 +1077,7 @@ INSERT INTO `usuario_rol` (`usuario`, `idRol`, `fecha`) VALUES
 ('Jmartinez', 3, '0000-00-00 00:00:00'),
 ('Jperez', 4, '0000-00-00 00:00:00'),
 ('Lgonzales', 5, '0000-00-00 00:00:00'),
+('martin', 1, '2018-03-16 00:00:00'),
 ('Mcruz', 4, '0000-00-00 00:00:00'),
 ('Mguadaluoe', 3, '0000-00-00 00:00:00'),
 ('Mguitierrez', 4, '0000-00-00 00:00:00'),
@@ -1282,9 +1294,9 @@ ALTER TABLE `titulo_autor`
 -- Indices de la tabla `titulo_categoria`
 --
 ALTER TABLE `titulo_categoria`
-  ADD PRIMARY KEY (`idCategoria`,`idTitulo`),
-  ADD KEY `idTitulo` (`idCategoria`),
-  ADD KEY `idCategoria` (`idTitulo`);
+  ADD PRIMARY KEY (`idTitulo`,`idCategoria`),
+  ADD KEY `idTitulo` (`idCategoria`) USING BTREE,
+  ADD KEY `idCategoria` (`idTitulo`) USING BTREE;
 
 --
 -- Indices de la tabla `usuario`
@@ -1322,7 +1334,7 @@ ALTER TABLE `visitante_gradoestudios`
 -- AUTO_INCREMENT de la tabla `autor`
 --
 ALTER TABLE `autor`
-  MODIFY `idAutor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `idAutor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -1340,7 +1352,7 @@ ALTER TABLE `credencial`
 -- AUTO_INCREMENT de la tabla `ejemplar`
 --
 ALTER TABLE `ejemplar`
-  MODIFY `idEjemplar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `idEjemplar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT de la tabla `estado`
@@ -1382,7 +1394,7 @@ ALTER TABLE `sancion`
 -- AUTO_INCREMENT de la tabla `titulo`
 --
 ALTER TABLE `titulo`
-  MODIFY `idTitulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `idTitulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT de la tabla `visitante`
@@ -1439,13 +1451,6 @@ ALTER TABLE `rol_operacion`
 --
 ALTER TABLE `sancion`
   ADD CONSTRAINT `fkVisitanteSancion` FOREIGN KEY (`idVisitante`) REFERENCES `visitante` (`idVisitante`);
-
---
--- Filtros para la tabla `titulo_categoria`
---
-ALTER TABLE `titulo_categoria`
-  ADD CONSTRAINT `fkCategoria` FOREIGN KEY (`idTitulo`) REFERENCES `categoria` (`idCategoria`),
-  ADD CONSTRAINT `fkTitulo` FOREIGN KEY (`idCategoria`) REFERENCES `titulo` (`idTitulo`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
