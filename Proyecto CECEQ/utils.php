@@ -425,13 +425,13 @@ function buscarTitulo($titulo, $year)
     disconnect($connection);
     return $result;
 }
-function insertEjemplar($ISBN, $estante, $editorial, $year, $volumen, $idTitulo)
+function insertEjemplar($ISBN, $estante, $editorial, $year, $volumen, $idTitulo, $colection, $edition, $idUsuario)
 {
     $connection = connect();
-    $statement = mysqli_prepare($connection, "INSERT INTO ejemplar(ISBN, estante, editorial, year, volumen, idTitulo)
-    VALUES(?,?,?,?,?,?);
+    $statement = mysqli_prepare($connection, "INSERT INTO ejemplar(ISBN, estante, editorial, year, volumen, idTitulo, coleccion, edicion, idUsuario)
+    VALUES(?,?,?,?,?,?,?,?,?);
     ");
-    $statement ->bind_param("sssiii", $ISBN, $estante, $editorial, $year, $volumen, $idTitulo);
+    $statement ->bind_param("sssiiisis", $ISBN, $estante, $editorial, $year, $volumen, $idTitulo, $colection, $edition, $idUsuario);
     $retorno = $statement->execute();
     disconnect($connection);
     return($retorno);
@@ -458,7 +458,7 @@ function buscarEjemplar($ISBN, $estante, $editorial, $year, $volumen)
 function insertAutorTitulo($idTitulo, $idAutor)
 {
     $connection = connect();
-    $statement = mysqli_prepare($connection, "INSERT INTO autor_titulo(idAutor, idTitulo)
+    $statement = mysqli_prepare($connection, "INSERT INTO titulo_autor(idAutor, idTitulo)
     VALUES(?,?);
     ");
     $statement ->bind_param("ii", $idTitulo, $idAutor);
@@ -472,7 +472,7 @@ function buscarAutorTitulo($idTitulo, $idAutor)
     $connection = connect();
     $statement = mysqli_prepare($connection,"
     select idAutor, idTitulo
-    from autor_titulo
+    from titulo_autor
     where (idTitulo = ? ".($idTitulo==""?"or 1":"").")
     and (idAutor = ? ".($idAutor==""?"or 1":"").")
     ");
@@ -541,6 +541,111 @@ function buscarPrestamoDevolucion($idCredencial){
     disconnect($connection);
     return $result;
 }
+function insertCategoriaTitulo($idTitulo, $idCategoria)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection, "INSERT INTO titulo_categoria (idCategoria, idTitulo) 
+    VALUES(?,?);
+    ");
+    $statement ->bind_param("ii", $idCategoria, $idTitulo);
+    $retorno = $statement->execute();
+    disconnect($connection);
+    return($retorno);
+
+}
+/********************************* Funcion para busqueda de libros **********************************/
+function buscarGeneral($nombre, $apellidoPaterno, $apellidoMaterno, $titulo)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    select a.nombre AS nombreA, apellidoPaterno, titulo, t.year, estante, editorial, es.nombre
+    from autor a, titulo t, titulo_autor ta, ejemplar e, ejemplar_estado ee, estado es
+    where (a.nombre LIKE ? ".($nombre==""?"or 1":"").") 
+    and (apellidoPaterno = ? ".($apellidoPaterno==""?"or 1":"").")
+    and (apellidoMaterno = ? ".($apellidoMaterno==""?"or 1":"").")
+    and a.idAutor=ta.idAutor
+    and t.idTitulo=ta.idTitulo
+    and (t.titulo LIKE ? ".($titulo==""?"or 1":"").")
+    and t.idTitulo = e.idTitulo
+    and ee.idEjemplar=e.idEjemplar
+    and ee.idEstado=es.idEstado
+    ");
+    $statement->bind_param("ssss", $nombre, $apellidoPaterno, $apellidoMaterno, $titulo);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+    
+}
+
+function buscarGeneralLike($nombre, $apellidoPaterno, $apellidoMaterno, $titulo) /**en proceso**/
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    select a.nombre AS nombreA, apellidoPaterno, titulo, t.year, estante, editorial, es.nombre, c.nombre AS nombreC
+    from autor a, titulo t, titulo_autor ta, ejemplar e, ejemplar_estado ee, estado es, titulo_categoria tc, categoria c
+    where (a.nombre LIKE ? ".($nombre==""?"or 1":"").") 
+    and (apellidoPaterno = ? ".($apellidoPaterno==""?"or 1":"").")
+    and (apellidoMaterno = ? ".($apellidoMaterno==""?"or 1":"").")
+    and a.idAutor=ta.idAutor
+    and t.idTitulo=ta.idTitulo
+    and (t.titulo LIKE ? ".($titulo==""?"or 1":"").")
+    and t.idTitulo = e.idTitulo
+    and ee.idEjemplar=e.idEjemplar
+    and ee.idEstado=es.idEstado
+    and t.idTitulo=tc.idTitulo
+    and tc.idCategoria=c.idCategoria
+    ");
+    $statement->bind_param("ssss", $nombre, $apellidoPaterno, $apellidoMaterno, $titulo);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+    
+}
+function lastIndexEjemplar()
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection, "SELECT MAX( idEjemplar )  FROM ejemplar");
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    if($row = mysqli_fetch_assoc($result))
+    {
+        $results = $row['MAX( idEjemplar )'];
+        //echo $results;
+    }
+    return $results;  
+}
+function insertEjemplarEstado($idEjemplar, $idEstado)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection, "INSERT INTO ejemplar_estado(idEjemplar, idEstado)
+    VALUES(?,?);
+    ");
+    $statement ->bind_param("ii", $idEjemplar, $idEstado);
+    $retorno = $statement->execute();
+    disconnect($connection);
+    return($retorno);
+
+}
+function buscarAutorN($nombre, $apellidoPaterno, $apellidoMaterno)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    select idAutor, nombre, apellidoPaterno, apellidoMaterno
+    from autor
+    where (nombre = ? )
+    and (apellidoPaterno = ?)
+    and (apellidoMaterno = ? )
+    ");
+    $statement->bind_param("sss", $nombre, $apellidoPaterno, $apellidoMaterno);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+
 
     //var_dump(login('lalo', 'hockey'));
     //var_dump(login('joaquin', 'basket'));
