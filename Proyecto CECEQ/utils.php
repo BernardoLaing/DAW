@@ -106,15 +106,81 @@ function insertVisitanteGradoEstudios($connection, $gradoEstudios){
     $statement->execute();
 }
 
-function insertEntrada($connection){
+function insertEntradaNewVisitor($connection){
     $statement = mysqli_prepare($connection,"
     insert into entrada (idVisitante) values ((select idVisitante from visitante order by idVisitante desc limit 1));
     ");
     $statement->execute();
+
+}
+
+function insertEntrada($connection, $idVisitante){
+    $statement = mysqli_prepare($connection,"
+    insert into entrada (idVisitante) values (?);
+    ");
+    $statement->bind_param("i", $idVisitante);
+    $statement->execute();
+}
+
+
+function queryVisitor($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios){
+    $connection = connect();
+    $nombre .="%";
+    $apellidoPaterno .="%";
+    $apellidoMaterno .="%";
+    $statement = mysqli_prepare($connection,"
+    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', g.nombre as 'Grado de estudios', genero as 'Género'
+    from visitante as v, visitante_gradoestudios as vg, gradoestudios as g
+    where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
+    and (v.nombre like ? ".($nombre==""?"or 1":"").")
+    and (apellidoPaterno like ? ".($apellidoPaterno==""?"or 1":"").")
+    and (apellidoMaterno like ? ".($apellidoMaterno==""?"or 1":"").")
+    and (fechaNacimiento = ? ".($fechaNacimiento==""?"or 1":"").")
+    and (genero = ? ".($genero==""?"or 1":"").")
+    and v.idVisitante = vg.idVisitante
+    and vg.idGrado = g.idGrado
+    and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
+    ");
+    $statement->bind_param("isssssi", $idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+
+function queryFirstVisitor($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios){
+    $connection = connect();
+    $nombre .="%";
+    $apellidoPaterno .="%";
+    $apellidoMaterno .="%";
+    $statement = mysqli_prepare($connection,"
+    select v.idVisitante
+    from visitante as v, visitante_gradoestudios as vg, gradoestudios as g
+    where (v.nombre like ? ".($nombre==""?"or 1":"").")
+    and (apellidoPaterno like ? ".($apellidoPaterno==""?"or 1":"").")
+    and (apellidoMaterno like ? ".($apellidoMaterno==""?"or 1":"").")
+    and (fechaNacimiento = ? ".($fechaNacimiento==""?"or 1":"").")
+    and (genero = ? ".($genero==""?"or 1":"").")
+    and v.idVisitante = vg.idVisitante
+    and vg.idGrado = g.idGrado
+    and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
+    ORDER BY v.idVisitante desc LIMIT 1
+    ");
+    $statement->bind_param("sssssi", $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result->fetch_assoc()["idVisitante"];
 }
 
 function insertVisitante($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $gradoEstudios, $genero){
+    $result = queryFirstVisitor($nombre,$apellidoPaterno,$apellidoMaterno,$fechaNacimiento,$genero,$gradoEstudios);
     $connection = connect();
+    if($result)
+    {
+        insertEntrada($connection,$result);   
+        return;
+    }
     $statement = mysqli_prepare($connection,"
     insert into visitante (nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, genero)
     values (?, ?, ?, ?, ?);
@@ -124,7 +190,7 @@ function insertVisitante($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNaci
 
     insertVisitanteGradoEstudios($connection,$gradoEstudios);
 
-    insertEntrada($connection);
+    insertEntradaNewVisitor($connection);
     
     disconnect($connection);
 }
@@ -281,32 +347,6 @@ function insertCredential(  //Visitante
     disconnect($connection);    
 }
 
-function queryVisitor($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios){
-    $connection = connect();
-    $nombre .="%";
-    $apellidoPaterno .="%";
-    $apellidoMaterno .="%";
-    $statement = mysqli_prepare($connection,"
-    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', g.nombre as 'Grado de estudios', genero as 'Género'
-    from visitante as v, visitante_gradoestudios as vg, gradoestudios as g
-    where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
-    and (v.nombre like ? ".($nombre==""?"or 1":"").")
-    and (apellidoPaterno like ? ".($apellidoPaterno==""?"or 1":"").")
-    and (apellidoMaterno like ? ".($apellidoMaterno==""?"or 1":"").")
-    and (fechaNacimiento = ? ".($fechaNacimiento==""?"or 1":"").")
-    and (genero = ? ".($genero==""?"or 1":"").")
-    and v.idVisitante = vg.idVisitante
-    and vg.idGrado = g.idGrado
-    and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
-    ");
-    $statement->bind_param("isssssi", $idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios);
-    $statement->execute();
-    $result = $statement->get_result();
-    disconnect($connection);
-    return $result;
-}
-
-
 function buildTableData($result){
     $table = "";
     if(mysqli_num_rows($result)>0){
@@ -330,31 +370,7 @@ function buildTableData($result){
     return $table;
 }
 
-function getLastIdVisitante(){
-    $conn = connect();
-    $sql = "SELECT idVisitante FROM visitante ORDER BY idVisitante DESC LIMIT 1";
-    $results = mysqli_query($conn,$sql);
-    if($results){
-        return $results->fetch_assoc()["idVisitante"];
-    }else{
-        echo "<p>Error: " . $sql . "<br>" . mysqli_error($conn) ."</p>";
-        return false;
-    }
-}
 
-function _insertVisitante_Grado($idvisitante,$idgrado){
-    $conn = connect();
-    $sql = 'INSERT INTO  visitante_gradoestudios(idVisitante, idGrado, fecha) VALUES (' . $idvisitante . ',' . $idgrado . ',' . date("Y-m-d") . ');';
-    if(mysqli_query($conn,$sql)){
-        disconnect($conn);
-        return true;
-    }else{
-        echo "<p>Error: " . $sql . "<br>" . mysqli_error($conn) ."</p>";
-        disconnect($conn);
-        return false;
-    }
-    disconnect($conn);
-}
 function insertAutor($nombre, $apellidoPaterno, $apellidoMaterno)
 {
     $connection = connect();
