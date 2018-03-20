@@ -558,8 +558,8 @@ function buscarGeneral($nombre, $apellidoPaterno, $apellidoMaterno, $titulo)
 {
     $connection = connect();
     $statement = mysqli_prepare($connection,"
-    select a.nombre AS nombreA, apellidoPaterno, titulo, t.year, estante, editorial, es.nombre
-    from autor a, titulo t, titulo_autor ta, ejemplar e, ejemplar_estado ee, estado es
+    select a.nombre AS nombreA, apellidoPaterno, titulo, t.year, estante, editorial, es.nombre, c.nombre AS nombreC
+    from autor a, titulo t, titulo_autor ta, ejemplar e, ejemplar_estado ee, estado es, titulo_categoria tc, categoria c
     where (a.nombre LIKE ? ".($nombre==""?"or 1":"").") 
     and (apellidoPaterno = ? ".($apellidoPaterno==""?"or 1":"").")
     and (apellidoMaterno = ? ".($apellidoMaterno==""?"or 1":"").")
@@ -569,6 +569,8 @@ function buscarGeneral($nombre, $apellidoPaterno, $apellidoMaterno, $titulo)
     and t.idTitulo = e.idTitulo
     and ee.idEjemplar=e.idEjemplar
     and ee.idEstado=es.idEstado
+    and t.idTitulo=tc.idTitulo
+    and tc.idCategoria=c.idCategoria
     ");
     $statement->bind_param("ssss", $nombre, $apellidoPaterno, $apellidoMaterno, $titulo);
     $statement->execute();
@@ -578,7 +580,7 @@ function buscarGeneral($nombre, $apellidoPaterno, $apellidoMaterno, $titulo)
     
 }
 
-function buscarGeneralLike($nombre, $apellidoPaterno, $apellidoMaterno, $titulo) /**en proceso**/
+function buscarGeneralLike($nombre, $apellidoPaterno, $apellidoMaterno, $titulo, $categoria) /**en proceso**/
 {
     $connection = connect();
     $statement = mysqli_prepare($connection,"
@@ -595,8 +597,9 @@ function buscarGeneralLike($nombre, $apellidoPaterno, $apellidoMaterno, $titulo)
     and ee.idEstado=es.idEstado
     and t.idTitulo=tc.idTitulo
     and tc.idCategoria=c.idCategoria
+    and (c.idCategoria between ? and (?+99)".($categoria==""?"or 1":"").")
     ");
-    $statement->bind_param("ssss", $nombre, $apellidoPaterno, $apellidoMaterno, $titulo);
+    $statement->bind_param("ssssii", $nombre, $apellidoPaterno, $apellidoMaterno, $titulo, $categoria, $categoria);
     $statement->execute();
     $result = $statement->get_result();
     disconnect($connection);
