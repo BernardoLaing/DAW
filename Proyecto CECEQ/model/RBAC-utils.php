@@ -115,6 +115,8 @@ function registerUser($user, $name, $password, $rol){
             $stmt->store_result();
             if($stmt->num_rows !== 0){
                 disconnect($db);
+                $_SESSION['error_type'] = "userConflict";
+                $_SESSION['error_msg'] = "El usuario que intentas agregar ya existe";
                 return false;
             }
             // insert command specification 

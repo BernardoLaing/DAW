@@ -24,8 +24,6 @@ if(isset($_POST["submit"])){
                 $_SESSION['error_msg'] = "";
                 header('Location: cuentas.php');
             }else{
-                $_SESSION['error_type'] = "primaryKeyError";
-                $_SESSION['error_msg'] = "El Usuario Ya Existe";
                 header('Location: accountCreate.php');
             }
             

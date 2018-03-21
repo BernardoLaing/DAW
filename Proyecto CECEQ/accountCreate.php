@@ -11,13 +11,14 @@ $rols = getTable('rol');
 ?>
 
 <?php 
-        include('modals/modal_accountCreate.php');
-
 include("html/accountCreate.html");
-if(isset($_SESSION['error_type'])){
-    if($_SESSION['error_type'] === "primaryKeyError"){
-    echo "<script> alert('El usuario ya está registrado')</script>";
-    }
+include("modals/modal_error.html");
+if($_SESSION['error_type'] === "userConflict"){
+    echo "<script>
+            $(document).ready(function (e) {
+                $('#myModal').modal('show');
+            });
+        </script>";
     $_SESSION['error_type'] = "";
 }
 include("partials/_footer.html");
