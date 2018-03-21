@@ -1,6 +1,7 @@
 <?php 
     include("../regexps.php");
     include("../utils.php");
+
     if(count($_POST)>0){
         if(!isset($_POST["user"]["gender"]) || !test($GENDER, $_POST["user"]["gender"])){
             $_POST["user"]["gender"] = null;
@@ -12,6 +13,7 @@
 
     
     if(count($_POST)>0
+        && isset($_POST["searchType"])
         && (($_POST["user"]["number"] == null) || test($NUMBER, $_POST["user"]["number"]))
         && (($_POST["user"]["name"] == null) || test($NAME, $_POST["user"]["name"]))
         && (($_POST["user"]["paternal"] == null) || test($NAME, $_POST["user"]["paternal"]))
@@ -32,7 +34,9 @@
         }
         if($nulls != 6 || $info["number"] != "" && isset($info)) {
             echo "<table class='table table-hover'>";
-            echo buildTableData(queryVisitor(
+            echo buildTableData(
+                $_POST["searchType"] == "visitante"?
+                                    queryVisitor(
                                     $info["number"],
                                     $info["name"],
                                     $info["paternal"],
@@ -40,8 +44,21 @@
                                     $info["birthday"],
                                     $info["gender"],
                                     $info["user_grade"]
-                                    ));
+                                    )
+                                    :
+                                    querySancion(
+                                        $info["number"],
+                                        $info["name"],
+                                        $info["paternal"],
+                                        $info["maternal"],
+                                        $info["birthday"],
+                                        $info["gender"],
+                                        $info["user_grade"]
+                                    )
+
+            );
             echo "</table>";   
             }
+            unset($_POST["searchType"]);
         }
     ?>
