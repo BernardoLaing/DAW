@@ -114,6 +114,7 @@ function registerUser($user, $name, $password, $rol){
               } 
             $stmt->store_result();
             if($stmt->num_rows !== 0){
+                disconnect($db);
                 return false;
             }
             // insert command specification 
@@ -332,7 +333,35 @@ function getRol($idRol){
 function createRol($name, $description, $permissions){
     $db = connect();
     if ($db != NULL) {
-
+        $query='SELECT nombre
+                FROM rol
+                WHERE nombre=?';
+        // Preparing the statement 
+        if (!($stmt = $db->prepare($query))) {
+            die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
+        }
+        // Binding statement params 
+        if (!$stmt->bind_param("s", $name)) {
+            die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
+        }
+         // Executing the statement
+         if (!$stmt->execute()) {
+            die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
+          } 
+        $stmt->store_result();
+        if($stmt->num_rows !== 0){
+            disconnect($db);
+            $_SESSION['error_type'] = "rolConflict";
+            $_SESSION['error_msg'] = "Ya existe un rol con ese nombre";
+            return false;
+        }
+        if(count($permissions === 0)){
+            disconnect($db);
+            $_SESSION['error_type'] = "rolConflict";
+            $_SESSION['error_msg'] = "No agregaste permisos al rol";
+            return false;
+        }
+        
         // insert command specification 
         $query='INSERT INTO rol (nombre, descripcion) VALUES (?, ?) ';
         // Preparing the statement 

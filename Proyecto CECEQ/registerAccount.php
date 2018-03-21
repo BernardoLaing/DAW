@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once('utils.php');
 ?>
 <?php
@@ -23,15 +24,13 @@ if(isset($_POST["submit"])){
                 $_SESSION['error_msg'] = "";
                 header('Location: cuentas.php');
             }else{
-                header('Location: menu.php');
-                $_SESSION["error_msg"] = "El usuario " . $user . " ya existe";
+                $_SESSION['error_type'] = "primaryKeyError";
+                $_SESSION['error_msg'] = "El Usuario Ya Existe";
                 header('Location: accountCreate.php');
             }
             
         }
-        echo "NOT VALID ARGUMENT(S)";
     }
-    echo "NOT ISSET";
 }else{
     echo "NOT SUBMIT";
 }
