@@ -1,5 +1,9 @@
 $(document).ready(function(){
     $("input").each(function(){
+      $(this).keydown(function(event){
+          if(event.keyCode == 13)
+              event.preventDefault();
+      });
         $(this).keyup(function(){
             $.post("controller/statisticsSearch_controller.php",{
                user : //Lo que envias
@@ -12,7 +16,7 @@ $(document).ready(function(){
                 }
             },
             function(data,status){
-                $("#user_table").html(data);
+                $("#statistics_table").html(data);
                 readyForDisplay();
             });
         });
@@ -31,7 +35,7 @@ $(document).ready(function(){
                         }
                 },
                 function(data,status){
-                    $("#user_table").html(data);
+                    $("#statistics_table").html(data);
                     readyForDisplay();
                 });
         });
@@ -54,8 +58,10 @@ $(document).ready(function(){
                             inputs[i].value = c[i].innerText;
                         }
                         var selects = $("select").toArray();
-                        selects[0].selectedIndex = getGradoEstudios(c[5].innerText);
-                        selects[1].selectedIndex = getGenero(c[6].innerText);
+                        selects[0].selectedIndex = getGradoEstudios(c[2].innerText);
+                        selects[1].selectedIndex = getGenero(c[3].innerText);
+                        selects[2].selectedIndex = getMes(c[4].innerText);  //Aun no existe
+                        selects[3].selectedIndex = getAño(c[5].innerText); //Aun no existe
                     }
                 });
             });
