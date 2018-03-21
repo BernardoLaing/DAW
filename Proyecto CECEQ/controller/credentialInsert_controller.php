@@ -13,45 +13,45 @@
     
     if(count($_POST)>0
         // Visitante
-        && (($_POST["credential"]["name"] == null) || test($NAME, $_POST["credential"]["name"]))
-        && (($_POST["credential"]["paternal"] == null) || test($NAME, $_POST["credential"]["paternal"]))
-        && (($_POST["credential"]["maternal"]  == null) || test($NAME, $_POST["credential"]["maternal"] ))
-        && (($_POST["credential"]["birth"]  == null) || test($DATE, $_POST["credential"]["birth"] ))
-        && (($_POST["credential"]["gender"]  == null) || test($GENDER, $_POST["credential"]["gender"] ))
-        && (($_POST["credential"]["schooling"]  == null) || test($SCHOOLING, $_POST["credential"]["schooling"] ))
+        && (test($NAME, $_POST["credential"]["name"]))
+        && (test($NAME, $_POST["credential"]["paternal"]))
+        && (test($NAME, $_POST["credential"]["maternal"] ))
+        && (test($DATE, $_POST["credential"]["birth"] ))
+        && (test($GENDER, $_POST["credential"]["gender"] ))
+        && (test($SCHOOLING, $_POST["credential"]["schooling"] ))
         // Credencial
-        && (($_POST["credential"]["fileToUpload"]  == null) || test($EMAIL, $_POST["credential"]["fileToUpload"] ))
-        && (($_POST["credential"]["email"]  == null) /*|| test($EMAIL, $_POST["credential"]["email"] )*/)
-        && (($_POST["credential"]["street"]  == null) || test($NAME, $_POST["credential"]["street"] ))
-        && (($_POST["credential"]["number"]  == null) || test($HOUSENUM, $_POST["credential"]["number"] ))
-        && (($_POST["credential"]["neighborhood"]  == null) || test($NAME, $_POST["credential"]["neighborhood"] ))
-        && (($_POST["credential"]["postalCode"]  == null) || test($NUMBER, $_POST["credential"]["postalCode"] ))
-        && (($_POST["credential"]["phone"]  == null) || test($NUMBER, $_POST["credential"]["phone"] ))
-        && (($_POST["credential"]["workName"]  == null) || test($NAME, $_POST["credential"]["workName"] ))
-        && (($_POST["credential"]["workPhone"]  == null) || test($NUMBER, $_POST["credential"]["workPhone"] ))
-        && (($_POST["credential"]["workStreet"]  == null) || test($NAME, $_POST["credential"]["workStreet"] ))
-        && (($_POST["credential"]["workNumber"]  == null) || test($HOUSENUM, $_POST["credential"]["workNumber"] ))
-        && (($_POST["credential"]["workNeighborhood"]  == null) || test($NAME, $_POST["credential"]["workNeighborhood"] ))
-        && (($_POST["credential"]["workPostalCode"]  == null) || test($NUMBER, $_POST["credential"]["workPostalCode"] ))
+        && ((getimagesize($_FILES["fileToUpload"]["tmp_name"]) != FALSE))
+        && (($_POST["credential"]["email"]  !== null) /*|| test($EMAIL, $_POST["credential"]["email"] )*/)
+        && (test($NAME, $_POST["credential"]["street"] ))
+        && (test($HOUSENUM, $_POST["credential"]["number"] ))
+        && (test($NAME, $_POST["credential"]["neighborhood"] ))
+        && (test($NUMBER, $_POST["credential"]["postalCode"] ))
+        && (test($NUMBER, $_POST["credential"]["phone"] ))
+        && (test($NAME, $_POST["credential"]["workName"] ))
+        && (test($NUMBER, $_POST["credential"]["workPhone"] ))
+        && (test($NAME, $_POST["credential"]["workStreet"] ))
+        && (test($HOUSENUM, $_POST["credential"]["workNumber"] ))
+        && (test($NAME, $_POST["credential"]["workNeighborhood"] ))
+        && (test($NUMBER, $_POST["credential"]["workPostalCode"] ))
         // Fiador
-        && (($_POST["credential"]["nameF"] == null) || test($NAME, $_POST["credential"]["nameF"]))
-        && (($_POST["credential"]["paternalF"] == null) || test($NAME, $_POST["credential"]["paternalF"]))
-        && (($_POST["credential"]["maternalF"]  == null) || test($NAME, $_POST["credential"]["maternalF"] ))
-        && (($_POST["credential"]["emailF"]  == null) /*|| test($EMAIL, $_POST["credential"]["emailF"] )*/)
-        && (($_POST["credential"]["phoneF"]  == null) || test($NUMBER, $_POST["credential"]["phoneF"] ))
-        && (($_POST["credential"]["schoolingF"]  == null) || test($SCHOOLING, $_POST["credential"]["schoolingF"] ))
-        && (($_POST["credential"]["streetF"]  == null) || test($NAME, $_POST["credential"]["streetF"] ))
-        && (($_POST["credential"]["numberF"]  == null) || test($HOUSENUM, $_POST["credential"]["numberF"] ))
-        && (($_POST["credential"]["neighborhoodF"]  == null) || test($NAME, $_POST["credential"]["neighborhoodF"] ))
-        && (($_POST["credential"]["postalCodeF"]  == null) || test($NUMBER, $_POST["credential"]["postalCodeF"] ))
-        && (($_POST["credential"]["workNameF"]  == null) || test($NAME, $_POST["credential"]["workNameF"] ))
-        && (($_POST["credential"]["workPhoneF"]  == null) || test($NUMBER, $_POST["credential"]["workPhoneF"] ))
-        && (($_POST["credential"]["workStreetF"]  == null) || test($NAME, $_POST["credential"]["workStreetF"] ))
-        && (($_POST["credential"]["workNumberF"]  == null) || test($HOUSENUM, $_POST["credential"]["workNumberF"] ))
-        && (($_POST["credential"]["workNeighborhoodF"]  == null) || test($NAME, $_POST["credential"]["workNeighborhoodF"] ))
-        && (($_POST["credential"]["workPostalCodeF"]  == null) || test($NUMBER, $_POST["credential"]["workPostalCodeF"] ))
+        && (test($NAME, $_POST["credential"]["nameF"]))
+        && (test($NAME, $_POST["credential"]["paternalF"]))
+        && (test($NAME, $_POST["credential"]["maternalF"] ))
+        && (($_POST["credential"]["emailF"]  != null) /*|| test($EMAIL, $_POST["credential"]["emailF"] )*/)
+        && (test($NUMBER, $_POST["credential"]["phoneF"] ))
+        && (test($SCHOOLING, $_POST["credential"]["schoolingF"] ))
+        && (test($NAME, $_POST["credential"]["streetF"] ))
+        && (test($HOUSENUM, $_POST["credential"]["numberF"] ))
+        && (test($NAME, $_POST["credential"]["neighborhoodF"] ))
+        && (test($NUMBER, $_POST["credential"]["postalCodeF"] ))
+        && (test($NAME, $_POST["credential"]["workNameF"] ))
+        && (test($NUMBER, $_POST["credential"]["workPhoneF"] ))
+        && (test($NAME, $_POST["credential"]["workStreetF"] ))
+        && (test($HOUSENUM, $_POST["credential"]["workNumberF"] ))
+        && (test($NAME, $_POST["credential"]["workNeighborhoodF"] ))
+        && (test($NUMBER, $_POST["credential"]["workPostalCodeF"] ))
     ){
-        echo "Pasaste";
+        exit("entro");
         $nulls = 0;
         foreach($_POST["credential"] as $key => $value){
             if($value != null)
@@ -61,8 +61,16 @@
                 $nulls++;
             }
         }
+        if($_FILES["fileToUpload"]["tmp_name"] != null){
+            exit("entro");
+            $info["fileToUpload"] = $_FILES["fileToUpload"]["tmp_name"];
+        }else{
+            $info["fileToUpload"] = "";
+            $nulls++;
+        }
         if(isset($info)) {
             if($nulls == 0){
+                exit("entro");
                 insertCredential(
                     // Visitante
                     $info["name"],
@@ -105,5 +113,9 @@
                 );
             }
         }
+    }else{
+        exit("no entro");
     }
+
+    //header("Location: ../credential.php");
     ?>
