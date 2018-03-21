@@ -16,7 +16,7 @@
     if ($idLibroUno || $idLibroDos || $idLibroTres) {
         $ingresoLibro=true;
     }
-   
+
     if($idCredencial && $ingresoLibro && isset($_POST["prestamo"])){
       echo "PRESIONO PRESTAMO";
         $aux_librouno = $_POST["user"]["libroUno"];
@@ -25,7 +25,7 @@
         $_SESSION['tipo'] = 'Préstamo';
         $_SESSION['libro'] = $aux_librouno;
         $_SESSION['credencial'] = $aux_credencial;
-      
+
         $date = new DateTime();
         $dateLend = $date->format('Y-m-d H:i:s');
 
@@ -40,14 +40,16 @@
     $_SESSION['ok'] = true;
     $_SESSION['tipo'] = 'Devolución';
     $_SESSION['libro'] = $aux_librouno;
-    $_SESSION['credencial'] = $aux_credencial;
+    //Préstamo, Devolución, excedePrestamos, usuarioInexistente, libroInexistente
+    $_SESSION['tipo'] = setTipo(NULL, $_SESSION['libro'], false);
+
   }else if(!($idCredencial && $ingresoLibro)){
         $_SESSION['ok'] = false;
   }
     include("modals/modal_lend.php");
     echo "<script> $('#myModal').modal('show') </script>";
-
   }
+  ////////// OPCIONES EN EL MODAL ///////////////
   if(isset($_POST["aceptar"]) && ($_SESSION['tipo'] == 'Préstamo')){ //El cuenta habiente esta ACEPTANDO un PRESTAMO
     echo 'ACEPTO PRESTAMO ';
      insertLend($_SESSION["libro"], $_SESSION["credencial"], $_SESSION['hoy'], $_SESSION['hoy2']);

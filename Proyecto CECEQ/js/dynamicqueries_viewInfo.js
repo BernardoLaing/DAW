@@ -1,5 +1,9 @@
 $(document).ready(function(){
     $("input").each(function(){
+        $(this).keydown(function(event){
+            if(event.keyCode == 13)
+                event.preventDefault();
+        });
         $(this).keyup(function(){
             $.post("controller/entrySearch_controller.php",{
                user :
@@ -52,7 +56,7 @@ $(document).ready(function(){
                 $(this).click(function(){
                     var c = $(this).find("td").toArray();
                     if(c.length>1){
-                        var inputs = $("input").toArray();
+                        var inputs = $("form").first().find("input").toArray();
                         var i;
                         for(i = 0; i<inputs.length; i++){
                             inputs[i].value = c[i].innerText;
@@ -60,6 +64,7 @@ $(document).ready(function(){
                         var selects = $("select").toArray();
                         selects[0].selectedIndex = getGradoEstudios(c[5].innerText);
                         selects[1].selectedIndex = getGenero(c[6].innerText);
+                        $.viewMode();
                     }
                 });
             });

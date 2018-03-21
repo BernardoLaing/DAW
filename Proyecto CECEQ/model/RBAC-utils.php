@@ -29,10 +29,10 @@ function getUserPermissions($user) {
             die("Preparation failed: (" . $db->errno . ") " . $db->error);
         }
         if (!$stmt->bind_param("s", $user)) {
-            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+            die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
         }
         if (!$stmt->execute()) {
-            die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+            die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
         } 
         
         $result = $stmt->get_result();
@@ -51,7 +51,7 @@ function getUser($user){
     $user = $db->real_escape_string($user);
     if($db != NULL){
         //Specification of the SQL query
-        $query='SELECT u.usuario, u.nombre, r.nombre  
+        $query='SELECT u.usuario, u.nombre, r.nombre, r.idRol
                 FROM usuario u, usuario_rol ur, rol r
                 WHERE u.usuario = ur.usuario AND ur.idRol = r.idRol
                 AND u.usuario = ?';
@@ -62,18 +62,20 @@ function getUser($user){
         }
         // Binding statement params 
         if (!$stmt->bind_param("s", $user)) {
-            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+            die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
         }
          // Executing the statement
          if (!$stmt->execute()) {
-            die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+            die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
           } 
-        $result = $stmt->get_result();
-        if($result->num_rows === 0) exit('No rows');
-        while($row = $result->fetch_assoc()) {
-            $users["user"] = 1;
-        }
-        disconnect($db);
+        $stmt->store_result();
+        if($stmt->num_rows === 0) exit('No rows');
+        $stmt->bind_result($user, $name, $rol, $idRol);
+        $stmt->fetch();
+        $result["user"] = $user;
+        $result["name"] = $name;
+        $result["rol"] = $rol;
+        $result["idRol"] = $idRol;
         disconnect($db);
         return $result;
     }
@@ -93,30 +95,30 @@ function registerUser($user, $name, $password, $rol){
             // insert command specification 
             $query='INSERT INTO usuario (usuario, nombre, password) VALUES (?,?, ?) ';
             // Preparing the statement 
-            if (!($statement = $db->prepare($query))) {
+            if (!($stmt = $db->prepare($query))) {
                 die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
             }
             // Binding statement params 
-            if (!$statement->bind_param("sss", $user, $name, $password)) {
-                die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+            if (!$stmt->bind_param("sss", $user, $name, $password)) {
+                die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
             }
              // Executing the statement
-             if (!$statement->execute()) {
-                die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+             if (!$stmt->execute()) {
+                die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
               } 
 
 
             $query='INSERT INTO usuario_rol (usuario, idRol, fecha) VALUES (?,?,CURDATE()) ';
 
-            if (!($statement = $db->prepare($query))) {
+            if (!($stmt = $db->prepare($query))) {
                 die("Preparation 2 failed: (" . $db->errno . ") " . $db->error);
             }
             // Binding statement params 
-            if (!$statement->bind_param("si", $user, $rol)) {
-                die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+            if (!$stmt->bind_param("si", $user, $rol)) {
+                die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
             }
-            if (!$statement->execute()) {
-                die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+            if (!$stmt->execute()) {
+                die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
               } 
 
 
@@ -141,31 +143,31 @@ function updateUser($user, $name, $password, $rol){
             // insert command specification 
             $query='UPDATE usuario SET nombre = ?, password = ? WHERE usuario = ?';
             // Preparing the statement 
-            if (!($statement = $db->prepare($query))) {
+            if (!($stmt = $db->prepare($query))) {
                 die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
             }
             // Binding statement params 
-            if (!$statement->bind_param("sss", $name, $password, $user)) {
-                die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+            if (!$stmt->bind_param("sss", $name, $password, $user)) {
+                die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
             }
              // Executing the statement
-             if (!$statement->execute()) {
-                die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+             if (!$stmt->execute()) {
+                die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
               } 
             
             
             $query='UPDATE usuario_rol SET idRol = ? WHERE usuario = ?';
             // Preparing the statement 
-            if (!($statement = $db->prepare($query))) {
+            if (!($stmt = $db->prepare($query))) {
                 die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
             }
             // Binding statement params 
-            if (!$statement->bind_param("is", $rol, $user)) {
-                die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+            if (!$stmt->bind_param("is", $rol, $user)) {
+                die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
             }
             // Executing the statement
-            if (!$statement->execute()) {
-                die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+            if (!$stmt->execute()) {
+                die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
             } 
 
 
@@ -184,32 +186,32 @@ function deleteUser($user){
     
     if($db != NULL){
         $query="DELETE FROM usuario_rol WHERE usuario = ?";
-         if (!($statement = $db->prepare($query))) {
+         if (!($stmt = $db->prepare($query))) {
              die("Preparation failed: (" . $db->errno . ") " . $db->error);
          }
         // Binding statement params 
-        if (!$statement->bind_param("s", $user)) {
-            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+        if (!$stmt->bind_param("s", $user)) {
+            die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
         }
          // Executing the statement
-         if (!$statement->execute()) {
+         if (!$stmt->execute()) {
              echo "FAIL EXECUTE";
-             die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+             die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
          } 
         
         
         $query="DELETE FROM usuario WHERE usuario = ?";
-         if (!($statement = $db->prepare($query))) {
+         if (!($stmt = $db->prepare($query))) {
              die("Preparation failed: (" . $db->errno . ") " . $db->error);
          }
         // Binding statement params 
-        if (!$statement->bind_param("s", $user)) {
-            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+        if (!$stmt->bind_param("s", $user)) {
+            die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
         }
          // Executing the statement
-         if (!$statement->execute()) {
+         if (!$stmt->execute()) {
              echo "FAIL EXECUTE";
-             die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+             die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
          } 
         
         disconnect($db);
@@ -234,20 +236,20 @@ function searchUser($user, $name, $idRol){
                 die("Preparation failed: (" . $db->errno . ") " . $db->error);
             }
             if (!$stmt->bind_param("ssi", $user, $name, $idRol)) {
-                die("Parameter vinculation failed: (" . $stmt->errno . ") " . $statement->error); 
+                die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
             }
             if (!$stmt->execute()) {
-                die("Execution failed: (" . $stmt->errno . ") " . $statement->error);
+                die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
             } 
         }else{
             if(!($stmt = $db->prepare($query))) {
                 die("Preparation failed: (" . $db->errno . ") " . $db->error);
             }
             if (!$stmt->bind_param("ss", $user, $name)) {
-                die("Parameter vinculation failed: (" . $stmt->errno . ") " . $statement->error); 
+                die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
             }
             if (!$stmt->execute()) {
-                die("Execution failed: (" . $stmt->errno . ") " . $statement->error);
+                die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
             }
         }
         
@@ -279,21 +281,21 @@ function getRol($idRol){
                 WHERE idRol = ?';
         
         // Preparing the statement 
-        if (!($statement = $db->prepare($query))) {
+        if (!($stmt = $db->prepare($query))) {
             die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
         }
         // Binding statement params 
-        if (!$statement->bind_param("i", $idRol)) {
-            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+        if (!$stmt->bind_param("i", $idRol)) {
+            die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
         }
          // Executing the statement
-         if (!$statement->execute()) {
-            die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+         if (!$stmt->execute()) {
+            die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
           } 
-        $statement->store_result();
-        if($statement->num_rows === 0) exit('No rows');
-        $statement->bind_result($idRol, $name, $description);
-        $statement->fetch();
+        $stmt->store_result();
+        if($stmt->num_rows === 0) exit('No rows');
+        $stmt->bind_result($idRol, $name, $description);
+        $stmt->fetch();
         $result["idRol"] = $idRol;
         $result["name"] = $name;
         $result["description"] = $description;
@@ -310,49 +312,49 @@ function createRol($name, $description, $permissions){
         // insert command specification 
         $query='INSERT INTO rol (nombre, descripcion) VALUES (?, ?) ';
         // Preparing the statement 
-        if (!($statement = $db->prepare($query))) {
+        if (!($stmt = $db->prepare($query))) {
             die("Preparation failed: (" . $db->errno . ") " . $db->error);
         }
         // Binding statement params 
-        if (!$statement->bind_param("ss", $name, $description)) {
-            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+        if (!$stmt->bind_param("ss", $name, $description)) {
+            die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
         }
          // Executing the statement
-         if (!$statement->execute()) {
-            die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+         if (!$stmt->execute()) {
+            die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
         } 
         
         $query='SELECT idRol 
                 FROM rol 
                 WHERE nombre = ?';
-        if (!($statement = $db->prepare($query))) {
+        if (!($stmt = $db->prepare($query))) {
             die("Preparation failed: (" . $db->errno . ") " . $db->error);
         }
         // Binding statement params 
-        if (!$statement->bind_param("s",$name)) {
-            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+        if (!$stmt->bind_param("s",$name)) {
+            die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
         }
          // Executing the statement
-         if (!$statement->execute()) {
-            die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+         if (!$stmt->execute()) {
+            die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
         } 
-        $statement->store_result();
-        if($statement->num_rows === 0) exit('No rows');
-        $statement->bind_result($idRol);
-        $statement->fetch();
+        $stmt->store_result();
+        if($stmt->num_rows === 0) exit('No rows');
+        $stmt->bind_result($idRol);
+        $stmt->fetch();
         
         foreach($permissions as $idOperacion){
             $query='INSERT INTO rol_operacion (idRol, idOperacion, fecha) VALUES (?,?,CURDATE()) ';
 
-            if (!($statement = $db->prepare($query))) {
+            if (!($stmt = $db->prepare($query))) {
                 die("Preparation 2 failed: (" . $db->errno . ") " . $db->error);
             }
             // Binding statement params 
-            if (!$statement->bind_param("ii", $idRol, $idOperacion)) {
-                die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+            if (!$stmt->bind_param("ii", $idRol, $idOperacion)) {
+                die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
             }
-            if (!$statement->execute()) {
-                die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+            if (!$stmt->execute()) {
+                die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
             } 
         }
         
@@ -370,52 +372,52 @@ function deleteRol($idRol){
         $db->autocommit(FALSE);
         $db->begin_transaction();
         $query="DELETE FROM usuario_rol WHERE idRol = ?";
-         if (!($statement = $db->prepare($query))) {
+         if (!($stmt = $db->prepare($query))) {
              die("Preparation failed: (" . $db->errno . ") " . $db->error);
          }
         // Binding statement params 
-        if (!$statement->bind_param("i", $idRol)) {
-            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+        if (!$stmt->bind_param("i", $idRol)) {
+            die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
         }
          // Executing the statement
-         if (!$statement->execute()) {
+         if (!$stmt->execute()) {
              echo "FAIL EXECUTE";
              $db->rollback();
-             die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+             die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
          } 
         
         
         $query="DELETE FROM rol_operacion WHERE idRol = ?";
-         if (!($statement = $db->prepare($query))) {
+         if (!($stmt = $db->prepare($query))) {
              die("Preparation failed: (" . $db->errno . ") " . $db->error);
          }
         // Binding statement params 
-        if (!$statement->bind_param("i", $idRol)) {
-            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+        if (!$stmt->bind_param("i", $idRol)) {
+            die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
         }
          // Executing the statement
-         if (!$statement->execute()) {
+         if (!$stmt->execute()) {
              echo "FAIL EXECUTE";
              $db->rollback();
-             die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+             die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
          } 
         
          $query="DELETE FROM rol WHERE idRol = ?";
-         if (!($statement = $db->prepare($query))) {
+         if (!($stmt = $db->prepare($query))) {
              die("Preparation failed: (" . $db->errno . ") " . $db->error);
          }
         // Binding statement params 
-        if (!$statement->bind_param("i", $idRol)) {
-            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+        if (!$stmt->bind_param("i", $idRol)) {
+            die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
         }
          // Executing the statement
-         if (!$statement->execute()) {
+         if (!$stmt->execute()) {
              echo "FAIL EXECUTE";
              $db->rollback();
-             die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+             die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
          } 
         
-        $statement->close();
+        $stmt->close();
         $db->commit();
         $db->autocommit(TRUE);
         
@@ -431,45 +433,45 @@ function updateRol($idRol, $name, $description, $permissions){
             // insert command specification 
             $query='UPDATE rol SET nombre = ?, descripcion = ? WHERE idRol = ?';
             // Preparing the statement 
-            if (!($statement = $db->prepare($query))) {
+            if (!($stmt = $db->prepare($query))) {
                 die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
             }
             // Binding statement params 
-            if (!$statement->bind_param("ssi", $name, $description, $idRol)) {
-                die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+            if (!$stmt->bind_param("ssi", $name, $description, $idRol)) {
+                die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
             }
              // Executing the statement
-             if (!$statement->execute()) {
-                die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+             if (!$stmt->execute()) {
+                die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
               } 
             
             $query="DELETE FROM rol_operacion WHERE idRol = ?";
-            if (!($statement = $db->prepare($query))) {
+            if (!($stmt = $db->prepare($query))) {
                 die("Preparation failed: (" . $db->errno . ") " . $db->error);
             }
             // Binding statement params 
-            if (!$statement->bind_param("i", $idRol)) {
-                die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+            if (!$stmt->bind_param("i", $idRol)) {
+                die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
             }
             // Executing the statement
-            if (!$statement->execute()) {
+            if (!$stmt->execute()) {
                 echo "FAIL EXECUTE";
-                die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+                die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
             } 
             
             $query='INSERT INTO rol_operacion (idRol, idOperacion, fecha) VALUES (?,?,CURDATE()) ';
             // Preparing the statement 
-            if (!($statement = $db->prepare($query))) {
+            if (!($stmt = $db->prepare($query))) {
                 die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
             }
 
             foreach($permissions as $idOperacion){
                 // Binding statement params 
-                if (!$statement->bind_param("ii", $idRol, $idOperacion)) {
-                    die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+                if (!$stmt->bind_param("ii", $idRol, $idOperacion)) {
+                    die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
                 }
-                if (!$statement->execute()) {
-                    die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+                if (!$stmt->execute()) {
+                    die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
                 } 
             }
             disconnect($db);
@@ -486,17 +488,17 @@ function getPermissionsForRol($idRol){
         $query='SELECT nombre
                 FROM rol_operacion, operacion
                 WHERE rol_operacion.idOperacion = operacion.idOperacion AND rol_operacion.idRol =' . $idRol;
-//        if (!($statement = $db->prepare($query))) {
+//        if (!($stmt = $db->prepare($query))) {
 //             die("Preparation failed: (" . $db->errno . ") " . $db->error);
 //         }
         // Binding statement params 
-//        if (!$statement->bind_param("i", $idRol)) {
-//            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+//        if (!$stmt->bind_param("i", $idRol)) {
+//            die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
 //        }
         // Executing the statement
-//        if (!$statement->execute()) {
+//        if (!$stmt->execute()) {
 //            echo "FAIL EXECUTE";
-//            die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+//            die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
 //        }
         $results = $db->query($query);
         disconnect($db);

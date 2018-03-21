@@ -12,18 +12,18 @@ function getNameVisitor($var_credencial){
   if($db != NULL){
     $query='SELECT v.nombre, v.apellidoPaterno, v.apellidoMaterno
             FROM visitante v, credencial c
-            WHERE c.idVisitante = v.idVisitante 
+            WHERE c.idVisitante = v.idVisitante
             AND c.idVisitante = (?)';
-      
+
       if(!($stmt = $db->prepare($query))) {
           die("Preparation failed: (" . $db->errno . ") " . $db->error);
       }
       if (!$stmt->bind_param("i", $var_credencial)) {
-          die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+          die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
       }
       if (!$stmt->execute()) {
           die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-      } 
+      }
 
       $result = $stmt->get_result();
       if($result->num_rows === 0) exit('No rows');
@@ -44,16 +44,16 @@ function getNameBook($var_libro){
             FROM titulo t, ejemplar e
             WHERE e.idtitulo = t.idtitulo
             AND e.idEjemplar = (?)';
-      
+
       if(!($stmt = $db->prepare($query))) {
           die("Preparation failed: (" . $db->errno . ") " . $db->error);
       }
       if (!$stmt->bind_param("i", $var_libro)) {
-          die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+          die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
       }
       if (!$stmt->execute()) {
           die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-      } 
+      }
 
       $result = $stmt->get_result();
       if($result->num_rows === 0) exit('No rows');
@@ -80,16 +80,16 @@ function getReturnData($var_libro, $var_credencial){
             FROM ejemplar_credencial
             WHERE idEjemplar = (?)
             AND idCredencial = (?)';
-      
+
       if(!($stmt = $db->prepare($query))) {
           die("Preparation failed: (" . $db->errno . ") " . $db->error);
       }
       if (!$stmt->bind_param("ii", $var_libro, $var_credencial)) {
-          die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
+          die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
       }
       if (!$stmt->execute()) {
           die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-      } 
+      }
 
       $result = $stmt->get_result();
       if($result->num_rows === 0) exit('No rows');
@@ -122,8 +122,9 @@ if($var_value && $var_tipo == 'Préstamo'){
 
         <!-- Modal body -->
         <div class="modal-body">
-          <p><strong>Ejemplar: </strong>' . getNameBook($_SESSION['libro']) . '</p>
-          <p><strong>Prestamo a: </strong>' . getNameVisitor($_SESSION['credencial']) .'</p>
+          <p>' . checkLendTimes($_SESSION['credencial']) . '</p>
+          <p><strong>Ejemplar: </strong>' . getNameBook($_SESSION['libro'], false) . '</p>
+          <p><strong>Prestamo a: </strong>' . getNameVisitor($_SESSION['credencial'], true) .'</p>
           <p><strong>Fecha de préstamo: </strong>'.date("Y-m-d").'</p>
           <p><strong>Fecha de retorno: </strong>'.date("Y-m-d", $diaRegreso) .'</p>
         </div>
@@ -185,6 +186,76 @@ if($var_value && $var_tipo == 'Préstamo'){
         </div>
       </div>
     </div>
+<<<<<<< HEAD
+  </div>
+</div>
+</div>';
+}
+//missing inputs or exceeds amount of books lend
+else{
+  $modalMissingData = '<div class="modal fade" id="myModal">
+                         <div class="modal-dialog">
+                           <div class="modal-content">
+
+                             <!-- Modal Header -->
+                             <div class="modal-header">
+                               <h3 class="modal-title"> Alerta </h3>
+                               <button type="button" class="close" data-dismiss="modal">&times;</button>
+                             </div>';
+  if ($var_tipo == 'Préstamo') { //Presionó prestamo sin ingresar los datos necesarios
+      $modalMissingData .=
+          '<!-- Modal body -->
+           <div class="modal-body">
+             <p>Se debe ingresar el Id del usuario y por lo menos un libro.</p>
+           </div>';
+
+  }else if($var_tipo == 'Devolución'){ //Presionó devolución sin ingresar un libro
+        $modalMissingData .= '
+          <!-- Modal body -->
+           <div class="modal-body">
+             <p>Se debe ingresar un libro.</p>
+           </div>';
+  }else if($var_tipo == 'excedePrestamos'){ //Presionó prestamo de usuario que ya tiene 3 libros en posecion
+        $modalMissingData .= '
+          <!-- Modal body -->
+           <div class="modal-body">
+             <p class="text-center">No se puede realizar el préstamo.</p>
+             <p class="text-center">Este usuario tiene tres libros prestados actualmente.</p>
+           </div>';
+  }else if($var_tipo == 'usuarioInexistente'){ //Presionó préstamo a un usuario que no esta dado de alta
+        $modalMissingData .= '
+          <!-- Modal body -->
+           <div class="modal-body">
+             <p class="text-center">No. de usuario inexistente.</p>
+             <p class="text-center">Por favor, revise los datos nuevamente.</p>
+           </div>';
+  }else if($var_tipo == 'libroInexistente'){ //Presionó devolución sin ingresar un libro
+        $modalMissingData .= '
+          <!-- Modal body -->
+           <div class="modal-body">
+             <p class="text-center"> Este Id. de libro es inexistente o no esta actualmente prestado.</p>
+             <p class="text-center">Por favor, revise los datos nuevamente.</p>
+           </div>';
+  }else if($var_tipo == 'libroActualmentePrestado'){ //Presionó préstamo de un libro actualmente prestado
+        $modalMissingData .= '
+          <!-- Modal body -->
+           <div class="modal-body">
+             <h5 class="text-center">Este libro esta actualmente prestado. <br> Por favor, revise los datos nuevamente</h5>
+             <p class="text-left"> <strong>  Datos del préstamo  </strong> </p>
+             <p><strong>Ejemplar: </strong>' . getNameBook($_SESSION['libro'], false) . '</p>
+             <p><strong>Prestamo a: </strong>' . getNameVisitor($_SESSION['libro'], false) .'</p>
+             <p><strong>Fecha de préstamo: </strong>'.getDateInfo($_SESSION['libro'], true).'</p>
+             <p><strong>Fecha de retorno: </strong>'.getDateInfo($_SESSION['libro'], false).'</p>
+           </div>';
+  }else if($var_tipo == 'noDisponible'){ //Presionó préstamo de un libro actualmente prestado
+        $modalMissingData .= '
+          <!-- Modal body -->
+           <div class="modal-body">
+             <h5 class="text-center">Este libro no tiene estado disponible.</h5>
+             <h5 class="text-center">Por favor, revise los datos.</h5>
+           </div>';
+  }
+=======
   </div>';
 }else{
   echo '
@@ -197,6 +268,7 @@ if($var_value && $var_tipo == 'Préstamo'){
            <h3 class="modal-title"> Alerta </h3>
            <button type="button" class="close" data-dismiss="modal">&times;</button>
          </div>
+>>>>>>> fac6830949eb471b37eeb3690d76fce7963cb576
 
          <!-- Modal body -->
          <div class="modal-body">
