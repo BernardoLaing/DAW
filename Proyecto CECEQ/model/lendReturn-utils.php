@@ -1,4 +1,4 @@
-<?php //**************************   De interfaz Lend_Return   **********************************
+<?php //*********   De interfaz Lend_Return   *************
  //Estable el valor de la variable sesión tipo.
  //Préstamo, Devolución, excedePrestamos, usuarioInexistente, libroInexistente, libroActualmentePrestado
 function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
@@ -109,8 +109,6 @@ function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
     if($result->num_rows === 0){
       return 'libroInexistente';
     }
-
-
     if ($boolPrestamo==true) {
         return 'Préstamo';
     }else{
@@ -118,12 +116,10 @@ function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
     }
     disconnect($conn);
 }
-
 function checkLendTimes($idCredencial){
   $conn = connect();
   $estadoDisponible = true;
   if(!$conn){ die("No se pudo conectar a la Base de Datos");}
-
   ///////////// REVISA QUE NO TENGA 3 PRESTAMOS //////////////////////
   $sql='SELECT *
           FROM ejemplar_credencial ec
@@ -150,7 +146,6 @@ function checkLendTimes($idCredencial){
 function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
   $conn = connect();
   if(!$conn){ die("No se pudo conectar a la Base de Datos");}
-
   $sql = "INSERT INTO ejemplar_credencial(idEjemplar, idCredencial, fechaPrestamo, fechaDevolucion)
           VALUES(?,?, ?, ?)";
         // Preparing the statement
@@ -168,7 +163,6 @@ function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
   cambiarEstado(1, $idEjemplar);
   disconnect($conn);
 }
-
 function insertReturn($idEjemplar, $fechaDevolucionReal, $buenEstado, $malEstado){
     $conn = connect();
     if(!$conn){ die("No se pudo conectar a la Base de Datos");}
@@ -176,7 +170,6 @@ function insertReturn($idEjemplar, $fechaDevolucionReal, $buenEstado, $malEstado
       $sql = "UPDATE ejemplar_credencial
               SET fechaDevolucionReal=(?)
               WHERE idEjemplar=(?)";
-
           // Preparing the statement
           if (!($statement = $conn->prepare($sql))) {
              die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
@@ -194,10 +187,8 @@ function insertReturn($idEjemplar, $fechaDevolucionReal, $buenEstado, $malEstado
           cambiarEstado(5, $idEjemplar);
       else
         cambiarEstado(4, $idEjemplar);
-
     disconnect($conn);
   }
-
 function getNameVisitor($idCampo, $boolCredencial){
   $db = connect();
   if($db != NULL){
@@ -206,7 +197,6 @@ function getNameVisitor($idCampo, $boolCredencial){
               FROM visitante v, credencial c
               WHERE c.idVisitante = v.idVisitante
               AND c.idCredencial = (?)';
-
     }else{  //Esto quiere decir que marcó una devolución ya que aqui no manda el idCredencial ya que no importa quien lo esta regresando o si hay coincidencia. Simplemente se entrega
       $query='SELECT v.nombre, v.apellidoPaterno, v.apellidoMaterno
               FROM visitante v, credencial c, ejemplar_credencial ec
@@ -231,12 +221,10 @@ function getNameVisitor($idCampo, $boolCredencial){
           $nombre =  $row['nombre'];
           $aPaterno =  $row['apellidoPaterno'];
           $aMaterno =  $row['apellidoMaterno'];}
-
       return $nombre.' '.$aPaterno.' '.$aMaterno;
   }
   disconnect($db);
 }
-
 function getNameBook($var_libro){
   $db = connect();
   if($db != NULL){
@@ -244,7 +232,6 @@ function getNameBook($var_libro){
             FROM titulo t, ejemplar e
             WHERE e.idtitulo = t.idtitulo
             AND e.idEjemplar = (?)';
-
       if(!($stmt = $db->prepare($query))) {
           die("Preparation failed: (" . $db->errno . ") " . $db->error);
       }
@@ -254,7 +241,6 @@ function getNameBook($var_libro){
       if (!$stmt->execute()) {
           die("Execution failed: (" . $statement->errno . ") " . $statement->error);
       }
-
       $result = $stmt->get_result();
       if($result->num_rows === 0) exit('No rows el ejemplar no existe');
       while($row = $result->fetch_assoc()) {
@@ -264,7 +250,6 @@ function getNameBook($var_libro){
       return $titulo;
   }
 }
-
 function getLateDays($var_libro){
   $db = connect();
   if($db != NULL){
@@ -272,11 +257,9 @@ function getLateDays($var_libro){
             FROM ejemplar_credencial
             WHERE idEjemplar = (?)
             AND fechaDevolucionReal is NULL';
-
       if(!($stmt = $db->prepare($query))) {die("Preparation failed: (" . $db->errno . ") " . $db->error);}
       if (!$stmt->bind_param("i", $var_libro)) {die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);}
       if (!$stmt->execute()) {die("Execution failed: (" . $statement->errno . ") " . $statement->error);}
-
       $result = $stmt->get_result();
       if($result->num_rows === 0) exit('No rows');
       while($row = $result->fetch_assoc()) {
@@ -292,7 +275,6 @@ function getLateDays($var_libro){
       disconnect($db);
   }
 }
-
 //true para recibir fecha lend, false para recibir fecha devolucion
 function getDateInfo($idLibro, $lend ){
   $db = connect();
@@ -311,10 +293,8 @@ function getDateInfo($idLibro, $lend ){
       if(!($stmt = $db->prepare($query))) {die("Preparation failed: (" . $db->errno . ") " . $db->error);}
       if (!$stmt->bind_param("i", $idLibro)){die("Parameter vinculation failed: (".$statement->errno.")".$statement->error);}
       if (!$stmt->execute()) {die("Execution failed: (" . $statement->errno . ") " . $statement->error);}
-
       $result = $stmt->get_result();
       if($result->num_rows === 0) exit('No rows');
-
       if ($lend ==true) {
         while($row = $result->fetch_assoc()) {
             $returnDay =  $row['fechaPrestamo'];
@@ -330,7 +310,6 @@ function getDateInfo($idLibro, $lend ){
       disconnect($db);
   }
 }
-
 function cambiarEstado($numEstado, $idEjemplar){
   $conn = connect();
   if(!$conn){ die("No se pudo conectar a la Base de Datos");}
@@ -338,7 +317,6 @@ function cambiarEstado($numEstado, $idEjemplar){
   $sql = "UPDATE ejemplar_estado
           SET idEstado = (?), fecha = (?)
           WHERE idEjemplar=(?)";
-
       // Preparing the statement
       if (!($statement = $conn->prepare($sql))) {
          die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);

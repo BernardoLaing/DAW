@@ -78,6 +78,8 @@ require_once('model/RBAC-utils.php');
 
 require_once('model/DGB-utils.php');
 
+include("model/lendReturn-utils.php");
+
     /*
     function insertVisitante($name,$paternal,$maternal,$bday,$grade,$gender){
         $conn = connect();
@@ -504,52 +506,7 @@ function buscarAutorTitulo($idTitulo, $idAutor)
 }
 
 //**************************   De interfaz Lend_Return   **********************************
-function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
-  $conn = connect();
-  if(!$conn){
-    die("No se pudo conectar a la Base de Datos");
-  }
 
-  $sql = "INSERT INTO ejemplar_credencial(idEjemplar, idCredencial, fechaPrestamo, fechaDevolucion)
-  VALUES(?,?, ?, ?)";
-        // Preparing the statement 
-        if (!($statement = $conn->prepare($sql))) {
-           die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
-        }
-         // Binding statement params 
-        if (!$statement->bind_param("iiss", $idEjemplar, $idCredencial, $dateLend, $dateReturn)) {
-            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
-        }
-         // Executing the statement
-         if (!$statement->execute()) {
-            die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-          } 
-  disconnect($conn);
-}
-
-function insertReturn($idEjemplar, $idCredencial, $fechaDevolucionReal){
-    $conn = connect();
-    if(!$conn){
-      die("No se pudo conectar a la Base de Datos");
-    }
-    $sql = "UPDATE ejemplar_credencial 
-            SET fechaDevolucionReal=(?)     
-            WHERE idEjemplar=(?) 
-            AND idCredencial=(?) ";
-          // Preparing the statement 
-          if (!($statement = $conn->prepare($sql))) {
-             die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
-          }
-           // Binding statement params 
-          if (!$statement->bind_param("sii",$fechaDevolucionReal, $idEjemplar, $idCredencial)) {
-              die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error); 
-          }
-           // Executing the statement
-           if (!$statement->execute()) {
-              die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-            } 
-    disconnect($conn);
-  }
 
 
 function buscarPrestamoDevolucion($idCredencial){
