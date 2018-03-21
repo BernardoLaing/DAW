@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-    <form id="entry_form">
+    <form id="entry_form" method="POST">
         <div class="row">
 
             <div class="col-sm-12">
@@ -99,7 +99,7 @@
 
         <div class="row">
 
-            <div class="col-sm-6">
+            <div class="col-sm-3">
                 <div class="form-group">
                     <div class="col-md-12">
                         <a class="btn btn-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
@@ -108,7 +108,9 @@
                 </div>
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-sm-3" id="warpSanctionButton">
+            </div>
+            <div class="col-sm-3" id="warpEditButton">
             </div>
 
             <div class="col-sm-3">
@@ -128,4 +130,43 @@
         </div>
     </div>
 
+
+
+    <div id="sanctionValues" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <div class="modal-header" id="mhead_sanctions">
+                    Sancionar a usuario
+                </div>
+
+                <div class="modal-body">
+                    <div id="mbody_sanctions">
+                    </div>
+                    <form method="POST" action="controller/sanctionInsert_controller.php" id="">
+                        <input  class="form-control d-none" id="user_sanctionNumber" name="user[user_sanctionNumber]" type="number"/>
+                        <div class='form-group'>
+                            <label for="user_sanctionTime">Fecha de fin:</label>
+                            <input  class="form-control cvalidate cdate" id="user_sanctionTime" name="user[sanctionTime]" type="date"/>
+                        </div>
+                        <div class='form-group'>
+                            <label for="user_sanctionDescription">Descripcion:</label>
+                            <input  class="form-control cvalidate cnumber" id="user_sanctionDescription" name="user[sanctionDescription]" type="text" placeholder="Maltrató el mobiliario de la librería"/>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer" id="mfoot_sanctions">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="msubmit_sanctions">Guardar</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script src="js/visitors.js"></script>
     <script src="js/dynamicqueries_viewInfo.js"></script>

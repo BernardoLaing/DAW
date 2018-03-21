@@ -195,6 +195,26 @@ function insertVisitante($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNaci
     disconnect($connection);
 }
 
+function updateVisitante($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $gradoEstudios, $genero){
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    update visitante
+    set nombre = ?, apellidoPaterno = ?, apellidoMaterno = ?, fechaNacimiento = ?, genero = ?
+    where idVisitante = ?
+    ");
+    $statement->bind_param("sssssi", $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $idVisitante);
+    $statement->execute();
+
+    $statement = mysqli_prepare($connection,"
+    update visitante_gradoestudios
+    set idGrado = ?
+    where idVisitante = ?
+    ");
+    $statement->bind_param("ii", $gradoEstudios, $idVisitante);
+    $statement->execute();
+    disconnect($connection);
+}
+
 /*
         TRAMITAR CREDENCIAL
 */
