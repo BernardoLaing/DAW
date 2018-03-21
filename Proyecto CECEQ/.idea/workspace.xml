@@ -10,47 +10,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="sanctions.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/sanctions.html">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="visitors.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/visitors.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="12" column="90" lean-forward="false" selection-start-line="12" selection-start-column="90" selection-end-line="12" selection-end-column="90" />
-              <folding>
-                <marker date="1521641526201" expanded="true" signature="495:5257" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sanctionsErase_controller.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/controller/sanctionsErase_controller.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utils.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1215">
-              <caret line="706" column="1" lean-forward="false" selection-start-line="706" selection-start-column="1" selection-end-line="706" selection-end-column="1" />
-              <folding>
-                <marker date="1521641544235" expanded="true" signature="644:772" ph="SELECT usuar... usuario" />
-                <marker date="1521641544235" expanded="true" signature="1402:1416" ph="SELECT * FRO... ${$tableName}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sanctions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/sanctions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="425">
+              <caret line="33" column="39" lean-forward="true" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -121,12 +86,12 @@
         <option value="$PROJECT_DIR$/html/visitors.html" />
         <option value="$PROJECT_DIR$/controller/sanctionsInsert_controller.php" />
         <option value="$PROJECT_DIR$/js/dynamicqueries_viewInfo.js" />
-        <option value="$PROJECT_DIR$/js/visitors.js" />
         <option value="$PROJECT_DIR$/controller/entrySearch_controller.php" />
         <option value="$PROJECT_DIR$/utils.php" />
         <option value="$PROJECT_DIR$/js/sanctions.js" />
         <option value="$PROJECT_DIR$/html/sanctions.html" />
         <option value="$PROJECT_DIR$/controller/sanctionsErase_controller.php" />
+        <option value="$PROJECT_DIR$/js/visitors.js" />
       </list>
     </option>
   </component>
@@ -158,8 +123,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -191,6 +154,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -241,22 +206,21 @@
       <workItem from="1521177447680" duration="23000" />
       <workItem from="1521206275929" duration="533000" />
       <workItem from="1521567841257" duration="27751000" />
+      <workItem from="1521645371335" duration="480000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74701000" />
+    <option name="totallyTimeSpent" value="76469000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -268,6 +232,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -473,7 +438,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="39" column="62" lean-forward="true" selection-start-line="39" selection-start-column="62" selection-end-line="39" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -524,7 +488,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="2" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -546,7 +509,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -575,7 +537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="56" lean-forward="true" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -583,15 +544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/visitors.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -599,36 +551,47 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="39" lean-forward="true" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/sanctions.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="12" column="90" lean-forward="false" selection-start-line="12" selection-start-column="90" selection-end-line="12" selection-end-column="90" />
-          <folding>
-            <marker date="1521641526201" expanded="true" signature="495:5257" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/utils.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1215">
-          <caret line="706" column="1" lean-forward="false" selection-start-line="706" selection-start-column="1" selection-end-line="706" selection-end-column="1" />
+        <state relative-caret-position="11594">
+          <caret line="682" column="1" lean-forward="false" selection-start-line="682" selection-start-column="1" selection-end-line="682" selection-end-column="1" />
           <folding>
-            <marker date="1521641544235" expanded="true" signature="644:772" ph="SELECT usuar... usuario" />
-            <marker date="1521641544235" expanded="true" signature="1402:1416" ph="SELECT * FRO... ${$tableName}" />
+            <marker date="1521641553927" expanded="true" signature="644:772" ph="SELECT usuar... usuario" />
+            <marker date="1521641553927" expanded="true" signature="1402:1416" ph="SELECT * FRO... ${$tableName}" />
+            <marker date="1521641553927" expanded="true" signature="3814:3952" ph="insert into visitante_gradoestudios... " />
+            <marker date="1521641553927" expanded="true" signature="4138:4250" ph="insert into entrada... " />
+            <marker date="1521641553927" expanded="true" signature="4392:4436" ph="insert into entrada... " />
+            <marker date="1521641553927" expanded="true" signature="4803:5607" ph="select v.idV... visitante" />
+            <marker date="1521641553927" expanded="true" signature="6146:6722" ph="select v.idV... visitante" />
+            <marker date="1521641553927" expanded="true" signature="7403:7519" ph="insert into visitante... " />
+            <marker date="1521641553927" expanded="true" signature="8011:8147" ph="update visitante... " />
+            <marker date="1521641553927" expanded="true" signature="8358:8434" ph="update visitante_gradoestudios... " />
+            <marker date="1521641553927" expanded="true" signature="8716:8842" ph="insert into Fiador_GradoEstudios... " />
+            <marker date="1521641553927" expanded="true" signature="9649:10297" ph="insert into fiador... " />
+            <marker date="1521641553927" expanded="true" signature="10869:10985" ph="insert into visitante... " />
+            <marker date="1521641553927" expanded="true" signature="11323:11510" ph="insert into credencial_fiador... " />
+            <marker date="1521641553927" expanded="true" signature="13349:14071" ph="insert into credencial... " />
+            <marker date="1521641553927" expanded="true" signature="15497:15574" ph="INSERT INTO autor... " />
+            <marker date="1521641553927" expanded="true" signature="15903:16159" ph="select idAut... autor" />
+            <marker date="1521641553927" expanded="true" signature="16481:16529" ph="INSERT INTO titulo... " />
+            <marker date="1521641553927" expanded="true" signature="16801:16942" ph="select idTit... " />
+            <marker date="1521641553927" expanded="true" signature="17311:17443" ph="INSERT INTO ejemplar... " />
+            <marker date="1521641553927" expanded="true" signature="17829:18142" ph="select ISBN,... " />
+            <marker date="1521641553927" expanded="true" signature="18478:18537" ph="INSERT INTO titulo_autor... " />
+            <marker date="1521641553927" expanded="true" signature="18824:18976" ph="select idAut... titulo_autor" />
+            <marker date="1521641553927" expanded="true" signature="19683:19751" ph="INSERT INTO titulo_categoria... " />
+            <marker date="1521641553927" expanded="true" signature="20174:20877" ph="select a.nom... autor" />
+            <marker date="1521641553927" expanded="true" signature="21287:22065" ph="select a.nom... autor" />
+            <marker date="1521641553927" expanded="true" signature="22415:22454" ph="SELECT MAX( ejemplar" />
+            <marker date="1521641553927" expanded="true" signature="22834:22899" ph="INSERT INTO ejemplar_estado... " />
+            <marker date="1521641553927" expanded="true" signature="23208:23364" ph="select idAut... autor" />
+            <marker date="1521641553927" expanded="true" signature="23843:23954" ph="insert into sancion... " />
+            <marker date="1521641553927" expanded="true" signature="24376:25299" ph="select v.idV... visitante" />
+            <marker date="1521641553927" expanded="true" signature="25685:25759" ph="update sancion... " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/sanctions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -636,6 +599,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/sanctions.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="90" lean-forward="false" selection-start-line="12" selection-start-column="90" selection-end-line="12" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/sanctions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="58" lean-forward="false" selection-start-line="13" selection-start-column="58" selection-end-line="13" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/visitors.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="33" column="39" lean-forward="true" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
           <folding />
         </state>
       </provider>

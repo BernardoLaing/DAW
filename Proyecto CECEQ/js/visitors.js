@@ -12,6 +12,7 @@ $(document).ready(function(){
             text: "Editar",
             click: function(e){
                 e.preventDefault();
+                $("#warpSanctionButton").find("button").hide();
                 $(this).text("Guardar cambios");
                 $("input").each(function(){
                     $(this).prop("disabled", false);
