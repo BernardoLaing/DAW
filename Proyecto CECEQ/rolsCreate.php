@@ -8,6 +8,7 @@ $permissions = getTable('operacion');
 
 <?php 
 include("html/rolsCreate.html");
+include("modals/modal_error.html");
 if($_SESSION['error_type'] === "rolConflict"){
     echo "<script>
             $(document).ready(function (e) {
