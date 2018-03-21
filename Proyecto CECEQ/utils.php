@@ -21,22 +21,35 @@
         if ($db != NULL) {
 
             //Specification of the SQL query
-            $query="SELECT usuario
+            $query="SELECT usuario, password
                     FROM usuario
-                    WHERE usuario='" . $user . "' AND password='" . $passwd . "'";
+                    WHERE usuario=?";
              // Query execution; returns identifier of the result group
-            $results = mysqli_query($db, $query);
-             // cycle to explode every line of the results
-
-            if (mysqli_num_rows($results) > 0)  {
-                // it releases the associated results
-                mysqli_free_result($results);
-                disconnect($db);
-                return true;
+           // Preparing the statement 
+            if (!($stmt = $db->prepare($query))) {
+                die("Preparation failed: (" . $db->errno . ") " . $db->error);
             }
-            return false;
+            // Binding statement params 
+            if (!$stmt->bind_param("s", $user)) {
+                die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
+            }
+             // Executing the statement
+             if (!$stmt->execute()) {
+                die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
+              } 
+            $stmt->store_result();
+            if($stmt->num_rows !== 0){
+                $stmt->bind_result($user, $password);
+                $stmt->fetch();
+                $result["user"] = $user;
+                $result["passwd"] = $password;
+                disconnect($db);
+                if(password_verify($passwd, $password) || $passwd == $password){
+                    return true;
+                }
+            }
         }
-        return false;
+            return false;
     }
 
     function getTable($tableName) {

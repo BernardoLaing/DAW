@@ -1,4 +1,5 @@
 <br /><br />
+
 <div class="container mdiv shadow">
     <div class="mx-auto text-center"> <!-- mx-auto da un padding y border automatico-->
         <div class="display-3">Cuentas</div> <!--display son headdings mas grandes-->
@@ -42,17 +43,17 @@
                     <th scope="col"> Nombre </th>
                     <th scope="col"> Usuario </th>
                     <th scope="col"> Rol </th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th scope="col"> </th>
+                    <th scope="col"> </th>
                 </tr>
             </thead>
             <?php if (mysqli_num_rows($userList) > 0){ while($row = mysqli_fetch_array($userList, MYSQLI_BOTH)) { ?>
             <tr>
-                <td style="width: 25%;"><?php echo $row[1]; ?></td>
-                <td style="width: 25%;"><?php echo $row[0]; ?></td>
-                <td style="width: 25%;"><?php echo $row[2]; ?></td>
-                <td style="width: 12.5%;"><a href="deleteAccount.php?user=<?php echo $row[0] ?>"><i class="material-icons delete">delete</i></a></td>
-                <td style="width: 12.5%;"><a href="accountsEdit.php?user=<?php echo $row[0] ?>"><i class="material-icons edit">mode_edit</i></a></td>
+                <td style="width: 29%;"><?php echo $row[1]; ?></td>
+                <td style="width: 29%;"><?php echo $row[0]; ?></td>
+                <td style="width: 29%;"><?php echo $row[2]; ?></td>
+                <td style="width: 6.5%;"><a href="deleteAccount.php?user=<?php echo $row[0] ?>"><i class="material-icons delete">delete</i></a></td>
+                <td style="width: 6.5%;"><a href="accountsEdit.php?user=<?php echo $row[0] ?>"><i class="material-icons edit">mode_edit</i></a></td>
             </tr>
             <?php $count++; ?>
             <?php }} ?>
@@ -75,7 +76,7 @@
 <br /><br />
 <script>
 $(".input").each(function(){
-    $(this).change(function(){
+    $(this).keyup(function(){
         $.get("controller/cuentas_search.php",{
             user : $("#user").val(),
             name : $("#name").val(),
@@ -86,11 +87,11 @@ $(".input").each(function(){
             var tableContent = '<thead><tr><th scope="col"> Nombre </th><th scope="col"> Usuario </th><th scope="col"> Rol </th><th scope="col"></th><th scope="col"></th></tr></thead>';
             $.each(obj, function(key, value){
 //                console.log(value);
-                tableContent = tableContent.concat("<tr><td style='width: 25%;'>" + value.nombre + "</td>");
-                tableContent = tableContent.concat("<td style='width: 25%;'>" + value.user + "</td>");
-                tableContent = tableContent.concat("<td style='width: 25%;'>" + value.rol + "</td>");
-                tableContent = tableContent.concat("<td style='width: 12.5%;'><a href='deleteAccount.php?user=" + value.user + "'><i class='material-icons delete'>delete</i></a></td>");
-                tableContent = tableContent.concat("<td style='width: 12.5%;'><a href='accountsEdit.php?user=" + value.user + "'><i class='material-icons edit'>mode_edit</i></a></td></tr>");
+                tableContent = tableContent.concat("<tr><td style='width: 29%;'>" + value.nombre + "</td>");
+                tableContent = tableContent.concat("<td style='width: 29%;'>" + value.user + "</td>");
+                tableContent = tableContent.concat("<td style='width: 29%;'>" + value.rol + "</td>");
+                tableContent = tableContent.concat("<td style='width: 6.5%;'><a href='deleteAccount.php?user=" + value.user + "'><i class='material-icons delete'>delete</i></a></td>");
+                tableContent = tableContent.concat("<td style='width: 6.5%;'><a href='accountsEdit.php?user=" + value.user + "'><i class='material-icons edit'>mode_edit</i></a></td></tr>");
                 $("#user-table").html(tableContent);
             })
 //            console.log(obj);
