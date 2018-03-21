@@ -26,7 +26,7 @@
         $date = new DateTime();
         $dateLend = $date->format('Y-m-d H:i:s');
         $_SESSION['hoy'] = $dateLend;
-        echo "".$_SESSION["hoy"];
+        //echo "".$_SESSION["hoy"];
         $date2 = new DateTime();
         $date2 = $date2->modify('+7 day');
         $dateReturn = $date2->format('Y-m-d H:i:s');

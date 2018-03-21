@@ -71,13 +71,13 @@ if($var_value && $var_tipo == 'Devolución'){
              </div>
          </div>
           <div class="row">
-            <div class="col-sm-4 text-left">
+            <div class="col-sm-2 ">
               <input type="submit" id="cancelar" class="btn btn-success" name="buenEstado" value="Sí" />
             </div>
-            <div class="col-sm-4 text-left ">
+            <div class="col-sm-2  ">
                <input type="submit" id="aceptar" class="btn btn-danger"  name="malEstado" value="No" />
             </div>
-            <div class="col-sm-4 text-left">
+            <div class="col-sm-4 ">
               <input type="submit" id="cancelar" class="btn btn-danger" name="cancelar" value="Cancelar Devolución" />
             </div>
           </div>
