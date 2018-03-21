@@ -17,13 +17,15 @@ if(isset($_POST["submit"])){
           $passwd == $passwdValidate &&
           is_numeric($rol)){
             
-            // $passwd = password_hash($passwd, PASSWORD_BCRYPT);
+            $passwd = password_hash($passwd, PASSWORD_BCRYPT);
             
             if(registerUser($user, $name, $passwd, $rol)){
-                echo "registerUser validado";
+                $_SESSION['error_msg'] = "";
                 header('Location: cuentas.php');
             }else{
-                echo "NO FUNCIONA";
+                header('Location: menu.php');
+                $_SESSION["error_msg"] = "El usuario " . $user . " ya existe";
+                header('Location: accountCreate.php');
             }
             
         }

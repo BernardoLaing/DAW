@@ -6,6 +6,7 @@ require_once('utils.php');
 $userError = "";
 $passwordError = "";
 $incorrect = 0;
+$_SESSION["error_msg"] = "";
 if(isset($_POST["submit"])){
     //Validar que los campos se hayan llenado de la manera correcta.
     if(empty($_POST["user"])){
@@ -39,6 +40,8 @@ if(isset($_POST["submit"])){
             $_SESSION["password"] = $password;
             $_SESSION["permisos"] = getUserPermissions($user);
             header('Location: menu.php');
+        }else{
+            $_SESSION["error_msg"] = "Usuario o contraseña inválido";
         }
     }
 }
