@@ -11,13 +11,7 @@ $(document).ready(function(){
             text: "Borrar sanción",
             click: function(e){
                 e.preventDefault();
-                $("input").each(function(){
-                    $(this).prop("disabled", false);
-                });
-                $("select").each(function(){
-                    $(this).prop("disabled", false);
-                });
-                $("#entry_form").attr("action", "controller/sanctionsErase_controller.php");
+                $("#user_number").prop("disabled", false);
                 $("#entry_form").submit();
             }
         }));

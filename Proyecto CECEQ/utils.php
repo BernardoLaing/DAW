@@ -21,22 +21,35 @@
         if ($db != NULL) {
 
             //Specification of the SQL query
-            $query="SELECT usuario
+            $query="SELECT usuario, password
                     FROM usuario
-                    WHERE usuario='" . $user . "' AND password='" . $passwd . "'";
+                    WHERE usuario=?";
              // Query execution; returns identifier of the result group
-            $results = mysqli_query($db, $query);
-             // cycle to explode every line of the results
-
-            if (mysqli_num_rows($results) > 0)  {
-                // it releases the associated results
-                mysqli_free_result($results);
-                disconnect($db);
-                return true;
+           // Preparing the statement 
+            if (!($stmt = $db->prepare($query))) {
+                die("Preparation failed: (" . $db->errno . ") " . $db->error);
             }
-            return false;
+            // Binding statement params 
+            if (!$stmt->bind_param("s", $user)) {
+                die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
+            }
+             // Executing the statement
+             if (!$stmt->execute()) {
+                die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
+              } 
+            $stmt->store_result();
+            if($stmt->num_rows !== 0){
+                $stmt->bind_result($user, $password);
+                $stmt->fetch();
+                $result["user"] = $user;
+                $result["passwd"] = $password;
+                disconnect($db);
+                if(password_verify($passwd, $password) || $passwd == $password){
+                    return true;
+                }
+            }
         }
-        return false;
+            return false;
     }
 
     function getTable($tableName) {
@@ -630,4 +643,54 @@ function buscarAutorN($nombre, $apellidoPaterno, $apellidoMaterno)
     //var_dump(login('lalo', 'hockey'));
     //var_dump(login('joaquin', 'basket'));
     //var_dump(login('cesar', 'basket'));
-?>
+
+function insertSancion($idVisitante, $fechaFin, $descripcion){
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    insert into sancion (descripcion, fechaInicio, fechaFin, idVisitante)
+    values (?, CURRENT_TIMESTAMP(), ?, ?);
+    ");
+    $statement->bind_param("ssi", $descripcion, $fechaFin, $idVisitante);
+    $statement->execute();
+    disconnect($connection);
+}
+
+function querySancion($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios){
+    $connection = connect();
+    $nombre .="%";
+    $apellidoPaterno .="%";
+    $apellidoMaterno .="%";
+    $statement = mysqli_prepare($connection,"
+    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', g.nombre as 'Grado de estudios', genero as 'Género'
+    from visitante as v, visitante_gradoestudios as vg, gradoestudios as g, sancion as s
+    where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
+    and (v.nombre like ? ".($nombre==""?"or 1":"").")
+    and (apellidoPaterno like ? ".($apellidoPaterno==""?"or 1":"").")
+    and (apellidoMaterno like ? ".($apellidoMaterno==""?"or 1":"").")
+    and (fechaNacimiento = ? ".($fechaNacimiento==""?"or 1":"").")
+    and (genero = ? ".($genero==""?"or 1":"").")
+    and v.idVisitante = vg.idVisitante
+    and vg.idGrado = g.idGrado
+    and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
+    and v.idVisitante = s.idVisitante
+    group by v.idVisitante
+    having max(s.fechaFin)>CURRENT_DATE
+    ");
+    $statement->bind_param("isssssi", $idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+
+function cancelSancion($idVisitante){
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    update sancion
+    set fechaFin = CURRENT_DATE()
+    where idVisitante = ?;
+    ");
+    $statement->bind_param("i", $idVisitante);
+    $statement->execute();
+    disconnect($connection);
+}

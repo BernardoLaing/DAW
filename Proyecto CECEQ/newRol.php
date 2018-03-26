@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once('utils.php');
 ?>
 <?php
@@ -16,7 +17,7 @@ if(isset($_POST["submit"])){
             if(createRol($name, $description, $permissions)){
                 header('Location: rols.php');
             }else{
-                echo "Valiste vergas";
+                header('Location: rolsCreate.php');
             }
             
         }

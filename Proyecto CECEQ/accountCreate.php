@@ -12,5 +12,14 @@ $rols = getTable('rol');
 
 <?php 
 include("html/accountCreate.html");
-include("partials/_footer.html"); 
+include("modals/modal_error.html");
+if($_SESSION['error_type'] === "userConflict"){
+    echo "<script>
+            $(document).ready(function (e) {
+                $('#myModal').modal('show');
+            });
+        </script>";
+    $_SESSION['error_type'] = "";
+}
+include("partials/_footer.html");
 ?>

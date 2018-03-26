@@ -15,7 +15,8 @@ $(document).ready(function(){
                     birthday : $("#user_birthday").val(),
                     user_grade : $("#user_grade").val(),
                     gender : $("#user_gender").val()
-                }
+                },
+                    searchType: $("#sanctionIdentifier").length ? "sancion": "visitante"
             },
             function(data,status){
                 $("#user_table").html(data);
@@ -27,16 +28,17 @@ $(document).ready(function(){
     $("select").each(function(){
         $(this).change(function(){
             $.post("controller/entrySearch_controller.php",{
-                    user :
-                        {
-                            number : $("#user_number").val(),
-                            name : $("#user_name").val(),
-                            paternal : $("#user_paternal").val(),
-                            maternal : $("#user_maternal").val(),
-                            birthday : $("#user_birthday").val(),
-                            user_grade : $("#user_grade").val(),
-                            gender : $("#user_gender").val()
-                        }
+                user :
+                    {
+                        number : $("#user_number").val(),
+                        name : $("#user_name").val(),
+                        paternal : $("#user_paternal").val(),
+                        maternal : $("#user_maternal").val(),
+                        birthday : $("#user_birthday").val(),
+                        user_grade : $("#user_grade").val(),
+                        gender : $("#user_gender").val()
+                    },
+                searchType: $("#sanctionIdentifier").length ? "sancion": "visitante"
                 },
                 function(data,status){
                     $("#user_table").html(data);

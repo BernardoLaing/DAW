@@ -12,6 +12,7 @@ $(document).ready(function(){
             text: "Editar",
             click: function(e){
                 e.preventDefault();
+                $("#warpSanctionButton").find("button").hide();
                 $(this).text("Guardar cambios");
                 $("input").each(function(){
                     $(this).prop("disabled", false);
@@ -48,22 +49,16 @@ $(document).ready(function(){
         }));
 
         $("#msubmit_sanctions").click(function(){
-            $("#user_sanctionNumber").val($("#user_number").val());
-            $.post("controller/sanctionInsert_controller.php",{
+            $.post("controller/sanctionsInsert_controller.php",{
                     user :
                         {
                             number : $("#user_number").val(),
-                            name : "",
-                            paternal : "",
-                            maternal : "",
-                            birthday : $("#user_birthday").val(),
-                            user_grade : $("#user_grade").val(),
-                            gender : $("#user_gender").val()
+                            sanctionTime : $("#user_sanctionTime").val(),
+                            sanctionDescription : $("#user_sanctionDescription").val()
                         }
                 },
                 function(data,status){
-                    $("#user_table").html(data);
-                    readyForDisplay();
+                    location.reload();
                 });
         });
 
