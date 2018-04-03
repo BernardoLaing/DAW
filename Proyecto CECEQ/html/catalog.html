@@ -10,8 +10,7 @@
         </div>
         <br>
         <div class='row'>
-
-            <div class='col-sm-4'>
+            <div class='col-sm-6'>
                 <div class='form-group'>
                     <label for="book_author">Nombre autor:</label>
                     <div class="col-md-12">
@@ -20,7 +19,7 @@
                 </div>
             </div>
 
-            <div class='col-sm-4'>
+            <div class='col-sm-6'>
                 <div class='form-group'>
                     <label for="book_apaterno">Apellido paterno:</label>
                     <div class="col-md-12">
@@ -28,24 +27,17 @@
                     </div>
                 </div>
             </div>
-            <div class='col-sm-4'>
-                <div class='form-group'>
-                    <label for="book_amaterno">Apellido Materno:</label>
-                    <div class="col-md-12">
-                        <input class="form-control" id="book_amaterno" name="book[amaterno]" size="30" type="text" placeholder="Lozano"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='row'>
             <div class='col-sm-6'>
                 <div class='form-group'>
-                    <label for="user_name">Titulo:</label>
+                    <label for="user_name">Título:</label>
                     <div class="col-md-12">
                         <input class="form-control" id="book_title" name="book[title]" size="30" type="text" placeholder="Don Quijote "/>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class='row'>
+            
             <div class='col-sm-6'>
                 <div class='form-group'>
                     <label for="clasificacion">Clasificación:</label>
@@ -66,6 +58,17 @@
                     </div>
                 </div>
             </div>
+            <div class='col-sm-6'>
+                    <div class='form-group'>
+                        <label for="subclasificacion">Subclasificación:</label>
+                        <div class="col-md-12">
+                            <select class="form-control cvalidate " name="subclasificacion" id="subclasificacionBusqueda" required>
+                                <option value="" disabled selected>-- seleccionar clasificación--</option>
+        
+                            </select>
+                        </div>
+                    </div>
+                </div>
         </div>
         <br>
         <div class="row">
@@ -82,6 +85,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                            <th scope="col">ID</th>
                             <th scope="col">Titulo</th>
                             <th scope="col">Autor</th>
                             <th scope="col">Año</th>

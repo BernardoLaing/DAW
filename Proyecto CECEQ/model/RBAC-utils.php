@@ -79,6 +79,7 @@ function getUser($user){
             disconnect($db);
             return $result;
         }else{
+            disconnect($db);
             return false;
         }
         
