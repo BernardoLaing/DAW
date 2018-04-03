@@ -220,3 +220,11 @@ a h2, h5{
     color: red !important;
     display: none;
 }
+.nv-20
+{
+    background-color: rgba(73, 71, 77, 0.17);
+}
+body
+{
+    background-color: white;
+}
