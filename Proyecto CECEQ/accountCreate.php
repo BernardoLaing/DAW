@@ -13,7 +13,7 @@ $rols = getTable('rol');
 <?php 
 include("html/accountCreate.html");
 include("modals/modal_error.html");
-if($_SESSION['error_type'] === "userConflict"){
+if(isset($_SESSION['error_type']) && $_SESSION['error_type'] === "userConflict"){
     echo "<script>
             $(document).ready(function (e) {
                 $('#myModal').modal('show');
