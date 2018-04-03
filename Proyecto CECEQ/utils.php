@@ -575,7 +575,7 @@ function buscarGeneralLike($nombre, $apellidoPaterno, $apellidoMaterno, $titulo,
 {
     $connection = connect();
     $statement = mysqli_prepare($connection,"
-    select a.nombre AS nombreA, apellidoPaterno, titulo, t.year, estante, editorial, es.nombre, c.nombre AS nombreC
+    select GROUP_CONCAT(a.nombre,' ', apellidoPaterno SEPARATOR ', ') AS autoresApellidos, titulo, t.year, estante, editorial, es.nombre, c.nombre AS nombreC, e.idEjemplar
     from autor a, titulo t, titulo_autor ta, ejemplar e, ejemplar_estado ee, estado es, titulo_categoria tc, categoria c
     where (a.nombre LIKE ? ".($nombre==""?"or 1":"").")
     and (apellidoPaterno = ? ".($apellidoPaterno==""?"or 1":"").")
@@ -588,9 +588,10 @@ function buscarGeneralLike($nombre, $apellidoPaterno, $apellidoMaterno, $titulo,
     and ee.idEstado=es.idEstado
     and t.idTitulo=tc.idTitulo
     and tc.idCategoria=c.idCategoria
-    and (c.idCategoria between ? and (?+99)".($categoria==""?"or 1":"").")
+    and (c.idCategoria = ? ".($categoria==""?"or 1":"").")
+    GROUP BY e.idEjemplar;
     ");
-    $statement->bind_param("ssssii", $nombre, $apellidoPaterno, $apellidoMaterno, $titulo, $categoria, $categoria);
+    $statement->bind_param("ssssi", $nombre, $apellidoPaterno, $apellidoMaterno, $titulo, $categoria);
     $statement->execute();
     $result = $statement->get_result();
     disconnect($connection);
