@@ -1,11 +1,13 @@
-<?php include("partials/_header.html"); ?> <!--Acaba en la primera etiqueta body-->
+
 <?php include("partials/_top_bar.html");?>  <!--Es la etiqueta Nav-->
+<?php include("partials/_header.html");?>
 <?php include("html/_estadisticas.html");?>  <!--  -->
 <?php include("partials/_footer.html"); ?> <!--Empieza en los scroipts-->
 
 
 
 <?php
+/*
 $ocupation = isset($_POST["user"]["ocupation"]) && ($_POST["user"]["ocupation"]);
 $age = isset($_POST["user"]["age"]) && is_numeric($_POST["user"]["age"]);
 $gender = isset($_POST["user"]["gender"]) && ($_POST["user"]["gender"]);
@@ -25,4 +27,6 @@ $year = isset($_POST["user"]["year"]) && ($_POST["user"]["year"]);
       echo "<script> $('#myModal').modal('show') </script>";
     }
   }
+*/
+
  ?>
