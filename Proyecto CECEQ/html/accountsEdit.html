@@ -22,7 +22,7 @@
             </div>
             <div class="col-sm-12 col-md-4">
                 <div class="form-group">
-                    <label for="name">Rol</label>
+                    <label for="rol">Rol</label>
                     <select name="rol" required class="form-control">
                         <option value='<?php echo $user["idRol"]; ?>' disabled selected>----Rol----</option>
                         <?php while($row = mysqli_fetch_array($rols, MYSQLI_BOTH)) { ?>
@@ -35,13 +35,13 @@
         <div class="form-row">
             <div class="col-sm-12 col-md-4">
                 <div class="form-group">
-                    <label for="name">Contraseña</label>
+                    <label for="password">Contraseña</label>
                     <input type="password" name="password" required class="form-control">
                 </div>
             </div>
             <div class="col-sm-12 col-md-4">
                 <div class="form-group">
-                    <label for="name">Validar Contraseña</label>
+                    <label for="passwordValidate">Validar Contraseña</label>
                     <input type="password" name="passwordValidate" required class="form-control">
                 </div>
             </div>
