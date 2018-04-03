@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-03-2018 a las 21:19:27
+-- Tiempo de generación: 03-04-2018 a las 18:01:15
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -88,104 +88,104 @@ CREATE TABLE `categoria` (
 
 INSERT INTO `categoria` (`idCategoria`, `nombre`) VALUES
 (0, 'Generalidades'),
-(10, 'Bibliograf?a'),
-(20, 'Bibliotecnolog?a y ciencias de la informaci?n'),
-(30, 'Obras enciclop?dicas generales'),
+(10, 'Bibliografía'),
+(20, 'Bibliotecnología y ciencias de la información'),
+(30, 'Obras enciclopédicas generales'),
 (50, 'Publicaciones seriadas generales'),
-(60, 'Organizaciones generales y museolog?a'),
-(70, 'Medios noticiosos, periodismo, publicaci?n'),
+(60, 'Organizaciones generales y museología'),
+(70, 'Medios noticiosos, periodismo, publicación'),
 (80, 'Colecciones generales'),
 (90, 'Manuscritos y libros raros'),
-(100, 'Filosof?a y psicolog?a'),
-(110, 'Metaf?sica'),
-(120, 'Epistemolog?a, causalidad, g?nero humano'),
-(130, 'Fen?menos paranormales'),
-(140, 'Escuelas filos?ficas espec?ficas'),
-(150, 'Psicolog?a'),
-(160, 'L?gica'),
-(170, 'Etica (Filosof?a moral)'),
-(180, 'Filosof?a antigua, medieval, oriental'),
-(190, 'Filosof?a moderna occidental'),
-(200, 'Religi?n'),
-(210, 'Filosof?a y teor?a de la religi?n'),
+(100, 'Filosofía y psicología'),
+(110, 'Metafísica'),
+(120, 'Epistemología, causalidad, género humano'),
+(130, 'Fenómenos paranormales'),
+(140, 'Escuelas filosóficas específicas'),
+(150, 'Psicología'),
+(160, 'Lógica'),
+(170, 'Etica (Filosofía moral)'),
+(180, 'Filosofía antigua, medieval, oriental'),
+(190, 'Filosofía moderna occidental'),
+(200, 'Religión'),
+(210, 'Filosofía y teoría de la religión'),
 (220, 'La Biblia'),
-(230, 'Cristianismo Teolog?a cristiana'),
-(240, 'Moral cristiana y teolog?a piadosa'),
-(250, '?rdenes cristianas e iglesia local'),
-(260, 'Teolog?a social y eclesi?stica'),
+(230, 'Cristianismo Teología cristiana'),
+(240, 'Moral cristiana y teología piadosa'),
+(250, 'Ordenes cristianas e iglesia local'),
+(260, 'Teología social y eclesiástica'),
 (270, 'Historia del cristianismo y de la iglesia cristian'),
 (280, 'Confesiones y sectas cristianas'),
-(290, 'Religi?n comparada y otras religiones'),
+(290, 'Religión comparada y otras religiones'),
 (300, 'Ciencias sociales'),
-(310, 'Colecciones de estad?stica general'),
-(320, 'Ciencia pol?tica'),
-(330, 'Econom?a'),
+(310, 'Colecciones de estadística general'),
+(320, 'Ciencia política'),
+(330, 'Economía'),
 (340, 'Derecho'),
-(350, 'Administraci?n p?blica y ciencia militar'),
+(350, 'Administración pública y ciencia militar'),
 (360, 'Problemas y servicios sociales; asociaciones'),
-(370, 'Educaci?n'),
+(370, 'Educación'),
 (380, 'Comercio, comunicaciones, transporte'),
 (390, 'Costumbres, etiqueta, folclor'),
 (400, 'Lenguas'),
-(410, 'Ling??stica'),
-(420, 'Ingl?s e ingl?s antiguo'),
-(430, 'Lenguas germ?nicas Alem?n'),
-(440, 'Lenguas romances Franc?s'),
+(410, 'Lingüística'),
+(420, 'Inglés e inglés antiguo'),
+(430, 'Lenguas germánicas Alemán'),
+(440, 'Lenguas romances Francés'),
 (450, 'Italiano, rumano, retorromano'),
-(460, 'Lengua espa?ola y portuguesa'),
-(470, 'Lenguas it?licas Lat?n'),
-(480, 'Lenguas hel?nicas Griego cl?sico'),
+(460, 'Lengua española y portuguesa'),
+(470, 'Lenguas itálicas Latín'),
+(480, 'Lenguas helénicas Griego clásico'),
 (490, 'Otras lenguas'),
-(500, 'Ciencias naturales y matem?ticas'),
-(510, 'Matem?ticas'),
-(520, 'Astronom?a y ciencias afines'),
-(530, 'F?sica'),
-(540, 'Qu?mica y ciencias afines'),
+(500, 'Ciencias naturales y matemáticas'),
+(510, 'Matemáticas'),
+(520, 'Astronomía y ciencias afines'),
+(530, 'Física'),
+(540, 'Química y ciencias afines'),
 (550, 'Ciencias de la tierra'),
-(560, 'Paleontolog?a Paleozoolog?a'),
-(570, 'Ciencias de la vida Biolog?a'),
+(560, 'Paleontología Paleozoología'),
+(570, 'Ciencias de la vida Biología'),
 (580, 'Plantas'),
 (590, 'Animales'),
-(600, 'Tecnolog?a (Ciencias aplicadas)'),
-(610, 'Ciencias m?dicas Medicina'),
-(620, 'Ingenier?aa y operaciones afines'),
-(630, 'Agricultura y tecnolog?a relacionadas'),
-(640, 'Econom?a dom?stica y vida familiar'),
+(600, 'Tecnología (Ciencias aplicadas)'),
+(610, 'Ciencias médicas Medicina'),
+(620, 'Ingeniería y operaciones afines'),
+(630, 'Agricultura y tecnología relacionadas'),
+(640, 'Economía doméstica y vida familiar'),
 (650, 'Gerencia y servicios auxiliares'),
-(660, 'Ingenier?a qu?mica'),
+(660, 'Ingeniería química'),
 (670, 'Manufactura'),
-(680, 'Manufactura para usos espec?ficos'),
-(690, 'Construcci?n'),
+(680, 'Manufactura para usos específicos'),
+(690, 'Construcción'),
 (700, 'Las artes Bellas artes y artes decorativas'),
-(710, 'Urbanismo y arte paisaj?stico'),
+(710, 'Urbanismo y arte paisajístico'),
 (720, 'Arquitectura'),
-(730, 'Artes pl?sticas Escultura'),
+(730, 'Artes plísticas Escultura'),
 (740, 'Dibujo y artes decorativas'),
 (750, 'Pintura y pinturas'),
-(760, 'Artes gr?ficas Arte de grabar y grabados'),
-(770, 'Fotograf?a y fotograf?as'),
-(780, 'M?sica'),
-(790, 'Artes recreativas y de la actuaci?n'),
-(800, 'Literatura y ret?rica'),
-(810, 'Literatura norteamericana en ingl?s'),
+(760, 'Artes gráficas Arte de grabar y grabados'),
+(770, 'Fotografía y fotografías'),
+(780, 'Música'),
+(790, 'Artes recreativas y de la actuación'),
+(800, 'Literatura y retórica'),
+(810, 'Literatura norteamericana en inglés'),
 (820, 'Literaturas inglesa e inglesa antigua'),
-(830, 'Literaturas de lenguas germ?nicas'),
+(830, 'Literaturas de lenguas germánicas'),
 (840, 'Literaturas de lenguas romances'),
 (850, 'Literaturas italiana, rumana, retorromana'),
-(860, 'Literaturas espa?ola y portuguesa'),
-(870, 'Literaturas it?licas Literatura latina'),
-(880, 'Literaturas hel?nicas Literatura griega cl?sica'),
+(860, 'Literaturas española y portuguesa'),
+(870, 'Literaturas itálicas Literatura latina'),
+(880, 'Literaturas helénicas Literatura griega clásica'),
 (890, 'Literaturas de otras lenguas'),
-(900, 'Geograf?a e historia'),
-(910, 'Geograf?a y viajes'),
-(920, 'Biograf?a genealog?a, insignias'),
+(900, 'Geografía e historia'),
+(910, 'Geografía y viajes'),
+(920, 'Biografía genealogía, insignias'),
 (930, 'Historia del mundo antiguo hasta ca. 499'),
 (940, 'Historia general de Europa'),
 (950, 'Historia general de Asia Lejano Oriente'),
-(960, 'Historia general de ??frica'),
-(970, 'Historia general de Am?rica del Norte'),
-(980, 'Historia general de Am?rica del Sur'),
-(990, 'Historia general de otras ?reas');
+(960, 'Historia general de Africa'),
+(970, 'Historia general de América del Norte'),
+(980, 'Historia general de América del Sur'),
+(990, 'Historia general de otras áreas');
 
 -- --------------------------------------------------------
 
@@ -359,34 +359,21 @@ CREATE TABLE `ejemplar_credencial` (
   `idEjemplar` int(11) NOT NULL,
   `idCredencial` int(11) NOT NULL,
   `fechaPrestamo` datetime NOT NULL,
-  `fechaDevolucion` datetime NOT NULL
+  `fechaDevolucion` datetime NOT NULL,
+  `fechaDevolucionReal` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ejemplar_credencial`
 --
 
-INSERT INTO `ejemplar_credencial` (`idEjemplar`, `idCredencial`, `fechaPrestamo`, `fechaDevolucion`) VALUES
-(1, 20, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 19, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 18, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 17, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 16, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 15, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, 14, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(8, 13, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(9, 12, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(10, 11, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(11, 10, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(12, 9, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(13, 8, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(14, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(15, 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(16, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(17, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(18, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(19, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(20, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `ejemplar_credencial` (`idEjemplar`, `idCredencial`, `fechaPrestamo`, `fechaDevolucion`, `fechaDevolucionReal`) VALUES
+(1, 1, '2018-03-21 17:25:33', '2018-03-28 17:25:33', '2018-03-21 17:31:31'),
+(1, 1, '2018-03-21 17:31:31', '2018-03-28 17:31:31', '2018-03-21 17:31:31'),
+(1, 1, '2018-03-24 18:54:06', '2018-03-31 18:54:06', NULL),
+(2, 1, '2018-03-24 18:54:21', '2018-03-31 18:54:21', '2018-03-24 18:54:47'),
+(3, 1, '2018-03-24 18:54:47', '2018-03-31 18:54:47', '2018-03-24 18:58:17'),
+(7, 1, '2018-03-21 17:40:29', '2018-03-28 17:40:29', '2018-03-21 17:40:29');
 
 -- --------------------------------------------------------
 
@@ -405,13 +392,13 @@ CREATE TABLE `ejemplar_estado` (
 --
 
 INSERT INTO `ejemplar_estado` (`idEjemplar`, `idEstado`, `fecha`) VALUES
-(1, 5, '0000-00-00 00:00:00'),
-(2, 5, '0000-00-00 00:00:00'),
-(3, 5, '0000-00-00 00:00:00'),
+(1, 1, '2018-03-24 06:00:00'),
+(2, 4, '2018-03-24 06:00:00'),
+(3, 5, '2018-03-24 06:00:00'),
 (4, 5, '0000-00-00 00:00:00'),
 (5, 5, '0000-00-00 00:00:00'),
 (6, 5, '0000-00-00 00:00:00'),
-(7, 5, '0000-00-00 00:00:00'),
+(7, 5, '2018-03-21 06:00:00'),
 (8, 5, '0000-00-00 00:00:00'),
 (9, 5, '0000-00-00 00:00:00'),
 (10, 5, '0000-00-00 00:00:00'),
@@ -901,9 +888,7 @@ INSERT INTO `titulo` (`idTitulo`, `titulo`, `year`) VALUES
 (29, 'LA DEMOGRACIA EN LA ACTUALIDAD', 1967),
 (30, 'REGIONES PRIORITARIAS', 1999),
 (31, 'PSICOTERAPIA FAMILIAR', 1982),
-(32, 'ESTRATEGIA DE MARKETING SUN TZU', 2004),
-(50, 'prueba', 1235),
-(51, 'prueba2', 1111);
+(32, 'ESTRATEGIA DE MARKETING SUN TZU', 2004);
 
 -- --------------------------------------------------------
 
@@ -922,7 +907,6 @@ CREATE TABLE `titulo_autor` (
 
 INSERT INTO `titulo_autor` (`idAutor`, `idTitulo`) VALUES
 (1, 2),
-(1, 37),
 (2, 3),
 (3, 16),
 (4, 6),
@@ -951,9 +935,7 @@ INSERT INTO `titulo_autor` (`idAutor`, `idTitulo`) VALUES
 (27, 22),
 (28, 23),
 (29, 24),
-(30, 25),
-(40, 50),
-(41, 51);
+(30, 25);
 
 -- --------------------------------------------------------
 
@@ -1334,7 +1316,7 @@ ALTER TABLE `visitante_gradoestudios`
 -- AUTO_INCREMENT de la tabla `autor`
 --
 ALTER TABLE `autor`
-  MODIFY `idAutor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `idAutor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -1352,7 +1334,7 @@ ALTER TABLE `credencial`
 -- AUTO_INCREMENT de la tabla `ejemplar`
 --
 ALTER TABLE `ejemplar`
-  MODIFY `idEjemplar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `idEjemplar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `estado`
@@ -1394,7 +1376,7 @@ ALTER TABLE `sancion`
 -- AUTO_INCREMENT de la tabla `titulo`
 --
 ALTER TABLE `titulo`
-  MODIFY `idTitulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `idTitulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `visitante`
