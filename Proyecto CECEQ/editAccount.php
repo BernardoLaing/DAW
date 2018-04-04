@@ -27,6 +27,11 @@ if(isset($_POST["submit"])){
         echo "NOT VALID ARGUMENT(S)";
     }
     echo "NOT ISSET";
+    echo $_POST['user'];
+    echo $_POST['name'];
+    echo $_POST['password'];
+    echo $_POST['passwordValidate'];
+    echo $_POST['rol'];
 }else{
     echo "NOT SUBMIT";
 }

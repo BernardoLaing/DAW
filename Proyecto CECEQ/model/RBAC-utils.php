@@ -486,6 +486,8 @@ function deleteRol($idRol){
 function updateRol($idRol, $name, $description, $permissions){
     $db = connect();
     if ($db != NULL) {
+            $db->autocommit(FALSE);
+            $db->begin_transaction();
             // insert command specification 
             $query='UPDATE rol SET nombre = ?, descripcion = ? WHERE idRol = ?';
             // Preparing the statement 
