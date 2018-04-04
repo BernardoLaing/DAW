@@ -228,3 +228,8 @@ body
 {
     background-color: white;
 }
+
+#chart-container {
+    width: 100%;
+    height: auto;
+}
