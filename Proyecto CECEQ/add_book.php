@@ -9,27 +9,60 @@ require_once('utils.php');
 if(!empty($_POST))
 {
     $idAutor;
+    $idAutor2;
+    $idAutor3;
     $idTitulo;
     $idEjemplar;
     $retro = '';
-    $results = buscarAutorN($_POST["book"]["author"], $_POST["book"]["apaterno"], $_POST["book"]["amaterno"]); //insetrar autor
+    $results = buscarAutorN($_POST["book"]["author"], $_POST["book"]["apaterno"], ""); //insetrar autor
     if(mysqli_num_rows($results) == 0) 
     {
-        insertAutor($_POST["book"]["author"], $_POST["book"]["apaterno"], $_POST["book"]["amaterno"]);//insetrar autor
+        insertAutor($_POST["book"]["author"], $_POST["book"]["apaterno"], "");//insetrar autor
         $retro = $retro.'autor insertado';  //retroalimentacion
     }
     
     $retro = $retro. ' '. $_POST["book"]["author"]; //retroalimentacion
     $retro = $retro. ' '. $_POST["book"]["apaterno"];//retroalimentacion
-    $retro = $retro. ' '. $_POST["book"]["amaterno"];//retroalimentacion
     
-    $results = buscarAutorN($_POST["book"]["author"], $_POST["book"]["apaterno"], $_POST["book"]["amaterno"]); //insetrar autor
+    $results = buscarAutorN($_POST["book"]["author"], $_POST["book"]["apaterno"], ""); //insetrar autor
     if($row = mysqli_fetch_assoc($results))
     {
         $idAutor=$row['idAutor'];
     }
-    
     $retro = $retro. ' id autor= ' .$idAutor. ' ';//retroalimentacion
+    
+    if($_POST["book"]["author2"] != ""){
+        $results = buscarAutorN($_POST["book"]["author2"], $_POST["book"]["apaterno2"], ""); //insetrar autor 2
+        if(mysqli_num_rows($results) == 0) 
+        {
+            insertAutor($_POST["book"]["author2"], $_POST["book"]["apaterno2"], "");//insetrar autor2
+            $retro = $retro.'autor 2 insertado';  //retroalimentacion
+        }
+        $retro = $retro. ' '. $_POST["book"]["author2"]; //retroalimentacion
+        $retro = $retro. ' '. $_POST["book"]["apaterno2"];//retroalimentacion
+        $results = buscarAutorN($_POST["book"]["author2"], $_POST["book"]["apaterno2"], ""); //insetrar autor2
+        if($row = mysqli_fetch_assoc($results))
+        {
+            $idAutor2=$row['idAutor'];
+        }
+        $retro = $retro. ' id autor 2 = ' .$idAutor2. ' ';//retroalimentacion
+    }
+    if($_POST["book"]["author3"] != ""){
+        $results = buscarAutorN($_POST["book"]["author3"], $_POST["book"]["apaterno3"], ""); //insetrar autor 2
+        if(mysqli_num_rows($results) == 0) 
+        {
+            insertAutor($_POST["book"]["author3"], $_POST["book"]["apaterno3"], "");//insetrar autor2
+            $retro = $retro.'autor 3 insertado';  //retroalimentacion
+        }
+        $retro = $retro. ' '. $_POST["book"]["author3"]; //retroalimentacion
+        $retro = $retro. ' '. $_POST["book"]["apaterno3"];//retroalimentacion
+        $results = buscarAutorN($_POST["book"]["author3"], $_POST["book"]["apaterno3"], ""); //insetrar autor2
+        if($row = mysqli_fetch_assoc($results))
+        {
+            $idAutor3=$row['idAutor'];
+        }
+        $retro = $retro. ' id autor 3 = ' .$idAutor3. ' ';//retroalimentacion
+    }
     
     $results = buscarTitulo($_POST["book"]["title"], $_POST["book"]["year"]); //insetrar titulo
     if(mysqli_num_rows($results) == 0)
@@ -54,14 +87,29 @@ if(!empty($_POST))
         insertAutorTitulo($idAutor, $idTitulo);
         //echo 'relacion titulo autor insertado <br>'; //retroalimentacion
     }
-    
+    if($_POST["book"]["author2"] != ""){
+        $results = buscarAutorTitulo($idTitulo, $idAutor2); //crear relacion autor y titulo
+        if(mysqli_num_rows($results) == 0)
+        {
+            insertAutorTitulo($idAutor2, $idTitulo);
+            //echo 'relacion titulo autor insertado <br>'; //retroalimentacion
+        }
+    }
+    if($_POST["book"]["author3"] != ""){
+        $results = buscarAutorTitulo($idTitulo, $idAutor3); //crear relacion autor y titulo
+        if(mysqli_num_rows($results) == 0)
+        {
+            insertAutorTitulo($idAutor3, $idTitulo);
+            //echo 'relacion titulo autor insertado <br>'; //retroalimentacion
+        }
+    }
     //echo 'id titulo '.$idTitulo. ' idAutor ' . $idAutor. '<br>'; //retroalimentacion
     
 
     insertEjemplar($_POST["book"]["isbn"], $_POST["book"]["shelf"], $_POST["book"]["editorial"], $_POST["book"]["yeare"], $_POST["book"]["vol"], $idTitulo, $_POST["book"]["colection"], $_POST["book"]["edicion"], $_SESSION["user"] );//insetrar ejemplar
     $retro = $retro. 'ejemplar insertado ';//retroalimentacion
     //echo 'isbn '.$_POST["book"]["isbn"].' estante '. $_POST["book"]["shelf"].' editorial '.$_POST["book"]["editorial"]. ' anio ' .$_POST["book"]["yeare"]. 'vol'. $_POST["book"]["vol"].' titulo' .$idTitulo; //retroalimentacion
-    insertCategoriaTitulo($idTitulo, $_POST["clasificacion"]);
+    insertCategoriaTitulo($idTitulo, $_POST["sclasificacion"]);
     //echo '<br> clasificacion: '.$_POST["clasificacion"]; //retroalimentacion
     $idEjemplar = lastIndexEjemplar();
     insertEjemplarEstado($idEjemplar, 5);

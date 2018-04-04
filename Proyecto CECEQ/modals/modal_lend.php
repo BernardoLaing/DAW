@@ -3,7 +3,7 @@ $diaRegreso=strtotime("+7 Days");
 $var_value = $_SESSION['ok'];               //Booleano para ver verificar que halla ingresado un libro
 $var_credencial = $_SESSION['credencial'];  //Id Credencial
 $var_libro = $_SESSION['libro'];            //Id libro
-$var_tipo = $_SESSION['tipo'];              //Préstamo, Devolución, excedePrestamos, o usuarioInexistente
+$var_tipo = $_SESSION['tipo'];              //Préstamo, Devolución, excedePrestamos, usuarioInexistente, libroActualmentePrestado
 //Succesfull lend
 if($var_value && $var_tipo == 'Préstamo'){
   echo '
@@ -67,7 +67,7 @@ if($var_value && $var_tipo == 'Devolución'){
         <form method="post">
          <div class="row">
              <div class="col-md-12">
-              <p class="text-left"> ¿Esta en buen estado el libro?</p>
+              <p class="text-left"> ¿Está en buen estado el libro?</p>
              </div>
          </div>
           <div class="row">
@@ -110,13 +110,6 @@ else{
            <div class="modal-body">
              <p>Se debe ingresar un libro.</p>
            </div>';
-  }else if($var_tipo == 'excedePrestamos'){ //Presionó prestamo de usuario que ya tiene 3 libros en posecion
-        $modalMissingData .= '
-          <!-- Modal body -->
-           <div class="modal-body">
-             <p class="text-center">No se puede realizar el préstamo.</p>
-             <p class="text-center">Este usuario tiene tres libros prestados actualmente.</p>
-           </div>';
   }else if($var_tipo == 'usuarioInexistente'){ //Presionó préstamo a un usuario que no esta dado de alta
         $modalMissingData .= '
           <!-- Modal body -->
@@ -146,7 +139,7 @@ else{
         $modalMissingData .= '
           <!-- Modal body -->
            <div class="modal-body">
-             <h5 class="text-center">Este libro no tiene estado disponible.</h5>
+             <h5 class="text-center">No se puede realizar la operacion ya que el estado del ejemplar es "'.getBookState($_SESSION['libro']).'".</h5>
              <h5 class="text-center">Por favor, revise los datos.</h5>
            </div>';
   }

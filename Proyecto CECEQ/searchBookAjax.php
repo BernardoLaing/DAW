@@ -1,18 +1,25 @@
 <?php
 require_once "utils.php";
-$respuesta = 'venga '.$_GET["name"] .' '. $_GET["apellidop"] .' '. $_GET["apellidom"] .' '. $_GET["title"].' '. $_GET["pagina"].' '. $_GET["categoria"] ;
+$respuesta = 'venga '.$_GET["name"] .' '. $_GET["apellidop"] .' '. $_GET["title"].' '. $_GET["pagina"].' '. $_GET["categoria"] ;
 
 //$result=buscarGeneral($_GET["name"] , $_GET["apellidop"], $_GET["apellidom"], $_GET["title"]);
-$result=buscarGeneralLike('%'.$_GET["name"].'%' , $_GET["apellidop"], $_GET["apellidom"], '%'.$_GET["title"].'%', $_GET["categoria"]);
-
-
+$result=buscarGeneralLike('%'.$_GET["name"].'%' , $_GET["apellidop"], "", '%'.$_GET["title"].'%', $_GET["categoria"]);
+$i=0;
+$j=$_GET["paginacion"];
 if(mysqli_num_rows($result) > 0)
+{
+    if($_GET["pagina"]>$j)
+    {
+        while(($row = mysqli_fetch_assoc($result))&&($i<($_GET["pagina"]-$j)))
         {
-            //echo 'hola a ajax 2 func';
-            while($row = mysqli_fetch_assoc($result))
-            {
-                echo '<tr><td>' .$row['titulo']. '</td><td>'. $row['nombreA']. '</td><td>'. $row['year'] . '</td><td>'. $row['estante']. '</td><td>'. $row['editorial'] .'</td><td>'.$row['nombreC']. '</td><td>'. $row['nombre']. '</td></tr>';
-            }
+            $i++;
         }
+    }
+    while(($row = mysqli_fetch_assoc($result))&&($i<$_GET["pagina"]))
+    {
+        echo '<tr><td>' .$row['idEjemplar']. '</td><td>'.$row['titulo']. '</td><td>'.$row['autoresApellidos']. '</td><td>'. $row['year'] . '</td><td>'. $row['estante'].'</td><td>'.$row['nombreC']. '</td><td>'. $row['nombre']. '</td></tr>';
+        $i++;
+    }
+}
 
 ?>

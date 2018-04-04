@@ -10,8 +10,7 @@
         </div>
         <br>
         <div class='row'>
-
-            <div class='col-sm-4'>
+            <div class='col-sm-6'>
                 <div class='form-group'>
                     <label for="book_author">Nombre autor:</label>
                     <div class="col-md-12">
@@ -20,32 +19,25 @@
                 </div>
             </div>
 
-            <div class='col-sm-4'>
+            <div class='col-sm-6'>
                 <div class='form-group'>
-                    <label for="book_apaterno">Apellido paterno:</label>
+                    <label for="book_apaterno">Apellido:</label>
                     <div class="col-md-12">
                         <input class="form-control" id="book_apaterno" name="book[apaterno]" size="30" type="text" placeholder="Paz"/>
                     </div>
                 </div>
             </div>
-            <div class='col-sm-4'>
-                <div class='form-group'>
-                    <label for="book_amaterno">Apellido Materno:</label>
-                    <div class="col-md-12">
-                        <input class="form-control" id="book_amaterno" name="book[amaterno]" size="30" type="text" placeholder="Lozano"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='row'>
             <div class='col-sm-6'>
                 <div class='form-group'>
-                    <label for="user_name">Titulo:</label>
+                    <label for="user_name">Título:</label>
                     <div class="col-md-12">
                         <input class="form-control" id="book_title" name="book[title]" size="30" type="text" placeholder="Don Quijote "/>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class='row'>
+            
             <div class='col-sm-6'>
                 <div class='form-group'>
                     <label for="clasificacion">Clasificación:</label>
@@ -66,6 +58,17 @@
                     </div>
                 </div>
             </div>
+            <div class='col-sm-6'>
+                    <div class='form-group'>
+                        <label for="subclasificacion">Subclasificación:</label>
+                        <div class="col-md-12">
+                            <select class="form-control cvalidate " name="subclasificacion" id="subclasificacionBusqueda" required>
+                                <option value="" disabled selected>-- seleccionar clasificación--</option>
+        
+                            </select>
+                        </div>
+                    </div>
+                </div>
         </div>
         <br>
         <div class="row">
@@ -77,16 +80,32 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class='col-sm-6'>
+                    <div class='form-group'>
+                        <label>Número de resultados por página :</label>
+                        <div class="col-md-3">
+                            <select class="form-control cvalidate " name="numeroResultadosBusqueda" id="numeroResultadosBusqueda" >
+                                <option value="10" selected>10</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+        </div>
         <div class="row text-center">
             <div class="col-sm-12">
-                <table class="table table-hover">
+                <table class="table table-hover" id="tableCatalog">
                     <thead>
                         <tr>
+                            <th scope="col">ID</th>
                             <th scope="col">Titulo</th>
                             <th scope="col">Autor</th>
                             <th scope="col">Año</th>
                             <th scope="col">Estante</th>
-                            <th scope="col">Editorial</th>
                             <th scope="col">Clasificación</th>
                             <th scope="col">Estado</th>
                         </tr>
@@ -99,7 +118,7 @@
             </div>
         </div>
         
-        <div class="row">
+        <div class="row pagination-container">
             <div class="col-sm-6 text-center">
                 <div class="form-group">
                     <div class="col-md-12">
