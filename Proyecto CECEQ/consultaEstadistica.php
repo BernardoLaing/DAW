@@ -2,12 +2,14 @@
 include("utils.php"); 
 
 function obtenerEstados(){
+    header('Content-Type: application/json');
     $connection = connect();
     $statement = mysqli_prepare($connection,"
-    select v.nombre as 'Nombre', v.idVisitante as 'Numero'
-    from visitante as v, visitante_gradoestudios as vg, gradoestudios as g
-    where v.idVisitante = vg.idVisitante
-    and vg.idGrado = g.idGrado
+    select e.nombre, COUNT(e.Nombre) as 'Cantidad'
+    from estado e, ejemplar_estado ee
+    where e.idEstado = ee.idEstado
+    group by e.nombre
+    ORDER BY e.nombre
     ");
     $statement->execute();
     $result = $statement->get_result();
@@ -16,29 +18,22 @@ function obtenerEstados(){
 }
 
 function buildArray($result){
-    $a = array();
     if(mysqli_num_rows($result)>0){
-        $fieldNumber = mysqli_num_fields($result);
-        array_push($a,array());
-        for($i = 0; $i < $fieldNumber; $i++){
-            array_push($a[0],mysqli_fetch_field_direct($result, $i)->name);
-        }
+        $data = array();
         while($row = mysqli_fetch_assoc($result)){
-            array_push($a,array());
-            foreach($row as $data){
-                array_push($a[count($a)-1],$data);
-            }
+            array_push($data,$row);
         }
     }else{
        echo "No hay resultados";
+       return null;
     }
     //echo print_r($a);
-    return $a;
+    return $data;
 }
-$variable =  buildarray(obtenerEstados());
+$data =  buildarray(obtenerEstados());
+echo json_encode($data);
 
-echo json_encode($variable);
-//$var = json_encode($variable);
+//$var = json_encode($data);
 //return $var;
 
 
