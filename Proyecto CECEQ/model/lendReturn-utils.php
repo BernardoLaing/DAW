@@ -6,6 +6,24 @@ function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
     $estadoDisponible = true;
     if(!$conn){ die("No se pudo conectar a la Base de Datos");}
     if ($boolPrestamo == true) {
+    ///////////// REVISA QUE NO ESTE ACTUALMENTE EN LA TABLA EJEMPLAR_CREDENCIAL  //////////////////////
+          $sql='SELECT *
+          FROM ejemplar_credencial ec
+          WHERE ec.idEjemplar = (?)
+          AND ec.fechaDevolucionReal is null';
+        // Preparing the statement
+        if (!($statement = $conn->prepare($sql))) {die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);}
+        // Binding statement params
+        if (!$statement->bind_param("i", $idEjemplar)) {
+            die("Parameter vinculation failed: (" .$statement->errno . ") " . $statement->error);
+        }
+        // Executing the statement
+        if (!$statement->execute()) {
+            die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+        }
+        $result = $statement->get_result();
+        if($result->num_rows === 1){return 'libroActualmentePrestado';}
+       
       ///////////// REVISA QUE ESTE EN ESTADO DISPONIBLE //////////////////////
       $sql='SELECT idEstado
               FROM ejemplar_estado ee
@@ -50,28 +68,15 @@ function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
       if($result->num_rows === 0){
         return 'usuarioInexistente';
       }
-      ///////////// REVISA QUE NO ESTE ACTUALMENTE EN LA TABLA EJEMPLAR_CREDENCIAL  //////////////////////
-      $sql='SELECT *
-              FROM ejemplar_credencial ec
-              WHERE ec.idEjemplar = (?)
-              AND ec.fechaDevolucionReal is null';
-      // Preparing the statement
-      if (!($statement = $conn->prepare($sql))) {die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);}
-      // Binding statement params
-      if (!$statement->bind_param("i", $idEjemplar)) {
-          die("Parameter vinculation failed: (" .$statement->errno . ") " . $statement->error);
-      }
-      // Executing the statement
-      if (!$statement->execute()) {
-          die("Execution failed: (" . $statement->errno . ") " . $statement->error);
-      }
-      $result = $statement->get_result();
-      if($result->num_rows === 1){return 'libroActualmentePrestado';}
-    }else{
+    
+    }
+    else{
       ///////////// REVISA QUE EL LIBRO SI ESUVIERA PRESTADO //////////////////////
       $sql='SELECT *
-              FROM ejemplar_credencial ec
-              WHERE ec.idEjemplar = (?)';
+              FROM ejemplar_estado ee
+              WHERE ee.idEjemplar = (?)
+              AND idEstado = 1
+              ';
       // Preparing the statement
       if (!($statement = $conn->prepare($sql))) {
           die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
@@ -86,7 +91,7 @@ function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
       }
       $result = $statement->get_result();
       if($result->num_rows === 0){
-        return 'libroInexistente';
+        return 'noDisponible';
       }
     }
     ///////////// REVISA QUE EXISTA LIBRO //////////////////////
@@ -116,9 +121,9 @@ function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
     }
     disconnect($conn);
 }
+
 function checkLendTimes($idCredencial){
   $conn = connect();
-  $estadoDisponible = true;
   if(!$conn){ die("No se pudo conectar a la Base de Datos");}
   ///////////// REVISA QUE NO TENGA 3 PRESTAMOS //////////////////////
   $sql='SELECT *
@@ -143,6 +148,38 @@ function checkLendTimes($idCredencial){
   }
   disconnect($conn);
 }
+
+
+function getBookState($idLibro){
+    $conn = connect();
+    if(!$conn){ die("No se pudo conectar a la Base de Datos");}
+    ///////////// REVISA QUE NO TENGA 3 PRESTAMOS //////////////////////
+    $sql='SELECT nombre
+            FROM estado e, ejemplar_estado ee
+            WHERE ee.idEstado = e.idEstado
+            AND ee.idEjemplar = (?)';
+    // Preparing the statement
+    if (!($statement = $conn->prepare($sql))) {
+        die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
+    }
+    // Binding statement params
+    if (!$statement->bind_param("i", $idLibro)) {
+        die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
+    }
+    // Executing the statement
+    if (!$statement->execute()) {
+        die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+    }
+    $result = $statement->get_result();
+    //if($result->num_rows === 0) exit('No rows el ejemplar no existe');
+    while($row = $result->fetch_assoc()) {
+        $estado =  $row['nombre'];
+    }
+    return $estado;
+    disconnect($conn);
+  }
+
+
 function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
   $conn = connect();
   if(!$conn){ die("No se pudo conectar a la Base de Datos");}
@@ -163,6 +200,7 @@ function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
   cambiarEstado(1, $idEjemplar);
   disconnect($conn);
 }
+
 function insertReturn($idEjemplar, $fechaDevolucionReal, $buenEstado, $malEstado){
     $conn = connect();
     if(!$conn){ die("No se pudo conectar a la Base de Datos");}
@@ -189,7 +227,8 @@ function insertReturn($idEjemplar, $fechaDevolucionReal, $buenEstado, $malEstado
         cambiarEstado(4, $idEjemplar);
     disconnect($conn);
   }
-function getNameVisitor($idCampo, $boolCredencial){
+
+  function getNameVisitor($idCampo, $boolCredencial){
   $db = connect();
   if($db != NULL){
     if ($boolCredencial == true) { //Esto quiere decir que marcó un prestamo ya que aqui aun no tiene el idEjemplar en la tabla
@@ -225,6 +264,7 @@ function getNameVisitor($idCampo, $boolCredencial){
   }
   disconnect($db);
 }
+
 function getNameBook($var_libro){
   $db = connect();
   if($db != NULL){
@@ -250,6 +290,7 @@ function getNameBook($var_libro){
       return $titulo;
   }
 }
+
 function getLateDays($var_libro){
   $db = connect();
   if($db != NULL){

@@ -85,7 +85,7 @@
                 <a class="btn btn-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
             </div>
             <div class="col-sm-4 text-right">
-                <a class="btn btn-secondary" href="#">Imprimir</a>
+                <a id="print" class="btn btn-secondary" href="#">Imprimir</a>
             </div>
         </div>
         <br />
@@ -108,6 +108,9 @@ $("select").each(function(){
             $("#adultos").html(obj['adultos']);
             $("#credenciales").html(obj['credenciales']);
             $("#libros").html(obj['libros']);
+            var urlget = "controller/dgb_print.php?ninos=" + obj['ninos'] + "&jovenes=" + obj['jovenes'] + "&adultos=" + obj['adultos'] + "&credenciales=" + obj['credenciales'] + "&libros=" + obj['libros'] + "&month=" + $("#month").val() + "&year=" + $("#year").val();
+            console.log(urlget);
+            $("#print").attr("href", urlget);
         });
     });
 });
