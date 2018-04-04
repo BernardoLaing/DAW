@@ -3,11 +3,17 @@ $(document).ready(funcionPrincipal);
 function funcionPrincipal()
 {
     buscarLibros = $('#buscarLibro');
-    buscarLibros.click(funcBuscarLibro);
+    buscarLibros.click(funcBusquedaInicial);
     clasificacion = $("#clasificacion");
     clasificacion.change(funcSubclasificaciones);
     clasificacionB = $("#clasificacionBusqueda");
     clasificacionB.change(funcSubclasificacionesBusqueda);
+    libroAnterior.click(funcLibroAnterior);
+    libroSiguiente.click(funcLibroSiguiente);
+}
+function funcBusquedaInicial(){
+    pagina=paginacion;
+    funcBuscarLibro();
 }
 function funcBuscarLibro(){
     let nombre = $('#book_author');
@@ -15,10 +21,19 @@ function funcBuscarLibro(){
     let amaterno = $('#book_amaterno');
     let titulo = $('#book_title');
     let categoria = $('#subclasificacionBusqueda');
-    $.get("searchBookAjax.php", { name: nombre.val(), apellidop: apaterno.val(), apellidom: amaterno.val(), title: titulo.val() , pagina: pagina, categoria: categoria.val()}, function(data){
+    $.get("searchBookAjax.php", { name: nombre.val(), apellidop: apaterno.val(), apellidom: amaterno.val(), title: titulo.val() , paginacion: paginacion, pagina: pagina, categoria: categoria.val()}, function(data){
          //alert(data);
         $('#respuestaLibros').html(data);
+        funcVerificarPaginacion();
     });
+}
+function funcVerificarPaginacion(){
+    if($('#respuestaLibros').html()==""){
+        alert("No hay más resultados, favor de regresar a la página anterior");
+    }
+    else{
+        alert(pagina);
+    }
 }
 function funcSubclasificaciones(){
     let subclasificacion = $("#sclasificacion");
@@ -38,8 +53,23 @@ function funcSubclasificacionesBusqueda(){
     });
     
 }
+function funcLibroAnterior(){
+    if(pagina>15){
+        pagina=pagina-paginacion;
+    }
+    funcBuscarLibro();
+}
+function funcLibroSiguiente(){
+    if($('#respuestaLibros').html()!=""){
+        pagina=pagina+paginacion;
+    }
+    funcBuscarLibro();
+}
 
 var buscarLibros;
 var clasificacion;
 var clasificacionB;
-var pagina = 20;
+var libroAnterior = $('#buscarLibroAnterior');
+var libroSiguiente = $('#buscarLibroSiguiente');
+var paginacion = 15;
+var pagina = paginacion;
