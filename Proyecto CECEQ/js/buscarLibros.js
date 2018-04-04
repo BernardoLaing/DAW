@@ -10,10 +10,16 @@ function funcionPrincipal()
     clasificacionB.change(funcSubclasificacionesBusqueda);
     libroAnterior.click(funcLibroAnterior);
     libroSiguiente.click(funcLibroSiguiente);
+    numeroResultadosBusqueda.change(funcPaginacion);
 }
 function funcBusquedaInicial(){
     pagina=paginacion;
     funcBuscarLibro();
+}
+function funcPaginacion(){
+    //alert('cambia paginacion');
+    paginacion=Number(numeroResultadosBusqueda.val());
+    funcBusquedaInicial();
 }
 function funcBuscarLibro(){
     let nombre = $('#book_author');
@@ -29,10 +35,11 @@ function funcBuscarLibro(){
 }
 function funcVerificarPaginacion(){
     if($('#respuestaLibros').html()==""){
-        alert("No hay más resultados, favor de regresar a la página anterior");
+        alert("No hay más resultados");
+        funcLibroAnterior();
     }
     else{
-        alert(pagina);
+        //alert(pagina);
     }
 }
 function funcSubclasificaciones(){
@@ -54,7 +61,7 @@ function funcSubclasificacionesBusqueda(){
     
 }
 function funcLibroAnterior(){
-    if(pagina>15){
+    if(pagina>paginacion){
         pagina=pagina-paginacion;
     }
     funcBuscarLibro();
@@ -71,5 +78,6 @@ var clasificacion;
 var clasificacionB;
 var libroAnterior = $('#buscarLibroAnterior');
 var libroSiguiente = $('#buscarLibroSiguiente');
-var paginacion = 15;
+var paginacion = 10;
 var pagina = paginacion;
+var numeroResultadosBusqueda = $('#numeroResultadosBusqueda');

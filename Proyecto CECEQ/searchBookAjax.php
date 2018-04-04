@@ -17,7 +17,7 @@ if(mysqli_num_rows($result) > 0)
     }
     while(($row = mysqli_fetch_assoc($result))&&($i<$_GET["pagina"]))
     {
-        echo '<tr><td>' .$row['idEjemplar']. '</td><td>'.$row['titulo']. '</td><td>'.$row['autoresApellidos']. '</td><td>'. $row['year'] . '</td><td>'. $row['estante'].'</td><td>'.$row['nombreC']. '</td><td>'. $row['nombre'].$i. '</td></tr>';
+        echo '<tr><td>' .$row['idEjemplar']. '</td><td>'.$row['titulo']. '</td><td>'.$row['autoresApellidos']. '</td><td>'. $row['year'] . '</td><td>'. $row['estante'].'</td><td>'.$row['nombreC']. '</td><td>'. $row['nombre']. '</td></tr>';
         $i++;
     }
 }

@@ -21,7 +21,7 @@
 
             <div class='col-sm-6'>
                 <div class='form-group'>
-                    <label for="book_apaterno">Apellido paterno:</label>
+                    <label for="book_apaterno">Apellido:</label>
                     <div class="col-md-12">
                         <input class="form-control" id="book_apaterno" name="book[apaterno]" size="30" type="text" placeholder="Paz"/>
                     </div>
@@ -79,6 +79,22 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class='col-sm-6'>
+                    <div class='form-group'>
+                        <label>Número de resultados por página :</label>
+                        <div class="col-md-3">
+                            <select class="form-control cvalidate " name="numeroResultadosBusqueda" id="numeroResultadosBusqueda" >
+                                <option value="10" selected>10</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
         </div>
         <div class="row text-center">
             <div class="col-sm-12">
