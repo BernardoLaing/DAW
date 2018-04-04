@@ -45,10 +45,21 @@ $(document).ready(function(){
                 $("#sanctionValues").modal("show");
                 $("#mbody_sanctions").html("<p>Usuario: "+$("#user_name").val()+" "+$("#user_paternal").val()+" "+$("#user_maternal").val()+"</p>");
                 $("#user_sanctionDescription").val("");
+                $("#sanctionValues").find("button").first().click(function(){
+                    $("#sanctionValues").modal("hide");
+                    $("input").each(function(){
+                        $(this).prop("disabled", true);
+                    });
+                    $("select").each(function(){
+                        $(this).prop("disabled", true);
+                    });
+                    $("#user_table").show();
+                });
             }
         }));
 
-        $("#msubmit_sanctions").click(function(){
+        $("#mform_sanctions").submit(function(e){
+            e.preventDefault();
             $.post("controller/sanctionsInsert_controller.php",{
                     user :
                         {

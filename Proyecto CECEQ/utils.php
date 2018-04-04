@@ -661,7 +661,7 @@ function querySancion($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno,
     $apellidoPaterno .="%";
     $apellidoMaterno .="%";
     $statement = mysqli_prepare($connection,"
-    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', g.nombre as 'Grado de estudios', genero as 'Género'
+    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', g.nombre as 'Grado de estudios', genero as 'Género', descripcion as 'Descripción'
     from visitante as v, visitante_gradoestudios as vg, gradoestudios as g, sancion as s
     where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
     and (v.nombre like ? ".($nombre==""?"or 1":"").")
@@ -673,8 +673,7 @@ function querySancion($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno,
     and vg.idGrado = g.idGrado
     and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
     and v.idVisitante = s.idVisitante
-    group by v.idVisitante
-    having max(s.fechaFin)>CURRENT_DATE
+    and fechaFin > CURRENT_DATE
     ");
     $statement->bind_param("isssssi", $idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios);
     $statement->execute();

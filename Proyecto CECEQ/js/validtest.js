@@ -32,7 +32,6 @@ if(hInsertElems != null){
         hInsertElems[j].onclick = validateNullAndInsert;
 }
 
-
 function validateSearch(event){
     var v = document.getElementsByClassName("cvalidate");
     if(v!=null){
@@ -199,6 +198,7 @@ function validateSearch(event){
         }
         if(!cpassed)
            event.preventDefault();
+        return cpassed;
     }
 }
 
