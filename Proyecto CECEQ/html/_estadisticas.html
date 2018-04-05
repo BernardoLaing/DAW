@@ -1,135 +1,3 @@
-<<<<<<< HEAD
-<br><br>
-<div class="container shadow">
-  <!--Titulo de estadísticas-->
-  <div class="container">
-    <div class="row text-center">
-        <div class="col col-sm-12 col-md-6 mx-auto">
-          <br>
-            <div class="display-3">Estadísticas</div>
-        </div>
-    </div>
-  </div>
-
-      <br>
-      <!--Formulario-->
-      <form method="post" id="statistics_form" action="controller/statisticsInsert_controller.php">
-        <div class="row">
-          <!--Grado estudios-->
-          <div class='col-sm-4'>
-              <div class='form-group'>
-                <label class="mr-3 col-lg-5" for="credential_schooling">Escolaridad:</label>
-                <div class="col-md-12">
-                <select required name="user[schooling]" class="form-control cvalidate cschooling" id="user_schooling">
-                      <option value="" disabled selected>-- Escolaridad --</option>
-                      <option value="1">Ninguno</option>
-                      <option value="2">Preescolar</option>
-                      <option value="3">Primaria</option>
-                      <option value="4">Secundaria</option>
-                      <option value="5">Preparatoria</option>
-                      <option value="6">Universidad</option>
-                      <option value="7">Maestría</option>
-                      <option value="8">Doctorado</option>
-                      <option value="9">Postdoctorado</option>
-                    </select>
-                  </div>
-              </div>
-          </div>
-
-          <!--EDAD-->
-          <div class='col-sm-4'>
-              <div class='form-group'>
-                  <label for="user_ocupation">Edad:</label>
-                  <div class="col-md-12">
-                      <input  class="form-control cvalidate cnumber" id="user_age" name="user[age]" type="number" min="1" max="100"/>
-                  </div>
-              </div>
-          </div>
-          <!--SEXO-->
-          <div class='col-sm-4'>
-              <div class='form-group'>
-                  <label for="user_ocupation">Sexo:</label>
-                  <div class="col-md-12">
-                    <select  class="form-control cvalidate cgender" name="user[gender]" id="user_gender">
-                        <option value="" disabled selected>-- Sexo --</option>
-                        <option value="H">Hombre</option>
-                        <option value="M">Mujer</option>
-                        <option value="O">Otro</option>
-                    </select>
-                  </div>
-              </div>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <!--MES-->
-          <div class='col-sm-4 offset-md-2'>
-              <div class='form-group'>
-                  <label for="user_ocupation">Mes:</label>
-                  <div class="col-md-12">
-                    <select class="form-control cvalidate cnumber" name="user[month]" id="user_month">
-                        <option value="" disabled selected>-- Mes --</option>
-                        <option value="01">Enero</option>
-                        <option value="02">Febrero</option>
-                        <option value="03">Marzo</option>
-                        <option value="04">Abril</option>
-                        <option value="05">Mayo</option>
-                        <option value="06">Junio</option>
-                        <option value="07">Julio</option>
-                        <option value="08">Agosto</option>
-                        <option value="09">Septiembre</option>
-                        <option value="10">Octubre</option>
-                        <option value="11">Noviembre</option>
-                        <option value="12">Diciembre</option>
-                    </select>
-                  </div>
-              </div>
-          </div>
-          <!--AÑO-->
-          <div class='col-sm-4'>
-              <div class='form-group'>
-                  <label for="user_ocupation">Año:</label>
-                  <div class="col-md-12">
-                    <select class="form-control cvalidate cyear" name="user[year]" id="user_year">
-                        <option value="" disabled selected>-- Año --</option>
-                        <?php
-                        $firstYear = 2018;
-                        for($year = $firstYear; $year <= date("Y"); $year++) {
-                            echo "<option value='$year'> $year </option>";
-                        }
-                        ?>
-                    </select>
-                  </div>
-              </div>
-          </div>
-        </div>
-        <!--Boton Filtrar-->
-        <br>
-        <div class="row">
-          <br><br>
-          <div class="col-sm-4">
-            <a class="btn btn-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
-          </div><!--
-          <div class='col-sm-4'>
-              <div class='form-group'>
-                  <div class="text-center">
-                      <input type="submit" name="button" class="btn btn-secondary mx-auto csearch" value="Mostrar Estadísticas">
-                  </div>
-              </div>
-          </div>-->
-          <div class="col-sm-4"></div>
-          <br>
-        </div>
-      </form>
-      <div class='row'>
-          <div id="statistics_table" class='col-12'>
-              TABLA
-          </div>
-      </div>
-  </div>
-  <br><br>
-  <script src="js/dynamicqueries_statistics.js"></script>
-=======
 <!DOCTYPE html>
 
     <br><br>
@@ -139,16 +7,85 @@
         <div class="row text-center">
             <div class="col col-sm-12 col-md-6 mx-auto">
             <br>
-                <div class="display-3">Estadisticas</div>
+                <div class="display-3">Estadisticas</div>   <br><br>
             </div>
         </div>
     </div>
 
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
-    <input type="hidden" name="extra" id="extra" value="200" >
-    
+
+
+     <!--LIBROS-->
+     <div class="container  shadow" id="html1">
+         <div class="col-sm-12 ">
+            <h1 class="text-center">Libros</h1>
+         </div>
+            <div class="col-md-8 offset-md-2 col-xs-12 description">
+                <div class='graficas-button text-center'>Ver Reporte</div>
+                <div class="graficas">
+                    <div id="doughnut-chart-container" >
+                        <canvas id="doughnutEstado"></canvas>
+                        <br><br>
+                    </div><hr>
+                    <div id="chart-container">
+                        <div class="chart-container">
+                            <canvas id="histogramaCategoria"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+     </div>
+          <!--VISITANTES--> <br><br>
+          <div class="container  shadow" id="html1">
+            <div class="col-sm-12 ">
+               <h1 class="text-center">Visitantes</h1>
+            </div>
+               <div class="col-md-8 offset-md-2 col-xs-12 description">
+                   <div class='graficas-button text-center'>Ver Reporte</div>
+                   <div class="graficas">
+                       <div id="doughnut-chart-container" >
+                           <canvas id="doughnutEstado"></canvas>
+                           <br><br>
+                       </div><hr>
+                       <div id="chart-container">
+                           <div class="chart-container">
+                               <canvas id="histogramaCategoria"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+        </div>
+     <!--LIBROS--> <br><br>
+     <div class="container  shadow" id="html1">
+        <div class="col-sm-12 ">
+           <h1 class="text-center">Personal</h1>
+        </div>
+           <div class="col-md-8 offset-md-2 col-xs-12 description">
+               <div class='graficas-button text-center'>Ver Reporte</div>
+               <div class="graficas">
+                   <div id="doughnut-chart-container" >
+                       <canvas id="doughnutEstado"></canvas>
+                       <br><br>
+                   </div><hr>
+                   <div id="chart-container">
+                       <div class="chart-container">
+                           <canvas id="histogramaCategoria"></canvas>
+                       </div>
+                   </div>
+               </div>
+           </div>
     </div>
-    <br><br>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+<br>
+    </div>
+   <br><br>
+    <script type="text/javascript" src="js/Chart.min.js"></script>
     <script src="js/drawChartStatistics.js"></script>
->>>>>>> angie
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <script src="js/validations.js"></script>    
+  <!--  <script src="js/script.js"></script>-->
+    <script src="js/validtest.js"></script>
+    <script src="js/buscarLibros.js"></script>
+    </body>
+</html>

@@ -3,12 +3,14 @@ function main() {
 
   $('.projects-button').on('click', function() {
         $(this).next().toggle();
-    if($(this).text() == "Ocultar Permisos")
+    if($(this).text() == " Permisos")
         $(this).text("Ver Permisos");
     else
         $(this).text("Ocultar Permisos");
     });
 }
+
+
 
 $(document).ready(main);
 
