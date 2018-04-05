@@ -1,108 +1,161 @@
-// Old compatibility code, no longer needed.
 
-//google.charts.load("current", {packages:["corechart"]});
-//google.charts.setOnLoadCallback(drawChart);
-google.charts.load('current', {'packages':['corechart']});
- // Set a callback to run when the Google Visualization API is loaded.
- google.charts.setOnLoadCallback(drawChart);
-//console.log("google chart");
-//var mod = document.getElementById("extra").value;
+////////////////////////////////////////////////////// BOTONES PARA VISUALIZAR Y OCULTAR REPORTES
 
-function drawChart() {
+function main() {
+$('.graficas').hide();
 
-  var jsonData = $.get({
-    url: "consultaEstadistica.php",
-    dataType: "json"
-    }).responseText;
-
-    console.log(jsonData);
-  
-    var options = {
-      title: 'Lengths of dinosaurs, in meters',
-      legend: { position: 'none' },
-    };
-
-    var object = {
-  cols: [{id: 'A', label: 'NEW A', type: 'string'},
-         {id: 'B', label: 'B-label', type: 'number'},
-         {id: 'C', label: 'C-label', type: 'date'}
-  ],
-  rows: [{c:[{v: 'a'},
-             {v: 1.0, f: 'One'},
-             {v: new Date(2008, 1, 28, 0, 31, 26), f: '2/28/08 12:31 AM'}
-        ]},
-         {c:[{v: 'b'},
-             {v: 2.0, f: 'Two'},
-             {v: new Date(2008, 2, 30, 0, 31, 26), f: '3/30/08 12:31 AM'}
-        ]},
-         {c:[{v: 'c'},
-             {v: 3.0, f: 'Three'},
-             {v: new Date(2008, 3, 30, 0, 31, 26), f: '4/30/08 12:31 AM'}
-        ]}
-  ],
-  p: {foo: 'hello', bar: 'world!'}
+$('.graficas-button').on('click', function() {
+      $(this).next().toggle();
+  if($(this).text() == "Ocultar Reporte"){
+      $(this).text("Ver Reporte");
+  }
+  else{
+    $(this).text("Ocultar Reporte");
+  }
+  });
 }
 
-  // Create our data table out of JSON data loaded from server.
-  var data = new google.visualization.DataTable(object);
+$(document).ready(main);
 
-  // Instantiate and draw our chart, passing in some options.
-  var chart = new google.visualization.Histogram(document.getElementById('chart_div'));
-      chart.draw(data, options);
+//////////////////////////////////////////////////// REPORTES
 
-    /*
-  $.get("consultaEstadistica.php")
-    .done(function(data) {
-      console.log("Enviando peticion");
-      alert(data);
-      return;*/ /*
-      //var ddd = jQuery.parseJSON(data);
+///////// LIBROS
+
+$(document).ready(function(){
+  $.ajax({
+    url: "consultaEstadistica.php",
+    data: {method: 'obtenerEstadosCall'},
+    method: "GET",
+    success: function(data) {
+      //console.log(data);
+      var estadoLabels = [];
+      var score = [];
+
+      //alert(data[0]);
+      for(var i in data) { //Ingreso las cantidades y estados a su respectivo arreglo
+       //console.log(data[i].nombre);
+       estadoLabels.push(data[i].nombre);
+       //console.log(data[i].Cantidad);
+        score.push(data[i].Cantidad);
+      }
       
-      var datos = google.visualization.arrayToDataTable(data); //Recibe los datos
-      console.log("Datos recibidos");
-      console.log(data);
+      var chartdata = {
+        labels: estadoLabels,
+        datasets : [
+          {
+            label: 'Estados',
+            backgroundColor : [
+              "#fdf9e1", //amarillo
+              "#e5ddea", //morado
+              "#e9f4f3", //verde
+              "#fdf1f4", //rosa
+              "#9ACD32" //Verde mas claro
+            ],
+            borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
+            hoverBackgroundColor:  [
+              "#faefb1", //amarillo
+              "#d9cde0", //morado
+              "#c7e3e0", //verde
+              "#f7c4d1", //rosa
+              "#c1ffdd" //Verde mas claro
+            ],
+            hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
+            data: score
+          }
+        ]
+      };
 
       var options = {
-        title: 'Titulo',
-        legend: { position: 'none' },
+				title : {
+					display : true,
+					position : "top",
+					text : "Estado actual de ejemplares",
+					fontSize : 20,
+					fontColor : "#111"
+				},
+				legend : {
+					display : true,
+					position : "bottom"
+				}
+			};
+
+      var divDoughnutEstado = $("#doughnutEstado");
+
+			var doughnutGraph = new Chart(divDoughnutEstado, {
+				type: 'doughnut',
+        data: chartdata,
+        options : options
+      }); 
+    },
+    error: function(data) {
+      //console.log(data);
+      console.log("error");
+    }
+  });
+});
+
+$(document).ready(function(){
+  $.ajax({
+    url: "consultaEstadistica.php",
+    //data: {function2call: 'obtenerCategoriasCall', otherkey:otherdata},
+    method: "GET",
+    success: function(data) {
+    //  console.log(data);
+      var estadoLabels = [];
+      var score = [];
+
+      //alert(data[0]);
+      for(var i in data) { //Ingreso las cantidades y estados a su respectivo arreglo
+      // console.log(data[i].nombre);
+       estadoLabels.push(data[i].nombre);
+      // console.log(data[i].Cantidad);
+        score.push(data[i].Cantidad);
+      }
+
+      var divHistogramaCategoria= $("#histogramaCategoria");
+
+      var chartdata = {
+        labels: estadoLabels,
+        datasets : [
+          {
+            backgroundColor: '#4eb7d2', //AZUL 
+            borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
+            hoverBackgroundColor: '#30a0bd', //AZUL OSCURO
+            hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
+            data: score
+          }
+        ]
       };
       
-      var chart = new google.visualization.Histogram(document.getElementById('chart_div'));
-      chart.draw(datos, options);*/
+      var options = {
+				title : {
+					display : true,
+					position : "top",
+					text : "Clasificaci\xF3n por ejemplar",
+					fontSize : 18,
+					fontColor : "#111"
+				},
+				legend : {
+					display : false,
+					position : "bottom"
+				}
+			};
 
-    //});
-    /*
-var data = google.visualization.arrayToDataTable([
-  ['Dinosaur', 'Length'],
-  ['Acrocanthosaurus (top-spined lizard)',12],
-  ['Albertosaurus (Alberta lizard)', 9.1],
-  ['Allosaurus (other lizard)', 12.2],
-  ['Apatosaurus (deceptive lizard)', 22.9],
-  ['Archaeopteryx (ancient wing)', 0.9],
-  ['Argentinosaurus (Argentina lizard)', 36.6],
-  ['Baryonyx (heavy claws)', 9.1],
-  ['Brachiosaurus (arm lizard)', 30.5],
-  ['Ceratosaurus (horned lizard)', 6.1],
-  ['Coelophysis (hollow form)', 2.7],
-  ['Compsognathus (elegant jaw)', 0.9],
-  ['Deinonychus (terrible claw)', 2.7],
-  ['Diplodocus (double beam)', 27.1],
-  ['Dromicelomimus (emu mimic)', 3.4],
-  ['Gallimimus (fowl mimic)', 5.5],
-  ['Mamenchisaurus (Mamenchi lizard)', 21.0],
-  ['Megalosaurus (big lizard)', 7.9],
-  ['Microvenator (small hunter)', 1.2],
-  ['Ornithomimus (bird mimic)', 4.6],
-  ['Oviraptor (egg robber)', 1.5],
-  ['Plateosaurus (flat lizard)', 7.9],
-  ['Sauronithoides (narrow-clawed lizard)', 2.0],
-  ['Seismosaurus (tremor lizard)', 45.7],
-  ['Spinosaurus (spiny lizard)', 12.2],
-  ['Supersaurus (super lizard)', 30.5],
-  ['Tyrannosaurus (tyrant lizard)', 15.2],
-  ['Ultrasaurus (ultra lizard)', 30.5],
-  ['Velociraptor (swift robber)', 1.8]]);*/
+			var chart = new Chart(divHistogramaCategoria, {
+				type : "bar",
+				data : chartdata,
+				options : options
+			});
+      
+    },
+    error: function(data) {
+      //console.log(data);
+      console.log("error");
+    }
+  });
+});
+
+///////// VISITANTES
 
 
-}
-
+///////// PERSONAL
