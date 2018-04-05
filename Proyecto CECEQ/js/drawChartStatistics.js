@@ -6,10 +6,12 @@ $('.graficas').hide();
 
 $('.graficas-button').on('click', function() {
       $(this).next().toggle();
-  if($(this).text() == "Ver Reporte")
+  if($(this).text() == "Ocultar Reporte"){
       $(this).text("Ver Reporte");
-  else
-      $(this).text("Ocultar Reporte");
+  }
+  else{
+    $(this).text("Ocultar Reporte");
+  }
   });
 }
 
@@ -153,4 +155,7 @@ $(document).ready(function(){
   });
 });
 
+///////// VISITANTES
 
+
+///////// PERSONAL
