@@ -2,6 +2,7 @@
 include("utils.php"); 
 
 function obtenerEstados(){
+    
     header('Content-Type: application/json');
     $connection = connect();
     $statement = mysqli_prepare($connection,"
@@ -47,8 +48,23 @@ function buildArray($result){
     //echo print_r($a);
     return $data;
 }
-//$data =  buildarray(obtenerEstados());
-$data =  buildarray(obtenerCategorias());
+
+
+
+$data =  buildarray(obtenerEstados());
 echo json_encode($data);
-return json_encode($data);
+
+/*function obtenerEstadosCall(){
+    //echo "HOLA";
+    $data =  buildarray(obtenerEstados());
+    echo json_encode($data);
+   // return json_encode($data);
+}
+
+function obtenerCategoriasCall(){
+    echo "HOLA CAT";
+    $data =  buildarray(obtenerCategorias());
+    echo json_encode($data);
+   // return json_encode($data);
+}*/
 ?>

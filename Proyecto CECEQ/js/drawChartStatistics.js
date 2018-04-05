@@ -1,18 +1,39 @@
 
+////////////////////////////////////////////////////// BOTONES PARA VISUALIZAR Y OCULTAR REPORTES
+
+function main() {
+$('.graficas').hide();
+
+$('.graficas-button').on('click', function() {
+      $(this).next().toggle();
+  if($(this).text() == "Ver Reporte")
+      $(this).text("Ver Reporte");
+  else
+      $(this).text("Ocultar Reporte");
+  });
+}
+
+$(document).ready(main);
+
+//////////////////////////////////////////////////// REPORTES
+
+///////// LIBROS
+
 $(document).ready(function(){
   $.ajax({
     url: "consultaEstadistica.php",
+    data: {method: 'obtenerEstadosCall'},
     method: "GET",
     success: function(data) {
-      console.log(data);
+      //console.log(data);
       var estadoLabels = [];
       var score = [];
 
       //alert(data[0]);
       for(var i in data) { //Ingreso las cantidades y estados a su respectivo arreglo
-       console.log(data[i].nombre);
+       //console.log(data[i].nombre);
        estadoLabels.push(data[i].nombre);
-       console.log(data[i].Cantidad);
+       //console.log(data[i].Cantidad);
         score.push(data[i].Cantidad);
       }
       
@@ -62,31 +83,30 @@ $(document).ready(function(){
 				type: 'doughnut',
         data: chartdata,
         options : options
-      });
-
-      
+      }); 
     },
     error: function(data) {
-      console.log(data);
+      //console.log(data);
+      console.log("error");
     }
   });
 });
 
-
 $(document).ready(function(){
   $.ajax({
     url: "consultaEstadistica.php",
+    //data: {function2call: 'obtenerCategoriasCall', otherkey:otherdata},
     method: "GET",
     success: function(data) {
-      console.log(data);
+    //  console.log(data);
       var estadoLabels = [];
       var score = [];
 
       //alert(data[0]);
       for(var i in data) { //Ingreso las cantidades y estados a su respectivo arreglo
-       console.log(data[i].nombre);
+      // console.log(data[i].nombre);
        estadoLabels.push(data[i].nombre);
-       console.log(data[i].Cantidad);
+      // console.log(data[i].Cantidad);
         score.push(data[i].Cantidad);
       }
 
@@ -127,7 +147,10 @@ $(document).ready(function(){
       
     },
     error: function(data) {
-      console.log(data);
+      //console.log(data);
+      console.log("error");
     }
   });
 });
+
+
