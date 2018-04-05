@@ -17,11 +17,28 @@ function obtenerEstados(){
     return $result;
 }
 
+function obtenerCategorias(){
+    header('Content-Type: application/json');
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    SELECT c.nombre, COUNT(tc.idCategoria) as 'Cantidad'
+    FROM titulo_categoria tc, ejemplar e, categoria c
+    WHERE tc.idTitulo = e.idTitulo AND tc.idCategoria = c.idCategoria
+    GROUP BY tc.idCategoria
+    ");
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+
 function buildArray($result){
     if(mysqli_num_rows($result)>0){
+        //echo mysqli_num_rows($result);
         $data = array();
         while($row = mysqli_fetch_assoc($result)){
             array_push($data,$row);
+          //  echo $row['Cantidad'];
         }
     }else{
        echo "No hay resultados";
@@ -30,11 +47,8 @@ function buildArray($result){
     //echo print_r($a);
     return $data;
 }
-$data =  buildarray(obtenerEstados());
+//$data =  buildarray(obtenerEstados());
+$data =  buildarray(obtenerCategorias());
 echo json_encode($data);
-
-//$var = json_encode($data);
-//return $var;
-
-
+return json_encode($data);
 ?>
