@@ -32,6 +32,7 @@ function obtenerGenero(){
     return $result;
 }
 
+
 function buildArray($result){
     if(mysqli_num_rows($result)>0){
         $data = array();

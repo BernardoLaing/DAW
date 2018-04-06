@@ -112,7 +112,7 @@ $(document).ready(function(){
         score.push(data[i].Cantidad);
       }
 
-      var divHistogramaCategoria= $("#histogramaCategoria");
+      var divVisitante= $("#histogramaCategoria");
 
       var chartdata = {
         labels: estadoLabels,
@@ -141,7 +141,7 @@ $(document).ready(function(){
 				}
 			};
 
-			var chart = new Chart(divHistogramaCategoria, {
+			var chart = new Chart(divVisitante, {
 				type : "bar",
 				data : chartdata,
 				options : options
@@ -156,6 +156,65 @@ $(document).ready(function(){
 });
 
 ///////// VISITANTES
+$(document).ready(function(){
+  $.ajax({
+    url: "charts/consultaEntrada.php",
+    //data: {function2call: 'obtenerCategoriasCall', otherkey:otherdata},
+    method: "GET",
+    success: function(data) {
+    //  console.log(data);
+      var estadoLabels = [];
+      var score = [];
 
+      //alert(data[0]);
+      for(var i in data) { //Ingreso las cantidades y estados a su respectivo arreglo
+      // console.log(data[i].nombre);
+       estadoLabels.push("Entradas");
+      // console.log(data[i].Cantidad);
+        score.push(data[i].Entradas);
+      }
+
+      var divVisitante= $("#visitanteChart");
+
+      var chartdata = {
+        labels: estadoLabels,
+        datasets : [
+          {
+            backgroundColor: '#4eb7d2', //AZUL 
+            borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
+            hoverBackgroundColor: '#30a0bd', //AZUL OSCURO
+            hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
+            data: score
+          }
+        ]
+      };
+      
+      var options = {
+				title : {
+					display : true,
+					position : "top",
+					text : "Entradas",
+					fontSize : 18,
+					fontColor : "#111"
+				},
+				legend : {
+					display : false,
+					position : "bottom"
+				}
+			};
+
+			var chart = new Chart(divVisitante, {
+				type : "bar",
+				data : chartdata,
+				options : options
+			});
+      
+    },
+    error: function(data) {
+      //console.log(data);
+      console.log("error");
+    }
+  });
+});
 
 ///////// PERSONAL

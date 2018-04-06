@@ -13,6 +13,44 @@
     </div>
 
 
+    <div class="row px-2">
+            <div class="col">
+                <form>
+                    <div class="row text-center">
+                        <div class="col-sm-12 col-md-4 offset-md-1 my-1">
+                            <select class="form-control shadow" id="month" name="Month">
+                                <option value="" disabled selected>-- Mes --</option>
+                                <option value="01">Enero</option>
+                                <option value="02">Febrero</option>
+                                <option value="03">Marzo</option>
+                                <option value="04">Abril</option>
+                                <option value="05">Mayo</option>
+                                <option value="06">Junio</option>
+                                <option value="07">Julio</option>
+                                <option value="08">Agosto</option>
+                                <option value="09">Septiembre</option>
+                                <option value="10">Octubre</option>
+                                <option value="11">Noviembre</option>
+                                <option value="12">Diciembre</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4 offset-md-1 my-1">
+                            <select class="form-control shadow" id="year" name="Year">
+                                <option value="" disabled selected>-- Año --</option>
+                                <?php
+                                $firstYear = 2018;
+                                for($year = $firstYear; $year <= date("Y"); $year++) {
+                                    echo "<option value='$year'> $year </option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
 
      <!--LIBROS-->
      <div class="container  shadow" id="html1">
@@ -42,15 +80,16 @@
                <div class="col-md-8 offset-md-2 col-xs-12 description">
                    <div class='graficas-button text-center'>Ver Reporte</div>
                    <div class="graficas">
+                        <div id="chart-container">
+                                <div class="chart-container">
+                                    <canvas id="visitanteChart"></canvas>
+                                </div>
+                            </div>
                        <div id="doughnut-chart-container" >
-                           <canvas id="doughnutEstado"></canvas>
+                           <canvas id="nulo"></canvas>
                            <br><br>
                        </div><hr>
-                       <div id="chart-container">
-                           <div class="chart-container">
-                               <canvas id="histogramaCategoria"></canvas>
-                           </div>
-                       </div>
+                       
                    </div>
                </div>
         </div>
