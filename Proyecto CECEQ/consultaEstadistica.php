@@ -1,8 +1,23 @@
 <?php
 include("utils.php"); 
+header('Content-Type: application/json');
 
 function obtenerEstados(){
-    header('Content-Type: application/json');
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    select e.nombre, COUNT(e.Nombre) as 'Cantidad'
+    from estado e, ejemplar_estado ee
+    where e.idEstado = ee.idEstado
+    group by e.nombre
+    ORDER BY e.nombre
+    ");
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+
+function obtenerGenero(){
     $connection = connect();
     $statement = mysqli_prepare($connection,"
     select e.nombre, COUNT(e.Nombre) as 'Cantidad'

@@ -8,7 +8,6 @@ $(document).ready(function(){
       var estadoLabels = [];
       var score = [];
 
-      alert(data[0]);
       for(var i in data) {
         estadoLabels.push(data[i].nombre);
         score.push(data[i].Cantidad + "");
@@ -25,7 +24,7 @@ $(document).ready(function(){
             borderColor: 'rgba(200, 200, 200, 0.75)',
             hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
             hoverBorderColor: 'rgba(200, 200, 200, 1)',
-            data: [12, 19, 3, 5, 2, 3]
+            data: score
           }
         ]
       };
@@ -33,7 +32,7 @@ $(document).ready(function(){
       var ctx = $("#mycanvas");
 
 			var barGraph = new Chart(ctx, {
-				type: 'bar',
+				type: 'doughnut',
 				data: chartdata
 			});
       

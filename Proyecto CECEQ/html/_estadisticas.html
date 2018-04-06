@@ -12,6 +12,53 @@
         </div>
     </div>
 
+    <br />
+    <div class="row px-2">
+        <div class="col">
+            <form>
+                <div class="row text-center">
+                    <div class="col-sm-12 col-md-4 offset-md-1 my-1">
+                        <select class="form-control shadow" id="month" name="Month">
+                            <option value="" disabled selected>-- Mes --</option>
+                            <option value="01">Enero</option>
+                            <option value="02">Febrero</option>
+                            <option value="03">Marzo</option>
+                            <option value="04">Abril</option>
+                            <option value="05">Mayo</option>
+                            <option value="06">Junio</option>
+                            <option value="07">Julio</option>
+                            <option value="08">Agosto</option>
+                            <option value="09">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4 offset-md-1 my-1">
+                        <select class="form-control shadow" id="year" name="Year">
+                            <option value="" disabled selected>-- Año --</option>
+                            <?php
+                            $firstYear = 2018;
+                            for($year = $firstYear; $year <= date("Y"); $year++) {
+                                echo "<option value='$year'> $year </option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-11 text-center">
+            <div class='projects-button btn btn-secondary'>Estados</div>
+                <div class='projects'> <br>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+
     <div id="chart-container">
         <canvas id="mycanvas"></canvas>
     </div>
