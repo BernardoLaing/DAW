@@ -113,7 +113,7 @@ $(document).ready(function(){
         console.log(data[i].Cantidad);
       }
 
-      var divVisitante= $("#histogramaCategoria");
+      var divHistogramaCategoria= $("#histogramaCategoria");
 
       var chartdata = {
         labels: estadoLabels,
@@ -219,3 +219,63 @@ $(document).ready(function(){
 });
 
 ///////// PERSONAL
+$(document).ready(function(){
+  $.ajax({
+    url: "charts/consultaUsuario.php",
+    //data: {function2call: 'obtenerCategoriasCall', otherkey:otherdata},
+    method: "GET",
+    success: function(data) {
+    //  console.log(data);
+      var estadoLabels = [];
+      var score = [];
+
+      //alert(data[0]);
+      for(var i in data) { //Ingreso las cantidades y estados a su respectivo arreglo
+      // console.log(data[i].nombre);
+       estadoLabels.push(data[i].nombre);
+      // console.log(data[i].Cantidad);
+        score.push(data[i].Cantidad);
+      }
+
+      var divUsuarios= $("#doughnutUsuarios");
+
+      var chartdata = {
+        labels: estadoLabels,
+        datasets : [
+          {
+            backgroundColor: '#4eb7d2', //AZUL 
+            borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
+            hoverBackgroundColor: '#30a0bd', //AZUL OSCURO
+            hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
+            data: score
+          }
+        ]
+      };
+      
+      var options = {
+				title : {
+					display : true,
+					position : "top",
+					text : "Usuarios",
+					fontSize : 18,
+					fontColor : "#111"
+				},
+				legend : {
+					display : false,
+					position : "bottom"
+				}
+			};
+
+			var chart = new Chart(divUsuarios, {
+				type : "bar",
+				data : chartdata,
+				options : options
+			});
+      
+    },
+    error: function(data) {
+      //console.log(data);
+      console.log("error");
+    }
+  });
+});
