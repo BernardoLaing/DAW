@@ -23,8 +23,8 @@ $(document).ready(main);
 
 $(document).ready(function(){
   $.ajax({
-    url: "consultaEstadistica.php",
-    data: {method: 'obtenerEstadosCall'},
+    url: "charts/consultaEstadistica1Libro.php",
+   // data: {method: 'obtenerEstadosCall'},
     method: "GET",
     success: function(data) {
       //console.log(data);
@@ -96,7 +96,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $.ajax({
-    url: "consultaEstadistica.php",
+    url: "charts/consultaEstadistica2Libro.php",
     //data: {function2call: 'obtenerCategoriasCall', otherkey:otherdata},
     method: "GET",
     success: function(data) {
@@ -107,9 +107,10 @@ $(document).ready(function(){
       //alert(data[0]);
       for(var i in data) { //Ingreso las cantidades y estados a su respectivo arreglo
       // console.log(data[i].nombre);
-       estadoLabels.push(data[i].nombre);
-      // console.log(data[i].Cantidad);
+       estadoLabels.push(data[i].Generalidades);
+      console.log(data[i].Generalidades);
         score.push(data[i].Cantidad);
+        console.log(data[i].Cantidad);
       }
 
       var divVisitante= $("#histogramaCategoria");
@@ -141,8 +142,8 @@ $(document).ready(function(){
 				}
 			};
 
-			var chart = new Chart(divVisitante, {
-				type : "bar",
+			var chart = new Chart(divHistogramaCategoria, {
+				type : "horizontalBar", //line,
 				data : chartdata,
 				options : options
 			});
