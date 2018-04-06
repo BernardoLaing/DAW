@@ -7,7 +7,7 @@
         <div class="row text-center">
             <div class="col col-sm-12 col-md-6 mx-auto">
             <br>
-                <div class="display-3">Estadisticas</div>   <br><br>
+                <div class="display-3">Estad&iacutesticas</div>   <br><br>
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-sm-12 col-md-4 offset-md-1 my-1">
                             <select class="form-control shadow" id="year" name="Year">
-                                <option value="" disabled selected>-- Año --</option>
+                                <option value="" disabled selected>-- A&ntildeo --</option>
                                 <?php
                                 $firstYear = 2018;
                                 for($year = $firstYear; $year <= date("Y"); $year++) {
@@ -50,10 +50,8 @@
             </div>
         </div>
 
-
-
      <!--LIBROS-->
-     <div class="container  shadow" id="html1">
+     <div class="container rounded shadow" id="html1">
          <div class="col-sm-12 ">
             <h1 class="text-center">Libros</h1>
          </div>
@@ -62,34 +60,45 @@
                 <div class="graficas">
                     <div id="doughnut-chart-container" >
                         <canvas id="doughnutEstado"></canvas>
-                        <br><br>
+                        <br>
                     </div><hr>
                     <div id="chart-container">
                         <div class="chart-container">
                             <canvas id="histogramaCategoria"></canvas>
+                            <br>
                         </div>
                     </div>
                 </div>
             </div>
      </div>
           <!--VISITANTES--> <br><br>
-          <div class="container  shadow" id="html1">
+          <div class="container  rounded shadow" id="html1">
             <div class="col-sm-12 ">
                <h1 class="text-center">Visitantes</h1>
             </div>
                <div class="col-md-8 offset-md-2 col-xs-12 description">
                    <div class='graficas-button text-center'>Ver Reporte</div>
-                   <div class="graficas">
-                        <div id="chart-container">
-                                <div class="chart-container">
-                                    <canvas id="visitanteChart"></canvas>
+
+
+                        <div class="graficas">
+                                <div id="doughnut-chart-container" >
+                                    <canvas id="visitanteGeneroChart"></canvas>
+                                    <br>
+                                </div><hr>
+                                <div id="chart-container">
+                                    <div class="chart-container">
+                                        <canvas id="visitanteChart"></canvas>
+                                        <br>
+                                    </div>
                                 </div>
-                            </div><hr>
-                   </div>
+                            </div>
+
+
+      
                </div>
         </div>
      <!--USUARIOS--> <br><br>
-     <div class="container  shadow" id="html1">
+     <div class="container  rounded shadow" id="html1">
         <div class="col-sm-12 ">
            <h1 class="text-center">Personal</h1>
         </div>

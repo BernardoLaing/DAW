@@ -14,17 +14,15 @@ $('.graficas-button').on('click', function() {
   }
   });
 }
-
 $(document).ready(main);
 
 //////////////////////////////////////////////////// REPORTES
 
 ///////// LIBROS
-
 $(document).ready(function(){
   $.ajax({
-    url: "charts/consultaEstadistica1Libro.php",
-   // data: {method: 'obtenerEstadosCall'},
+    url: "charts.php",
+    data: {method: 'obtenerEstados'},
     method: "GET",
     success: function(data) {
       //console.log(data);
@@ -96,8 +94,8 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $.ajax({
-    url: "charts/consultaEstadistica2Libro.php",
-    //data: {function2call: 'obtenerCategoriasCall', otherkey:otherdata},
+    url: "charts.php",
+    data: {method: 'obtenerCategorias'},
     method: "GET",
     success: function(data) {
     //  console.log(data);
@@ -108,9 +106,9 @@ $(document).ready(function(){
       for(var i in data) { //Ingreso las cantidades y estados a su respectivo arreglo
       // console.log(data[i].nombre);
        estadoLabels.push(data[i].Generalidades);
-      console.log(data[i].Generalidades);
+      //console.log(data[i].Generalidades);
         score.push(data[i].Cantidad);
-        console.log(data[i].Cantidad);
+       // console.log(data[i].Cantidad);
       }
 
       var divHistogramaCategoria= $("#histogramaCategoria");
@@ -157,10 +155,10 @@ $(document).ready(function(){
 });
 
 ///////// VISITANTES
-$(document).ready(function(){
+$(document).ready(function(){ //ENtradas mensuales
   $.ajax({
-    url: "charts/consultaEntrada.php",
-    //data: {function2call: 'obtenerCategoriasCall', otherkey:otherdata},
+    url: "charts.php",
+    data: {method: 'obtenerEntradas'},
     method: "GET",
     success: function(data) {
     //  console.log(data);
@@ -170,7 +168,7 @@ $(document).ready(function(){
       //alert(data[0]);
       for(var i in data) { //Ingreso las cantidades y estados a su respectivo arreglo
       // console.log(data[i].nombre);
-       estadoLabels.push("Entradas");
+       estadoLabels.push(data[i].Enero);
       // console.log(data[i].Cantidad);
         score.push(data[i].Entradas);
       }
@@ -218,11 +216,80 @@ $(document).ready(function(){
   });
 });
 
-///////// PERSONAL
-$(document).ready(function(){
+$(document).ready(function(){ //Entradas por genero
   $.ajax({
-    url: "charts/consultaUsuario.php",
-    //data: {function2call: 'obtenerCategoriasCall', otherkey:otherdata},
+    url: "charts.php",
+   data: {method: 'obtenerEntradasGenero'},
+    method: "GET",
+    success: function(data) {
+      //console.log(data);
+      var estadoLabels = [];
+      var score = [];
+
+      //alert(data[0]);
+      for(var i in data) { //Ingreso las cantidades y estados a su respectivo arreglo
+       //console.log(data[i].genero);
+       estadoLabels.push(data[i].genero);
+       //console.log(data[i].Personas);
+        score.push(data[i].Personas);
+      }
+      
+      var chartdata = {
+        labels: estadoLabels,
+        datasets : [
+          {
+            label: 'G\xE9nero',
+            backgroundColor : [
+              "#fdf9e1", //amarillo
+              "#e5ddea", //morado
+              "#e9f4f3", //verde
+            ],
+            borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
+            hoverBackgroundColor:  [
+              "#faefb1", //amarillo
+              "#d9cde0", //morado
+              "#c7e3e0", //verde
+            ],
+            hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
+            data: score
+          }
+        ]
+      };
+
+      var options = {
+				title : {
+					display : true,
+					position : "top",
+					text : "Entradas por g\xE9nero",
+					fontSize : 20,
+					fontColor : "#111"
+				},
+				legend : {
+					display : true,
+					position : "bottom"
+				}
+			};
+
+      var divDoughnutGenero = $("#visitanteGeneroChart");
+
+			var doughnutGraph = new Chart(divDoughnutGenero, {
+				type: 'doughnut',
+        data: chartdata,
+        options : options
+      }); 
+    },
+    error: function(data) {
+      //console.log(data);
+      console.log("error");
+    }
+  });
+});
+
+///////// PERSONAL
+$(document).ready(function(){ 
+  $.ajax({
+    url: "charts.php",
+    data: {method: 'obtenerUsuario'},
     method: "GET",
     success: function(data) {
     //  console.log(data);
@@ -277,5 +344,15 @@ $(document).ready(function(){
       //console.log(data);
       console.log("error");
     }
+  });
+});
+
+//////////////////////////////////////////////////// SELECTORES
+$("select").each(function(){
+  $(this).change(function(){
+    var yValue = document.getElementById("year").value;
+    console.log(yValue);
+    var mValue = document.getElementById("year").value;
+    console.log(mValue);
   });
 });

@@ -91,8 +91,6 @@ require_once('model/RBAC-utils.php');
 
 require_once('model/DGB-utils.php');
 
-include("model/lendReturn-utils.php");
-
     /*
     function insertVisitante($name,$paternal,$maternal,$bday,$grade,$gender){
         $conn = connect();

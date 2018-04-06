@@ -1,5 +1,107 @@
 <?php
-include("../utils.php"); 
+include("regexps.php");
+include("utils.php"); 
+header('Content-Type: application/json');
+
+function obtenerEntrada(){
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+	SELECT 'Enero', COUNT(e.idVisitante) as 'Entradas'
+    from entrada e
+    WHERE e.timestamp like '2018%'
+    AND e.timestamp like '%-01-%'
+    	UNION
+    SELECT 'Febrero', COUNT(e.idVisitante) as 'Entradas'
+    from entrada e
+    WHERE e.timestamp like '2018%'
+    AND e.timestamp like '%-02-%'
+	    UNION
+    SELECT 'Marzo', COUNT(e.idVisitante) as 'Entradas'
+    from entrada e
+    WHERE e.timestamp like '2018%'
+    AND e.timestamp like '%-03-%'
+	    UNION 
+    SELECT 'Abril', COUNT(e.idVisitante) as 'Entradas'
+    from entrada e
+    WHERE e.timestamp like '2018%'
+    AND e.timestamp like '%-04-%'
+    	UNION
+    	SELECT 'Mayo', COUNT(e.idVisitante) as 'Entradas'
+    from entrada e
+    WHERE e.timestamp like '2018%'
+    AND e.timestamp like '%-05-%'
+    	UNION
+    SELECT 'Junio', COUNT(e.idVisitante) as 'Entradas'
+    from entrada e
+    WHERE e.timestamp like '2018%'
+    AND e.timestamp like '%-06-%'
+	    UNION
+    SELECT 'Julio', COUNT(e.idVisitante) as 'Entradas'
+    from entrada e
+    WHERE e.timestamp like '2018%'
+    AND e.timestamp like '%-07-%'
+	    UNION 
+    SELECT 'Agosto', COUNT(e.idVisitante) as 'Entradas'
+    from entrada e
+    WHERE e.timestamp like '2018%'
+    AND e.timestamp like '%-08-%'
+        	UNION
+   	SELECT 'Septiembre', COUNT(e.idVisitante) as 'Entradas'
+    from entrada e
+    WHERE e.timestamp like '2018%'
+    AND e.timestamp like '%-09-%'
+    	UNION
+    SELECT 'Octubre', COUNT(e.idVisitante) as 'Entradas'
+    from entrada e
+    WHERE e.timestamp like '2018%'
+    AND e.timestamp like '%-10-%'
+	    UNION
+    SELECT 'Noviembre', COUNT(e.idVisitante) as 'Entradas'
+    from entrada e
+    WHERE e.timestamp like '2018%'
+    AND e.timestamp like '%-11-%'
+	    UNION 
+    SELECT 'Diciembre', COUNT(e.idVisitante) as 'Entradas'
+    from entrada e
+    WHERE e.timestamp like '2018%'
+    AND e.timestamp like '%-12-%'
+    ");
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+
+function obtenerEstados(){
+    
+    header('Content-Type: application/json');
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    select e.nombre, COUNT(e.Nombre) as 'Cantidad'
+    from estado e, ejemplar_estado ee
+    where e.idEstado = ee.idEstado
+    group by e.nombre
+    ORDER BY e.nombre
+    ");
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+
+function obtenerEntradaGenero(){
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    SELECT v.genero, COUNT(v.genero) as 'Personas'
+    FROM entrada e, visitante v 
+    WHERE e.idVisitante = v.idVisitante
+    GROUP BY v.genero
+    ");
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
 
 function obtenerCategorias(){
     header('Content-Type: application/json');
@@ -170,13 +272,26 @@ function obtenerCategorias(){
     return $result;
 }
 
+function obtenerUsuarios(){
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    select r.nombre, COUNT(ur.idRol) as 'Cantidad'
+    from usuario_rol ur, rol r
+    where ur.idRol = r.idRol
+    group by r.nombre
+    order by r.nombre
+    ");
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+
 function buildArray($result){
     if(mysqli_num_rows($result)>0){
-        //echo mysqli_num_rows($result);
         $data = array();
         while($row = mysqli_fetch_assoc($result)){
             array_push($data,$row);
-          //  echo $row['Cantidad'];
         }
     }else{
        echo "No hay resultados";
@@ -186,22 +301,33 @@ function buildArray($result){
     return $data;
 }
 
-
-
-$data =  buildarray(obtenerCategorias());
-echo json_encode($data);
-
-/*function obtenerEstadosCall(){
-    //echo "HOLA";
-    $data =  buildarray(obtenerEstados());
-    echo json_encode($data);
-   // return json_encode($data);
+$metodo = $_GET['method'];
+switch ($metodo) {
+        case 'obtenerEstados':
+            $data =  buildarray(obtenerEstados());
+            echo json_encode($data);
+        break;
+        case 'obtenerCategorias':
+            $data =  buildarray(obtenerCategorias());
+            echo json_encode($data);
+        break;
+        case 'obtenerEntradas':
+            $data =  buildarray(obtenerEntrada());
+            echo json_encode($data);
+        break;
+        case 'obtenerEntradasGenero':
+            $data =  buildarray(obtenerEntradaGenero());
+            echo json_encode($data);
+        break;
+        case 'obtenerUsuario':
+            $data =  buildarray(obtenerUsuarios());
+            echo json_encode($data);
+        break;
+    
+    default:
+        # code...
+        break;
 }
 
-function obtenerCategoriasCall(){
-    echo "HOLA CAT";
-    $data =  buildarray(obtenerCategorias());
-    echo json_encode($data);
-   // return json_encode($data);
-}*/
+
 ?>
