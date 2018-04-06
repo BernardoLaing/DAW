@@ -24,8 +24,26 @@ $(document).ready(function(){
                 $("#user_table").hide();
                 $(this).click(function(){
                     $("#user_number").prop("disabled", false);
-                    $("#entry_form").attr("action", "controller/visitorsUpdate_controller.php");
-                    $("#entry_form").submit();
+                    //$("#entry_form").attr("action", "controller/visitorsUpdate_controller.php");
+                    //$("#entry_form").submit();
+                    $.post("controller/visitorsUpdate_controller.php",{
+                            user :
+                                {
+                                    number : $("#user_number").val(),
+                                    name : $("#user_name").val(),
+                                    paternal : $("#user_paternal").val(),
+                                    maternal : $("#user_maternal").val(),
+                                    birthday : $("#user_birthday").val(),
+                                    user_grade : $("#user_grade").val(),
+                                    gender : $("#user_gender").val()
+                                }
+                        },
+                        function(data,status){
+                            $("#modalSaved").modal("show");
+                            setTimeout(function(){
+                                location.reload();
+                            }, 1150);
+                    });
                 });
             }
         }));
@@ -45,10 +63,21 @@ $(document).ready(function(){
                 $("#sanctionValues").modal("show");
                 $("#mbody_sanctions").html("<p>Usuario: "+$("#user_name").val()+" "+$("#user_paternal").val()+" "+$("#user_maternal").val()+"</p>");
                 $("#user_sanctionDescription").val("");
+                $("#sanctionValues").find("button").first().click(function(){
+                    $("#sanctionValues").modal("hide");
+                    $("input").each(function(){
+                        $(this).prop("disabled", true);
+                    });
+                    $("select").each(function(){
+                        $(this).prop("disabled", true);
+                    });
+                    $("#user_table").show();
+                });
             }
         }));
 
-        $("#msubmit_sanctions").click(function(){
+        $("#mform_sanctions").submit(function(e){
+            e.preventDefault();
             $.post("controller/sanctionsInsert_controller.php",{
                     user :
                         {
@@ -58,7 +87,11 @@ $(document).ready(function(){
                         }
                 },
                 function(data,status){
-                    location.reload();
+                    $("#sanctionValues").modal("hide");
+                    $("#modalSaved").modal("show");
+                    setTimeout(function(){
+                        location.reload();
+                    }, 1150);
                 });
         });
 
