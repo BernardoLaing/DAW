@@ -11,11 +11,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="visitors.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/visitors.js">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="33" column="39" lean-forward="true" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+            <state relative-caret-position="510">
+              <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="entry.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/html/entry.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="115" column="22" lean-forward="true" selection-start-line="115" selection-start-column="22" selection-end-line="115" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dynamicqueries_viewInfo.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/dynamicqueries_viewInfo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1071">
+              <caret line="63" column="44" lean-forward="false" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="visitors.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/visitors.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2278">
+              <caret line="134" column="13" lean-forward="false" selection-start-line="134" selection-start-column="13" selection-end-line="134" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="entry.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/entry.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="37" lean-forward="false" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sanctions.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/sanctions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="30" column="3" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="30" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -68,30 +118,34 @@
         <option value="$PROJECT_DIR$/html/credential.html" />
         <option value="$PROJECT_DIR$/html/_estadisticas.html" />
         <option value="$PROJECT_DIR$/html/_lend_return.html" />
-        <option value="$PROJECT_DIR$/js/validtest.js" />
         <option value="$PROJECT_DIR$/controller/entryInsert_controller.php" />
         <option value="$PROJECT_DIR$/visitantsEdit.php" />
         <option value="$PROJECT_DIR$/entry.php" />
         <option value="$PROJECT_DIR$/html/add_book.html" />
         <option value="$PROJECT_DIR$/visitants.php" />
         <option value="$PROJECT_DIR$/partials/buttons/_users.html" />
-        <option value="$PROJECT_DIR$/html/entry.html" />
         <option value="$PROJECT_DIR$/sanctions.php" />
         <option value="$PROJECT_DIR$/js/dynamicqueries_editable.js" />
         <option value="$PROJECT_DIR$/js/viewInfo.js" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/js/dynamicqueries_statistics.js" />
         <option value="$PROJECT_DIR$/controller/entryUpdate_controller.php" />
-        <option value="$PROJECT_DIR$/controller/visitorsUpdate_controller.php" />
-        <option value="$PROJECT_DIR$/html/visitors.html" />
         <option value="$PROJECT_DIR$/controller/sanctionsInsert_controller.php" />
         <option value="$PROJECT_DIR$/js/dynamicqueries_viewInfo.js" />
         <option value="$PROJECT_DIR$/controller/entrySearch_controller.php" />
-        <option value="$PROJECT_DIR$/utils.php" />
-        <option value="$PROJECT_DIR$/js/sanctions.js" />
-        <option value="$PROJECT_DIR$/html/sanctions.html" />
         <option value="$PROJECT_DIR$/controller/sanctionsErase_controller.php" />
+        <option value="$PROJECT_DIR$/js/validtest.js" />
+        <option value="$PROJECT_DIR$/utils.php" />
+        <option value="$PROJECT_DIR$/html/visitors.html" />
+        <option value="$PROJECT_DIR$/controller/visitorsUpdate_controller.php" />
+        <option value="$PROJECT_DIR$/visitors.php" />
+        <option value="$PROJECT_DIR$/modals/modal_saved.html" />
         <option value="$PROJECT_DIR$/js/visitors.js" />
+        <option value="$PROJECT_DIR$/html/sanctions.html" />
+        <option value="$PROJECT_DIR$/js/sanctions.js" />
+        <option value="$PROJECT_DIR$/js/script.js" />
+        <option value="$PROJECT_DIR$/js/entry.js" />
+        <option value="$PROJECT_DIR$/html/entry.html" />
       </list>
     </option>
   </component>
@@ -103,10 +157,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-454" />
-    <option name="y" value="-10" />
-    <option name="width" value="1379" />
-    <option name="height" value="319" />
+    <option name="x" value="676" />
+    <option name="width" value="697" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -123,6 +176,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -150,12 +205,15 @@
               <item name="Proyecto CECEQ" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="modals" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="Proyecto CECEQ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Proyecto CECEQ" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="partials" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -163,6 +221,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -207,16 +266,21 @@
       <workItem from="1521206275929" duration="533000" />
       <workItem from="1521567841257" duration="27751000" />
       <workItem from="1521645371335" duration="480000" />
+      <workItem from="1522627024937" duration="11058000" />
+      <workItem from="1522860015844" duration="4392000" />
+      <workItem from="1522896679571" duration="8393000" />
+      <workItem from="1522971858018" duration="406000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76469000" />
+    <option name="totallyTimeSpent" value="100718000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1749634" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -244,39 +308,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/html/credential.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="727">
-          <caret line="321" column="34" lean-forward="true" selection-start-line="321" selection-start-column="34" selection-end-line="321" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accountCreate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/_estadisticas.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="206" column="16" lean-forward="true" selection-start-line="206" selection-start-column="16" selection-end-line="206" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estadisticas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/_lend_return.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -391,13 +427,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/dynamicqueries_editable.js" />
     <entry file="file://$PROJECT_DIR$/controller/editByGetSearch_controller.php" />
-    <entry file="file://$PROJECT_DIR$/html/entry.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="117" column="26" lean-forward="true" selection-start-line="117" selection-start-column="26" selection-end-line="117" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/viewInfo.js" />
     <entry file="file://$PROJECT_DIR$/html/editActivity.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -410,13 +439,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visitors.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -441,14 +463,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/validationsVisitor - copia.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -456,13 +470,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/dynamicqueries_statistics.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/js/dynamicqueries_statistics.js" />
     <entry file="file://$PROJECT_DIR$/html/rols.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -474,13 +482,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="6" lean-forward="true" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/visitorsUpdate_controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="38" column="32" lean-forward="true" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -498,13 +499,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/validtest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1524">
-          <caret line="186" column="33" lean-forward="true" selection-start-line="186" selection-start-column="33" selection-end-line="186" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modals/modal_lend.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -519,31 +513,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/visitors.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="147" column="0" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/statisticsInsert_controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="48" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/dynamicqueries_viewInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="56" lean-forward="true" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/statisticsInsert_controller.php" />
     <entry file="file://$PROJECT_DIR$/controller/entrySearch_controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/_footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -554,75 +535,113 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/validtest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="200" column="23" lean-forward="true" selection-start-line="200" selection-start-column="23" selection-end-line="200" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/utils.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11594">
-          <caret line="682" column="1" lean-forward="false" selection-start-line="682" selection-start-column="1" selection-end-line="682" selection-end-column="1" />
-          <folding>
-            <marker date="1521641553927" expanded="true" signature="644:772" ph="SELECT usuar... usuario" />
-            <marker date="1521641553927" expanded="true" signature="1402:1416" ph="SELECT * FRO... ${$tableName}" />
-            <marker date="1521641553927" expanded="true" signature="3814:3952" ph="insert into visitante_gradoestudios... " />
-            <marker date="1521641553927" expanded="true" signature="4138:4250" ph="insert into entrada... " />
-            <marker date="1521641553927" expanded="true" signature="4392:4436" ph="insert into entrada... " />
-            <marker date="1521641553927" expanded="true" signature="4803:5607" ph="select v.idV... visitante" />
-            <marker date="1521641553927" expanded="true" signature="6146:6722" ph="select v.idV... visitante" />
-            <marker date="1521641553927" expanded="true" signature="7403:7519" ph="insert into visitante... " />
-            <marker date="1521641553927" expanded="true" signature="8011:8147" ph="update visitante... " />
-            <marker date="1521641553927" expanded="true" signature="8358:8434" ph="update visitante_gradoestudios... " />
-            <marker date="1521641553927" expanded="true" signature="8716:8842" ph="insert into Fiador_GradoEstudios... " />
-            <marker date="1521641553927" expanded="true" signature="9649:10297" ph="insert into fiador... " />
-            <marker date="1521641553927" expanded="true" signature="10869:10985" ph="insert into visitante... " />
-            <marker date="1521641553927" expanded="true" signature="11323:11510" ph="insert into credencial_fiador... " />
-            <marker date="1521641553927" expanded="true" signature="13349:14071" ph="insert into credencial... " />
-            <marker date="1521641553927" expanded="true" signature="15497:15574" ph="INSERT INTO autor... " />
-            <marker date="1521641553927" expanded="true" signature="15903:16159" ph="select idAut... autor" />
-            <marker date="1521641553927" expanded="true" signature="16481:16529" ph="INSERT INTO titulo... " />
-            <marker date="1521641553927" expanded="true" signature="16801:16942" ph="select idTit... " />
-            <marker date="1521641553927" expanded="true" signature="17311:17443" ph="INSERT INTO ejemplar... " />
-            <marker date="1521641553927" expanded="true" signature="17829:18142" ph="select ISBN,... " />
-            <marker date="1521641553927" expanded="true" signature="18478:18537" ph="INSERT INTO titulo_autor... " />
-            <marker date="1521641553927" expanded="true" signature="18824:18976" ph="select idAut... titulo_autor" />
-            <marker date="1521641553927" expanded="true" signature="19683:19751" ph="INSERT INTO titulo_categoria... " />
-            <marker date="1521641553927" expanded="true" signature="20174:20877" ph="select a.nom... autor" />
-            <marker date="1521641553927" expanded="true" signature="21287:22065" ph="select a.nom... autor" />
-            <marker date="1521641553927" expanded="true" signature="22415:22454" ph="SELECT MAX( ejemplar" />
-            <marker date="1521641553927" expanded="true" signature="22834:22899" ph="INSERT INTO ejemplar_estado... " />
-            <marker date="1521641553927" expanded="true" signature="23208:23364" ph="select idAut... autor" />
-            <marker date="1521641553927" expanded="true" signature="23843:23954" ph="insert into sancion... " />
-            <marker date="1521641553927" expanded="true" signature="24376:25299" ph="select v.idV... visitante" />
-            <marker date="1521641553927" expanded="true" signature="25685:25759" ph="update sancion... " />
-          </folding>
+        <state relative-caret-position="467">
+          <caret line="682" column="1" lean-forward="true" selection-start-line="682" selection-start-column="1" selection-end-line="682" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visitants.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visitors.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/visitorsUpdate_controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="27" column="19" lean-forward="false" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/visitors.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="93" column="29" lean-forward="true" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modals/modal_saved.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/sanctions.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="141" column="49" lean-forward="false" selection-start-line="141" selection-start-column="49" selection-end-line="141" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/sanctionsErase_controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/sanctions.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="90" lean-forward="false" selection-start-line="12" selection-start-column="90" selection-end-line="12" selection-end-column="90" />
-          <folding />
+          <caret line="13" column="37" lean-forward="true" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/sanctions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="58" lean-forward="false" selection-start-line="13" selection-start-column="58" selection-end-line="13" selection-end-column="58" />
+        <state relative-caret-position="510">
+          <caret line="30" column="3" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="30" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/visitors.js">
+    <entry file="file://$PROJECT_DIR$/html/visitors.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="33" column="39" lean-forward="true" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+        <state relative-caret-position="2278">
+          <caret line="134" column="13" lean-forward="false" selection-start-line="134" selection-start-column="13" selection-end-line="134" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entry.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="37" lean-forward="false" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/dynamicqueries_viewInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="63" column="44" lean-forward="false" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/entry.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="115" column="22" lean-forward="true" selection-start-line="115" selection-start-column="22" selection-end-line="115" selection-end-column="22" />
           <folding />
         </state>
       </provider>

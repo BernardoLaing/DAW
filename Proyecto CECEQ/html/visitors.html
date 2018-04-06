@@ -132,7 +132,7 @@
 
 
 
-    <div id="sanctionValues" class="modal fade" role="dialog">
+    <div id="sanctionValues" class="modal fade" role="dialog" data-backdrop="static">
         <div class="modal-dialog">
 
             <div class="modal-content">
@@ -140,28 +140,29 @@
                 <div class="modal-header" id="mhead_sanctions">
                     Sancionar a usuario
                 </div>
-
+                <form id="mform_sanctions">
                 <div class="modal-body">
                     <div id="mbody_sanctions">
                     </div>
-                    <form>
+
                         <div class='form-group'>
                             <label for="user_sanctionTime">Fecha de fin:</label>
-                            <input  class="form-control cvalidate cdate" id="user_sanctionTime" name="user[sanctionTime]" type="date"/>
+                            <input required class="form-control cvalidate cdate" id="user_sanctionTime" name="user[sanctionTime]" type="date"/>
                         </div>
                         <div class='form-group'>
                             <label for="user_sanctionDescription">Descripcion:</label>
-                            <input  class="form-control cvalidate cnumber" id="user_sanctionDescription" name="user[sanctionDescription]" type="text" placeholder="Maltrató el mobiliario de la librería"/>
+                            <input required class="form-control" id="user_sanctionDescription" name="user[sanctionDescription]" type="text" placeholder="Maltrató el mobiliario de la biblioteca"/>
                         </div>
-                    </form>
+
                 </div>
 
                 <div class="modal-footer" id="mfoot_sanctions">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" id="msubmit_sanctions">Guardar</button>
+                    <button type="button" class="btn btn-danger" id="mcancel_sanctions">Cancelar</button>
+                    <button type="submit" class="btn btn-success" id="msubmit_sanctions">Guardar</button>
                 </div>
+                </form>
 
             </div>
-
         </div>
     </div>
 

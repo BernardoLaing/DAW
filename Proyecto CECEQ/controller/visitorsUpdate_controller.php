@@ -24,6 +24,7 @@
         && (($_POST["user"]["gender"] == null) || test($GENDER, $_POST["user"]["gender"]))
         && (($_POST["user"]["user_grade"] == null) || test($SCHOOLING, $_POST["user"]["user_grade"]))
     ){
+        echo "hola";
         $nulls = 0;
         foreach($_POST["user"] as $key => $value){
             if($value != null)
@@ -47,5 +48,3 @@
             }
         }
     }
-    //displey za modal :v
-    header("Location: ../visitors.php");
