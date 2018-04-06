@@ -1,5 +1,5 @@
 <?php
-include("utils.php"); 
+include("../utils.php"); 
 
 function obtenerEstados(){
     
@@ -11,21 +11,6 @@ function obtenerEstados(){
     where e.idEstado = ee.idEstado
     group by e.nombre
     ORDER BY e.nombre
-    ");
-    $statement->execute();
-    $result = $statement->get_result();
-    disconnect($connection);
-    return $result;
-}
-
-function obtenerCategorias(){
-    header('Content-Type: application/json');
-    $connection = connect();
-    $statement = mysqli_prepare($connection,"
-    SELECT c.nombre, COUNT(tc.idCategoria) as 'Cantidad'
-    FROM titulo_categoria tc, ejemplar e, categoria c
-    WHERE tc.idTitulo = e.idTitulo AND tc.idCategoria = c.idCategoria
-    GROUP BY tc.idCategoria
     ");
     $statement->execute();
     $result = $statement->get_result();
@@ -48,8 +33,6 @@ function buildArray($result){
     //echo print_r($a);
     return $data;
 }
-
-
 
 $data =  buildarray(obtenerEstados());
 echo json_encode($data);
