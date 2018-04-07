@@ -91,14 +91,17 @@ function obtenerEstados(){
     return $result;
 }
 
-function obtenerEntradaGenero(){
+function obtenerEntradaGenero($año){
     $connection = connect();
     $statement = mysqli_prepare($connection,"
     SELECT v.genero, COUNT(v.genero) as 'Personas'
     FROM entrada e, visitante v 
     WHERE e.idVisitante = v.idVisitante
+    AND e.timestamp like ?
     GROUP BY v.genero
     ");
+    $AÑO=$año."%";
+    $statement->bind_param("s", $AÑO);
     $statement->execute();
     $result = $statement->get_result();
     disconnect($connection);
@@ -242,6 +245,13 @@ function buildArray($result){
     return $data;
 }
 
+function printStat($year){
+    header("Content-Type: application/vnd.ms-excel");
+    $filename = "reportedgb_" . $year . ".xls";
+    echo "Reporte DGB \n";
+    header("Content-disposition: attachment; filename=" . $filename);
+}
+
 $metodo = htmlspecialchars($_GET['method']);
 $param = htmlspecialchars($_GET['anioSel']);
 
@@ -259,13 +269,18 @@ switch ($metodo) {
             echo json_encode($data);
         break;
         case 'obtenerEntradasGenero':
-            $data =  buildarray(obtenerEntradaGenero());
+            $data =  buildarray(obtenerEntradaGenero($param));
             echo json_encode($data);
         break;
         case 'obtenerUsuario':
             $data =  buildarray(obtenerUsuarios());
             echo json_encode($data);
         break;
+        case 'print':
+        printStat($param);
+//        $data =  buildarray(obtenerUsuarios());
+//        echo json_encode($data);
+         break;
     
     default:
         # code...

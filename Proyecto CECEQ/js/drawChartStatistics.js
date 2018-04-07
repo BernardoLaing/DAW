@@ -1,6 +1,5 @@
 
 ////////////////////////////////////////////////////// BOTONES PARA VISUALIZAR Y OCULTAR REPORTES
-
 function main() {
 $('.graficas').hide();
 
@@ -8,7 +7,6 @@ $('.graficas-button').on('click', function() {
       $(this).next().toggle();
   if($(this).text() == "Ocultar Reporte"){
       $(this).text("Ver Reporte");
-      console.log("BLAAAA");
   }
   else{
     $(this).text("Ocultar Reporte");
@@ -88,7 +86,7 @@ $(document).ready(function(){
       }); 
     },
     error: function(data) {
-      console.log(data);
+     // console.log(data);
       console.log("error");
     }
   });
@@ -163,7 +161,7 @@ function obtenerEntradas(anio){ //Entradas mensuales
     data: {method: 'obtenerEntradas', anioSel: anio},
     method: "GET",
     success: function(data) {
-      console.log(data);
+      //console.log(data);
       var estadoLabels = [];
       var score = [];
 
@@ -219,13 +217,13 @@ function obtenerEntradas(anio){ //Entradas mensuales
 }
 
 function obtenerEntradasGenero(anio){ //Entradas por genero
-  console.log("CAMBIO");
+  //console.log("CAMBIO");
   $.ajax({
     url: "charts.php",
    data: {method: 'obtenerEntradasGenero', anioSel: anio},
     method: "GET",
     success: function(data) {
-      //console.log(data);
+     // console.log(data);
       var estadoLabels = [];
       var score = [];
 
@@ -263,12 +261,12 @@ function obtenerEntradasGenero(anio){ //Entradas por genero
 				title : {
 					display : true,
 					position : "top",
-					text : "Entradas por g\xE9nero",
+					text : "Entradas por g\xE9nero "+anio,
 					fontSize : 20,
 					fontColor : "#111"
 				},
 				legend : {
-					display : true,
+					display : false,
 					position : "bottom"
 				}
 			};
@@ -290,7 +288,7 @@ function obtenerEntradasGenero(anio){ //Entradas por genero
 
 $(document).ready(obtenerEntradas(anio));
 
-$(document).ready(obtenerEntradasGenero());
+$(document).ready(obtenerEntradasGenero(anio));
 
 ///////// PERSONAL
 $(document).ready(function(){
@@ -358,9 +356,37 @@ $(document).ready(function(){
 $("select").each(function(){
   $(this).change(function(){
     anio = document.getElementById("year").value;
-    console.log(anio);
+   // console.log(anio);
     obtenerEntradas(anio);
     obtenerEntradasGenero(anio);
+   console.log(obj);
+    console.log(data);
   });
 });
+/*
+download.addEventListener("click", function () {
+  console.log("Enttro");
+  
+  $.ajax({
+    url: "charts.php",
+    data: {method: 'print', anioSel: anio},
+    method: "GET",
+    success: function(data) {
+      console.log("funciona!!!!!!!");
+    },
+    error: function(data) {
+      //console.log(data);
+      console.log("error");
+    }
+  });
+*/
+  /*
+  var imgData = document.getElementById('doughnutEstado').toDataURL("image/jpeg", 1.0);
+  console.log("Enttro");
+  var urlget = "controller/statistics_print.php?ninos=" + imgData;
+  //console.log(urlget);
+  console.log("Enttro");
+  $("#download").attr("href", urlget);*/
+
+}, false);
 
