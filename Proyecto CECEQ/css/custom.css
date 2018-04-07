@@ -233,3 +233,8 @@ body
     width: 100%;
     height: auto;
 }
+
+.barcode{
+    font-family: 'Libre Barcode 39 Extended', cursive;
+    font-size: 30pt;
+}

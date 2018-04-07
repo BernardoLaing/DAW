@@ -2,7 +2,7 @@
     function connect() {
         $ENV = "dev";
         if ($ENV == "dev") {
-            $mysql = mysqli_connect("localhost","root","","jambe");
+            $mysql = mysqli_connect("localhost","root","","jambe1");
                                             //root si estan en windows
         } else  if ($ENV == "prod"){
             $mysql = mysqli_connect("localhost","blaing","awdvcft13509","jambe");
