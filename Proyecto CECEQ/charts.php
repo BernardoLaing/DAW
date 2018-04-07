@@ -1,71 +1,73 @@
 <?php
 include("regexps.php");
-include("utils.php"); 
+require_once("utils.php"); 
 header('Content-Type: application/json');
 
-function obtenerEntrada(){
+function obtenerEntrada($año){
     $connection = connect();
     $statement = mysqli_prepare($connection,"
 	SELECT 'Enero', COUNT(e.idVisitante) as 'Entradas'
     from entrada e
-    WHERE e.timestamp like '2018%'
+    WHERE e.timestamp like ?
     AND e.timestamp like '%-01-%'
     	UNION
     SELECT 'Febrero', COUNT(e.idVisitante) as 'Entradas'
     from entrada e
-    WHERE e.timestamp like '2018%'
+    WHERE e.timestamp like ?
     AND e.timestamp like '%-02-%'
 	    UNION
     SELECT 'Marzo', COUNT(e.idVisitante) as 'Entradas'
     from entrada e
-    WHERE e.timestamp like '2018%'
+    WHERE e.timestamp like ?
     AND e.timestamp like '%-03-%'
 	    UNION 
     SELECT 'Abril', COUNT(e.idVisitante) as 'Entradas'
     from entrada e
-    WHERE e.timestamp like '2018%'
+    WHERE e.timestamp like ?
     AND e.timestamp like '%-04-%'
     	UNION
     	SELECT 'Mayo', COUNT(e.idVisitante) as 'Entradas'
     from entrada e
-    WHERE e.timestamp like '2018%'
+    WHERE e.timestamp like ?
     AND e.timestamp like '%-05-%'
     	UNION
     SELECT 'Junio', COUNT(e.idVisitante) as 'Entradas'
     from entrada e
-    WHERE e.timestamp like '2018%'
+    WHERE e.timestamp like ?
     AND e.timestamp like '%-06-%'
 	    UNION
     SELECT 'Julio', COUNT(e.idVisitante) as 'Entradas'
     from entrada e
-    WHERE e.timestamp like '2018%'
+    WHERE e.timestamp like ?
     AND e.timestamp like '%-07-%'
 	    UNION 
     SELECT 'Agosto', COUNT(e.idVisitante) as 'Entradas'
     from entrada e
-    WHERE e.timestamp like '2018%'
+    WHERE e.timestamp like ?
     AND e.timestamp like '%-08-%'
         	UNION
    	SELECT 'Septiembre', COUNT(e.idVisitante) as 'Entradas'
     from entrada e
-    WHERE e.timestamp like '2018%'
+    WHERE e.timestamp like ?
     AND e.timestamp like '%-09-%'
     	UNION
     SELECT 'Octubre', COUNT(e.idVisitante) as 'Entradas'
     from entrada e
-    WHERE e.timestamp like '2018%'
+    WHERE e.timestamp like ?
     AND e.timestamp like '%-10-%'
 	    UNION
     SELECT 'Noviembre', COUNT(e.idVisitante) as 'Entradas'
     from entrada e
-    WHERE e.timestamp like '2018%'
+    WHERE e.timestamp like ?
     AND e.timestamp like '%-11-%'
 	    UNION 
     SELECT 'Diciembre', COUNT(e.idVisitante) as 'Entradas'
     from entrada e
-    WHERE e.timestamp like '2018%'
+    WHERE e.timestamp like ?
     AND e.timestamp like '%-12-%'
     ");
+    $AÑO=$año."%";
+    $statement->bind_param("ssssssssssss", $AÑO, $AÑO, $AÑO, $AÑO, $AÑO, $AÑO, $AÑO, $AÑO, $AÑO, $AÑO, $AÑO, $AÑO);
     $statement->execute();
     $result = $statement->get_result();
     disconnect($connection);
@@ -112,15 +114,9 @@ function obtenerCategorias(){
     FROM titulo_categoria tc, ejemplar e, categoria c
     WHERE tc.idTitulo = e.idTitulo AND tc.idCategoria=c.idCategoria
     AND( tc.idCategoria = 0 OR 
-    tc.idCategoria = 10 OR 
-    tc.idCategoria = 20 OR
-    tc.idCategoria = 30 OR 
-    tc.idCategoria = 40 OR 
-    tc.idCategoria = 50 OR
-    tc.idCategoria = 60 OR 
-    tc.idCategoria = 70 OR 
-    tc.idCategoria = 80 OR
-    tc.idCategoria = 90)
+    tc.idCategoria = 10 OR tc.idCategoria = 20 OR tc.idCategoria = 30 OR 
+    tc.idCategoria = 40 OR tc.idCategoria = 50 OR tc.idCategoria = 60 OR 
+    tc.idCategoria = 70 OR tc.idCategoria = 80 OR tc.idCategoria = 90)
     
     UNION
     
@@ -128,47 +124,28 @@ function obtenerCategorias(){
     FROM titulo_categoria tc, ejemplar e, categoria c
     WHERE tc.idTitulo = e.idTitulo AND tc.idCategoria=c.idCategoria
     AND( tc.idCategoria = 100 OR 
-    tc.idCategoria = 110 OR 
-    tc.idCategoria = 120 OR
-    tc.idCategoria = 130 OR 
-    tc.idCategoria = 140 OR 
-    tc.idCategoria = 150 OR
-    tc.idCategoria = 160 OR 
-    tc.idCategoria = 170 OR 
-    tc.idCategoria = 180 OR
-    tc.idCategoria = 190)
-    
-    
+    tc.idCategoria = 110 OR tc.idCategoria = 120 OR tc.idCategoria = 130 OR 
+    tc.idCategoria = 140 OR tc.idCategoria = 150 OR tc.idCategoria = 160 OR 
+    tc.idCategoria = 170 OR tc.idCategoria = 180 OR tc.idCategoria = 190)
+      
     UNION
     
     SELECT  'Religión', COUNT(*) as 'Cantidad'
     FROM titulo_categoria tc, ejemplar e, categoria c
     WHERE tc.idTitulo = e.idTitulo AND tc.idCategoria=c.idCategoria
     AND( tc.idCategoria = 200 OR 
-    tc.idCategoria = 210 OR 
-    tc.idCategoria = 220 OR
-    tc.idCategoria = 230 OR 
-    tc.idCategoria = 240 OR 
-    tc.idCategoria = 250 OR
-    tc.idCategoria = 260 OR 
-    tc.idCategoria = 270 OR 
-    tc.idCategoria = 280 OR
-    tc.idCategoria = 290)
+    tc.idCategoria = 210 OR tc.idCategoria = 220 OR tc.idCategoria = 230 OR 
+    tc.idCategoria = 240 OR tc.idCategoria = 250 OR tc.idCategoria = 260 OR 
+    tc.idCategoria = 270 OR tc.idCategoria = 280 OR tc.idCategoria = 290)
     
     UNION
     SELECT 'Ciencias Sociales', COUNT(*) as 'Cantidad'
     FROM titulo_categoria tc, ejemplar e, categoria c
     WHERE tc.idTitulo = e.idTitulo AND tc.idCategoria=c.idCategoria
     AND( tc.idCategoria = 300 OR 
-    tc.idCategoria = 310 OR 
-    tc.idCategoria = 320 OR
-    tc.idCategoria = 330 OR 
-    tc.idCategoria = 340 OR 
-    tc.idCategoria = 350 OR
-    tc.idCategoria = 360 OR 
-    tc.idCategoria = 370 OR 
-    tc.idCategoria = 380 OR
-    tc.idCategoria = 390)
+    tc.idCategoria = 310 OR tc.idCategoria = 320 OR tc.idCategoria = 330 OR 
+    tc.idCategoria = 340 OR tc.idCategoria = 350 OR tc.idCategoria = 360 OR 
+    tc.idCategoria = 370 OR tc.idCategoria = 380 OR tc.idCategoria = 390)
     
     UNION
     
@@ -176,15 +153,9 @@ function obtenerCategorias(){
     FROM titulo_categoria tc, ejemplar e, categoria c
     WHERE tc.idTitulo = e.idTitulo AND tc.idCategoria=c.idCategoria
     AND( tc.idCategoria =400 OR 
-    tc.idCategoria = 410 OR 
-    tc.idCategoria = 420 OR
-    tc.idCategoria = 430 OR 
-    tc.idCategoria = 440 OR 
-    tc.idCategoria = 450 OR
-    tc.idCategoria = 460 OR 
-    tc.idCategoria = 470 OR 
-    tc.idCategoria = 480 OR
-    tc.idCategoria = 490)
+    tc.idCategoria = 410 OR tc.idCategoria = 420 OR tc.idCategoria = 430 OR 
+    tc.idCategoria = 440 OR tc.idCategoria = 450 OR tc.idCategoria = 460 OR 
+    tc.idCategoria = 470 OR tc.idCategoria = 480 OR tc.idCategoria = 490)
     
     UNION
     
@@ -192,15 +163,9 @@ function obtenerCategorias(){
     FROM titulo_categoria tc, ejemplar e, categoria c
     WHERE tc.idTitulo = e.idTitulo AND tc.idCategoria=c.idCategoria
     AND( tc.idCategoria = 500 OR 
-    tc.idCategoria = 510 OR 
-    tc.idCategoria = 520 OR
-    tc.idCategoria = 530 OR 
-    tc.idCategoria = 540 OR 
-    tc.idCategoria = 550 OR
-    tc.idCategoria = 560 OR 
-    tc.idCategoria = 570 OR 
-    tc.idCategoria = 580 OR
-    tc.idCategoria = 590)
+    tc.idCategoria = 510 OR tc.idCategoria = 520 OR tc.idCategoria = 530 OR 
+    tc.idCategoria = 540 OR  tc.idCategoria = 550 OR tc.idCategoria = 560 OR 
+    tc.idCategoria = 570 OR tc.idCategoria = 580 OR  tc.idCategoria = 590)
     
     UNION
     
@@ -208,15 +173,9 @@ function obtenerCategorias(){
     FROM titulo_categoria tc, ejemplar e, categoria c
     WHERE tc.idTitulo = e.idTitulo AND tc.idCategoria=c.idCategoria
     AND( tc.idCategoria =600 OR 
-    tc.idCategoria = 610 OR 
-    tc.idCategoria = 620 OR
-    tc.idCategoria = 630 OR 
-    tc.idCategoria = 640 OR 
-    tc.idCategoria = 650 OR
-    tc.idCategoria = 660 OR 
-    tc.idCategoria = 670 OR 
-    tc.idCategoria = 680 OR
-    tc.idCategoria = 690)
+    tc.idCategoria = 610 OR  tc.idCategoria = 620 OR tc.idCategoria = 630 OR 
+    tc.idCategoria = 640 OR  tc.idCategoria = 650 OR tc.idCategoria = 660 OR 
+    tc.idCategoria = 670 OR  tc.idCategoria = 680 OR tc.idCategoria = 690)
     
     UNION
     
@@ -224,15 +183,9 @@ function obtenerCategorias(){
     FROM titulo_categoria tc, ejemplar e, categoria c
     WHERE tc.idTitulo = e.idTitulo AND tc.idCategoria=c.idCategoria
     AND( tc.idCategoria = 700 OR 
-    tc.idCategoria = 710 OR 
-    tc.idCategoria = 720 OR
-    tc.idCategoria = 730 OR 
-    tc.idCategoria = 740 OR 
-    tc.idCategoria = 750 OR
-    tc.idCategoria = 760 OR 
-    tc.idCategoria = 770 OR 
-    tc.idCategoria = 780 OR
-    tc.idCategoria = 790)
+    tc.idCategoria = 710 OR  tc.idCategoria = 720 OR tc.idCategoria = 730 OR 
+    tc.idCategoria = 740 OR  tc.idCategoria = 750 OR tc.idCategoria = 760 OR 
+    tc.idCategoria = 770 OR  tc.idCategoria = 780 OR tc.idCategoria = 790)
     
     UNION
     
@@ -240,15 +193,9 @@ function obtenerCategorias(){
     FROM titulo_categoria tc, ejemplar e, categoria c
     WHERE tc.idTitulo = e.idTitulo AND tc.idCategoria=c.idCategoria
     AND( tc.idCategoria =800 OR 
-    tc.idCategoria = 810 OR 
-    tc.idCategoria = 820 OR
-    tc.idCategoria = 830 OR 
-    tc.idCategoria = 840 OR 
-    tc.idCategoria = 850 OR
-    tc.idCategoria = 860 OR 
-    tc.idCategoria = 870 OR 
-    tc.idCategoria = 880 OR
-    tc.idCategoria = 890)
+    tc.idCategoria = 810 OR  tc.idCategoria = 820 OR tc.idCategoria = 830 OR 
+    tc.idCategoria = 840 OR  tc.idCategoria = 850 OR tc.idCategoria = 860 OR 
+    tc.idCategoria = 870 OR  tc.idCategoria = 880 OR tc.idCategoria = 890)
     
     UNION
     
@@ -256,15 +203,9 @@ function obtenerCategorias(){
     FROM titulo_categoria tc, ejemplar e, categoria c
     WHERE tc.idTitulo = e.idTitulo AND tc.idCategoria=c.idCategoria
     AND( tc.idCategoria = 900 OR 
-    tc.idCategoria = 910 OR 
-    tc.idCategoria = 920 OR
-    tc.idCategoria = 930 OR 
-    tc.idCategoria = 940 OR 
-    tc.idCategoria = 950 OR
-    tc.idCategoria = 960 OR 
-    tc.idCategoria = 970 OR 
-    tc.idCategoria = 980 OR
-    tc.idCategoria = 990)
+    tc.idCategoria = 910 OR  tc.idCategoria = 920 OR tc.idCategoria = 930 OR 
+    tc.idCategoria = 940 OR  tc.idCategoria = 950 OR tc.idCategoria = 960 OR 
+    tc.idCategoria = 970 OR  tc.idCategoria = 980 OR tc.idCategoria = 990)
     ");
     $statement->execute();
     $result = $statement->get_result();
@@ -301,7 +242,9 @@ function buildArray($result){
     return $data;
 }
 
-$metodo = $_GET['method'];
+$metodo = htmlspecialchars($_GET['method']);
+$param = htmlspecialchars($_GET['anioSel']);
+
 switch ($metodo) {
         case 'obtenerEstados':
             $data =  buildarray(obtenerEstados());
@@ -312,7 +255,7 @@ switch ($metodo) {
             echo json_encode($data);
         break;
         case 'obtenerEntradas':
-            $data =  buildarray(obtenerEntrada());
+            $data =  buildarray(obtenerEntrada($param));
             echo json_encode($data);
         break;
         case 'obtenerEntradasGenero':

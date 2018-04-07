@@ -8,6 +8,7 @@ $('.graficas-button').on('click', function() {
       $(this).next().toggle();
   if($(this).text() == "Ocultar Reporte"){
       $(this).text("Ver Reporte");
+      console.log("BLAAAA");
   }
   else{
     $(this).text("Ocultar Reporte");
@@ -17,12 +18,13 @@ $('.graficas-button').on('click', function() {
 $(document).ready(main);
 
 //////////////////////////////////////////////////// REPORTES
+var anio = (new Date()).getFullYear();
 
 ///////// LIBROS
 $(document).ready(function(){
   $.ajax({
     url: "charts.php",
-    data: {method: 'obtenerEstados'},
+    data: {method: 'obtenerEstados', anioSel: null},
     method: "GET",
     success: function(data) {
       //console.log(data);
@@ -86,7 +88,7 @@ $(document).ready(function(){
       }); 
     },
     error: function(data) {
-      //console.log(data);
+      console.log(data);
       console.log("error");
     }
   });
@@ -95,7 +97,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   $.ajax({
     url: "charts.php",
-    data: {method: 'obtenerCategorias'},
+    data: {method: 'obtenerCategorias', anioSel: null},
     method: "GET",
     success: function(data) {
     //  console.log(data);
@@ -130,7 +132,7 @@ $(document).ready(function(){
 				title : {
 					display : true,
 					position : "top",
-					text : "Clasificaci\xF3n por ejemplar",
+					text : "Clasificaci\xF3n actual por ejemplar",
 					fontSize : 18,
 					fontColor : "#111"
 				},
@@ -155,13 +157,13 @@ $(document).ready(function(){
 });
 
 ///////// VISITANTES
-$(document).ready(function(){ //ENtradas mensuales
+function obtenerEntradas(anio){ //Entradas mensuales
   $.ajax({
     url: "charts.php",
-    data: {method: 'obtenerEntradas'},
+    data: {method: 'obtenerEntradas', anioSel: anio},
     method: "GET",
     success: function(data) {
-    //  console.log(data);
+      console.log(data);
       var estadoLabels = [];
       var score = [];
 
@@ -192,7 +194,7 @@ $(document).ready(function(){ //ENtradas mensuales
 				title : {
 					display : true,
 					position : "top",
-					text : "Entradas",
+					text : "Entradas "+anio,
 					fontSize : 18,
 					fontColor : "#111"
 				},
@@ -214,12 +216,13 @@ $(document).ready(function(){ //ENtradas mensuales
       console.log("error");
     }
   });
-});
+}
 
-$(document).ready(function(){ //Entradas por genero
+function obtenerEntradasGenero(anio){ //Entradas por genero
+  console.log("CAMBIO");
   $.ajax({
     url: "charts.php",
-   data: {method: 'obtenerEntradasGenero'},
+   data: {method: 'obtenerEntradasGenero', anioSel: anio},
     method: "GET",
     success: function(data) {
       //console.log(data);
@@ -273,7 +276,7 @@ $(document).ready(function(){ //Entradas por genero
       var divDoughnutGenero = $("#visitanteGeneroChart");
 
 			var doughnutGraph = new Chart(divDoughnutGenero, {
-				type: 'doughnut',
+				type: 'bar',
         data: chartdata,
         options : options
       }); 
@@ -283,13 +286,17 @@ $(document).ready(function(){ //Entradas por genero
       console.log("error");
     }
   });
-});
+}
+
+$(document).ready(obtenerEntradas(anio));
+
+$(document).ready(obtenerEntradasGenero());
 
 ///////// PERSONAL
-$(document).ready(function(){ 
+$(document).ready(function(){
   $.ajax({
     url: "charts.php",
-    data: {method: 'obtenerUsuario'},
+    data: {method: 'obtenerUsuario', anioSel: null},
     method: "GET",
     success: function(data) {
     //  console.log(data);
@@ -323,7 +330,7 @@ $(document).ready(function(){
 				title : {
 					display : true,
 					position : "top",
-					text : "Usuarios",
+					text : "Usuarios actualmente existentes",
 					fontSize : 18,
 					fontColor : "#111"
 				},
@@ -350,9 +357,10 @@ $(document).ready(function(){
 //////////////////////////////////////////////////// SELECTORES
 $("select").each(function(){
   $(this).change(function(){
-    var yValue = document.getElementById("year").value;
-    console.log(yValue);
-    var mValue = document.getElementById("year").value;
-    console.log(mValue);
+    anio = document.getElementById("year").value;
+    console.log(anio);
+    obtenerEntradas(anio);
+    obtenerEntradasGenero(anio);
   });
 });
+
