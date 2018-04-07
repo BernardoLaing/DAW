@@ -106,7 +106,7 @@ if(!empty($_POST))
     //echo 'id titulo '.$idTitulo. ' idAutor ' . $idAutor. '<br>'; //retroalimentacion
     
 
-    insertEjemplar($_POST["book"]["isbn"], $_POST["book"]["shelf"], $_POST["book"]["editorial"], $_POST["book"]["yeare"], $_POST["book"]["vol"], $idTitulo, $_POST["book"]["colection"], $_POST["book"]["edicion"], $_SESSION["user"] );//insetrar ejemplar
+    insertEjemplar($_POST["book"]["isbn"], $_POST["book"]["shelf"], $_POST["book"]["editorial"], $_POST["book"]["yeare"], $_POST["book"]["vol"], $idTitulo, $_POST["book"]["colection"], $_POST["book"]["edicion"], $_SESSION["user"], $_POST["book"]["clave"] );//insetrar ejemplar
     $retro = $retro. 'ejemplar insertado ';//retroalimentacion
     //echo 'isbn '.$_POST["book"]["isbn"].' estante '. $_POST["book"]["shelf"].' editorial '.$_POST["book"]["editorial"]. ' anio ' .$_POST["book"]["yeare"]. 'vol'. $_POST["book"]["vol"].' titulo' .$idTitulo; //retroalimentacion
     insertCategoriaTitulo($idTitulo, $_POST["sclasificacion"]);

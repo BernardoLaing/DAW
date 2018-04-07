@@ -460,13 +460,13 @@ function buscarTitulo($titulo, $year)
     disconnect($connection);
     return $result;
 }
-function insertEjemplar($ISBN, $estante, $editorial, $year, $volumen, $idTitulo, $colection, $edition, $idUsuario)
+function insertEjemplar($ISBN, $estante, $editorial, $year, $volumen, $idTitulo, $colection, $edition, $idUsuario, $clave)
 {
     $connection = connect();
-    $statement = mysqli_prepare($connection, "INSERT INTO ejemplar(ISBN, estante, editorial, year, volumen, idTitulo, coleccion, edicion, idUsuario)
-    VALUES(?,?,?,?,?,?,?,?,?);
+    $statement = mysqli_prepare($connection, "INSERT INTO ejemplar(ISBN, estante, editorial, year, volumen, idTitulo, coleccion, edicion, idUsuario, claveIngreso)
+    VALUES(?,?,?,?,?,?,?,?,?,?);
     ");
-    $statement ->bind_param("sssiiisis", $ISBN, $estante, $editorial, $year, $volumen, $idTitulo, $colection, $edition, $idUsuario);
+    $statement ->bind_param("sssiiisis", $ISBN, $estante, $editorial, $year, $volumen, $idTitulo, $colection, $edition, $idUsuario, $clave);
     $retorno = $statement->execute();
     disconnect($connection);
     return($retorno);
