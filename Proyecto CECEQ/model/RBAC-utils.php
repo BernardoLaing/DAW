@@ -1,4 +1,5 @@
 <?php
+require_once('utils.php');
 // Usuarios
 function getUserRoles(){
     $db = connect();
