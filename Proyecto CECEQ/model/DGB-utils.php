@@ -9,8 +9,8 @@ function getReport($year, $month){
         $startDate=date("Y-m-d H:i:s",strtotime($startDate));
         $endDate=date("Y-m-d H:i:s",strtotime($endDate));
         $query='SELECT 
-                    SUM(IF(edad < 13,1,0)) as "Nino",
-                    SUM(IF(edad BETWEEN 13 AND 17,1,0)) as "Joven",
+                    SUM(IF(edad < 12,1,0)) as "Nino",
+                    SUM(IF(edad BETWEEN 12 AND 17,1,0)) as "Joven",
                     SUM(IF(edad > 17,1,0)) as "Adulto"
                     FROM entrada e,
                         (SELECT TIMESTAMPDIFF(YEAR, fechaNacimiento, CURRENT_DATE) AS edad, idVisitante 

@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once('utils.php');
 ?>
 <?php
@@ -18,6 +19,7 @@ if(isset($_POST["submit"])){
           is_numeric($rol)){
             if(updateUser($user, $name, $passwd, $rol)){
                 echo "updateUser validado";
+                $_SESSION['success_msg'] = "La cuenta fue editada con éxito";
                 header('Location: cuentas.php');
             }else{
                 echo "NO FUNCIONA";
@@ -25,13 +27,11 @@ if(isset($_POST["submit"])){
             
         }
         echo "NOT VALID ARGUMENT(S)";
+    }else{
+        $_SESSION['error_type'] = "userConflict";
+        $_SESSION['error_msg'] = "No se llenaron todos los campos";
+        header('Location: accountsEdit.php?user=' . $_POST["user"]);
     }
-    echo "NOT ISSET";
-    echo $_POST['user'];
-    echo $_POST['name'];
-    echo $_POST['password'];
-    echo $_POST['passwordValidate'];
-    echo $_POST['rol'];
 }else{
     echo "NOT SUBMIT";
 }

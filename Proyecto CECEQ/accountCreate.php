@@ -21,5 +21,6 @@ if(isset($_SESSION['error_type']) && $_SESSION['error_type'] === "userConflict")
         </script>";
     $_SESSION['error_type'] = "";
 }
+
 include("partials/_footer.html");
 ?>

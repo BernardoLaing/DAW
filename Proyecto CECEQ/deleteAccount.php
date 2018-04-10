@@ -1,7 +1,11 @@
 <?php
+session_start();
 require_once('utils.php');
 
-deleteUser($_GET["user"]);
-
+if(deleteUser($_GET["user"])){
+    $_SESSION['success_msg'] = "La cuenta fue eliminada con éxito";
+}else{
+    $_SESSION['success_msg'] = "La cuenta no pudo ser eliminada";
+}
 header('Location:cuentas.php');
 ?>

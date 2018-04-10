@@ -241,9 +241,11 @@ function deleteUser($user){
              echo "FAIL EXECUTE";
              die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
          } 
-        
+        $_SESSION['deleted_msg'] = "La cuenta fue eliminada con éxito";
         disconnect($db);
+        return true;
     }
+    return false;
 }
 
 function searchUser($user, $name, $idRol){
