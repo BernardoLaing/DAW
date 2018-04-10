@@ -362,12 +362,6 @@ function createRol($name, $description, $permissions){
             $_SESSION['error_msg'] = "Ya existe un rol con ese nombre";
             return false;
         }
-        if(count($permissions === 0)){
-            disconnect($db);
-            $_SESSION['error_type'] = "rolConflict";
-            $_SESSION['error_msg'] = "No agregaste permisos al rol";
-            return false;
-        }
         
         // insert command specification 
         $query='INSERT INTO rol (nombre, descripcion) VALUES (?, ?) ';
