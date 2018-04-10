@@ -5,6 +5,7 @@
 <?php include("partials/_footer.html"); ?>
 <?php include("utils.php");
 include("modals/modal_saved.html");
+//include("modals/modal_entry.html");
 ?>
 
 

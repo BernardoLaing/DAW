@@ -20,8 +20,6 @@
         && (($_POST["user"]["gender"] == null) || test($GENDER, $_POST["user"]["gender"]))
         && (($_POST["user"]["user_grade"] == null) || test($SCHOOLING, $_POST["user"]["user_grade"]))
     ){
-        //include("../modals/modal_entry.php");
-        //echo "<script> $('#myModal').modal('show') </script>";
         $nulls = 0;
         foreach($_POST["user"] as $key => $value){
             if($value != null)
@@ -41,15 +39,9 @@
                     $info["birthday"],
                     $info["user_grade"],
                     $info["gender"]);
-                 //   $_SESSION["entry_status"] = 5;
                    }
         }
     }
-    //displey za modal :v
-   // include("../modals/modal_entry.php");
-    // echo "<script> $('#myModal').modal('show') </script>";
-    //$("#myModal").modal("show");
-   // echo "<script> $('#myModal').modal('show') </script>";
     header("Location: ../entry.php");
    
     ?>

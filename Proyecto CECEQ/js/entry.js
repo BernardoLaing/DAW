@@ -15,20 +15,8 @@ $(document).ready(function(){
 
 
         $("#registrarEntrada").click(function(e){
-
-           /* modal();
-            console.log("holiwi spiwis");
             e.preventDefault();
-            $("input").each(function(){
-                $(this).prop("disabled", false);
-            });
-            $("select").each(function(){
-                $(this).prop("disabled", false);
-            })  ;
-            $("#entry_form").submit();
-            console.log("Imprime modal");
-           // modal();
-           */
+
            $.post("controller/entryInsert_controller.php",{
             user :
                 {
@@ -40,29 +28,15 @@ $(document).ready(function(){
                     user_grade : $("#user_grade").val(),
                     gender : $("#user_gender").val()
                 }
-        });
-        });
-        console.log("all ran");
-
-        $("#registrarEntrada").click(function(e) {
-            console.log("PASO!");
-            e.preventDefault()
-            $("#modalSaved").modal({
-                show: true, 
-               // backdrop: 'static',
-               // keyboard: true
-             })
-        });
-
-       /* $("#registrarEntrada").click(function(){
-            console.log("PASO!");
-             $("#modalSaved").modal("show");
+        },function(data, status){
+             $("#modalEntrada").modal("show");
              setTimeout(function(){
                  location.reload();
              }, 1150);
 
-         });*/
-
+         });
+        });
+        console.log("all ran");
     };
 });
 
