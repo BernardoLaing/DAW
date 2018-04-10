@@ -206,6 +206,7 @@ function insertVisitante($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNaci
     insertEntradaNewVisitor($connection);
 
     disconnect($connection);
+   /// echo "HOLA";
 }
 
 function updateVisitante($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $gradoEstudios, $genero){

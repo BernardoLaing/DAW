@@ -247,7 +247,7 @@ function buildArray($result){
 
 function printStat($year){
     header("Content-Type: application/vnd.ms-excel");
-    $filename = "reportedgb_" . $year . ".xls";
+    $filename = "reportedgb_.xls";
     echo "Reporte DGB \n";
     header("Content-disposition: attachment; filename=" . $filename);
 }

@@ -3,6 +3,11 @@
 <?php include("partials/_top_bar.html"); ?>
 <?php include("html/entry.html");?>
 <?php include("partials/_footer.html"); ?>
+<?php include("utils.php");
+include("modals/modal_saved.html");
+?>
+
+
 <?php
 /*
     include("utils.php");

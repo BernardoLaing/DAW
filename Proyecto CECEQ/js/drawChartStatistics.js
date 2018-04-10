@@ -17,7 +17,7 @@ $(document).ready(main);
 
 //////////////////////////////////////////////////// REPORTES
 var anio = (new Date()).getFullYear();
-
+var g1;
 ///////// LIBROS
 $(document).ready(function(){
   $.ajax({
@@ -26,6 +26,7 @@ $(document).ready(function(){
     method: "GET",
     success: function(data) {
       //console.log(data);
+      g1=data;
       var estadoLabels = [];
       var score = [];
 
@@ -363,30 +364,28 @@ $("select").each(function(){
     console.log(data);
   });
 });
-/*
+
 download.addEventListener("click", function () {
   console.log("Enttro");
-  
-  $.ajax({
-    url: "charts.php",
-    data: {method: 'print', anioSel: anio},
-    method: "GET",
-    success: function(data) {
-      console.log("funciona!!!!!!!");
-    },
-    error: function(data) {
-      //console.log(data);
-      console.log("error");
-    }
-  });
-*/
-  /*
-  var imgData = document.getElementById('doughnutEstado').toDataURL("image/jpeg", 1.0);
-  console.log("Enttro");
-  var urlget = "controller/statistics_print.php?ninos=" + imgData;
+  g1t="";
+for (let index = 0; index < g1.length; index++) {
+  g1t = g1t + JSON.stringify(g1[index]['nombre']) + ' \t ';
+}
+g11 = g11 + ' \n ';
+for (let index = 0; index < g1.length; index++) {
+  g11 = g11 + JSON.stringify(g1[index]['Cantidad']) + ' \t ';
+}
+
+  //g11= JSON.stringify(g1);
+  //var obj = JSON.parse(g1);
+  console.log(g11);
+//  return;
+  //console.log(g1[0]['nombre']);
+  //var urlget = "controller/statistics_print.php?ninos="  + obj['ninos'] + "&jovenes=" + obj['jovenes'] + "&adultos=" + obj['adultos'] + "&credenciales=" + obj['credenciales'] + "&libros=" + obj['libros']  + "&year=" + anio;
+  var urlget = "controller/statistics_print.php?ninos="  + g11 + "&year=" + anio;
   //console.log(urlget);
   console.log("Enttro");
-  $("#download").attr("href", urlget);*/
+  $("#download").attr("href", urlget);
 
-}, false);
+});
 
