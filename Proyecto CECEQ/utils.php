@@ -461,13 +461,13 @@ function buscarTitulo($titulo, $year)
     disconnect($connection);
     return $result;
 }
-function insertEjemplar($ISBN, $estante, $editorial, $year, $volumen, $idTitulo, $colection, $edition, $idUsuario)
+function insertEjemplar($ISBN, $estante, $editorial, $year, $volumen, $idTitulo, $colection, $edition, $idUsuario, $clave, $adq, $numClas, $bookMaterias )
 {
     $connection = connect();
-    $statement = mysqli_prepare($connection, "INSERT INTO ejemplar(ISBN, estante, editorial, year, volumen, idTitulo, coleccion, edicion, idUsuario)
-    VALUES(?,?,?,?,?,?,?,?,?);
+    $statement = mysqli_prepare($connection, "INSERT INTO ejemplar(ISBN, estante, editorial, year, volumen, idTitulo, coleccion, edicion, idUsuario, claveIngreso, adquisicion, numClasificacion, materias)
+    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?);
     ");
-    $statement ->bind_param("sssiiisis", $ISBN, $estante, $editorial, $year, $volumen, $idTitulo, $colection, $edition, $idUsuario);
+    $statement ->bind_param("sssiiisisssss", $ISBN, $estante, $editorial, $year, $volumen, $idTitulo, $colection, $edition, $idUsuario, $clave, $adq, $numClas, $bookMaterias);
     $retorno = $statement->execute();
     disconnect($connection);
     return($retorno);
@@ -545,26 +545,22 @@ function insertCategoriaTitulo($idTitulo, $idCategoria)
 
 }
 /********************************* Funcion para busqueda de libros **********************************/
-function buscarGeneral($nombre, $apellidoPaterno, $apellidoMaterno, $titulo, $categoria)
+function buscarGeneralId($id)
 {
     $connection = connect();
     $statement = mysqli_prepare($connection,"
-    select a.nombre AS nombreA, apellidoPaterno, titulo, t.year, estante, editorial, es.nombre, c.nombre AS nombreC, e.idEjemplar
+    select GROUP_CONCAT(a.nombre SEPARATOR ', ') AS autores, GROUP_CONCAT(apellidoPaterno SEPARATOR ', ') AS apellidos, titulo, t.year, estante, editorial, es.nombre, c.idCategoria, e.idEjemplar, ISBN, volumen, edicion, e.year as yearE, c.nombre AS nombreC, coleccion, claveIngreso, fechaIngreso, idUsuario, adquisicion, numClasificacion, materias
     from autor a, titulo t, titulo_autor ta, ejemplar e, ejemplar_estado ee, estado es, titulo_categoria tc, categoria c
-    where (a.nombre LIKE ? ".($nombre==""?"or 1":"").")
-    and (apellidoPaterno = ? ".($apellidoPaterno==""?"or 1":"").")
-    and (apellidoMaterno = ? ".($apellidoMaterno==""?"or 1":"").")
+    where e.idEjemplar = ?
     and a.idAutor=ta.idAutor
     and t.idTitulo=ta.idTitulo
-    and (t.titulo LIKE ? ".($titulo==""?"or 1":"").")
     and t.idTitulo = e.idTitulo
     and ee.idEjemplar=e.idEjemplar
     and ee.idEstado=es.idEstado
     and t.idTitulo=tc.idTitulo
     and tc.idCategoria=c.idCategoria
-    and (c.idCategoria = ? ".($categoria==""?"or 1":"").")
     ");
-    $statement->bind_param("ssssi", $nombre, $apellidoPaterno, $apellidoMaterno, $titulo, $categoria);
+    $statement->bind_param("i", $id);
     $statement->execute();
     $result = $statement->get_result();
     disconnect($connection);
