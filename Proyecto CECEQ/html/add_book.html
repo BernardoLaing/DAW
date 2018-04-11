@@ -1,4 +1,4 @@
-<br /><br />
+<br />
 <div class="container shadow">
     <div class="row">
         <div class="col-sm-12">
@@ -7,7 +7,7 @@
                 </div>
         </div>
     </div>
-    <br/><br/>
+    <br/>
 
     <form method="POST" action="add_book.php" role="form">
         <div class='row'>
@@ -53,7 +53,7 @@
 
             <div class='col-sm-4'>
                 <div class='form-group'>
-                    <label for="book_edicion">Edición:</label>
+                    <label for="book_edicion">No. de impresión:</label>
                     <div class="col-md-12">
                         <input class="form-control" id="book_edicion" name="book[edicion]" required size="30" type="text" placeholder="4" />
                     </div>
@@ -62,7 +62,7 @@
 
             <div class='col-sm-4'>
                 <div class='form-group'>
-                    <label for="book_yeare">Año de edición:</label>
+                    <label for="book_yeare">Año de impresión:</label>
                     <div class="col-md-12">
                         <input class="form-control cvalidate cyear" id="book_yeare" name="book[yeare]" required size="30" type="text" placeholder="1996"/>
                     </div>
@@ -96,6 +96,32 @@
                 </div>
             </div>
         </div>
+        <div class='row'>
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="book_clave">Clave de ingreso:</label>
+                    <div class="col-md-12">
+                        <input class="form-control cvalidate " required id="book_clave" name="book[clave]" size="30" type="text" placeholder="DG 242" />
+                    </div>
+                </div>
+            </div>
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="book_clave">No. de Adquisición:</label>
+                    <div class="col-md-12">
+                        <input class="form-control cvalidate " required id="book_adquisition" name="book[adquisition]" size="30" type="text" placeholder="K00205" />
+                    </div>
+                </div>
+            </div>
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                    <label for="book_clave">No. classs:</label>
+                    <div class="col-md-12">
+                        <input class="form-control cvalidate " id="book_adquisition" name="book[numClas]" size="30" type="text" placeholder=".123" />
+                    </div>
+                </div>
+            </div>
+      </div>
       <div class='row'>
             <div class='col-sm-4'>
                 <div class='form-group'>
@@ -161,7 +187,7 @@
         <br>
         <br>
         <div class='row'>
-            <div class='col-sm-5'>
+            <div class='col-sm-6'>
                     <div class='form-group'>
                         <label for="clasificacion">Clasificación:</label>
                         <div class="col-md-12">
@@ -181,7 +207,7 @@
                         </div>
                     </div>
                 </div>
-            <div class='col-sm-5'>
+            <div class='col-sm-6'>
                     <div class='form-group'>
                         <label for="sclasificacion">Subclasificación:</label>
                         <div class="col-md-12">
@@ -193,6 +219,17 @@
                     </div>
                 </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="materias">Materias:</label>
+                    <div class="col-md-12">
+                        <input class="form-control cvalidate" id="book_materias" name="book[bookmaterias]" size="30" type="text" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
         <div class="row">
 
             <div class="col-sm-6">
