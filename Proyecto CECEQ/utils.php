@@ -301,12 +301,12 @@ function insertVisitanteTramitandoCredencial($nombre, $apellidoPaterno, $apellid
 
 function insertCredencialFiador($connection){
     $statement = mysqli_prepare($connection,"
-    insert into credencial_fiador values ((select idCredencial from Credencial order by idCredencial desc limit 1), (select idFiador from Fiador order by idFiador desc limit 1), date('Y-m-d');
+    insert into credencial_fiador values ((select idCredencial from Credencial order by idCredencial desc limit 1), (select idFiador from Fiador order by idFiador desc limit 1), date('Y-m-d')
     ");
     $statement->execute();
 }
-
-function insertCredential(  //Visitante
+/*
+function insertCredential(  Visitante
                             $nombre,
                             $apellidoPaterno,
                             $apellidoMaterno,
@@ -379,7 +379,9 @@ function insertCredential(  //Visitante
     insertCredencialFiador($connection);
 
     disconnect($connection);
-}
+}*/
+
+/*-----------------------Fin Tramitar Credencial---------------------------------*/
 
 function buildTableData($result){
     $table = "";
