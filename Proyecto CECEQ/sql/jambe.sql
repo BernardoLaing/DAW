@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-04-2018 a las 03:05:44
+-- Tiempo de generación: 11-04-2018 a las 19:54:25
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -71,7 +71,8 @@ INSERT INTO `autor` (`idAutor`, `nombre`, `apellidoPaterno`, `apellidoMaterno`) 
 (29, 'DOUGLAS ', 'LIND', ''),
 (30, 'JOHN L.', 'GRAHAM', ''),
 (31, 'Martin', 'Vivanco', ''),
-(32, 'andres', 'vivanco', '');
+(35, 'andres', 'vivanco', ''),
+(36, 'pau', '', '');
 
 -- --------------------------------------------------------
 
@@ -1164,8 +1165,9 @@ INSERT INTO `ejemplar` (`idEjemplar`, `ISBN`, `estante`, `editorial`, `year`, `v
 (44, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL, '', '', ''),
 (45, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL, '', '', ''),
 (46, '84-481-4187-3', 'N/A', 'MCGRAW-HILL', 2004, 0, '0000-00-00 00:00:00', 'CL', 32, NULL, NULL, NULL, '', '', ''),
-(48, '1', '1', 'prueba', 1111, 1, '2018-04-10 23:49:08', '11', 33, '1', 1, 'martin', 'ggg2', '.222', ''),
-(49, '1', '1', 'prueba', 1111, 1, '2018-04-10 23:49:16', '11', 33, '1', 1, 'martin', 'ggg2', '.222', '');
+(54, '1', '1', 'prueba', 1111, 1, '2018-04-11 16:45:18', '1', 33, '1', 1, 'martin', '1', '11', ''),
+(55, '111', '1', 'prueba', 1111, 1, '2018-04-11 16:49:20', '1', 42, '1', 1, 'martin', '1', '1', ''),
+(56, '111', '112', 'prueba', 1111, 1, '2018-04-11 17:50:45', '1', 43, '2', 12, 'martin', '1', '1', '');
 
 -- --------------------------------------------------------
 
@@ -1257,8 +1259,9 @@ INSERT INTO `ejemplar_estado` (`idEjemplar`, `idEstado`, `fecha`) VALUES
 (45, 5, '0000-00-00 00:00:00'),
 (46, 5, '0000-00-00 00:00:00'),
 (46, 5, '2018-04-10 23:46:04'),
-(48, 5, '2018-04-10 23:49:08'),
-(49, 5, '2018-04-10 23:49:16');
+(54, 5, '2018-04-11 16:45:18'),
+(55, 5, '2018-04-11 16:49:20'),
+(56, 5, '2018-04-11 17:50:45');
 
 -- --------------------------------------------------------
 
@@ -1710,7 +1713,9 @@ INSERT INTO `titulo` (`idTitulo`, `titulo`, `year`) VALUES
 (30, 'REGIONES PRIORITARIAS', 1999),
 (31, 'PSICOTERAPIA FAMILIAR', 1982),
 (32, 'ESTRATEGIA DE MARKETING SUN TZU', 2004),
-(33, 'los isomorfos', 1111);
+(33, 'los isomorfos', 1111),
+(42, 'los miserables', 1111),
+(43, 'mass effect', 1111);
 
 -- --------------------------------------------------------
 
@@ -1759,7 +1764,9 @@ INSERT INTO `titulo_autor` (`idAutor`, `idTitulo`) VALUES
 (29, 24),
 (30, 25),
 (31, 33),
-(32, 33);
+(31, 42),
+(35, 42),
+(36, 43);
 
 -- --------------------------------------------------------
 
@@ -1809,7 +1816,9 @@ INSERT INTO `titulo_categoria` (`idTitulo`, `idCategoria`) VALUES
 (30, 900),
 (31, 150),
 (32, 670),
-(33, 110);
+(33, 2),
+(42, 3),
+(43, 401);
 
 -- --------------------------------------------------------
 
@@ -1820,7 +1829,7 @@ INSERT INTO `titulo_categoria` (`idTitulo`, `idCategoria`) VALUES
 CREATE TABLE `usuario` (
   `usuario` varchar(25) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1844,6 +1853,7 @@ INSERT INTO `usuario` (`usuario`, `nombre`, `password`) VALUES
 ('Jperez', 'Juan Pérez Rosales', 'hS6#8'),
 ('Lgonzales', 'Luz Elena González Martínez', '7iNxm'),
 ('martin', 'Martin Vivanco', 'Martin#123'),
+('MartinBecario', 'MartinBecario', '$2y$10$5VqYhjGZMHBSGT/fdWKLSOEQDoL0siG8B211KLUub/maxMxEnk2pC'),
 ('Mcruz', 'María del Carmen de la Cruz Martínez', '7iNxm'),
 ('Mguadaluoe', 'María Guadalupe Ramírez Castro', 'hS6#8'),
 ('Mguitierrez', 'Manuel Gutiérrez Pérez', 'hS6#8'),
@@ -1883,6 +1893,7 @@ INSERT INTO `usuario_rol` (`usuario`, `idRol`, `fecha`) VALUES
 ('Jperez', 4, '0000-00-00 00:00:00'),
 ('Lgonzales', 5, '0000-00-00 00:00:00'),
 ('martin', 1, '2018-03-16 00:00:00'),
+('MartinBecario', 3, '2018-04-11 00:00:00'),
 ('Mcruz', 4, '0000-00-00 00:00:00'),
 ('Mguadaluoe', 3, '0000-00-00 00:00:00'),
 ('Mguitierrez', 4, '0000-00-00 00:00:00'),
@@ -2139,7 +2150,7 @@ ALTER TABLE `visitante_gradoestudios`
 -- AUTO_INCREMENT de la tabla `autor`
 --
 ALTER TABLE `autor`
-  MODIFY `idAutor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `idAutor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -2157,7 +2168,7 @@ ALTER TABLE `credencial`
 -- AUTO_INCREMENT de la tabla `ejemplar`
 --
 ALTER TABLE `ejemplar`
-  MODIFY `idEjemplar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `idEjemplar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de la tabla `estado`
@@ -2199,7 +2210,7 @@ ALTER TABLE `sancion`
 -- AUTO_INCREMENT de la tabla `titulo`
 --
 ALTER TABLE `titulo`
-  MODIFY `idTitulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `idTitulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `visitante`

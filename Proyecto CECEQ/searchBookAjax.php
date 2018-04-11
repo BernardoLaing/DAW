@@ -1,5 +1,5 @@
 <?php
-require_once "utils.php";
+require_once('model/catalog_books_utils.php');
 $respuesta = 'venga '.$_GET["name"] .' '. $_GET["apellidop"] .' '. $_GET["title"].' '. $_GET["pagina"].' '. $_GET["categoria"] ;
 
 //$result=buscarGeneral($_GET["name"] , $_GET["apellidop"], $_GET["apellidom"], $_GET["title"]);

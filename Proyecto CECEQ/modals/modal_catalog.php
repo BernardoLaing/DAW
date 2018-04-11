@@ -1,9 +1,10 @@
 <div class="modal fade bd-example-modal-lg" id="modalCatalog" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="titleModalCatalog">Info...</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <div class="modal-header row">
+        <h2 class="modal-title col-md-6" id="titleModalCatalog">Info...</h2>
+          <img class="imagCodigoBarras" id="imgCBBook" src='https://barcode.tec-it.com/barcode.ashx?data=5555&code=Code39FullASCII&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Mm&quiet=0' alt='Barcode Generator TEC-IT'/>
+        <button type="button" class="close col-md-2" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -235,19 +236,26 @@
         <?php      
           if(true)//$_SESSION["user"])
           {
-            echo '<p id="infoAdicional">info adicional</p>';
+            echo '<b id="infoAdicional">info adicional</b>';
           }
           ?> 
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>Código de barras generado con el programa de código de barras de TEC-IT <a href='https://www.tec-it.com' title='Barcode Software by TEC-IT'>Barcode Software</a></p>
+            </div>
+          </div>
      
-      <div class="modal-footer">
+      <div class="modal-footer row">
           <?php      
           if(true)//$_SESSION["user"])
           {
-            echo '<button type="button" class="btn btn-primary" id="saveChangesBook">Save changes</button>';
+            echo '<button type="button" class="btn btn-danger col-md-3" id="delateBook">Eliminar ejemplar</button>';
+            echo '<button type="button" class="btn btn-success col-md-3" id="saveChangesBook">Guardar cambios</button>';
+            echo '<button type="button" class="btn btn-secondary col-md-3" id="editBook">Editar ejemplar</button>';
           }
           ?>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-secondary col-md-2" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
