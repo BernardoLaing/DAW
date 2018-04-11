@@ -238,3 +238,9 @@ body
     font-family: 'Libre Barcode 39 Extended', cursive;
     font-size: 30pt;
 }
+.imagCodigoBarras
+{
+    padding: 10px 10px 10px 10px;
+    height: 100px;
+    width: 100px;
+}

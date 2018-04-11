@@ -1,5 +1,5 @@
 <?php
-require_once "utils.php";
+require_once('model/catalog_books_utils.php');
 
 $result=buscarGeneralId($_GET["id"]);
 

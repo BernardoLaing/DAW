@@ -33,7 +33,7 @@ function funcShowInfo( idEjemplar){
         $('#book_apaterno2_see').val(apellidos[1]);
         $('#book_author3_see').val(autores[2]);
         $('#book_apaterno3_see').val(apellidos[2]);
-        
+        $('#imgCBBook').attr('src', 'https://barcode.tec-it.com/barcode.ashx?data='+idEjemplar+'&code=Code39FullASCII&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Mm&quiet=0');
         $('#book_clave_see').val(datos['libro'].clave);
         $('#book_adquisition_see').val(datos['libro'].adquisicion);
         $('#book_class_see').val(datos['libro'].numC);  
