@@ -231,6 +231,77 @@ function obtenerUsuarios(){
     return $result;
 }
 
+function obtenerPrestamos($año){
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+	SELECT 'Enero', COUNT(e.idEjemplar) as 'Prestamos'
+    from ejemplar_credencial e
+    WHERE e.fechaPrestamo like ?
+    AND e.fechaPrestamo like '%-01-%'
+    	UNION
+    SELECT 'Febrero', COUNT(e.idEjemplar) as 'Prestamos'
+    from ejemplar_credencial e
+    WHERE e.fechaPrestamo like ?
+    AND e.fechaPrestamo like '%-02-%'
+	    UNION
+    SELECT 'Marzo', COUNT(e.idEjemplar) as 'Prestamos'
+    from ejemplar_credencial e
+    WHERE e.fechaPrestamo like ?
+    AND e.fechaPrestamo like '%-03-%'
+	    UNION 
+    SELECT 'Abril', COUNT(e.idEjemplar) as 'Prestamos'
+    from ejemplar_credencial e
+    WHERE e.fechaPrestamo like ?
+    AND e.fechaPrestamo like '%-04-%'
+    	UNION
+    	SELECT 'Mayo', COUNT(e.idEjemplar) as 'Prestamos'
+    from ejemplar_credencial e
+    WHERE e.fechaPrestamo like ?
+    AND e.fechaPrestamo like '%-05-%'
+    	UNION
+    SELECT 'Junio', COUNT(e.idEjemplar) as 'Prestamos'
+    from ejemplar_credencial e
+    WHERE e.fechaPrestamo like ?
+    AND e.fechaPrestamo like '%-06-%'
+	    UNION
+    SELECT 'Julio', COUNT(e.idEjemplar) as 'Prestamos'
+    from ejemplar_credencial e
+    WHERE e.fechaPrestamo like ?
+    AND e.fechaPrestamo like '%-07-%'
+	    UNION 
+    SELECT 'Agosto', COUNT(e.idEjemplar) as 'Prestamos'
+    from ejemplar_credencial e
+    WHERE e.fechaPrestamo like ?
+    AND e.fechaPrestamo like '%-08-%'
+        	UNION
+   	SELECT 'Septiembre', COUNT(e.idEjemplar) as 'Prestamos'
+    from ejemplar_credencial e
+    WHERE e.fechaPrestamo like ?
+    AND e.fechaPrestamo like '%-09-%'
+    	UNION
+    SELECT 'Octubre', COUNT(e.idEjemplar) as 'Prestamos'
+    from ejemplar_credencial e
+    WHERE e.fechaPrestamo like ?
+    AND e.fechaPrestamo like '%-10-%'
+	    UNION
+    SELECT 'Noviembre', COUNT(e.idEjemplar) as 'Prestamos'
+    from ejemplar_credencial e
+    WHERE e.fechaPrestamo like ?
+    AND e.fechaPrestamo like '%-11-%'
+	    UNION 
+    SELECT 'Diciembre', COUNT(e.idEjemplar) as 'Prestamos'
+    from ejemplar_credencial e
+    WHERE e.fechaPrestamo like ?
+    AND e.fechaPrestamo like '%-12-%'
+    ");
+    $AÑO=$año."%";
+    $statement->bind_param("ssssssssssss", $AÑO, $AÑO, $AÑO, $AÑO, $AÑO, $AÑO, $AÑO, $AÑO, $AÑO, $AÑO, $AÑO, $AÑO);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+
 function buildArray($result){
     if(mysqli_num_rows($result)>0){
         $data = array();
@@ -276,10 +347,12 @@ switch ($metodo) {
             $data =  buildarray(obtenerUsuarios());
             echo json_encode($data);
         break;
+        case 'obtenerPrestamos':
+            $data =  buildarray(obtenerPrestamos($param));
+            echo json_encode($data);
+        break;
         case 'print':
-        printStat($param);
-//        $data =  buildarray(obtenerUsuarios());
-//        echo json_encode($data);
+            printStat($param);
          break;
     
     default:

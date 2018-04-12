@@ -241,6 +241,11 @@ function obtenerEntradasGenero(anio){ //Entradas por genero
         datasets : [
           {
             label: 'G\xE9nero',
+            backgroundColor: '#4eb7d2', //AZUL 
+            borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
+            hoverBackgroundColor: '#30a0bd', //AZUL OSCURO
+            hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
+            /*
             backgroundColor : [
               "#fdf9e1", //amarillo
               "#e5ddea", //morado
@@ -253,6 +258,7 @@ function obtenerEntradasGenero(anio){ //Entradas por genero
               "#c7e3e0", //verde
             ],
             hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
+            */
             data: score
           }
         ]
@@ -340,7 +346,7 @@ $(document).ready(function(){
 			};
 
 			var chart = new Chart(divUsuarios, {
-				type : "bar",
+				type : "horizontalBar",
 				data : chartdata,
 				options : options
 			});
@@ -353,6 +359,68 @@ $(document).ready(function(){
   });
 });
 
+function obtenerPrestamos(anio){ //Entradas mensuales
+  $.ajax({
+    url: "charts.php",
+    data: {method: 'obtenerPrestamos', anioSel: anio},
+    method: "GET",
+    success: function(data) {
+      //console.log(data);
+      var estadoLabels = [];
+      var score = [];
+
+      //alert(data[0]);
+      for(var i in data) { //Ingreso las cantidades y estados a su respectivo arreglo
+      // console.log(data[i].nombre);
+       estadoLabels.push(data[i].Enero);
+      // console.log(data[i].Cantidad);
+        score.push(data[i].Prestamos);
+      }
+
+      var divVisitante= $("#prestamosChart");
+
+      var chartdata = {
+        labels: estadoLabels,
+        datasets : [
+          {
+            backgroundColor: '#4eb7d2', //AZUL 
+            borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
+            hoverBackgroundColor: '#30a0bd', //AZUL OSCURO
+            hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
+            data: score
+          }
+        ]
+      };
+      
+      var options = {
+				title : {
+					display : true,
+					position : "top",
+					text : "Pr\xE9stamos "+anio,
+					fontSize : 18,
+					fontColor : "#111"
+				},
+				legend : {
+					display : false,
+					position : "bottom"
+				}
+			};
+
+			var chart = new Chart(divVisitante, {
+				type : "bar",
+				data : chartdata,
+				options : options
+			});
+      
+    },
+    error: function(data) {
+      console.log(data);
+      console.log("error");
+    }
+  });
+}
+
+$(document).ready(obtenerPrestamos(anio));
 //////////////////////////////////////////////////// SELECTORES
 $("select").each(function(){
   $(this).change(function(){
@@ -360,6 +428,7 @@ $("select").each(function(){
    // console.log(anio);
     obtenerEntradas(anio);
     obtenerEntradasGenero(anio);
+    obtenerPrestamos(anio);
    console.log(obj);
     console.log(data);
   });
