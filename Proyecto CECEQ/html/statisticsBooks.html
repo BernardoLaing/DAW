@@ -11,28 +11,81 @@
             </div>
         </div>
     </div>
+<!--
 
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="table-tab" data-toggle="tab" href="#table" role="tab" aria-controls="table" aria-selected="false">Listado</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="reporte-tab" data-toggle="tab" href="#reporte" role="tab" aria-controls="reporte" aria-selected="false">Reporte</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <br />
+                <form class="form mx-auto" action="Controller/register.php" method="post">
+                    <div class="form-group col-sm-6">
+                        <label for="codigo">Código:</label>
+                        <input name="codigo" class="form-control" placeholder="4 8 15 16 2342">
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-primary">Registrar</button>
+                </form>
+                <br />
+            </div>
+            <div class="tab-pane fade show" id="table" role="tabpanel" aria-labelledby="table-tab">
+                <br />
+                <form class="form-inline mx-auto">
+                    <label for="estado">Estado:   </label>
+                    <select name="estado" class="form-control input" id="status">
+                        <option value="0" selected>CUALQUIER ESTADO</option>
+                        <option value="SUCCESS" >SUCCESS</option>
+                        <option value="SYSTEM FAILURE" >SYSTEM FAILURE</option>
+                    </select>
+                    <div class="ml-5">
+                        <b># de Registros:</b>
+                        <p id="numZombies" class="d-inline"><!--<?php echo mysqli_num_rows($zombiList); ?></p>
+                    </div>
+                </form>
+                <br />
+                <table class="table table-striped"  id="entry-table">
+                    
+                </table>
+            </div>
+            <div class="tab-pane fade" id="reporte" role="tabpanel" aria-labelledby="reporte-tab">
+                <?php foreach($reporte as $key => $value) { ?>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <b><?php echo $key; ?>: </b>
+                        <p class="d-inline"><?php echo $value; ?></p>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+      -->  
 
     <!--Nav Tab-->
     <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link active" href="estadisticas.php">Libros</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="statisticsVisitors.php">Visitantes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="statisticsPersonal.php">Personal</a>
-            </li>
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#libros" role="tab" aria-controls="libros" aria-selected="true">Libros</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="personal-tab" data-toggle="tab" href="#visitantes" role="tab" aria-controls="visitantes" aria-selected="false">Visitantes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="personal-tab" data-toggle="tab" href="#personal" role="tab" aria-controls="personal" aria-selected="false">Personal</a>
+        </li>
     </ul>
      <br>
-     <div class="col-sm-12 ">
-            <h1 class="text-center">Libros</h1>
-         </div>
-     <!--LIBROS-->
-     <div class="container  " id="libros">
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="libros" role="tabpanel" aria-labelledby="libros-tab">
+                <div class="container  " id="libros">
             <!--Graficas-->
-                <div class="col-md-8 offset-md-2 col-xs-12">
+                    <div class="col-md-8 offset-md-2 col-xs-12">
                         <div id="doughnut-chart-container" >
                             <canvas id="doughnutEstado"></canvas>
                             <br>
@@ -45,32 +98,89 @@
                         </div><hr>
 
                      <!--Sel año-->
-                            <div class="text-center">
-                                <form>
-                                    <div class="text-center">
-                                        <div class="">
-                                            <select class="form-control shadow" id="year" name="Year">
-                                                <option value="" disabled selected>-- A&ntildeo --</option>
-                                                <?php
+                        <div class="text-center">
+                            <form>
+                                <div class="text-center">
+                                    <div class="">
+                                        <select class="form-control shadow col-sm-12 col-md-4 mx-auto" id="year" name="Year">
+                                            <option value="" disabled selected>-- A&ntildeo --</option>
+                                            <?php
                                                 $firstYear = 2018;
                                                 for($year = $firstYear; $year <= date("Y"); $year++) {
                                                     echo "<option value='$year'> $year </option>";
                                                 }
-                                                ?>
-                                            </select>
-                                        </div>
+                                            ?>
+                                        </select>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
+                        </div>
          
                         <div id="chart-container">
-                                <div class="chart-container">
-                                    <canvas id="prestamosChart"></canvas>
-                                    <br>
-                                </div>
+                            <div class="chart-container">
+                                <canvas id="prestamosChart"></canvas>
+                                <br>
+                            </div>
                         </div>
+                    </div>
                 </div>
-         </div>
+            </div>
+            <div class="tab-pane fade show" id="visitantes" role="tabpanel" aria-labelledby="visitantes-tab">
+                <div class="col-md-8 offset-md-2 col-xs-12 ">
+                    <!--Sel año-->
+                    <div class="text-center">
+                        <form>
+                            <div class="text-center">
+                                <div class="">
+                                    <select class="form-control shadow col-sm-12 col-md-4 mx-auto" id="year" name="Year">
+                                        <option value="" disabled selected>-- A&ntildeo --</option>
+                                            <?php
+                                            $firstYear = 2018;
+                                            for($year = $firstYear; $year <= date("Y"); $year++) {
+                                                echo "<option value='$year'> $year </option>";
+                                            }
+                                            ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>         
+                    <div id="doughnut-chart-container" >
+                        <canvas id="visitanteGeneroChart"></canvas><br>
+                    </div><hr>
+
+                    <!--Sel año-->
+                    <div class="text-center">
+                        <form>
+                            <div class="text-center">
+                                <div class="">
+                                    <select class="form-control shadow col-sm-12 col-md-4 mx-auto" id="year" name="Year">
+                                        <option value="" disabled selected>-- A&ntildeo --</option>
+                                        <?php
+                                            $firstYear = 2018;
+                                            for($year = $firstYear; $year <= date("Y"); $year++) {
+                                                echo "<option value='$year'> $year </option>";
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="visitanteChart"></canvas><br>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="personal" role="tabpanel" aria-labelledby="personal-tab">
+                <div class="col-md-8 offset-md-2 col-xs-12 ">
+                    <div id="doughnut-chart-container" >
+                        <canvas id="doughnutUsuarios"></canvas>
+                        <br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
 
          <!--BOTONES-->
 <div class="row">
