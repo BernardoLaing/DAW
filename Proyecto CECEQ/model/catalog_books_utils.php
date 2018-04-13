@@ -218,4 +218,19 @@ function buscarSubcategorias($categoria)
     return $result;
 
 }
+function delateBook($categoria) 
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    select idCategoria, nombre
+    from categoria
+    where idCategoria between ? and (?+99)".($categoria==""?"or 1":"")."
+    ");
+    $statement->bind_param("ii", $categoria, $categoria);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+
+}
 ?>
