@@ -2,12 +2,43 @@ $(document).ready(funcionPrincipal);
 function funcionPrincipal()
 {
     saveChanges.click(funcSaveChanges);
+    delateBook.click(funcDelateBook);
+    editBook.click(funcEditBook);
 }
 function round(value) {
     return parseInt(value / 100) * 100;
 }
 function funcSaveChanges(){
     alert('guardando cambios');
+}
+function funcDelateBook(){
+    alert('eliminar ejemplar');
+}
+function funcEditBook(){
+    alert('Editar');
+    /*
+    $('#book_title_see');
+    $('#book_isbn_see');
+    $('#book_shelf_see');
+    $('#book_vol_see');
+    $('#book_edicion_see');
+    $('#book_yeare_see');
+    $('#book_editorial_see');
+    $('#book_year_see');
+    $('#book_colection_see');
+    $('#book_author_see');
+    $('#book_apaterno_see');
+    $('#book_author2_see');
+    $('#book_apaterno2_see');
+    $('#book_author3_see');
+    $('#book_apaterno3_see');
+    $('#book_clave_see');
+    $('#book_adquisition_see');
+    $('#book_class_see');  
+    $('#book_materias_see');
+    $('#clasificacion');
+    $('#sclasificacion');*/
+
 }
 function funcShowInfo( idEjemplar){
     modal.modal('show');
@@ -51,3 +82,5 @@ var autores =[], apellidos=[];
 var modal = $('#modalCatalog');
 var datos;
 var saveChanges = $('#saveChangesBook');
+var delateBook = $('#delateBook');
+var editBook = $('#editBook');
