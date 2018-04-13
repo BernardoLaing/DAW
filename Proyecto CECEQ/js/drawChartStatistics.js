@@ -19,10 +19,10 @@ $(document).ready(main);
 var anio = (new Date()).getFullYear();
 var g1;
 ///////// LIBROS
-$(document).ready(function(){
+$(document).ready(function(){ //Estado actual de ejemplares
   $.ajax({
     url: "charts.php",
-    data: {method: 'obtenerEstados', anioSel: null},
+    data: {method:'obtenerEstados', anioSel: null},
     method: "GET",
     success: function(data) {
       //console.log(data);
@@ -37,7 +37,7 @@ $(document).ready(function(){
        //console.log(data[i].Cantidad);
         score.push(data[i].Cantidad);
       }
-      
+
       var chartdata = {
         labels: estadoLabels,
         datasets : [
@@ -84,7 +84,7 @@ $(document).ready(function(){
 				type: 'doughnut',
         data: chartdata,
         options : options
-      }); 
+      });
     },
     error: function(data) {
      // console.log(data);
@@ -118,7 +118,7 @@ $(document).ready(function(){
         labels: estadoLabels,
         datasets : [
           {
-            backgroundColor: '#4eb7d2', //AZUL 
+            backgroundColor: '#4eb7d2', //AZUL
             borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
             hoverBackgroundColor: '#30a0bd', //AZUL OSCURO
             hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
@@ -126,7 +126,7 @@ $(document).ready(function(){
           }
         ]
       };
-      
+
       var options = {
 				title : {
 					display : true,
@@ -146,7 +146,7 @@ $(document).ready(function(){
 				data : chartdata,
 				options : options
 			});
-      
+
     },
     error: function(data) {
       //console.log(data);
@@ -180,7 +180,7 @@ function obtenerEntradas(anio){ //Entradas mensuales
         labels: estadoLabels,
         datasets : [
           {
-            backgroundColor: '#4eb7d2', //AZUL 
+            backgroundColor: '#4eb7d2', //AZUL
             borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
             hoverBackgroundColor: '#30a0bd', //AZUL OSCURO
             hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
@@ -188,7 +188,7 @@ function obtenerEntradas(anio){ //Entradas mensuales
           }
         ]
       };
-      
+
       var options = {
 				title : {
 					display : true,
@@ -208,7 +208,7 @@ function obtenerEntradas(anio){ //Entradas mensuales
 				data : chartdata,
 				options : options
 			});
-      
+
     },
     error: function(data) {
       //console.log(data);
@@ -235,13 +235,13 @@ function obtenerEntradasGenero(anio){ //Entradas por genero
        //console.log(data[i].Personas);
         score.push(data[i].Personas);
       }
-      
+
       var chartdata = {
         labels: estadoLabels,
         datasets : [
           {
             label: 'G\xE9nero',
-            backgroundColor: '#4eb7d2', //AZUL 
+            backgroundColor: '#4eb7d2', //AZUL
             borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
             hoverBackgroundColor: '#30a0bd', //AZUL OSCURO
             hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
@@ -284,7 +284,7 @@ function obtenerEntradasGenero(anio){ //Entradas por genero
 				type: 'bar',
         data: chartdata,
         options : options
-      }); 
+      });
     },
     error: function(data) {
       //console.log(data);
@@ -322,7 +322,7 @@ $(document).ready(function(){
         labels: estadoLabels,
         datasets : [
           {
-            backgroundColor: '#4eb7d2', //AZUL 
+            backgroundColor: '#4eb7d2', //AZUL
             borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
             hoverBackgroundColor: '#30a0bd', //AZUL OSCURO
             hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
@@ -330,7 +330,7 @@ $(document).ready(function(){
           }
         ]
       };
-      
+
       var options = {
 				title : {
 					display : true,
@@ -350,7 +350,7 @@ $(document).ready(function(){
 				data : chartdata,
 				options : options
 			});
-      
+
     },
     error: function(data) {
       //console.log(data);
@@ -383,7 +383,7 @@ function obtenerPrestamos(anio){ //Entradas mensuales
         labels: estadoLabels,
         datasets : [
           {
-            backgroundColor: '#4eb7d2', //AZUL 
+            backgroundColor: '#4eb7d2', //AZUL
             borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
             hoverBackgroundColor: '#30a0bd', //AZUL OSCURO
             hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
@@ -391,7 +391,7 @@ function obtenerPrestamos(anio){ //Entradas mensuales
           }
         ]
       };
-      
+
       var options = {
 				title : {
 					display : true,
@@ -411,7 +411,7 @@ function obtenerPrestamos(anio){ //Entradas mensuales
 				data : chartdata,
 				options : options
 			});
-      
+
     },
     error: function(data) {
       console.log(data);
@@ -422,18 +422,23 @@ function obtenerPrestamos(anio){ //Entradas mensuales
 
 $(document).ready(obtenerPrestamos(anio));
 //////////////////////////////////////////////////// SELECTORES
+//////////////Para filtrar estadisticas por año
 $("select").each(function(){
   $(this).change(function(){
-    anio = document.getElementById("year").value;
+    anioPrestamo = document.getElementById("yearPrestamo").value;
+    anioEntradasGenero = document.getElementById("yearGenero").value;
+    anioEntradas = document.getElementById("yearEntrada").value;
    // console.log(anio);
-    obtenerEntradas(anio);
-    obtenerEntradasGenero(anio);
-    obtenerPrestamos(anio);
+    obtenerEntradas(anioEntradas);
+    obtenerEntradasGenero(anioEntradasGenero);
+    obtenerPrestamos(anioPrestamo);
    console.log(obj);
     console.log(data);
   });
 });
 
+
+//////////////Para imprimir estadisticas
 download.addEventListener("click", function () {
   console.log("Enttro");
   g1t="";
@@ -457,4 +462,3 @@ for (let index = 0; index < g1.length; index++) {
   $("#download").attr("href", urlget);
 
 });
-

@@ -39,7 +39,7 @@ if(isset($_POST["submit"])){
         if(login($user, $password)){
             $_SESSION["user"] = $user;
             $_SESSION["password"] = $password;
-            //$_SESSION["permisos"] = getUserPermissions($user);
+            $_SESSION["permisos"] = getUserPermissions($user);
             header('Location: menu.php');
         }else{
             $_SESSION["error_msg"] = "Usuario o contraseña inválido";
