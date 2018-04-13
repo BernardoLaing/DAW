@@ -34,12 +34,12 @@ function funcBuscarLibro(){
     });
 }
 function funcVerificarPaginacion(){
-    if($('#respuestaLibros').html()==""){
+    if(($('#respuestaLibros').html()=="")&&(pagina!=paginacion)){
         alert("No hay más resultados");
         funcLibroAnterior();
     }
-    else{
-        //alert(pagina);
+    else if($('#respuestaLibros').html()==""){
+        alert("No hay resultados");
     }
 }
 function funcSubclasificaciones(){

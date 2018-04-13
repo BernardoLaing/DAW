@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once('utils.php');
+require_once('model/RBAC-utils.php');
 ?>
 <?php
 if(isset($_POST["submit"])){
@@ -22,12 +22,17 @@ if(isset($_POST["submit"])){
             
             if(registerUser($user, $name, $passwd, $rol)){
                 $_SESSION['error_msg'] = "";
+                $_SESSION['success_msg'] = "La cuenta fue registrada con éxito";
                 header('Location: cuentas.php');
             }else{
                 header('Location: accountCreate.php');
             }
             
         }
+    }else{
+        $_SESSION['error_type'] = "userConflict";
+        $_SESSION['error_msg'] = "No se llenaron todos los campos";
+        header('Location: accountCreate.php');
     }
 }else{
     echo "NOT SUBMIT";

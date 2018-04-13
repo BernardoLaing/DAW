@@ -1,4 +1,5 @@
 <?php //*********   De interfaz Lend_Return   *************
+require_once('utils.php');
  //Estable el valor de la variable sesión tipo.
  //Préstamo, Devolución, excedePrestamos, usuarioInexistente, libroInexistente, libroActualmentePrestado
 function setTipo($idCredencial, $idEjemplar, $boolPrestamo){

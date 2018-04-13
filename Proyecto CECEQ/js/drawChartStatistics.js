@@ -1,6 +1,5 @@
 
 ////////////////////////////////////////////////////// BOTONES PARA VISUALIZAR Y OCULTAR REPORTES
-
 function main() {
 $('.graficas').hide();
 
@@ -14,20 +13,20 @@ $('.graficas-button').on('click', function() {
   }
   });
 }
-
 $(document).ready(main);
 
 //////////////////////////////////////////////////// REPORTES
-
+var anio = (new Date()).getFullYear();
+var g1;
 ///////// LIBROS
-
 $(document).ready(function(){
   $.ajax({
-    url: "charts/consultaEstadistica1Libro.php",
-   // data: {method: 'obtenerEstadosCall'},
+    url: "charts.php",
+    data: {method: 'obtenerEstados', anioSel: null},
     method: "GET",
     success: function(data) {
       //console.log(data);
+      g1=data;
       var estadoLabels = [];
       var score = [];
 
@@ -88,7 +87,7 @@ $(document).ready(function(){
       }); 
     },
     error: function(data) {
-      //console.log(data);
+     // console.log(data);
       console.log("error");
     }
   });
@@ -96,8 +95,8 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $.ajax({
-    url: "charts/consultaEstadistica2Libro.php",
-    //data: {function2call: 'obtenerCategoriasCall', otherkey:otherdata},
+    url: "charts.php",
+    data: {method: 'obtenerCategorias', anioSel: null},
     method: "GET",
     success: function(data) {
     //  console.log(data);
@@ -108,9 +107,9 @@ $(document).ready(function(){
       for(var i in data) { //Ingreso las cantidades y estados a su respectivo arreglo
       // console.log(data[i].nombre);
        estadoLabels.push(data[i].Generalidades);
-      console.log(data[i].Generalidades);
+      //console.log(data[i].Generalidades);
         score.push(data[i].Cantidad);
-        console.log(data[i].Cantidad);
+       // console.log(data[i].Cantidad);
       }
 
       var divHistogramaCategoria= $("#histogramaCategoria");
@@ -132,7 +131,7 @@ $(document).ready(function(){
 				title : {
 					display : true,
 					position : "top",
-					text : "Clasificaci\xF3n por ejemplar",
+					text : "Clasificaci\xF3n actual por ejemplar",
 					fontSize : 18,
 					fontColor : "#111"
 				},
@@ -157,20 +156,20 @@ $(document).ready(function(){
 });
 
 ///////// VISITANTES
-$(document).ready(function(){
+function obtenerEntradas(anio){ //Entradas mensuales
   $.ajax({
-    url: "charts/consultaEntrada.php",
-    //data: {function2call: 'obtenerCategoriasCall', otherkey:otherdata},
+    url: "charts.php",
+    data: {method: 'obtenerEntradas', anioSel: anio},
     method: "GET",
     success: function(data) {
-    //  console.log(data);
+      //console.log(data);
       var estadoLabels = [];
       var score = [];
 
       //alert(data[0]);
       for(var i in data) { //Ingreso las cantidades y estados a su respectivo arreglo
       // console.log(data[i].nombre);
-       estadoLabels.push("Entradas");
+       estadoLabels.push(data[i].Enero);
       // console.log(data[i].Cantidad);
         score.push(data[i].Entradas);
       }
@@ -194,7 +193,7 @@ $(document).ready(function(){
 				title : {
 					display : true,
 					position : "top",
-					text : "Entradas",
+					text : "Entradas "+anio,
 					fontSize : 18,
 					fontColor : "#111"
 				},
@@ -216,13 +215,93 @@ $(document).ready(function(){
       console.log("error");
     }
   });
-});
+}
+
+function obtenerEntradasGenero(anio){ //Entradas por genero
+  //console.log("CAMBIO");
+  $.ajax({
+    url: "charts.php",
+   data: {method: 'obtenerEntradasGenero', anioSel: anio},
+    method: "GET",
+    success: function(data) {
+     // console.log(data);
+      var estadoLabels = [];
+      var score = [];
+
+      //alert(data[0]);
+      for(var i in data) { //Ingreso las cantidades y estados a su respectivo arreglo
+       //console.log(data[i].genero);
+       estadoLabels.push(data[i].genero);
+       //console.log(data[i].Personas);
+        score.push(data[i].Personas);
+      }
+      
+      var chartdata = {
+        labels: estadoLabels,
+        datasets : [
+          {
+            label: 'G\xE9nero',
+            backgroundColor: '#4eb7d2', //AZUL 
+            borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
+            hoverBackgroundColor: '#30a0bd', //AZUL OSCURO
+            hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
+            /*
+            backgroundColor : [
+              "#fdf9e1", //amarillo
+              "#e5ddea", //morado
+              "#e9f4f3", //verde
+            ],
+            borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
+            hoverBackgroundColor:  [
+              "#faefb1", //amarillo
+              "#d9cde0", //morado
+              "#c7e3e0", //verde
+            ],
+            hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
+            */
+            data: score
+          }
+        ]
+      };
+
+      var options = {
+				title : {
+					display : true,
+					position : "top",
+					text : "Entradas por g\xE9nero "+anio,
+					fontSize : 20,
+					fontColor : "#111"
+				},
+				legend : {
+					display : false,
+					position : "bottom"
+				}
+			};
+
+      var divDoughnutGenero = $("#visitanteGeneroChart");
+
+			var doughnutGraph = new Chart(divDoughnutGenero, {
+				type: 'bar',
+        data: chartdata,
+        options : options
+      }); 
+    },
+    error: function(data) {
+      //console.log(data);
+      console.log("error");
+    }
+  });
+}
+
+$(document).ready(obtenerEntradas(anio));
+
+$(document).ready(obtenerEntradasGenero(anio));
 
 ///////// PERSONAL
 $(document).ready(function(){
   $.ajax({
-    url: "charts/consultaUsuario.php",
-    //data: {function2call: 'obtenerCategoriasCall', otherkey:otherdata},
+    url: "charts.php",
+    data: {method: 'obtenerUsuario', anioSel: null},
     method: "GET",
     success: function(data) {
     //  console.log(data);
@@ -256,7 +335,7 @@ $(document).ready(function(){
 				title : {
 					display : true,
 					position : "top",
-					text : "Usuarios",
+					text : "Usuarios actualmente existentes",
 					fontSize : 18,
 					fontColor : "#111"
 				},
@@ -267,7 +346,7 @@ $(document).ready(function(){
 			};
 
 			var chart = new Chart(divUsuarios, {
-				type : "bar",
+				type : "horizontalBar",
 				data : chartdata,
 				options : options
 			});
@@ -279,3 +358,103 @@ $(document).ready(function(){
     }
   });
 });
+
+function obtenerPrestamos(anio){ //Entradas mensuales
+  $.ajax({
+    url: "charts.php",
+    data: {method: 'obtenerPrestamos', anioSel: anio},
+    method: "GET",
+    success: function(data) {
+      //console.log(data);
+      var estadoLabels = [];
+      var score = [];
+
+      //alert(data[0]);
+      for(var i in data) { //Ingreso las cantidades y estados a su respectivo arreglo
+      // console.log(data[i].nombre);
+       estadoLabels.push(data[i].Enero);
+      // console.log(data[i].Cantidad);
+        score.push(data[i].Prestamos);
+      }
+
+      var divVisitante= $("#prestamosChart");
+
+      var chartdata = {
+        labels: estadoLabels,
+        datasets : [
+          {
+            backgroundColor: '#4eb7d2', //AZUL 
+            borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
+            hoverBackgroundColor: '#30a0bd', //AZUL OSCURO
+            hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
+            data: score
+          }
+        ]
+      };
+      
+      var options = {
+				title : {
+					display : true,
+					position : "top",
+					text : "Pr\xE9stamos "+anio,
+					fontSize : 18,
+					fontColor : "#111"
+				},
+				legend : {
+					display : false,
+					position : "bottom"
+				}
+			};
+
+			var chart = new Chart(divVisitante, {
+				type : "bar",
+				data : chartdata,
+				options : options
+			});
+      
+    },
+    error: function(data) {
+      console.log(data);
+      console.log("error");
+    }
+  });
+}
+
+$(document).ready(obtenerPrestamos(anio));
+//////////////////////////////////////////////////// SELECTORES
+$("select").each(function(){
+  $(this).change(function(){
+    anio = document.getElementById("year").value;
+   // console.log(anio);
+    obtenerEntradas(anio);
+    obtenerEntradasGenero(anio);
+    obtenerPrestamos(anio);
+   console.log(obj);
+    console.log(data);
+  });
+});
+
+download.addEventListener("click", function () {
+  console.log("Enttro");
+  g1t="";
+for (let index = 0; index < g1.length; index++) {
+  g1t = g1t + JSON.stringify(g1[index]['nombre']) + ' \t ';
+}
+g11 = g11 + ' \n ';
+for (let index = 0; index < g1.length; index++) {
+  g11 = g11 + JSON.stringify(g1[index]['Cantidad']) + ' \t ';
+}
+
+  //g11= JSON.stringify(g1);
+  //var obj = JSON.parse(g1);
+  console.log(g11);
+//  return;
+  //console.log(g1[0]['nombre']);
+  //var urlget = "controller/statistics_print.php?ninos="  + obj['ninos'] + "&jovenes=" + obj['jovenes'] + "&adultos=" + obj['adultos'] + "&credenciales=" + obj['credenciales'] + "&libros=" + obj['libros']  + "&year=" + anio;
+  var urlget = "controller/statistics_print.php?ninos="  + g11 + "&year=" + anio;
+  //console.log(urlget);
+  console.log("Enttro");
+  $("#download").attr("href", urlget);
+
+});
+

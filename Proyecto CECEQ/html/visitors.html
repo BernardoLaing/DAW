@@ -3,6 +3,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="text-center">
+                <br>
                 <div class="display-4">Búsqueda de visitantes</div>
                 <br>
                 <span class="warning cnullalert">Debes llenar todos los campos</span>
@@ -34,7 +35,7 @@
 
             <div class='col-sm-4'>
                 <div class='form-group'>
-                    <label for="user_paternal">Apellido P:</label>
+                    <label for="user_paternal">Apellido Paterno:</label>
                     <div class="col-md-12">
                         <input  class="form-control cvalidate cname" id="user_paternal" name="user[paternal]" size="30" type="text" placeholder="Cuesta"/>
                     </div>
@@ -43,7 +44,7 @@
 
             <div class='col-sm-4'>
                 <div class='form-group'>
-                    <label for="user_maternal">Apellido M:</label>
+                    <label for="user_maternal">Apellido Materno:</label>
                     <div class="col-md-12">
                         <input class="form-control cvalidate cname" id="user_maternal" name="user[maternal]" size="30" type="text" placeholder="Córdova"/>
                     </div>
@@ -147,10 +148,10 @@
 
                         <div class='form-group'>
                             <label for="user_sanctionTime">Fecha de fin:</label>
-                            <input required class="form-control cvalidate cdate" id="user_sanctionTime" name="user[sanctionTime]" type="date"/>
+                            <input required class="form-control cvalidate cdate" id="user_sanctionTime" name="user[sanctionTime]" type="date" min="<?php echo date('Y-m-d'); ?>"/>
                         </div>
                         <div class='form-group'>
-                            <label for="user_sanctionDescription">Descripcion:</label>
+                            <label for="user_sanctionDescription">Descripción:</label>
                             <input required class="form-control" id="user_sanctionDescription" name="user[sanctionDescription]" type="text" placeholder="Maltrató el mobiliario de la biblioteca"/>
                         </div>
 
