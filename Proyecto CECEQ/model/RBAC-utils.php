@@ -484,55 +484,58 @@ function deleteRol($idRol){
 function updateRol($idRol, $name, $description, $permissions){
     $db = connect();
     if ($db != NULL) {
-            $db->autocommit(FALSE);
-            $db->begin_transaction();
-            // insert command specification 
-            $query='UPDATE rol SET nombre = ?, descripcion = ? WHERE idRol = ?';
-            // Preparing the statement 
-            if (!($stmt = $db->prepare($query))) {
-                die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
-            }
-            // Binding statement params 
-            if (!$stmt->bind_param("ssi", $name, $description, $idRol)) {
-                die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
-            }
-             // Executing the statement
-             if (!$stmt->execute()) {
-                die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
-              } 
+        $db->autocommit(FALSE);
+        $db->begin_transaction();
+        // insert command specification 
+        $query='UPDATE rol SET nombre = ?, descripcion = ? WHERE idRol = ?';
+        // Preparing the statement 
+        if (!($stmt = $db->prepare($query))) {
+            die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
+        }
+        // Binding statement params 
+        if (!$stmt->bind_param("ssi", $name, $description, $idRol)) {
+            die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
+        }
+        // Executing the statement
+        if (!$stmt->execute()) {
+            die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
+        } 
             
-            $query="DELETE FROM rol_operacion WHERE idRol = ?";
-            if (!($stmt = $db->prepare($query))) {
-                die("Preparation failed: (" . $db->errno . ") " . $db->error);
-            }
+        $query="DELETE FROM rol_operacion WHERE idRol = ?";
+        if (!($stmt = $db->prepare($query))) {
+            die("Preparation failed: (" . $db->errno . ") " . $db->error);
+        }
+        // Binding statement params 
+        if (!$stmt->bind_param("i", $idRol)) {
+            die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
+        }
+        // Executing the statement
+        if (!$stmt->execute()) {
+            echo "FAIL EXECUTE";
+            die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
+        } 
+            
+        $query='INSERT INTO rol_operacion (idRol, idOperacion, fecha) VALUES (?,?,CURDATE()) ';
+        // Preparing the statement 
+        if (!($stmt = $db->prepare($query))) {
+            die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
+        }
+
+        foreach($permissions as $idOperacion){
             // Binding statement params 
-            if (!$stmt->bind_param("i", $idRol)) {
+            if (!$stmt->bind_param("ii", $idRol, $idOperacion)) {
                 die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
             }
-            // Executing the statement
             if (!$stmt->execute()) {
-                echo "FAIL EXECUTE";
                 die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
             } 
-            
-            $query='INSERT INTO rol_operacion (idRol, idOperacion, fecha) VALUES (?,?,CURDATE()) ';
-            // Preparing the statement 
-            if (!($stmt = $db->prepare($query))) {
-                die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
-            }
+        }
+        $db->commit();
+        $db->autocommit(TRUE);
+           
+        disconnect($db);
 
-            foreach($permissions as $idOperacion){
-                // Binding statement params 
-                if (!$stmt->bind_param("ii", $idRol, $idOperacion)) {
-                    die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error); 
-                }
-                if (!$stmt->execute()) {
-                    die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
-                } 
-            }
-            disconnect($db);
-
-            return true;
+        return true;
     } 
     return false;
 }
