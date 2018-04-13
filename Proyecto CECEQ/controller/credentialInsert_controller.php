@@ -81,12 +81,14 @@ $target_dir = "uploads/";
                         //Fiador
                         $info["nameF"], $info["paternalF"], $info["maternalF"], $info["emailF"], $info["phoneF"], $info["streetF"], $info["numberF"], $info["neighborhoodF"], $info["postalCodeF"], $info["workNameF"], $info["workPhoneF"], $info["workStreetF"], $info["workNumberF"], $info["workNeighborhoodF"], $info["workPostalCodeF"], $info["schoolingF"]
                     )){
-                    $_SESSION['success_msg'] = "La credencial fue registrada con éxito";
+                    $_SESSION['credential_msg'] = 1;
+                    $_SESSION['msg'] = "La credencial fue registrada con éxito";
                 }
             }
         }
     }else{
-        exit("no entro");
+        $_SESSION['credential_msg'] = 1;
+        $_SESSION['msg'] = "La credencial no pudo ser registrada";
     }
 
     header("Location: ../credential.php");
