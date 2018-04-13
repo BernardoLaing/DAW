@@ -65,6 +65,16 @@ a.edit{
     cursor: pointer;
 }
 
+.option-btn2{
+    display: inline-block;
+    padding: 5%;
+    min-width: 100%;
+    min-height: 225px;
+    max-width: 95%;
+    transition: background-color, 1s;
+    cursor: pointer;
+}
+
 .option-link{
     position: absolute;
     top: 0;
@@ -77,13 +87,28 @@ a.edit{
     background-color: rgb(220, 220, 220);
 }
 
+.option-btn2:hover{
+    background-color: #4eb7d2; 
+}
+
+
 .option-btn img{
+    width: 75%;
+}
+
+.option-btn2 img{
     width: 75%;
 }
 
 .shadow{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.shadow2{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #30a0bd;
+}
+
 
 h5{
     line-height: 38px;
