@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once('utils.php');
+require_once('model/RBAC-utils.php');
 ?>
 <?php
 if(isset($_POST["submit"])){
@@ -13,7 +13,11 @@ if(isset($_POST["submit"])){
           strlen($description) <= 50 &&
           strlen($name) > 0 &&
           strlen($name) <= 50){
-            
+            if(count($permissions === 0)){
+                $_SESSION['error_type'] = "rolConflict";
+                $_SESSION['error_msg'] = "No agregaste permisos al rol";
+                header('Location: rolsCreate.php');
+            }
             if(createRol($name, $description, $permissions)){
                 header('Location: rols.php');
             }else{

@@ -1,4 +1,6 @@
 <?php
+$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+require_once("$root/JAMBE/Proyecto CECEQ/utils.php");
 // Usuarios
 function getUserRoles(){
     $db = connect();
@@ -241,9 +243,11 @@ function deleteUser($user){
              echo "FAIL EXECUTE";
              die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
          } 
-        
+        $_SESSION['deleted_msg'] = "La cuenta fue eliminada con éxito";
         disconnect($db);
+        return true;
     }
+    return false;
 }
 
 function searchUser($user, $name, $idRol){
@@ -356,12 +360,6 @@ function createRol($name, $description, $permissions){
             disconnect($db);
             $_SESSION['error_type'] = "rolConflict";
             $_SESSION['error_msg'] = "Ya existe un rol con ese nombre";
-            return false;
-        }
-        if(count($permissions === 0)){
-            disconnect($db);
-            $_SESSION['error_type'] = "rolConflict";
-            $_SESSION['error_msg'] = "No agregaste permisos al rol";
             return false;
         }
         
@@ -486,6 +484,8 @@ function deleteRol($idRol){
 function updateRol($idRol, $name, $description, $permissions){
     $db = connect();
     if ($db != NULL) {
+            $db->autocommit(FALSE);
+            $db->begin_transaction();
             // insert command specification 
             $query='UPDATE rol SET nombre = ?, descripcion = ? WHERE idRol = ?';
             // Preparing the statement 

@@ -1,6 +1,7 @@
 <?php 
     include("../regexps.php");
     include("../utils.php");
+   
     if(count($_POST)>0){
         if(!isset($_POST["user"]["gender"]) || !test($GENDER, $_POST["user"]["gender"])){
             $_POST["user"]["gender"] = null;
@@ -9,7 +10,6 @@
             $_POST["user"]["user_grade"] = null;
         }
     }
-
     
     if(count($_POST)>0
         && (($_POST["user"]["number"] == null) || test($NUMBER, $_POST["user"]["number"]))
@@ -39,10 +39,9 @@
                     $info["birthday"],
                     $info["user_grade"],
                     $info["gender"]);
-            }
+                   }
         }
     }
-    //displey za modal :v
     header("Location: ../entry.php");
-
+   
     ?>

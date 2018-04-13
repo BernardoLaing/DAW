@@ -102,7 +102,7 @@
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Titulo</th>
+                            <th scope="col">Título</th>
                             <th scope="col">Autor</th>
                             <th scope="col">Año</th>
                             <th scope="col">Estante</th>
@@ -144,14 +144,15 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-sm-4 text-right">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <a class="btn btn-secondary mx-auto" href="#">Agregar libros desde Excel</a>
-            <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
+                            <a class="btn btn-secondary mx-auto" href="#">Imprimir códigos de barras</a>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-sm-4 text-right">
                     <div class="form-group">
                         <div class="col-md-12">
@@ -160,7 +161,40 @@
                         </div>
                     </div>
                 </div>
+
+                
         </div>
+        
+        
+    </form>
+    <form method="post" id="csv_Form" action="controller/importcsv_controller.php" enctype="multipart/form-data">
+        <div class="row">
+                <div class="col-sm-4 offset-4">
+                    <div class="container shadow">
+                        <div class="row">
+                                <div class="col-sm-12">
+                                    <h5>Importar libros desde CSV</h5>
+                                </div>
+                            </div>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" name="csvFile"class="custom-file-input" id="inputGroupFile02" value="Seleccionar Archivo">
+                                <label class="custom-file-label" for="inputGroupFile02">Escoger archivo</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-4 text-right offset-4">
+                                <div class="input-group-append">
+                                        <input class="btn btn-success" type="submit" name="uploadCsv" value="Upload"/>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                </div>
+            </div>
+        </div>
+        <br><br>
     </form>
 </div>
 <br><br>

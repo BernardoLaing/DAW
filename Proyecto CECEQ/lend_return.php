@@ -3,7 +3,7 @@
 <?php include("partials/_top_bar.html");?>  <!--Es la etiqueta Nav-->
 <?php include("html/_lend_return.html"); ?> <!--Empieza en los scripts-->
 <?php include("partials/_footer.html"); ?> <!--Empieza en los scripts-->
-<?php include("utils.php"); ?> <!-- Utils, funciones -->
+<?php include("model/lendReturn-utils.php"); ?> <!-- Utils, funciones -->
 
 <?php
   $idCredencial = isset($_POST["user"]["credencial"]) && is_numeric($_POST["user"]["credencial"]);

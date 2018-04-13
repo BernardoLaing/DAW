@@ -1,6 +1,7 @@
 <br /><br />
 
 <div class="container mdiv shadow">
+
     <div class="mx-auto text-center"> <!-- mx-auto da un padding y border automatico-->
         <div class="display-3">Cuentas</div> <!--display son headdings mas grandes-->
     </div>
@@ -44,7 +45,6 @@
                     <th scope="col"> Usuario </th>
                     <th scope="col"> Rol </th>
                     <th scope="col"> </th>
-                    <th scope="col"> </th>
                 </tr>
             </thead>
             <?php if (mysqli_num_rows($userList) > 0){ while($row = mysqli_fetch_array($userList, MYSQLI_BOTH)) { ?>
@@ -53,7 +53,7 @@
                 <td style="width: 29%;"><?php echo $row[0]; ?></td>
                 <td style="width: 29%;"><?php echo $row[2]; ?></td>
                 <td style="width: 6.5%;"><a href="accountsEdit.php?user=<?php echo $row[0] ?>"><i class="material-icons edit">mode_edit</i></a></td>
-                <td style="width: 6.5%;"><a href="deleteAccount.php?user=<?php echo $row[0] ?>"><i class="material-icons delete">delete</i></a></td>
+                <!--<td style="width: 6.5%;"><a data-toggle="modal" data-target="#deleteModal"><i class="material-icons delete">delete</i></a></td>-->
             </tr>
             <?php $count++; ?>
             <?php }} ?>
@@ -74,6 +74,33 @@
 
 </div>
 <br /><br />
+
+
+<div class="modal fade" id="modalSuccess">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h3 class="modal-title"></h3>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+            <p><strong><?php echo $_SESSION["success_msg"]; ?> </strong></p>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <div class="row">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script>
 $(".input").each(function(){
     $(this).keyup(function(){
@@ -82,7 +109,7 @@ $(".input").each(function(){
             name : $("#name").val(),
             rol : $("#rol").val()
         },
-        function(data){
+        function(data){ console.log("PASO!");
             var obj = JSON.parse(data);
             var tableContent = '<thead><tr><th scope="col"> Nombre </th><th scope="col"> Usuario </th><th scope="col"> Rol </th><th scope="col"></th><th scope="col"></th></tr></thead>';
             $.each(obj, function(key, value){
@@ -98,5 +125,6 @@ $(".input").each(function(){
         });
     });
 });
+    
 
 </script>
