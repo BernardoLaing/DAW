@@ -15,7 +15,7 @@
         <entry file="file://$PROJECT_DIR$/js/visitors.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="362">
-              <caret line="67" column="3" lean-forward="true" selection-start-line="67" selection-start-column="3" selection-end-line="67" selection-end-column="3" />
+              <caret line="67" column="3" lean-forward="false" selection-start-line="67" selection-start-column="3" selection-end-line="67" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -25,44 +25,54 @@
         <entry file="file://$PROJECT_DIR$/js/validtest.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2992">
-              <caret line="200" column="23" lean-forward="true" selection-start-line="200" selection-start-column="23" selection-end-line="200" selection-end-column="23" />
+              <caret line="200" column="23" lean-forward="false" selection-start-line="200" selection-start-column="23" selection-end-line="200" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RBAC-utils.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RBAC-utils.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/RBAC-utils.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
               <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding>
-                <marker date="1523669855440" expanded="true" signature="187:347" ph="SELECT u.usu... usuario" />
-                <marker date="1523669855440" expanded="true" signature="646:831" ph="SELECT rO.id... usuario" />
-                <marker date="1523669855440" expanded="true" signature="1686:1887" ph="SELECT u.usu... usuario" />
-                <marker date="1523669855440" expanded="true" signature="2997:3051" ph="SELECT * FRO... rol" />
-                <marker date="1523669855440" expanded="true" signature="3214:3305" ph="SELECT usuar... usuario" />
-                <marker date="1523669855440" expanded="true" signature="4229:4292" ph="INSERT INTO usuario... " />
-                <marker date="1523669855440" expanded="true" signature="4899:4969" ph="INSERT INTO usuario_rol... " />
-                <marker date="1523669855440" expanded="true" signature="5707:5761" ph="SELECT * FRO... rol" />
-                <marker date="1523669855440" expanded="true" signature="5922:5983" ph="UPDATE usuario... " />
-                <marker date="1523669855440" expanded="true" signature="6613:6663" ph="UPDATE usuario_rol... " />
-                <marker date="1523669855440" expanded="true" signature="7463:7504" ph="DELETE FROM usuario_rol... " />
-                <marker date="1523669855440" expanded="true" signature="8053:8090" ph="DELETE FROM usuario... " />
-                <marker date="1523669855440" expanded="true" signature="8939:9180" ph="SELECT u.usu... usuario" />
-                <marker date="1523669855440" expanded="true" signature="10861:10951" ph="SELECT idRol... rol" />
-                <marker date="1523669855440" expanded="true" signature="11946:12015" ph="SELECT nombr... rol" />
-                <marker date="1523669855440" expanded="true" signature="12853:12904" ph="INSERT INTO rol... " />
-                <marker date="1523669855440" expanded="true" signature="13457:13529" ph="SELECT idRol... rol" />
-                <marker date="1523669855440" expanded="true" signature="14222:14298" ph="INSERT INTO rol_operacion... " />
-                <marker date="1523669855440" expanded="true" signature="15048:15087" ph="DELETE FROM usuario_rol... " />
-                <marker date="1523669855440" expanded="true" signature="15667:15708" ph="DELETE FROM rol_operacion... " />
-                <marker date="1523669855440" expanded="true" signature="16280:16311" ph="DELETE FROM rol... " />
-                <marker date="1523669855440" expanded="true" signature="17272:17330" ph="UPDATE rol... " />
-                <marker date="1523669855440" expanded="true" signature="17951:17992" ph="DELETE FROM rol_operacion... " />
-                <marker date="1523669855440" expanded="true" signature="18581:18657" ph="INSERT INTO rol_operacion... " />
-                <marker date="1523669855440" expanded="true" signature="19474:19631" ph="SELECT nombr... rol_operacion" />
+                <marker date="1523669928483" expanded="true" signature="187:347" ph="SELECT u.usu... usuario" />
+                <marker date="1523669928483" expanded="true" signature="646:831" ph="SELECT rO.id... usuario" />
+                <marker date="1523669928483" expanded="true" signature="1686:1887" ph="SELECT u.usu... usuario" />
+                <marker date="1523669928483" expanded="true" signature="2997:3051" ph="SELECT * FRO... rol" />
+                <marker date="1523669928483" expanded="true" signature="3214:3305" ph="SELECT usuar... usuario" />
+                <marker date="1523669928483" expanded="true" signature="4229:4292" ph="INSERT INTO usuario... " />
+                <marker date="1523669928483" expanded="true" signature="4899:4969" ph="INSERT INTO usuario_rol... " />
+                <marker date="1523669928483" expanded="true" signature="5707:5761" ph="SELECT * FRO... rol" />
+                <marker date="1523669928483" expanded="true" signature="5922:5983" ph="UPDATE usuario... " />
+                <marker date="1523669928483" expanded="true" signature="6613:6663" ph="UPDATE usuario_rol... " />
+                <marker date="1523669928483" expanded="true" signature="7463:7504" ph="DELETE FROM usuario_rol... " />
+                <marker date="1523669928483" expanded="true" signature="8053:8090" ph="DELETE FROM usuario... " />
+                <marker date="1523669928483" expanded="true" signature="8939:9180" ph="SELECT u.usu... usuario" />
+                <marker date="1523669928483" expanded="true" signature="10861:10951" ph="SELECT idRol... rol" />
+                <marker date="1523669928483" expanded="true" signature="11946:12015" ph="SELECT nombr... rol" />
+                <marker date="1523669928483" expanded="true" signature="12853:12904" ph="INSERT INTO rol... " />
+                <marker date="1523669928483" expanded="true" signature="13457:13529" ph="SELECT idRol... rol" />
+                <marker date="1523669928483" expanded="true" signature="14222:14298" ph="INSERT INTO rol_operacion... " />
+                <marker date="1523669928483" expanded="true" signature="15048:15087" ph="DELETE FROM usuario_rol... " />
+                <marker date="1523669928483" expanded="true" signature="15667:15708" ph="DELETE FROM rol_operacion... " />
+                <marker date="1523669928483" expanded="true" signature="16280:16311" ph="DELETE FROM rol... " />
+                <marker date="1523669928483" expanded="true" signature="17256:17314" ph="UPDATE rol... " />
+                <marker date="1523669928483" expanded="true" signature="17879:17920" ph="DELETE FROM rol_operacion... " />
+                <marker date="1523669928483" expanded="true" signature="18457:18533" ph="INSERT INTO rol_operacion... " />
+                <marker date="1523669928483" expanded="true" signature="19356:19513" ph="SELECT nombr... rol_operacion" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dynamicqueries_viewInfo.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/dynamicqueries_viewInfo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="55" column="38" lean-forward="true" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -138,7 +148,6 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/js/dynamicqueries_statistics.js" />
         <option value="$PROJECT_DIR$/controller/entryUpdate_controller.php" />
-        <option value="$PROJECT_DIR$/js/dynamicqueries_viewInfo.js" />
         <option value="$PROJECT_DIR$/controller/sanctionsErase_controller.php" />
         <option value="$PROJECT_DIR$/js/validtest.js" />
         <option value="$PROJECT_DIR$/utils.php" />
@@ -156,6 +165,7 @@
         <option value="$PROJECT_DIR$/controller/entrySearch_controller.php" />
         <option value="$PROJECT_DIR$/js/visitors.js" />
         <option value="$PROJECT_DIR$/model/RBAC-utils.php" />
+        <option value="$PROJECT_DIR$/js/dynamicqueries_viewInfo.js" />
       </list>
     </option>
   </component>
@@ -289,12 +299,12 @@
       <workItem from="1523592766372" duration="1014000" />
       <workItem from="1523644567594" duration="136000" />
       <workItem from="1523645169899" duration="5974000" />
-      <workItem from="1523668467625" duration="1390000" />
+      <workItem from="1523668467625" duration="1716000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122208000" />
+    <option name="totallyTimeSpent" value="122534000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -530,13 +540,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/dynamicqueries_viewInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="63" column="44" lean-forward="false" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
@@ -625,7 +628,7 @@
     <entry file="file://$PROJECT_DIR$/js/visitors.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
-          <caret line="67" column="3" lean-forward="true" selection-start-line="67" selection-start-column="3" selection-end-line="67" selection-end-column="3" />
+          <caret line="67" column="3" lean-forward="false" selection-start-line="67" selection-start-column="3" selection-end-line="67" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -633,7 +636,7 @@
     <entry file="file://$PROJECT_DIR$/js/validtest.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2992">
-          <caret line="200" column="23" lean-forward="true" selection-start-line="200" selection-start-column="23" selection-end-line="200" selection-end-column="23" />
+          <caret line="200" column="23" lean-forward="false" selection-start-line="200" selection-start-column="23" selection-end-line="200" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -643,32 +646,40 @@
         <state relative-caret-position="34">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
-            <marker date="1523669855440" expanded="true" signature="187:347" ph="SELECT u.usu... usuario" />
-            <marker date="1523669855440" expanded="true" signature="646:831" ph="SELECT rO.id... usuario" />
-            <marker date="1523669855440" expanded="true" signature="1686:1887" ph="SELECT u.usu... usuario" />
-            <marker date="1523669855440" expanded="true" signature="2997:3051" ph="SELECT * FRO... rol" />
-            <marker date="1523669855440" expanded="true" signature="3214:3305" ph="SELECT usuar... usuario" />
-            <marker date="1523669855440" expanded="true" signature="4229:4292" ph="INSERT INTO usuario... " />
-            <marker date="1523669855440" expanded="true" signature="4899:4969" ph="INSERT INTO usuario_rol... " />
-            <marker date="1523669855440" expanded="true" signature="5707:5761" ph="SELECT * FRO... rol" />
-            <marker date="1523669855440" expanded="true" signature="5922:5983" ph="UPDATE usuario... " />
-            <marker date="1523669855440" expanded="true" signature="6613:6663" ph="UPDATE usuario_rol... " />
-            <marker date="1523669855440" expanded="true" signature="7463:7504" ph="DELETE FROM usuario_rol... " />
-            <marker date="1523669855440" expanded="true" signature="8053:8090" ph="DELETE FROM usuario... " />
-            <marker date="1523669855440" expanded="true" signature="8939:9180" ph="SELECT u.usu... usuario" />
-            <marker date="1523669855440" expanded="true" signature="10861:10951" ph="SELECT idRol... rol" />
-            <marker date="1523669855440" expanded="true" signature="11946:12015" ph="SELECT nombr... rol" />
-            <marker date="1523669855440" expanded="true" signature="12853:12904" ph="INSERT INTO rol... " />
-            <marker date="1523669855440" expanded="true" signature="13457:13529" ph="SELECT idRol... rol" />
-            <marker date="1523669855440" expanded="true" signature="14222:14298" ph="INSERT INTO rol_operacion... " />
-            <marker date="1523669855440" expanded="true" signature="15048:15087" ph="DELETE FROM usuario_rol... " />
-            <marker date="1523669855440" expanded="true" signature="15667:15708" ph="DELETE FROM rol_operacion... " />
-            <marker date="1523669855440" expanded="true" signature="16280:16311" ph="DELETE FROM rol... " />
-            <marker date="1523669855440" expanded="true" signature="17272:17330" ph="UPDATE rol... " />
-            <marker date="1523669855440" expanded="true" signature="17951:17992" ph="DELETE FROM rol_operacion... " />
-            <marker date="1523669855440" expanded="true" signature="18581:18657" ph="INSERT INTO rol_operacion... " />
-            <marker date="1523669855440" expanded="true" signature="19474:19631" ph="SELECT nombr... rol_operacion" />
+            <marker date="1523669928483" expanded="true" signature="187:347" ph="SELECT u.usu... usuario" />
+            <marker date="1523669928483" expanded="true" signature="646:831" ph="SELECT rO.id... usuario" />
+            <marker date="1523669928483" expanded="true" signature="1686:1887" ph="SELECT u.usu... usuario" />
+            <marker date="1523669928483" expanded="true" signature="2997:3051" ph="SELECT * FRO... rol" />
+            <marker date="1523669928483" expanded="true" signature="3214:3305" ph="SELECT usuar... usuario" />
+            <marker date="1523669928483" expanded="true" signature="4229:4292" ph="INSERT INTO usuario... " />
+            <marker date="1523669928483" expanded="true" signature="4899:4969" ph="INSERT INTO usuario_rol... " />
+            <marker date="1523669928483" expanded="true" signature="5707:5761" ph="SELECT * FRO... rol" />
+            <marker date="1523669928483" expanded="true" signature="5922:5983" ph="UPDATE usuario... " />
+            <marker date="1523669928483" expanded="true" signature="6613:6663" ph="UPDATE usuario_rol... " />
+            <marker date="1523669928483" expanded="true" signature="7463:7504" ph="DELETE FROM usuario_rol... " />
+            <marker date="1523669928483" expanded="true" signature="8053:8090" ph="DELETE FROM usuario... " />
+            <marker date="1523669928483" expanded="true" signature="8939:9180" ph="SELECT u.usu... usuario" />
+            <marker date="1523669928483" expanded="true" signature="10861:10951" ph="SELECT idRol... rol" />
+            <marker date="1523669928483" expanded="true" signature="11946:12015" ph="SELECT nombr... rol" />
+            <marker date="1523669928483" expanded="true" signature="12853:12904" ph="INSERT INTO rol... " />
+            <marker date="1523669928483" expanded="true" signature="13457:13529" ph="SELECT idRol... rol" />
+            <marker date="1523669928483" expanded="true" signature="14222:14298" ph="INSERT INTO rol_operacion... " />
+            <marker date="1523669928483" expanded="true" signature="15048:15087" ph="DELETE FROM usuario_rol... " />
+            <marker date="1523669928483" expanded="true" signature="15667:15708" ph="DELETE FROM rol_operacion... " />
+            <marker date="1523669928483" expanded="true" signature="16280:16311" ph="DELETE FROM rol... " />
+            <marker date="1523669928483" expanded="true" signature="17256:17314" ph="UPDATE rol... " />
+            <marker date="1523669928483" expanded="true" signature="17879:17920" ph="DELETE FROM rol_operacion... " />
+            <marker date="1523669928483" expanded="true" signature="18457:18533" ph="INSERT INTO rol_operacion... " />
+            <marker date="1523669928483" expanded="true" signature="19356:19513" ph="SELECT nombr... rol_operacion" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/dynamicqueries_viewInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="55" column="38" lean-forward="true" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
