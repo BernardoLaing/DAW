@@ -406,20 +406,18 @@ function obtenerPrestamos(anio){ //Entradas mensuales
 				}
 			};
 
-			var chart = new Chart(divVisitante, {
-				type : "bar",
-				data : chartdata,
-				options : options
-			});
-
-    },
-    error: function(data) {
-      console.log(data);
-      console.log("error");
-    }
-  });
-}
-
+      var chart = new Chart(divVisitante, {
+ 				type : "bar",
+ 				data : chartdata,
+ 				options : options
+ 			});
+     },
+     error: function(data) {
+       console.log(data);
+       console.log("error");
+     }
+   });
+ }
 $(document).ready(obtenerPrestamos(anio));
 //////////////////////////////////////////////////// SELECTORES
 //////////////Para filtrar estadisticas por año
@@ -432,13 +430,20 @@ $("select").each(function(){
     obtenerEntradas(anioEntradas);
     obtenerEntradasGenero(anioEntradasGenero);
     obtenerPrestamos(anioPrestamo);
-   console.log(obj);
-    console.log(data);
+   //console.log(obj);
+    //console.log(data);
   });
 });
 
 
 //////////////Para imprimir estadisticas
+
+document.getElementById("download").addEventListener("click",function(){
+  console.log("PASOOO");
+  chart.print();
+});
+
+/*
 download.addEventListener("click", function () {
   console.log("Enttro");
   g1t="";
@@ -461,4 +466,4 @@ for (let index = 0; index < g1.length; index++) {
   console.log("Enttro");
   $("#download").attr("href", urlget);
 
-});
+});*/

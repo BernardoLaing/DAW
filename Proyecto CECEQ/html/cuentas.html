@@ -111,6 +111,7 @@ $(".input").each(function(){
         },
         function(data){ console.log("PASO!");
             var obj = JSON.parse(data);
+            console.log(obj);
             var tableContent = '<thead><tr><th scope="col"> Nombre </th><th scope="col"> Usuario </th><th scope="col"> Rol </th><th scope="col"></th><th scope="col"></th></tr></thead>';
             $.each(obj, function(key, value){
 //                console.log(value);
@@ -125,6 +126,5 @@ $(".input").each(function(){
         });
     });
 });
-    
 
 </script>

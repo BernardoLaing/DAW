@@ -2,6 +2,7 @@ $(document).ready(function(){
     $.viewMode = function() {
         $("input").each(function(){
             $(this).prop("disabled", true);
+            $(this).attr("placeholder", " ");
         });
         $("select").each(function(){
             $(this).prop("disabled", true);
@@ -31,6 +32,7 @@ $(document).ready(function(){
                     text: "Guardar cambios",
                     type: "submit"
                 }));
+                        //  document.getElementsByTagName("input").placeholder=" ";
             }
         }));
 
