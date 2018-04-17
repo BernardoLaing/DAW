@@ -1,6 +1,8 @@
 <?php
 include("utils.php");
 $root = realpath($_SERVER["DOCUMENT_ROOT"]);
+
+// require_once("$root/Proyectos/JAMBE/Proyecto CECEQ/utils.php");
 // Usuarios
 function getUserRoles(){
     $db = connect();
