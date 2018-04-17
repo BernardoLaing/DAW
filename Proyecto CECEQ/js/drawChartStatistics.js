@@ -245,20 +245,6 @@ function obtenerEntradasGenero(anio){ //Entradas por genero
             borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
             hoverBackgroundColor: '#30a0bd', //AZUL OSCURO
             hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
-            /*
-            backgroundColor : [
-              "#fdf9e1", //amarillo
-              "#e5ddea", //morado
-              "#e9f4f3", //verde
-            ],
-            borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
-            hoverBackgroundColor:  [
-              "#faefb1", //amarillo
-              "#d9cde0", //morado
-              "#c7e3e0", //verde
-            ],
-            hoverBorderColor: 'rgba(200, 200, 200, 1)', //GRIS
-            */
             data: score
           }
         ]
@@ -438,32 +424,9 @@ $("select").each(function(){
 
 //////////////Para imprimir estadisticas
 
-document.getElementById("download").addEventListener("click",function(){
-  console.log("PASOOO");
-  chart.print();
+
+$("#download").click(function() {
+ 	   window.print();
 });
 
-/*
-download.addEventListener("click", function () {
-  console.log("Enttro");
-  g1t="";
-for (let index = 0; index < g1.length; index++) {
-  g1t = g1t + JSON.stringify(g1[index]['nombre']) + ' \t ';
-}
-g11 = g11 + ' \n ';
-for (let index = 0; index < g1.length; index++) {
-  g11 = g11 + JSON.stringify(g1[index]['Cantidad']) + ' \t ';
-}
 
-  //g11= JSON.stringify(g1);
-  //var obj = JSON.parse(g1);
-  console.log(g11);
-//  return;
-  //console.log(g1[0]['nombre']);
-  //var urlget = "controller/statistics_print.php?ninos="  + obj['ninos'] + "&jovenes=" + obj['jovenes'] + "&adultos=" + obj['adultos'] + "&credenciales=" + obj['credenciales'] + "&libros=" + obj['libros']  + "&year=" + anio;
-  var urlget = "controller/statistics_print.php?ninos="  + g11 + "&year=" + anio;
-  //console.log(urlget);
-  console.log("Enttro");
-  $("#download").attr("href", urlget);
-
-});*/
