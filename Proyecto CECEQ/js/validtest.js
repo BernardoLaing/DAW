@@ -196,7 +196,7 @@ function validateSearch(event){
                 }
             }
         }
-        if(!cpassed)
+        if(!cpassed && event != null)
            event.preventDefault();
         return cpassed;
     }

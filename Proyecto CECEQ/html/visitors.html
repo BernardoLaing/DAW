@@ -59,7 +59,7 @@
                 <div class='form-group'>
                     <label for="user_birthday">Fecha de Nacimiento:</label>
                     <div class="col-md-12">
-                        <input  class="form-control cvalidate cdate" id="user_birthday" name="user[birthday]" size="30" type="date" placeholder="01/05/1998"/>
+                        <input  class="form-control cvalidate cdate" id="user_birthday" name="user[birthday]" max="<?php echo date('Y-m-d', strtotime('-1 days')); ?>" size="30" type="date" placeholder="01/05/1998"/>
                     </div>
                     <span class="warning">Debes seleccionar una fecha de nacimiento</span>
                 </div>

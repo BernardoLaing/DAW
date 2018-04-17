@@ -36,6 +36,8 @@ $(document).ready(function(){
 
         $("#entry_form").submit(function(e){
             e.preventDefault();
+            if(!validateSearch(null))
+                return;
             console.log("submitting");
             $("#user_number").prop("disabled", false);
             $.post("controller/visitorsUpdate_controller.php",{
@@ -51,7 +53,10 @@ $(document).ready(function(){
                         }
                 },
                 function(data,status){
-                    $("#modalSaved").modal("show");
+                    if(status == "success")
+                        $("#modalSaved").modal("show");
+                    else
+                        $("#modalError").modal("show");
                     setTimeout(function(){
                         location.reload();
                     }, 1150);
@@ -98,10 +103,14 @@ user :
 },
 function(data,status){
 $("#sanctionValues").modal("hide");
-$("#modalSaved").modal("show");
-setTimeout(function(){
-    location.reload();
-}, 1150);
+
+    if(status == "success")
+        $("#modalSaved").modal("show");
+    else
+        $("#modalError").modal("show");
+    setTimeout(function(){
+        location.reload();
+    }, 1150);
 });
 });
 
