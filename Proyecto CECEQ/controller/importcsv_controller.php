@@ -29,6 +29,6 @@ if ( isset($_POST["uploadCsv"]) ) {
             echo "No file selected <br />";
     }
 }
-echo importBooks();
+importBooks();
 //header("Location: ../catalog.php");
 ?>

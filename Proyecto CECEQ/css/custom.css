@@ -301,6 +301,7 @@ body
 
 .icon-choose-image:hover{
     cursor: pointer;
+}
 .barcode{
     font-family: 'Libre Barcode 39 Extended', cursive;
     font-size: 30pt;
