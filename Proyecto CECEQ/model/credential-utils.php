@@ -111,7 +111,6 @@ function insertCredential(  //Visitante
         
         
         disconnect($db);
-
         return true;
     } 
     return false;

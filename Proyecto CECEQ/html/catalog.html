@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class='row'>
-            
+
             <div class='col-sm-6'>
                 <div class='form-group'>
                     <label for="clasificacion">Clasificación:</label>
@@ -64,7 +64,7 @@
                         <div class="col-md-12">
                             <select class="form-control cvalidate " name="subclasificacion" id="subclasificacionBusqueda" required>
                                 <option value="" disabled selected>-- seleccionar clasificación--</option>
-        
+
                             </select>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
         <div class="row">
             <div class='col-sm-6'>
                     <div class='form-group'>
-                        <label>Número de resultados por página :</label>
+                        <label>Número de resultados por página:</label>
                         <div class="col-md-3">
                             <select class="form-control cvalidate " name="numeroResultadosBusqueda" id="numeroResultadosBusqueda" >
                                 <option value="10" selected>10</option>
@@ -111,25 +111,25 @@
                         </tr>
                     </thead>
                     <tbody id="respuestaLibros">
-                        
-                      
+
+
                     </tbody>
                 </table>
             </div>
         </div>
-        
+
         <div class="row pagination-container">
             <div class="col-sm-6 text-center">
                 <div class="form-group">
                     <div class="col-md-12">
-                        <button type="button" class="btn btn-secondary mx-auto " id="buscarLibroAnterior">Anterior</button>
+                        <button type="button" class="btn btn-secondary mx-auto " id="buscarLibroAnterior"><b><<</b></button>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 text-center">
                 <div class="form-group">
                     <div class="col-md-12">
-                        <button type="button" class="btn btn-secondary mx-auto " id="buscarLibroSiguiente">Siguiente</button>
+                        <button type="button" class="btn btn-secondary mx-auto " id="buscarLibroSiguiente"> <b>>></b></button>
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-sm-4 text-right">
                     <div class="form-group">
                         <div class="col-md-12">
@@ -162,10 +162,9 @@
                     </div>
                 </div>
 
-                
+
         </div>
-        
-        
+
     </form>
     <form method="post" id="csv_Form" action="controller/importcsv_controller.php" enctype="multipart/form-data">
         <div class="row">

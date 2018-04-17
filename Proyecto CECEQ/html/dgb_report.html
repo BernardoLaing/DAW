@@ -43,7 +43,7 @@
                 </form>
             </div>
         </div>
-        <br><hr>
+        <br><hr> <!--Usuarios Atendidos-->
         <div class="row text-center mt-3 my-2 px-2">
             <div class="col-sm-12">
                 <b>Usuarios Atendidos</b><br>
@@ -51,22 +51,22 @@
         </div>
         <div class="row px-2">
             <div class="col-sm-12 col-md-3 offset-md-2">
-                Niños:
+                Niños (Hasta 12 años):
                 <p id="ninos" class="d-inline"></p>
             </div>
             <div class="col-sm-12 col-md-3">
-                Jóvenes:
+                Jóvenes (13 a 18 años):
                 <p id="jovenes" class="d-inline"></p>
             </div>
             <div class="col-sm-12 col-md-3">
-                Adultos:
+                Adultos (Mayores de 18 años):
                 <p id="adultos" class="d-inline"></p>
             </div>
         </div>
-        <br><hr>
+        <br><hr> <!--Servicio de préstamo a domicilio-->
         <div class="row text-center mt-3 my-2 px-2">
             <div class="col-sm-12">
-                <b>Servicio de Préstamo</b>
+                <b>Servicio de préstamo a domicilio</b>
             </div>
         </div>
         <div class="row px-2">
@@ -79,7 +79,23 @@
                 <p id="libros" class="d-inline"></p>
             </div>
         </div>
-        <br /><br />
+        <br /><hr /> <!--Automatización-->
+        <div class="row text-center mt-3 my-2 px-2">
+            <div class="col-sm-12">
+                <b>Automatización</b><br>
+            </div>
+        </div>
+        <div class="row px-2">
+            <div class="col-sm-12 col-md-4 offset-md-3">
+                 Libros capturados:
+                <p id="libros_capturados" class="d-inline"></p>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                  Porcentaje:
+                <p id="porcentaje" class="d-inline"></p>
+            </div>
+        </div>
+        <br><hr> <br>
         <!--Botones-->
         <div class="row">
             <div class="col-xs-5 col-md-4 offset-md-4">
@@ -95,6 +111,7 @@
         </div>
         <br />
     </div>
+    <br>
 </div>
 
 <script>
@@ -114,7 +131,9 @@ $("select").each(function(){
             $("#adultos").html(obj['adultos']);
             $("#credenciales").html(obj['credenciales']);
             $("#libros").html(obj['libros']);
-            var urlget = "controller/dgb_print.php?ninos=" + obj['ninos'] + "&jovenes=" + obj['jovenes'] + "&adultos=" + obj['adultos'] + "&credenciales=" + obj['credenciales'] + "&libros=" + obj['libros'] + "&month=" + $("#month").val() + "&year=" + $("#year").val();
+            $("#libros_capturados").html(obj['libros_capturados']);
+            $("#porcentaje").html(obj['porcentaje']);
+            var urlget = "controller/dgb_print.php?ninos=" + obj['ninos'] + "&jovenes=" + obj['jovenes'] + "&adultos=" + obj['adultos'] + "&credenciales=" + obj['credenciales'] + "&libros=" + obj['libros'] + "&libros_capturados=" + obj['libros_capturados'] + "&porcentaje=" + obj['porcentaje'] + "&month=" + $("#month").val() + "&year=" + $("#year").val();
             console.log(urlget);
             $("#print").attr("href", urlget);
         });

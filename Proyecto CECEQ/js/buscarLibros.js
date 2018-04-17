@@ -49,7 +49,7 @@ function funcSubclasificaciones(){
         //alert(data);
         subclasificacion.html(data);
     });
-    
+
 }
 function funcSubclasificacionesBusqueda(){
     let subclasificacion = $("#subclasificacionBusqueda");
@@ -58,7 +58,7 @@ function funcSubclasificacionesBusqueda(){
         //alert(data);
         subclasificacion.html(data);
     });
-    
+
 }
 function funcLibroAnterior(){
     if(pagina>paginacion){
