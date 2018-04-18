@@ -52,7 +52,6 @@ $(document).ready(function(){
     });
 
     function readyForDisplay(){
-        validateSearch(null);
         var r = $("tbody").find("tr");
         if(r.length){
             r.each(function(){

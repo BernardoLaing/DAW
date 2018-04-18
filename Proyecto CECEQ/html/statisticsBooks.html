@@ -87,12 +87,12 @@
             <!--Graficas-->
                     <div class="col-md-8 offset-md-2 col-xs-12">
                         <div id="doughnut-chart-container" >
-                            <canvas id="doughnutEstado"></canvas>
+                            <canvas id="doughnutEstado" name="doughnutEstado"></canvas>
                             <br>
                         </div><hr>
                         <div id="chart-container">
                             <div class="chart-container">
-                                <canvas id="histogramaCategoria"></canvas>
+                                <canvas id="histogramaCategoria" name="histogramaCategoria"></canvas>
                                 <br>
                             </div>
                         </div><hr>
@@ -118,7 +118,7 @@
 
                         <div id="chart-container">
                             <div class="chart-container">
-                                <canvas id="prestamosChart"></canvas>
+                                <canvas id="prestamosChart" name="prestamosChart"></canvas>
                                 <br>
                             </div>
                         </div>
@@ -146,7 +146,7 @@
                         </form>
                     </div>
                     <div id="doughnut-chart-container" >
-                        <canvas id="visitanteGeneroChart"></canvas><br>
+                        <canvas id="visitanteGeneroChart" name="visitanteGeneroChart"></canvas><br>
                     </div><hr>
 
                     <!--Sel año-->
@@ -168,14 +168,14 @@
                         </form>
                     </div>
                     <div class="chart-container">
-                        <canvas id="visitanteChart"></canvas><br>
+                        <canvas id="visitanteChart" name="visitanteChart"></canvas><br>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade show" id="personal" role="tabpanel" aria-labelledby="personal-tab">
                 <div class="col-md-8 offset-md-2 col-xs-12 ">
                     <div id="doughnut-chart-container" >
-                        <canvas id="doughnutUsuarios"></canvas>
+                        <canvas id="doughnutUsuarios" name="doughnutUsuarios"></canvas>
                         <br><br>
                     </div>
                 </div>
@@ -193,12 +193,14 @@
 
         <div class="col-xs-5 col-md-4">
             <div class="form-group">
-                    <a class="btn btn-secondary " id="download" > Imprimir</a>
+                    <a class="btn btn-secondary " id="download" name="download" > Imprimir</a>
             </div>
         </div>
 
     </div>
         </div>
+      </body>
+
        <br><br>
         <script type="text/javascript" src="js/Chart.min.js"></script>
         <script src="js/drawChartStatistics.js"></script>
@@ -207,6 +209,7 @@
         <script src="js/validations.js"></script>
       <!--  <script src="js/script.js"></script>-->
         <script src="js/validtest.js"></script>
-
         </body>
     </html>
+
+        
