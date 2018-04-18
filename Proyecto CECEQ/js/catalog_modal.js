@@ -2,49 +2,104 @@ $(document).ready(funcionPrincipal);
 function funcionPrincipal()
 {
     saveChanges.click(funcSaveChanges);
-    delateBook.click(funcDelateBook);
     editBook.click(funcEditBook);
 }
 function round(value) {
     return parseInt(value / 100) * 100;
 }
 function funcSaveChanges(){
-    alert('guardando cambios');
+    $('#modalCatalogAvisoBody').text('Desea guardar los cambios?');
+    $('#modalCatalogAvisoFooter').html('<button type="button" id="modalCatalogAvisoChange" class="btn btn-success">Guardar</button><button type="button" class="btn btn-secondary" id="modalCatalogAvisoDismiss" >No</button>');
+    modalAviso.modal('show');
+    $('#modalCatalogAvisoDismiss').click(
+        function(){
+            modalAviso.modal('hide');
+    });
+    $('#modalCatalogAvisoChange').click(fucSaveChanges2);
 }
-function funcDelateBook(){
-    alert('eliminar ejemplar');
+function fucSaveChanges2(){
+    if(($('#book_title_see').val()!='')&&($('#book_isbn_see').val()!='')&&($('#book_shelf_see').val()!='')&&($('#book_vol_see').val()!='')&&($('#book_edicion_see').val()!='')&&($('#book_yeare_see').val()!='')&&($('#book_editorial_see').val()!='')&&($('#book_year_see').val()!='')&&($('#book_colection_see').val()!='')&&($('#book_author_see').val()!='')&&($('#book_clave_see').val()!='')&&($('#estado').val()!='')&&($('#book_adquisition_see').val()!='')&&($('#sclasificacion').val()!= null)){
+       $('#modalCatalogAvisoBody').text('campos Completos');
+        sendInfoAjax();
+    }
+    else{
+        $('#modalCatalogAvisoBody').text('campos Faltantes');
+        $('#modalCatalogAvisoFooter').html('<button type="button" class="btn btn-secondary" id="modalCatalogAvisoDismiss" >Cerrar</button>');
+    }
+    $('#modalCatalogAvisoDismiss').click(
+        function(){
+            modalAviso.modal('hide');
+    });
+}
+function sendInfoAjax(){
+    alert('filtro 1')
+    $.get("editBookAjax.php", {id: idEjemplarChange, titulo: $('#book_title_see').val(), autor1: $('#book_author_see').val(), apellido1: $('#book_apaterno_see').val(),  autor2: $('#book_author2_see').val(), apellido2: $('#book_apaterno2_see').val(), autor3: $('#book_author3_see').val(), apellido3: $('#book_apaterno3_see').val(), isbn: $('#book_isbn_see').val(), estante: $('#book_shelf_see').val(), vol: $('#book_vol_see').val(), edicion: $('#book_edicion_see').val(), aEdicion: $('#book_yeare_see').val(), editorial: $('#book_editorial_see').val(), anio: $('#book_year_see').val(), coleccion: $('#book_colection_see').val(), categoria: $('#sclasificacion').val(), clave: $('#book_clave_see').val(), adquisicion: $('#book_adquisition_see').val(), numC: $('#book_class_see').val(), materias: $('#book_materias_see').val(), estado: $('#estado').val()}, function(data){
+           $('#modalCatalogAvisoBody').text(data);
+           $('#modalCatalogAvisoFooter').html('<button type="button" class="btn btn-secondary" id="modalCatalogAvisoDismiss" >Cerrar</button>');
+        $('#modalCatalogAvisoDismiss').click(
+        function(){
+            modalAviso.modal('hide');
+    });
+    });
+}
+
+function funcDisableBook(){
+    $('#book_title_see').prop( "disabled", true );
+    $('#book_isbn_see').prop( "disabled", true );
+    $('#book_shelf_see').prop( "disabled", true );
+    $('#book_vol_see').prop( "disabled", true );
+    $('#book_edicion_see').prop( "disabled", true );
+    $('#book_yeare_see').prop( "disabled", true );
+    $('#book_editorial_see').prop( "disabled", true );
+    $('#book_year_see').prop( "disabled", true );
+    $('#book_colection_see').prop( "disabled", true );
+    $('#book_author_see').prop( "disabled", true );
+    $('#book_apaterno_see').prop( "disabled", true );
+    $('#book_author2_see').prop( "disabled", true );
+    $('#book_apaterno2_see').prop( "disabled", true );
+    $('#book_author3_see').prop( "disabled", true );
+    $('#book_apaterno3_see').prop( "disabled", true );
+    $('#book_clave_see').prop( "disabled", true );
+    $('#estado').prop( "disabled", true );
+    $('#book_adquisition_see').prop( "disabled", true );
+    $('#book_class_see').prop( "disabled", true );
+    $('#book_materias_see').prop( "disabled", true );
+    $('#clasificacion').prop( "disabled", true );
+    $('#sclasificacion').prop( "disabled", true );
+
 }
 function funcEditBook(){
-    alert('Editar');
-    /*
-    $('#book_title_see');
-    $('#book_isbn_see');
-    $('#book_shelf_see');
-    $('#book_vol_see');
-    $('#book_edicion_see');
-    $('#book_yeare_see');
-    $('#book_editorial_see');
-    $('#book_year_see');
-    $('#book_colection_see');
-    $('#book_author_see');
-    $('#book_apaterno_see');
-    $('#book_author2_see');
-    $('#book_apaterno2_see');
-    $('#book_author3_see');
-    $('#book_apaterno3_see');
-    $('#book_clave_see');
-    $('#book_adquisition_see');
-    $('#book_class_see');  
-    $('#book_materias_see');
-    $('#clasificacion');
-    $('#sclasificacion');*/
+    $('#book_title_see').prop( "disabled", false );
+    $('#book_isbn_see').prop( "disabled", false );
+    $('#book_shelf_see').prop( "disabled", false );
+    $('#book_vol_see').prop( "disabled", false);
+    $('#book_edicion_see').prop( "disabled", false );
+    $('#book_yeare_see').prop( "disabled", false);
+    $('#book_editorial_see').prop( "disabled", false );
+    $('#book_year_see').prop( "disabled", false);
+    $('#book_colection_see').prop( "disabled", false );
+    $('#book_author_see').prop( "disabled", false);
+    $('#book_apaterno_see').prop( "disabled", false );
+    $('#book_author2_see').prop( "disabled", false );
+    $('#book_apaterno2_see').prop( "disabled", false );
+    $('#book_author3_see').prop( "disabled", false );
+    $('#book_apaterno3_see').prop( "disabled", false );
+    $('#book_clave_see').prop( "disabled", false );
+    $('#estado').prop( "disabled", false );
+    $('#book_adquisition_see').prop( "disabled", false );
+    $('#book_class_see').prop( "disabled", false );
+    $('#book_materias_see').prop( "disabled", false );
+    $('#clasificacion').prop( "disabled", false );
+    $('#sclasificacion').prop( "disabled", false );
 
 }
 function funcShowInfo( idEjemplar){
+    funcDisableBook();
+    idEjemplarChange=idEjemplar;
     modal.modal('show');
     $.get("infoBookAjax.php", {id: idEjemplar}, function(data){
         datos = JSON.parse(data);
-        $('#titleModalCatalog').html('Info ejemplar '+idEjemplar);
+        $('#titleModalCatalog').html('Info ejemplar '+idEjemplar+': '+datos['libro'].titulo);
         $('#book_title_see').val(datos['libro'].titulo);
         $('#book_isbn_see').val(datos['libro'].isbn);
         $('#book_shelf_see').val(datos['libro'].estante);
@@ -66,6 +121,7 @@ function funcShowInfo( idEjemplar){
         $('#book_apaterno3_see').val(apellidos[2]);
         $('#imgCBBook').attr('src', 'https://barcode.tec-it.com/barcode.ashx?data='+idEjemplar+'&code=Code39FullASCII&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Mm&quiet=0');
         $('#book_clave_see').val(datos['libro'].clave);
+        $('#estado').val(datos['libro'].estado);
         $('#book_adquisition_see').val(datos['libro'].adquisicion);
         $('#book_class_see').val(datos['libro'].numC);  
         $('#book_materias_see').val(datos['libro'].materias);
@@ -81,6 +137,7 @@ function funcShowInfo( idEjemplar){
 var autores =[], apellidos=[];
 var modal = $('#modalCatalog');
 var datos;
+var idEjemplarChange = 0;
 var saveChanges = $('#saveChangesBook');
-var delateBook = $('#delateBook');
 var editBook = $('#editBook');
+var modalAviso = $('#modalCatalogAviso');

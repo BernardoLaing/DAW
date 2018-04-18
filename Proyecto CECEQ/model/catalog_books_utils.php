@@ -115,7 +115,7 @@ function buscarGeneralId($id)
 {
     $connection = connect();
     $statement = mysqli_prepare($connection,"
-    select GROUP_CONCAT(a.nombre SEPARATOR ', ') AS autores, GROUP_CONCAT(apellidoPaterno SEPARATOR ', ') AS apellidos, titulo, t.year, estante, editorial, es.nombre, c.idCategoria, e.idEjemplar, ISBN, volumen, edicion, e.year as yearE, c.nombre AS nombreC, coleccion, claveIngreso, fechaIngreso, idUsuario, adquisicion, numClasificacion, materias
+    select GROUP_CONCAT(a.nombre SEPARATOR ', ') AS autores, GROUP_CONCAT(apellidoPaterno SEPARATOR ', ') AS apellidos, titulo, t.year, estante, editorial, es.nombre, c.idCategoria, e.idEjemplar, ISBN, volumen, edicion, e.year as yearE, c.nombre AS nombreC, es.idEstado, coleccion, claveIngreso, fechaIngreso, idUsuario, adquisicion, numClasificacion, materias
     from autor a, titulo t, titulo_autor ta, ejemplar e, ejemplar_estado ee, estado es, titulo_categoria tc, categoria c
     where e.idEjemplar = ?
     and a.idAutor=ta.idAutor
@@ -149,6 +149,7 @@ function buscarGeneralLike($nombre, $apellidoPaterno, $apellidoMaterno, $titulo,
     and t.idTitulo = e.idTitulo
     and ee.idEjemplar=e.idEjemplar
     and ee.idEstado=es.idEstado
+    and es.idEstado<>3
     and t.idTitulo=tc.idTitulo
     and tc.idCategoria=c.idCategoria
     and (c.idCategoria = ? ".($categoria==""?"or 1":"").")
@@ -232,5 +233,65 @@ function delateBook($categoria)
     disconnect($connection);
     return $result;
 
+}
+function insertCategoriaTitulo($idTitulo, $idCategoria)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection, "INSERT INTO titulo_categoria (idCategoria, idTitulo)
+    VALUES(?,?);
+    ");
+    $statement ->bind_param("ii", $idCategoria, $idTitulo);
+    $retorno = $statement->execute();
+    disconnect($connection);
+    return($retorno);
+
+}
+function editEjemplar($idEjemplar, $ISBN, $estante, $editorial, $year, $volumen, $idTitulo, $colection, $edition, $idUsuario, $clave, $adq, $numClas, $bookMaterias )
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection, "UPDATE ejemplar SET ISBN=?, estante=?, editorial=?, year =?, volumen=?, idTitulo=?, coleccion=?, edicion=?, idUsuario=?, claveIngreso=?, adquisicion=?, numClasificacion=?, materias=?
+    WHERE idEjemplar=?
+    ");
+    $statement ->bind_param("sssiiisisssssi", $ISBN, $estante, $editorial, $year, $volumen, $idTitulo, $colection, $edition, $idUsuario, $clave, $adq, $numClas, $bookMaterias, $idEjemplar);
+    $retorno = $statement->execute();
+    disconnect($connection);
+    return($retorno);
+}
+function editEjemplarEstado($idEjemplar, $idEstado)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection, "UPDATE ejemplar_estado SET idEstado=?
+    WHERE idEjemplar=?
+    ");
+    $statement ->bind_param("ii", $idEstado, $idEjemplar);
+    $retorno = $statement->execute();
+    disconnect($connection);
+    return($retorno);
+
+}
+function editCategoriaTitulo($idTitulo, $idCategoria)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection, "UPDATE titulo_categoria SET idCategoria=? 
+    WHERE idTitulo=?
+    ");
+    $statement ->bind_param("ii", $idCategoria, $idTitulo);
+    $retorno = $statement->execute();
+    disconnect($connection);
+    return($retorno);
+
+}
+function selectCategoriaTitulo($idTitulo)
+{
+    $connection = connect();
+    $statement = mysqli_prepare($connection, "SELECT idTitulo, idCategoria 
+    FROM titulo_categoria 
+    WHERE idTitulo=?
+    ");
+    $statement ->bind_param("i", $idTitulo);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
 }
 ?>

@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header row">
-        <h2 class="modal-title col-md-6" id="titleModalCatalog">Info...</h2>
+        <h2 class="modal-title col-md-8" id="titleModalCatalog">Info...</h2>
           <img class="imagCodigoBarras" id="imgCBBook" src='https://barcode.tec-it.com/barcode.ashx?data=5555&code=Code39FullASCII&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Mm&quiet=0' alt='Barcode Generator TEC-IT'/>
         <button type="button" class="close col-md-2" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -134,7 +134,6 @@
                     </div>
                 </div>
             </div>
-
             <div class='col-sm-4'>
                 <div class='form-group'>
                     <label for="book_apaterno">Apellido:</label>
@@ -142,6 +141,21 @@
                         <input class="form-control cvalidate cname" id="book_apaterno_see" name="book[apaterno]" size="30" type="text"/>
                     </div>
                 </div>
+            </div>
+            <div class='col-sm-4'>
+                <div class='form-group'>
+                        <label for="estado">Estado:</label>
+                        <div class="col-md-12">
+                            <select class="form-control cvalidate " name="estado" id="estado" required>
+                                <option value="" disabled selected>-- Estado --</option>
+                                <option value="1">Prestado</option>
+                                <option value="2">Reparación</option>
+                                <option value="3">Eliminado</option>
+                                <option value="4">Dañado</option>
+                                <option value="5">Disponible</option>
+                            </select>
+                        </div>
+                    </div>
             </div>
         </div>
         <div class="collapse" id="espacioAutor2_see">
@@ -250,12 +264,28 @@
           <?php      
           if(true)//$_SESSION["user"])
           {
-            echo '<button type="button" class="btn btn-danger col-md-3" id="delateBook">Eliminar ejemplar</button>';
             echo '<button type="button" class="btn btn-success col-md-3" id="saveChangesBook">Guardar cambios</button>';
             echo '<button type="button" class="btn btn-secondary col-md-3" id="editBook">Editar ejemplar</button>';
           }
           ?>
           <button type="button" class="btn btn-outline-secondary col-md-2" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+<div class="modal" id="modalCatalogAviso" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Aviso</h5>
+      </div>
+      <div class="modal-body" >
+        <p id="modalCatalogAvisoBody">Modal body text goes here</p>
+      </div>
+      <div id="modalCatalogAvisoFooter" class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

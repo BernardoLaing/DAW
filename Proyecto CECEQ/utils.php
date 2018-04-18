@@ -422,18 +422,7 @@ function buscarPrestamoDevolucion($idCredencial){
     disconnect($connection);
     return $result;
 }
-function insertCategoriaTitulo($idTitulo, $idCategoria)
-{
-    $connection = connect();
-    $statement = mysqli_prepare($connection, "INSERT INTO titulo_categoria (idCategoria, idTitulo)
-    VALUES(?,?);
-    ");
-    $statement ->bind_param("ii", $idCategoria, $idTitulo);
-    $retorno = $statement->execute();
-    disconnect($connection);
-    return($retorno);
 
-}
 
     //var_dump(login('lalo', 'hockey'));
     //var_dump(login('joaquin', 'basket'));

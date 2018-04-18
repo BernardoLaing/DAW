@@ -25,7 +25,8 @@ $result=buscarGeneralId($_GET["id"]);
         "usuario": "'.$row['idUsuario'].'",
         "adquisicion": "'.$row['adquisicion'].'",
         "numC": "'.$row['numClasificacion'].'",
-        "materias": "'.$row['materias'].'"
+        "materias": "'.$row['materias'].'",
+        "estado": '.$row['idEstado'].'
         
         }
         }';
