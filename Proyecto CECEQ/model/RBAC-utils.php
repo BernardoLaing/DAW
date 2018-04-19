@@ -40,6 +40,9 @@ function getUserPermissions($user) {
 
         $result = $stmt->get_result();
         if($result->num_rows === 0) exit('No rows');
+        for($i = 1; $i < 26; $i++){
+            $permissions[$i] = 0;
+        }
         while($row = $result->fetch_assoc()) {
             $permissions[$row['idOperacion']] = 1;
         }
