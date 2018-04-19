@@ -46,10 +46,10 @@ function funcGenerate(){
         i++;
     }
     k=0;
-    htmlContainer='<p>Código de barras generado con el programa de código de barras de TEC-IT </p><a href="https://www.tec-it.com" title="Barcode Software by TEC-IT">Barcode Software</a><br>';
+    htmlContainer='';
     while(impresiones.length>k)
     {
-        htmlContainer=htmlContainer+'<img class="imagCodigoBarrasPrint" src="https://barcode.tec-it.com/barcode.ashx?data='+impresiones[k]+'&code=Code39FullASCII&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Mm&quiet=0" alt="Barcode Generator TEC-IT"/>';
+        htmlContainer=htmlContainer+'<img class="imagCodigoBarrasPrint" src="https://www.barcodesinc.com/generator/image.php?code='+impresiones[k]+'&style=197&type=C128B&width=89&height=50&xres=1&font=3" alt="Barcode Generator"/>';
 
         k++;
     }

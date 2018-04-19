@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header row">
         <h2 class="modal-title col-md-8" id="titleModalCatalog">Info...</h2>
-          <img class="imagCodigoBarras" id="imgCBBook" src='https://barcode.tec-it.com/barcode.ashx?data=5555&code=Code39FullASCII&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Mm&quiet=0' alt='Barcode Generator TEC-IT'/>
+          <img class="imagCodigoBarras" id="imgCBBook" src="https://www.barcodesinc.com/generator/image.php?code=10&style=197&type=C128B&width=89&height=50&xres=1&font=3"/>
         <button type="button" class="close col-md-2" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -254,11 +254,6 @@
           }
           ?> 
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <p>Código de barras generado con el programa de código de barras de TEC-IT <a href='https://www.tec-it.com' title='Barcode Software by TEC-IT'>Barcode Software</a></p>
-            </div>
-          </div>
      
       <div class="modal-footer row">
           <?php      

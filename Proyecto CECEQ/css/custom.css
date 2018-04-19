@@ -309,8 +309,6 @@ body
 .imagCodigoBarras
 {
     padding: 10px 10px 10px 10px;
-    height: 100px;
-    width: 100px;
 }
 
 .nav-link{
@@ -320,4 +318,5 @@ body
 .imagCodigoBarrasPrint
 {
     padding: 10px 10px 10px 10px;
+    width: 180px;
 }
