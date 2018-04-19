@@ -395,7 +395,7 @@ function buildTableData($result){
         while($row = mysqli_fetch_assoc($result)){
             $table .= "<tr>";
             foreach($row as $data){
-                $table .= "<td>$data</td>";
+                $table .= "<td style='cursor: pointer;'>$data</td>";
             }
             $table .= "</tr>";
         }
