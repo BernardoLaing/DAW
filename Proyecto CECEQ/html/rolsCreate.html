@@ -9,114 +9,136 @@
             <div class="col-sm-12 col-md-4 mx-auto">
                 <div class="form-group">
                     <label for="name">Nombre: </label>
-                    <input required class="form-control cvalidate cname" type="text" name="name" placeholder="Administrador">
+                    <input required class="form-control cvalidate cname" type="text" name="name" placeholder="">
                 </div>
             </div>
             <div class="col-sm-12 col-md-4 mx-auto">
                 <div class="form-group">
                     <label for="description">Descripción: </label>
-                    <input required class="form-control cvalidate cname" type="text" name="description" placeholder="Cuenta con todos los permisos">
+                    <input required class="form-control cvalidate cname" type="text" name="description" placeholder="">
                 </div>
             </div>
         </div><br /><br />
+        <p class="text-center"><b> Selecciona los permisos que deseas agregar </b></p>
         <div class="form-row">
             <div class="col-sm-12 col-md-4 ">
                 <div>
-                    <h3>Usuarios y Roles</h3>
+                    <h3>Visitantes</h3>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['consultaUsuarios']" value="1">
-                    <label class="form-check-label" for="permissions['consultaUsuarios']">Consultar Usuarios</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['consultaAct']" id="permissions['consultaAct']" value="1">
+                    <label class="form-check-label" for="permissions['consultaAct']">Consultar Actividades</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['agregarUsuario']" value="2">
-                    <label class="form-check-label" for="permissions['agregarUsuario']">Agregar Usuario</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['registrarEntrada']" id="permissions['registrarEntrada']" value="6">
+                    <label class="form-check-label" for="permissions['registrarEntrada']">Registrar entrada</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['eliminarUsuario']" value="3">
-                    <label class="form-check-label" for="permissions['eliminarUsuario']">Eliminar Usuario</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['gestionCredencial']" id="permissions['gestionCredencial']" value="7">
+                    <label class="form-check-label" for="permissions['gestionCredencial']">Gestionar Credenciales</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['editarUsuario']" value="4">
-                    <label class="form-check-label" for="permissions['editarUsuario']">Editar Usuario</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['generarDGB']" id="permissions['generarDGB']" value="11">
+                    <label class="form-check-label" for="permissions['generarDGB']">Generar reporte de DGB</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['consultaRoles']" value="5">
-                    <label class="form-check-label" for="permissions['consultaRoles']">Consultar Roles</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['buscarVisitante']" id="permissions['buscarVisitante']" value="8">
+                    <label class="form-check-label" for="permissions['buscarVisitante']">Buscar visitante</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['agregarRol']" value="6">
-                    <label class="form-check-label" for="permissions['agregarRol']">Agregar Rol</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['editarVisitante']" id="permissions['editarVisitante']" value="9">
+                    <label class="form-check-label" for="permissions['editarVisitante']">Editar visitante</label>
+                </div>
+                <div class="form-check"> 
+                    <input class="form-check-input" type="checkbox" name="permissions['generarEstadistica']" id="permissions['generarEstadistica']" value="10">
+                    <label class="form-check-label" for="permissions['generarEstadistica']">Generar estadísticas</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['editarRol']" value="7">
-                    <label class="form-check-label" for="permissions['eliminarRol']">Eliminar Rol</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['consultaSanciones']" id="permissions['consultaSanciones']" value="15">
+                    <label class="form-check-label" for="permissions['consultaSanciones']">Consultar visitantes con sanciones</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['editarUsuario']" value="8">
-                    <label class="form-check-label" for="permissions['editarRol']">Editar Rol</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['agregarSancion']" id="permissions['agregarSancion']" value="16">
+                    <label class="form-check-label" for="permissions['agregarSancion']">Agregar sanción a visitante</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="permissions['quitarSancion']" id="permissions['quitarSancion']" value="17">
+                    <label class="form-check-label" for="permissions['quitarSancion']">Quitar sanción a visitante</label>
                 </div>
             </div>
             <div class="col-sm-12 col-md-4">
                 <div>
-                    <h3>Catálogo de Libros</h3>
+                    <h3>Usuarios y roles</h3>
+                </div>
+            
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="permissions['consultarCuentas']" id="permissions['consultarCuentas']" value="14">
+                    <label class="form-check-label" for="permissions['consultarCuentas']">Consultar cuentas de cuentahabientes</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['consultaLibros']" value="9">
-                    <label class="form-check-label" for="permissions['consultaLibros']">Consultar Libros</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['agregarCuenta']"  id="permissions['agregarCuenta']" value="19">
+                    <label class="form-check-label" for="permissions['agregarCuenta']">Agregar cuenta</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['eliminarLibro']" value="10">
-                    <label class="form-check-label" for="permissions['agregarLibro']">Agregar Libro</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['eliminarCuenta']" id="permissions['eliminarCuenta']" value="20">
+                    <label class="form-check-label" for="permissions['eliminarCuenta']">Eliminar cuenta</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['eliminarLibro']" value="11">
-                    <label class="form-check-label" for="permissions['eliminarLibro']">Eliminar Libro</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['editarCuenta']" id="permissions['editarCuenta']" value="21">
+                    <label class="form-check-label" for="permissions['editarCuenta']">Editar cuenta</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['editarLibro']" value="12">
-                    <label class="form-check-label" for="permissions['editarLibro']">Editar Libro</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['consultarRoles']" id="permissions['consultarRoles']" value="22">
+                    <label class="form-check-label" for="permissions['consultarRoles']">Consultar roles</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['importarLibro']" value="13">
-                    <label class="form-check-label" for="permissions['importarLibro']">Importar Libros desde Excel</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['agregarRol']" id="permissions['agregarRol']" value="23">
+                    <label class="form-check-label" for="permissions['agregarRol']">Agregar rol</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['eliminarLibro']" value="14">
-                    <label class="form-check-label" for="permissions['registrarPrestamo']">Registrar Prestamo</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['quitarRol']" id="permissions['quitarRol']" value="24">
+                    <label class="form-check-label" for="permissions['quitarRol']">Quitar rol</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['registrarDevolucion']" value="15">
-                    <label class="form-check-label" for="permissions['registrarDevolucion']">Registrar Devolución</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['editarRol']"  id="permissions['editarRol']" value="25">
+                    <label class="form-check-label" for="permissions['editarRol']">Editar rol</label>
                 </div>
             </div>
             <div class="col-sm-12 col-md-4">
                 <div>
-                    <h3>Gestión de Visitas</h3>
+                    <h3>Libros</h3>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['registrarEntrada']" value="16">
-                    <label class="form-check-label" for="permissions['registrarEntrada']">Registrar Entrada</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['consultarCatalogo']" id="permissions['consultarCatalogo']" value="2">
+                    <label class="form-check-label" for="permissions['consultarCatalogo']">Consultar catálogo de libros</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['tramitarCredencial']" value="17">
-                    <label class="form-check-label" for="permissions['tramitarCredencial']">Tramitar Credencial</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['editarEjemplar']" id="permissions['editarEjemplar']" value="3">
+                    <label class="form-check-label" for="permissions['editarEjemplar']">Editar ejemplar</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['consultarVisitantes']" value="18">
-                    <label class="form-check-label" for="permissions['consultarVisitantes']">Consultar Visitantes</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['agregarEjemplar']" id="permissions['agregarEjemplar']" value="4">
+                    <label class="form-check-label" for="permissions['agregarEjemplar']">Agregar ejemplar</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['editarLibro']" value="19">
-                    <label class="form-check-label" for="permissions['editarVisitante']">Editar Visitante</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['eliminarEjemplar']" id="permissions['eliminarEjemplar']" value="5">
+                    <label class="form-check-label" for="permissions['eliminarEjemplar']">Eliminar ejemplares</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['agregarSancion']" value="20">
-                    <label class="form-check-label" for="permissions['agregarSancion']">Agregar Sanción</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['prestamoDevolucion']" id="permissions['prestamoDevolucion']" value="12">
+                    <label class="form-check-label" for="permissions['prestamoDevolucion']">Registrar préstamo y devolución de libro</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['quitarSancion']" value="21">
-                    <label class="form-check-label" for="permissions['quitarSancion']">Quitar Sanción</label>
+                    <input class="form-check-input" type="checkbox" name="permissions['imprimirCodigo']" id="permissions['imprimirCodigo']" value="13">
+                    <label class="form-check-label" for="permissions['imprimirCodigo']">Imprimir código de barras</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="permissions['importarLibros']" id="permissions['importarLibros']" value="18">
+                    <label class="form-check-label" for="permissions['importarLibros']">Importar libros desde Excel</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="permissions['exportarLibros']" id="permissions['exportarLibros']" value="26">
+                    <label class="form-check-label" for="permissions['exportarLibros']">Exportar libros a excel</label>
                 </div>
             </div>
         </div><br /><br />
