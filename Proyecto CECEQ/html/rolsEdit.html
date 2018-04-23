@@ -35,7 +35,7 @@ function check( $ROL, $idPermiso){
             </div>
             <div class="modal-footer">
               <a href="model/deleteRol.php?idRol=<?php echo $rol['idRol'] ?>" class="btn btn-success" class="btn btn-primary">Aceptar</a>
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+              <button type="button" name="submit" id="submit" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
           </div>
         </div>
@@ -45,19 +45,19 @@ function check( $ROL, $idPermiso){
         <div class="display-3">Editar rol  </div> <!--display son headdings mas grandes-->
     </div>
     <br>
-    <form  method="post" action="model/editRol.php">
+    <form  method="POST" action="model/rolsEdit.php?idRol=<?php echo $rol['idRol']?>">
         <div class="form-row">
           <!--  <input type="hidden" name="idRol" value="<?php echo $rol['idRol']; ?>">-->
             <div class="col-sm-12 col-md-4 mx-auto">
                 <div class="form-group">
                     <label for="name">Nombre: </label>
-                    <input class="form-control cvalidate cname" type="text" name="name" placeholder="Administrador" value="<?php echo $rol['name']; ?>">
+                    <input class="form-control cvalidate cname" type="text" name="nombre_rol" placeholder="" value="<?php echo $rol['name']; ?>">
                 </div>
             </div>
             <div class="col-sm-12 col-md-4 mx-auto">
                 <div class="form-group">
                     <label for="description">Descripción: </label>
-                    <input class="form-control cvalidate cname" type="text" name="description" placeholder="Cuenta con todos los permisos" value="<?php echo $rol['description']; ?>">
+                    <input class="form-control cvalidate cname" type="text" name="description_rol" placeholder="" value="<?php echo $rol['description']; ?>">
                 </div>
             </div>
         </div><br /><br />
@@ -72,11 +72,11 @@ function check( $ROL, $idPermiso){
                     <label class="form-check-label" for="permissions['consultaAct']">Consultar Actividades</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['registrarEntrada']" id="permissions['registrarEntrada']" value="6"<?php check($rol['idRol'],6);?>>
+                    <input class="form-check-input" type="checkbox" name="permissions['registrarEntrada']" id="permissions['registrarEntrada']" value="6" <?php check($rol['idRol'],6);?>>
                     <label class="form-check-label" for="permissions['registrarEntrada']">Registrar entrada</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="permissions['gestionCredencial']" id="permissions['gestionCredencial']" value="7"<?php check($rol['idRol'],7);?>>
+                    <input class="form-check-input" type="checkbox" name="permissions['gestionCredencial']" id="permissions['gestionCredencial']" value="7" <?php check($rol['idRol'],7);?>>
                     <label class="form-check-label" for="permissions['gestionCredencial']">Gestionar Credenciales</label>
                 </div>
                 <div class="form-check">
@@ -189,11 +189,11 @@ function check( $ROL, $idPermiso){
             <div class="col-sm-2 center-block">
                 <a href="rols.php" class="btn btn-secondary py-0"><i class="material-icons alagin-middle">arrow_back</i></a>
             </div>
-            <div class="col-sm-2 offset-md-2">
+         <div class="col-sm-2 offset-md-2">
                 <a data-toggle="modal" data-target="#deleteModal" href="model/deleteRol.php?idRol=<?php echo $rol['idRol'] ?>" class="btn btn-secondary">Eliminar Rol</a>
             </div>
             <div class="col-sm-2">
-                <input type="submit" name="" class="btn btn-secondary btn-block cinsert" value="Registrar">
+                <input type="submit" class="btn btn-secondary btn-block cinsert" value="Registrar">
             </div>
         </div>
 <!--
@@ -209,3 +209,6 @@ function check( $ROL, $idPermiso){
 -->
     </form>
 </div>
+
+</body>
+</html>
