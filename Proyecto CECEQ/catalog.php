@@ -4,4 +4,5 @@
 <?php include("html/catalog.html"); ?>
 <?php include("modals/modal_catalog.php");?>
 <script src="js/catalog_modal.js"></script> 
+<script src="js/exportXcel.js"></script>
 <?php include("partials/_footer.html"); ?>
