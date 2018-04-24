@@ -298,7 +298,9 @@ function buscarGeneralExport()
 {
     $connection = connect();
     $statement = mysqli_prepare($connection,"
-    select GROUP_CONCAT(a.nombre,' ', apellidoPaterno SEPARATOR ' y ') AS autores, titulo, t.year, estante, editorial, es.nombre, c.idCategoria, e.idEjemplar, ISBN, volumen, edicion, e.year as yearE, c.nombre AS nombreC, es.idEstado, coleccion, claveIngreso, fechaIngreso, idUsuario, adquisicion, numClasificacion, materias
+    select 'autores', 'titulo', 'anio titulo', 'estante', 'editorial', 'Estado', 'Categoria', 'idEjemplar', 'ISBN', 'volumen', 'Impresion', 'anio impresion', 'Coleccion', 'clave Ingreso', 'fecha Ingreso', 'idUsuario', 'adquisicion', 'numClasificacion', 'materias'
+    UNION ALL
+    select GROUP_CONCAT(a.nombre,' ', apellidoPaterno SEPARATOR ' y ') AS autores, titulo, t.year, estante, editorial, es.nombre, c.idCategoria, e.idEjemplar, ISBN, volumen, edicion, e.year as yearE, coleccion, claveIngreso, fechaIngreso, idUsuario, adquisicion, numClasificacion, materias
     into outfile 'C:/Users/win 10/Downloads/exports.csv' 
     fields terminated by ', ' 
     lines terminated by '\n'
