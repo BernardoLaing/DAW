@@ -19,7 +19,7 @@ if(count($_POST)>0){
             if(updateRol($idRol, $name, $description, $permissions)){
                 header('Location: ../rols.php');
             }else{
-                echo "Valiste vergas";
+                echo "Valiste";
             }
             
         }
