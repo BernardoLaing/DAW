@@ -62,7 +62,7 @@
                     <div class='form-group'>
                         <label for="subclasificacion">Subclasificación:</label>
                         <div class="col-md-12">
-                            <select class="form-control cvalidate " name="subclasificacion" id="subclasificacionBusqueda" required>
+                            <select class="form-control cvalidate " name="subclasificacion" id="subclasificacionBusqueda">
                                 <option value="" disabled selected>-- seleccionar clasificación--</option>
 
                             </select>
@@ -135,33 +135,22 @@
             </div>
         </div>
         <br>
+    </form>
         <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-2">
                     <div class="form-group">
                         <div class="col-md-12">
                         <a class="btn btn-secondary py-0" href="menu.php"><i class="material-icons align-middle">arrow_back</i></a>
-        <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
                         </div>
                     </div>
                 </div>
 
-                <div class="col-sm-4 text-right">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <a class="btn btn-secondary mx-auto" href="codigoBarras.php">Imprimir códigos de barras</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 text-right">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <a class="btn btn-secondary mx-auto" href="add_book.php">Añadir Libro</a>
-            <!--                    <button type="submit" class="btn btn-outline-secondary mx-auto">Iniciar Sesión</button>-->
-                        </div>
-                    </div>
-                </div>
+                <?php
+                if(true)
+                {
+                echo '<div class="col-sm-4 text-center"> <div class="form-group"><div class="col-md-12"><button class="btn btn-secondary mx-auto" id="exportarCatalogo">Exportar a excel</button></div></div> </div><div class="col-sm-3 text-center"><div class="form-group"><div class="col-md-12"><a class="btn btn-secondary mx-auto" href="codigoBarras.php">Imprimir códigos de barras</a></div></div></div><div class="col-sm-3 text-right"><div class="form-group"><div class="col-md-12"><a class="btn btn-secondary mx-auto" href="add_book.php">Añadir Libro</a></div></div></div>';
+                }
+                ?>
         </div>
-    </form>
 </div>
 <br><br>
