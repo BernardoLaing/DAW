@@ -63,6 +63,7 @@ a.edit{
     max-width: 95%;
     transition: background-color, 1s;
     cursor: pointer;
+    height: 100%;
 }
 
 .option-btn2{
