@@ -1,4 +1,8 @@
 <?php include("partials/session_functions.php")?>
+<?php 
+if(!$_SESSION["permisos"][3])
+    header('Location: menu.php');
+?>
 <?php include("partials/_header.html"); ?>
 <?php include("partials/_top_bar.html"); ?>
 <?php include("html/entry.html");?>

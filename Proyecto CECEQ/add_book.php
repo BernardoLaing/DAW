@@ -2,6 +2,10 @@
 include("partials/session_functions.php");
 require_once('model/catalog_books_utils.php');
 ?>
+<?php 
+if(!$_SESSION["permisos"][23])
+    header('Location: menu.php');
+?>
 <?php include("partials/_header.html"); ?>
 <?php include("partials/_top_bar.html"); ?>
 <?php include("html/add_book.html"); ?>
