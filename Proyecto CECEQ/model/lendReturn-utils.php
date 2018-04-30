@@ -149,7 +149,6 @@ function checkLendTimes($idVisitante){
     $idCredencial =  $row['idCredencial'];
     }
   
-  
   $sql='SELECT *
           FROM ejemplar_credencial ec
           WHERE ec.idCredencial = (?)
