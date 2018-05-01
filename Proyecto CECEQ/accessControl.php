@@ -1,5 +1,7 @@
 <?php
 include("partials/session_functions.php");
+if(!$_SESSION["permisos"][18])
+    header('Location: menu.php');
 require_once('utils.php');
 ?>
 <?php include("partials/_header.html"); ?>
@@ -13,8 +15,14 @@ require_once('utils.php');
     <br>
     <div class="row text-center center-block">
         <div class="col-sm-0 col-md-2 "></div>
-        <?php include("partials/buttons/_accounts.html"); ?>
-        <?php include("partials/buttons/_rols.html"); ?>
+        <?php 
+        if($_SESSION["permisos"][18])
+            include("partials/buttons/_accounts.html"); 
+        ?>
+        <?php 
+        if($_SESSION["permisos"][29])
+            include("partials/buttons/_rols.html");
+        ?>
         <div class="col-sm-0 col-md-2 "></div>
     </div>
     <br>

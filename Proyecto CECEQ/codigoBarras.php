@@ -1,5 +1,7 @@
 <?php
 include("partials/session_functions.php");
+if(!$_SESSION["permisos"][17])
+    header('Location: menu.php');
 require_once('model/catalog_books_utils.php');
 ?>
 <?php include("partials/_header.html"); ?>

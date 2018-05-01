@@ -1,4 +1,8 @@
 <?php include("partials/session_functions.php");?>
+<?php 
+if(!$_SESSION["permisos"][14])
+    header('Location: menu.php');
+?>
 <?php include("partials/_header.html"); ?> <!--Acaba en la primera etiqueta body-->
 <?php include("partials/_top_bar.html");?>  <!--Es la etiqueta Nav-->
 <?php include("html/_lend_return.html"); ?> <!--Empieza en los scripts-->
