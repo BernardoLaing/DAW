@@ -5,7 +5,11 @@ if(!$_SESSION["permisos"][3])
 ?>
 <?php include("partials/_header.html"); ?>
 <?php include("partials/_top_bar.html"); ?>
-<?php include("html/entry.html");?>
+<?php include("html/entry.html");
+$link="https://www.youtube.com//embed/PptNXwj6kN0?autoplay=1";
+include("html/manualUsuario.html"); 
+include("partials/_bottom_bar.html"); 
+?>
 <?php include("partials/_footer.html"); ?>
 <?php include("utils.php");
 include("modals/modal_saved.html");
