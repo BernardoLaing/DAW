@@ -52,7 +52,7 @@ function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
       ///////////// REVISA QUE EXISTA USUARIO //////////////////////
       $sql='SELECT *
               FROM credencial c
-              WHERE c.idCredencial = (?)';
+              WHERE c.idVisitante = (?)';
       // Preparing the statement
       if (!($statement = $conn->prepare($sql))) {
           die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
@@ -123,10 +123,33 @@ function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
     disconnect($conn);
 }
 
-function checkLendTimes($idCredencial){
+function checkLendTimes($idVisitante){
   $conn = connect();
   if(!$conn){ die("No se pudo conectar a la Base de Datos");}
   ///////////// REVISA QUE NO TENGA 3 PRESTAMOS //////////////////////
+  $sql='SELECT idCredencial
+  FROM credencial
+  WHERE idVisitante = (?)';
+
+    // Preparing the statement
+    if (!($statement = $conn->prepare($sql))) {
+    die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
+    }
+    // Binding statement params
+    if (!$statement->bind_param("i", $idVisitante)) {
+    die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
+    }
+    // Executing the statement
+    if (!$statement->execute()) {
+    die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+    }
+    $result = $statement->get_result();
+    //if($result->num_rows === 0) exit('No rows el ejemplar no existe');
+    if($row = $result->fetch_assoc()) {
+    $idCredencial =  $row['idCredencial'];
+    }
+  
+  
   $sql='SELECT *
           FROM ejemplar_credencial ec
           WHERE ec.idCredencial = (?)
@@ -181,9 +204,32 @@ function getBookState($idLibro){
   }
 
 
-function insertLend( $idEjemplar, $idCredencial, $dateLend, $dateReturn){
+function insertLend( $idEjemplar, $idVisitante, $dateLend, $dateReturn){
   $conn = connect();
   if(!$conn){ die("No se pudo conectar a la Base de Datos");}
+
+  $sql='SELECT idCredencial
+            FROM credencial
+            WHERE idVisitante = (?)';
+
+    // Preparing the statement
+        if (!($statement = $conn->prepare($sql))) {
+            die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
+        }
+        // Binding statement params
+        if (!$statement->bind_param("i", $idVisitante)) {
+            die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
+        }
+        // Executing the statement
+        if (!$statement->execute()) {
+            die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+        }
+        $result = $statement->get_result();
+        //if($result->num_rows === 0) exit('No rows el ejemplar no existe');
+        if($row = $result->fetch_assoc()) {
+            $idCredencial =  $row['idCredencial'];
+        }
+
   $sql = "INSERT INTO ejemplar_credencial(idEjemplar, idCredencial, fechaPrestamo, fechaDevolucion)
           VALUES(?,?, ?, ?)";
         // Preparing the statement
@@ -236,7 +282,7 @@ function insertReturn($idEjemplar, $fechaDevolucionReal, $buenEstado, $malEstado
       $query='SELECT v.nombre, v.apellidoPaterno, v.apellidoMaterno
               FROM visitante v, credencial c
               WHERE c.idVisitante = v.idVisitante
-              AND c.idCredencial = (?)';
+              AND c.idVisitante = (?)';
     }else{  //Esto quiere decir que marcó una devolución ya que aqui no manda el idCredencial ya que no importa quien lo esta regresando o si hay coincidencia. Simplemente se entrega
       $query='SELECT v.nombre, v.apellidoPaterno, v.apellidoMaterno
               FROM visitante v, credencial c, ejemplar_credencial ec

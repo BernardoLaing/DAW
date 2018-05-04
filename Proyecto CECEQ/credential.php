@@ -12,6 +12,9 @@ $exp = strtotime(date("Y-m-d", strtotime($today)) . " +24 month");
 $exp = date("Y-m-d",$exp);
 ?>
 <?php include("html/credential.html");
+$link="https://www.youtube.com//embed/PptNXwj6kN0?autoplay=1";
+include("html/manualUsuario.html"); 
+include("partials/_bottom_bar.html"); 
 
 if(isset($_SESSION['credential_msg']) && $_SESSION['credential_msg']){
     echo "<script>

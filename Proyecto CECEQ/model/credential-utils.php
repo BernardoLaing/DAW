@@ -1,6 +1,7 @@
 <?php 
 $root = realpath($_SERVER["DOCUMENT_ROOT"]);
-require_once("$root/JAMBE/Proyecto CECEQ/utils.php");
+//require_once("$root/JAMBE/Proyecto CECEQ/utils.php");
+require_once("../utils.php");
 function insertCredential(  //Visitante
                             $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $gradoEstudios, $genero,
                             //Credencial

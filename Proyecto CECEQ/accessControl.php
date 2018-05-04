@@ -20,7 +20,7 @@ require_once('utils.php');
             include("partials/buttons/_accounts.html"); 
         ?>
         <?php 
-        if($_SESSION["permisos"][29])
+        if($_SESSION["permisos"][22])
             include("partials/buttons/_rols.html");
         ?>
         <div class="col-sm-0 col-md-2 "></div>

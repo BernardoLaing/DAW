@@ -10,17 +10,17 @@ include("partials/_top_bar.html"); ?>
 $permissions = getTable('operacion');
 ?>
 
-<?php 
-include("html/rolsCreate.html");
-include("modals/modal_error.html");
-if(isset($_SESSION['error_type']) && $_SESSION['error_type'] === "rolConflict"){
-    echo "<script>
-            $(document).ready(function (e) {
-                $('#myModal').modal('show');
-            });
-        </script>";
-    $_SESSION['error_type'] = null;
-    $_SESSION['error_msg'] = null;
-}
-include("partials/_footer.html"); 
-?>
+    <?php 
+    include("html/rolsCreate.html");
+    include("modals/modal_error.html");
+    if(isset($_SESSION['error_type']) && $_SESSION['error_type'] === "rolConflict"){
+        echo "<script>
+                $(document).ready(function (e) {
+                    $('#myModal').modal('show');
+                });
+            </script>";
+        $_SESSION['error_type'] = null;
+        $_SESSION['error_msg'] = null;
+    }
+    include("partials/_footer.html"); 
+    ?>

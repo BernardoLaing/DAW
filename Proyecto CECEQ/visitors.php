@@ -7,7 +7,10 @@ if(!$_SESSION["permisos"][6])
 include("partials/_header.html");
 include("partials/_top_bar.html");
 include ("html/visitors.html");
+$link="https://www.youtube.com//embed/PptNXwj6kN0?autoplay=1";
+include("html/manualUsuario.html"); 
+include("partials/_bottom_bar.html"); 
 include("partials/_footer.html");
 include("modals/modal_saved.html");
-//include("modals/modal_entry.php");
+include("modals/modal_connection_error.html");
 

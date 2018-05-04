@@ -143,15 +143,32 @@ function queryVisitor($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno,
     $apellidoMaterno .="%";
     $statement = mysqli_prepare($connection,"
     select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', g.nombre as 'Grado de estudios', genero as 'Género'
-    from visitante as v, visitante_gradoestudios as vg, gradoestudios as g
+    from visitante v, gradoestudios g,
+    (
+            
+      select vg.idVisitante as vid, vg.idGrado as gid
+      from
+        (
+        select idVisitante as ii, max(fecha) as im
+        from visitante_gradoestudios
+        group by idVisitante
+        ) i, visitante_gradoestudios vg
+      where i.ii = vg.idVisitante and i.im = vg.fecha
+    
+    ) ivg  
+    
+    
     where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
     and (v.nombre like ? ".($nombre==""?"or 1":"").")
     and (apellidoPaterno like ? ".($apellidoPaterno==""?"or 1":"").")
     and (apellidoMaterno like ? ".($apellidoMaterno==""?"or 1":"").")
     and (fechaNacimiento = ? ".($fechaNacimiento==""?"or 1":"").")
     and (genero = ? ".($genero==""?"or 1":"").")
-    and v.idVisitante = vg.idVisitante
-    and vg.idGrado = g.idGrado
+    
+    
+    and v.idVisitante = ivg.vid
+    and ivg.gid = g.idGrado
+    
     and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
     ");
     $statement->bind_param("isssssi", $idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios);
@@ -167,6 +184,39 @@ function queryFirstVisitor($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNa
     $apellidoPaterno .="%";
     $apellidoMaterno .="%";
     $statement = mysqli_prepare($connection,"
+    
+    select v.idVisitante
+    from visitante v, gradoestudios g,
+    (
+            
+      select vg.idVisitante as vid, vg.idGrado as gid
+      from
+        (
+        select idVisitante as ii, max(fecha) as im
+        from visitante_gradoestudios
+        group by idVisitante
+        ) i, visitante_gradoestudios vg
+      where i.ii = vg.idVisitante and i.im = vg.fecha
+    
+    ) ivg  
+    
+    where
+    (v.nombre like ? ".($nombre==""?"or 1":"").")
+    and (apellidoPaterno like ? ".($apellidoPaterno==""?"or 1":"").")
+    and (apellidoMaterno like ? ".($apellidoMaterno==""?"or 1":"").")
+    and (fechaNacimiento = ? ".($fechaNacimiento==""?"or 1":"").")
+    and (genero = ? ".($genero==""?"or 1":"").")
+    
+    
+    and v.idVisitante = ivg.vid
+    and ivg.gid = g.idGrado
+    
+    and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
+    
+    ORDER BY v.idVisitante desc LIMIT 1
+
+    ");
+    /*
     select v.idVisitante
     from visitante as v, visitante_gradoestudios as vg, gradoestudios as g
     where (v.nombre like ? ".($nombre==""?"or 1":"").")
@@ -178,7 +228,7 @@ function queryFirstVisitor($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNa
     and vg.idGrado = g.idGrado
     and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
     ORDER BY v.idVisitante desc LIMIT 1
-    ");
+    */
     $statement->bind_param("sssssi", $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios);
     $statement->execute();
     $result = $statement->get_result();
@@ -220,11 +270,10 @@ function updateVisitante($idVisitante, $nombre, $apellidoPaterno, $apellidoMater
     $statement->execute();
 
     $statement = mysqli_prepare($connection,"
-    update visitante_gradoestudios
-    set idGrado = ?
-    where idVisitante = ?
+    insert into visitante_gradoestudios
+    values (?, ?, current_timestamp())
     ");
-    $statement->bind_param("ii", $gradoEstudios, $idVisitante);
+    $statement->bind_param("ii", $idVisitante, $gradoEstudios);
     $statement->execute();
     disconnect($connection);
 }
@@ -445,7 +494,40 @@ function querySancion($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno,
     $apellidoPaterno .="%";
     $apellidoMaterno .="%";
     $statement = mysqli_prepare($connection,"
-    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', g.nombre as 'Grado de estudios', genero as 'Género', descripcion as 'Descripción'
+    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', g.nombre as 'Grado de estudios', genero as 'Género'
+    
+    from visitante v, gradoestudios g, sancion s,
+    (
+            
+      select vg.idVisitante as vid, vg.idGrado as gid
+      from
+        (
+        select idVisitante as ii, max(fecha) as im
+        from visitante_gradoestudios
+        group by idVisitante
+        ) i, visitante_gradoestudios vg
+      where i.ii = vg.idVisitante and i.im = vg.fecha
+    
+    ) ivg  
+    
+    
+    where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
+    and (v.nombre like ? ".($nombre==""?"or 1":"").")
+    and (apellidoPaterno like ? ".($apellidoPaterno==""?"or 1":"").")
+    and (apellidoMaterno like ? ".($apellidoMaterno==""?"or 1":"").")
+    and (fechaNacimiento = ? ".($fechaNacimiento==""?"or 1":"").")
+    and (genero = ? ".($genero==""?"or 1":"").")
+    
+    
+    and v.idVisitante = ivg.vid
+    and ivg.gid = g.idGrado
+    
+    and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
+    
+    and v.idVisitante = s.idVisitante
+    and fechaFin > CURRENT_DATE
+    ");
+    /*
     from visitante as v, visitante_gradoestudios as vg, gradoestudios as g, sancion as s
     where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
     and (v.nombre like ? ".($nombre==""?"or 1":"").")
@@ -456,9 +538,7 @@ function querySancion($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno,
     and v.idVisitante = vg.idVisitante
     and vg.idGrado = g.idGrado
     and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
-    and v.idVisitante = s.idVisitante
-    and fechaFin > CURRENT_DATE
-    ");
+    */
     $statement->bind_param("isssssi", $idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios);
     $statement->execute();
     $result = $statement->get_result();
@@ -477,4 +557,345 @@ function cancelSancion($idVisitante){
     $statement->execute();
     disconnect($connection);
 }
-?>
+
+
+
+function buildAssocArray($result){
+    $keys = array();
+    $r = array();
+    if(mysqli_num_rows($result)>0){
+        $fieldNumber = mysqli_num_fields($result);
+        for($i = 0; $i < $fieldNumber; $i++){
+           $keys[$i] = mysqli_fetch_field_direct($result, $i)->name;
+        }
+        while($row = mysqli_fetch_assoc($result)){
+            $j = 0;
+            foreach($row as $data){
+                $r[$keys[$j]] = $data;
+                $j++;
+            }
+        }
+    }
+    return $r;
+}
+
+
+
+
+function queryCredencial($idVisitante){
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    
+            select
+            v.nombre as 'name',
+            v.apellidoPaterno as 'paternal',
+            v.apellidoMaterno as 'maternal',
+            v.fechaNacimiento as 'birth',
+            v.genero as 'gender',
+            
+            gnom as 'schooling',
+            
+            c.fechaExpedicion as 'issuance',
+            c.foto as 'fileToUpload',
+            c.colonia as 'neighborhood',
+            c.calle as 'street',
+            c.numero as 'number',
+            c.cp as 'postalCode',
+            c.telefono as 'phone',
+            c.correo as 'email',
+            c.nombreTrabajo as 'workName',
+            c.telefonoTrabajo as 'workPhone',
+            c.coloniaTrabajo as 'workNeighborhood',
+            c.calleTrabajo as 'workStreet',
+            c.numeroTrabajo as 'workNumber',
+            c.cpTrabajo as 'workPostalCode',
+            
+            f.nombre as 'nameF',
+            f.apellidoPaterno as 'paternalF',
+            f.apellidoMaterno as 'maternalF',
+            f.colonia as 'neighborhoodF',
+            f.calle as 'streetF',
+            f.numero as 'numberF',
+            f.cp as 'postalCodeF',
+            f.telefono as 'phoneF',
+            f.correo as 'emailF',
+            f.nombreTrabajo as 'workNameF',
+            f.telefonoTrabajo as 'workPhoneF',
+            f.coloniaTrabajo as 'workNeighborhoodF',
+            f.calleTrabajo as 'workStreetF',
+            f.numeroTrabajo as 'workNumberF',
+            f.cpTrabajo as 'workPostalCodeF',
+            
+            fgnom as 'schoolingF'
+            
+            
+            
+            from
+            visitante v,
+            (
+            
+              select vg.idVisitante as vid, g.nombre as gnom
+              from
+                (
+                select idVisitante as ii, max(fecha) as im
+                from visitante_gradoestudios
+                group by idVisitante
+                ) i, visitante_gradoestudios vg, gradoestudios g
+              where i.ii = vg.idVisitante and i.im = vg.fecha and vg.idGrado = g.idGrado
+            
+            ) as vg,
+            credencial c,
+            credencial_fiador cf,
+            fiador f,
+            (
+                select g.nombre as fgnom, f.idFiador as fid
+                from
+                fiador f,
+                fiador_gradoestudios fg,
+                gradoestudios g
+                where
+                f.idFiador = fg.idFiador and
+                fg.idGrado = g.idGrado
+            
+            ) fg,
+            (
+            select idVisitante as idvc, max(fechaExpedicion) as mfc
+            from credencial
+            group by idVisitante
+            ) ic,
+            (
+            select idCredencial as eidc, idFiador as eidf
+            from credencial_fiador icf,
+                (
+                select idCredencial as idc, max(fecha) imfc
+                from credencial_fiador
+                group by idCredencial
+                ) ic
+            where icf.idCredencial = ic.idc and
+            icf.fecha = ic.imfc
+            ) scuc
+            
+            
+            where
+            v.idVisitante = ? and
+            
+            -- nombre del grado de estudios
+            v.idVisitante = vid and
+            
+            -- agregar credencial
+            v.idVisitante = c.idVisitante and
+            
+            -- credencial más reciente
+            c.idVisitante = ic.idvc and
+            c.fechaExpedicion = mfc and
+            
+            -- fiador más reciente
+            c.idCredencial = cf.idCredencial and
+            (cf.idCredencial, cf.idFiador) = (scuc.eidc, scuc.eidf) and
+            
+            -- añadir nombre del grado de estudios del fiador
+            cf.idFiador = f.idFiador and
+            f.idFiador = fid;    
+    
+    ");
+    $statement->bind_param("i", $idVisitante);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
+
+
+function updateCredential(
+    //Visitante
+    $idVisitante,
+    $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $gradoEstudios, $genero,
+    //Credencial
+    $foto, $colonia, $calle, $numero, $cp, $telefono, $correo, $nombreTrabajo, $telefonoTrabajo, $coloniaTrabajo, $calleTrabajo, $numeroTrabajo, $cpTrabajo,
+    //Fiador
+    $nombreF, $apellidoPaternoF, $apellidoMaternoF, $correoF, $telefonoF, $calleF, $numeroF, $coloniaF, $cpF, $nombreTrabajoF, $telefonoTrabajoF, $calleTrabajoF, $numeroTrabajoF, $coloniaTrabajoF, $cpTrabajoF, $gradoEstudiosF
+){
+    $db = connect();
+    if ($db != NULL) {
+        // Visitante
+        $query="
+        update visitante 
+        set
+        nombre = ?,
+        apellidoPaterno = ?, 
+        apellidoMaterno = ?,
+        fechaNacimiento = ?,
+        genero = ?
+        where idVisitante = ?
+        ";
+        // Preparing the statement
+        if (!($stmt = $db->prepare($query))) {
+            die("Preparation 0 failed: (" . $db->errno . ") " . $db->error);
+        }
+        // Binding statement params
+        if (!$stmt->bind_param("sssssi", $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $idVisitante)) {
+            die("Parameter vinculation 0 failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+        // Executing the statement
+        if (!$stmt->execute()) {
+            die("Execution 0 failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+
+
+        //visitante_gradoestudios
+        $query="insert into visitante_gradoestudios values (?, ?, current_timestamp())";
+        // Preparing the statement
+        if (!($stmt = $db->prepare($query))) {
+            die("Preparation 0.1 failed: (" . $db->errno . ") " . $db->error);
+        }
+        // Binding statement params
+        if (!$stmt->bind_param("ii",$idVisitante, $gradoEstudios)) {
+            die("Parameter vinculation 0.1 failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+        // Executing the statement
+        if (!$stmt->execute()) {
+            die("Execution 0.1 failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+
+
+
+
+        // Credential
+        $query="
+        update credencial 
+        set
+        foto  = ?,
+        colonia = ?,
+        calle = ?,
+        numero = ?,
+        cp = ?,
+        telefono = ?,
+        correo = ?,
+        nombreTrabajo = ?,
+        telefonoTrabajo = ?,
+        coloniaTrabajo = ?,
+        calleTrabajo = ?,
+        numeroTrabajo = ?,
+        cpTrabajo = ?
+        where idVisitante = ?
+        ";
+        // Preparing the statement
+        if (!($stmt = $db->prepare($query))) {
+            die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
+        }
+        // Binding statement params
+        if (!$stmt->bind_param("ssssisssssssii", $foto, $colonia, $calle, $numero, $cp, $telefono, $correo,
+            $nombreTrabajo, $telefonoTrabajo, $coloniaTrabajo, $calleTrabajo, $numeroTrabajo, $cpTrabajo, $idVisitante)) {
+            die("Parameter vinculation 1 failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+        // Executing the statement
+        if (!$stmt->execute()) {
+            die("Execution 1 failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+
+
+        //obtener id de credencial
+        $query="
+        select c.idCredencial
+        from 
+        credencial c,
+        (
+        select idCredencial as eidc, idFiador as eidf
+            from credencial_fiador icf,
+            (
+            select idCredencial as idc, max(fecha) imfc
+                from credencial_fiador
+                group by idCredencial
+            ) ic
+            where icf.idCredencial = ic.idc and
+        icf.fecha = ic.imfc
+        ) scuc,
+        credencial_fiador cf
+        where 
+        c.idVisitante = ? and
+        c.idCredencial = cf.idCredencial and
+        (cf.idCredencial, cf.idFiador) = (scuc.eidc, scuc.eidf)
+        ";
+        // Preparing the statement
+        if (!($stmt = $db->prepare($query))) {
+            die("Preparation credqid failed: (" . $db->errno . ") " . $db->error);
+        }
+        // Binding statement params
+        if (!$stmt->bind_param("i", $idVisitante)) {
+            die("Parameter vinculation credqid failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+        // Executing the statement
+        if (!$stmt->execute()) {
+            die("Execution credqid failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+        $r = $stmt->get_result();
+        if(mysqli_num_rows($r)>0){
+            while($row = mysqli_fetch_assoc($r)){
+                $cred_id = $row;
+            }
+        }
+
+
+
+        // Fiador
+        $query="insert into fiador (nombre, apellidoPaterno, apellidoMaterno, colonia, calle, numero, cp, telefono, correo, 
+                                    nombreTrabajo, telefonoTrabajo, coloniaTrabajo, calleTrabajo, numeroTrabajo, cpTrabajo)
+                values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        // Preparing the statement
+        if (!($stmt = $db->prepare($query))) {
+            die("Preparation 2 failed: (" . $db->errno . ") " . $db->error);
+        }
+        // Binding statement params
+        if (!$stmt->bind_param("ssssssisssssssi", $nombreF, $apellidoPaternoF, $apellidoMaternoF, $coloniaF, $calleF, $numeroF, $cpF,
+            $telefonoF, $correoF, $nombreTrabajoF, $telefonoTrabajoF, $coloniaTrabajoF,
+            $calleTrabajoF, $numeroTrabajoF, $cpTrabajoF)) {
+            die("Parameter vinculation 2 failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+        // Executing the statement
+        if (!$stmt->execute()) {
+            die("Execution 2 failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+        $fiador_id = $db->insert_id;
+
+
+
+        //fiador_gradoestudios
+        $query="insert into Fiador_GradoEstudios values (?, ?, current_timestamp())";
+        // Preparing the statement
+        if (!($stmt = $db->prepare($query))) {
+            die("Preparation 2.1 failed: (" . $db->errno . ") " . $db->error);
+        }
+        // Binding statement params
+        if (!$stmt->bind_param("ii",$fiador_id, $gradoEstudiosF)) {
+            die("Parameter vinculation 2.1 failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+        // Executing the statement
+        if (!$stmt->execute()) {
+            die("Execution 2.1 failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+
+        $query="insert into credencial_fiador values (? , ?, CURDATE())";
+        // Preparing the statement
+        if (!($stmt = $db->prepare($query))) {
+            die("Preparation 3 failed: (" . $db->errno . ") " . $db->error);
+        }
+        // Binding statement params
+        if (!$stmt->bind_param("ii", $cred_id, $fiador_id)) {
+            die("Parameter vinculation 3 failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+        // Executing the statement
+        if (!$stmt->execute()) {
+            die("Execution 3 failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+
+
+        disconnect($db);
+        return true;
+    }
+    return false;
+}
+
+
+
+
+
