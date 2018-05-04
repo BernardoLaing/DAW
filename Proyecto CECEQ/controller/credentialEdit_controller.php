@@ -29,7 +29,7 @@ if(count($_POST)>0
     && (test($GENDER, $_POST["credential"]["gender"] ))
     && (test($SCHOOLING, $_POST["credential"]["schooling"] ))
     // Credencial
-    && ((getimagesize($_FILES["fileToUpload"]["tmp_name"]) != FALSE))
+    //&& ((getimagesize($_FILES["fileToUpload"]["tmp_name"]) != FALSE))
     && (($_POST["credential"]["email"]  !== null))
     && (test($NAME, $_POST["credential"]["street"] ))
     && (test($NUMBER, $_POST["credential"]["number"] ))
@@ -71,18 +71,19 @@ if(count($_POST)>0
             $nulls++;
         }
     }
-
-
+    //$_FILES["fileToUpload"]["tmp_name"] = "fakepath/adf";
+/*
     if($_FILES["fileToUpload"]["tmp_name"] != null){
         $info["fileToUpload"] = $_FILES["fileToUpload"]["tmp_name"];
     }else{
         $info["fileToUpload"] = "";
         $nulls++;
     }
-
+*/
     if(isset($info)) {
-        $target_file = basename($_FILES["fileToUpload"]["name"]);
+        //$target_file = basename($_FILES["fileToUpload"]["name"]);
         if($nulls == 0){
+            $target_file = "fakepath/a";
             if(
             updateCredential(
             // Visitante

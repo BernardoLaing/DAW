@@ -32,9 +32,19 @@ $(document).ready(function(){
                     text: "Guardar cambios",
                     type: "submit"
                 }));
-                        //  document.getElementsByTagName("input").placeholder=" ";
             }
         }));
+        $("#warpEditButton").append(
+            $("<button>", {
+                    class: "btn btn-secondary d-ib ml-3",
+                    text: "Ver credencial",
+                    click: function (e) {
+                        var a = window.location.href;
+                        a = a.substr(0, a.length-(a.match(/\/[^\/]+$/)+"").length)+"/credentialView.php?id="+$("#user_number").val();
+                        window.location.href = a;
+                    }
+                })
+        );
 
         $("#entry_form").submit(function(e){
             e.preventDefault();

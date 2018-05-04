@@ -145,9 +145,11 @@ $(document).ready(function(){
         console.log(a);
         var i = $("#targetOuter").find("img").first();
         $("#fileToUpload").prop("disabled", true);
+        $("#fileToUpload").removeAttr("required");
         $("#fileToUpload").change(
             function(){
                i.hide();
+               $("#fileToUpload").prop("required", true);
             }
         );
         i.removeClass("icon-choose-image");
