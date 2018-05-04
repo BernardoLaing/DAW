@@ -1,6 +1,6 @@
 <?php 
 include("partials/session_functions.php");
-if(!$_SESSION["permisos"][32])
+if(!$_SESSION["permisos"][25])
     header('Location: menu.php');
 require_once('utils.php');
 require_once('model/RBAC-utils.php');
