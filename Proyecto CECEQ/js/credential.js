@@ -30,6 +30,7 @@ $(document).ready(function(){
                 type: "button",
                 class: "btn btn-secondary",
                 click: function(){
+                    $("#fileToUpload").prop("disabled", false);
                     $(".card-body").find("input").each(function(){
                         $(this).prop("disabled", false);
                     });
@@ -138,17 +139,30 @@ $(document).ready(function(){
     }
 
     function loadImage(){
-       // $("img").first().attr("src", 'data:image/png;base64,'+data);
         //console.log(window.location.href);
-        //a.substr(0, a.length-(a.match(/\/[^\/]+$/)+"").length)+"/uploads/revanbebe.png";
+        var a = window.location.href;
+        a = a.substr(0, a.length-(a.match(/\/[^\/]+$/)+"").length)+"/uploads/revanbebe.png";
+        console.log(a);
+        var i = $("#targetOuter").find("img").first();
+        $("#fileToUpload").prop("disabled", true);
+        $("#fileToUpload").change(
+            function(){
+               i.hide();
+            }
+        );
+        i.removeClass("icon-choose-image");
+        i.attr("src", a);
+        i.attr("width", 278);
+        i.attr("height", 200);
         /*
-        $.get("uploads/revanbebe.png",
+        $.get(a,
             function(data){
+                console.log(data);
                 $("img").first().removeClass(".icon-choose-image");
-                $("img").first().attr("src", 'data:image/png;base64,'+data);
-                console.log("a");
+                $("#targetOuter").find("img").first().attr("src", a);
             });
         */
+
     }
 
 });
