@@ -48,6 +48,7 @@ function validateSearch(event){
                     element.parentElement.parentElement.appendChild(w);
                 }
                 if(cvalue != "" && !test(NAME, cvalue)){
+                    console.log("cname");
                     cpassed = false;
                     w.style.display = "inline-block";
                     w.innerHTML = NAME_MESSAGE;
@@ -62,6 +63,7 @@ function validateSearch(event){
                     element.parentElement.parentElement.appendChild(w);
                 }
                 if(cvalue != "" && !test(NUMBER, cvalue)){
+                    console.log("cnumber");
                     cpassed = false;
                     w.style.display = "inline-block";
                     w.innerHTML = NUMBER_MESSAGE;
@@ -76,6 +78,7 @@ function validateSearch(event){
                     element.parentElement.parentElement.appendChild(w);
                 }
                 if(cvalue != "" && !test(DATE, cvalue)){
+                    console.log("cdate");
                     cpassed = false;
                     w.style.display = "inline-block";
                     w.innerHTML = DATE_MESSAGE;
@@ -90,6 +93,7 @@ function validateSearch(event){
                     element.parentElement.parentElement.appendChild(w);
                 }
                 if(cvalue != "" && !test(SCHOOLING, cvalue)){
+                    console.log("cschooling");
                     cpassed = false;
                     w.style.display = "inline-block";
                     w.innerHTML = SCHOOLING_MESSAGE;
@@ -104,6 +108,7 @@ function validateSearch(event){
                     element.parentElement.parentElement.appendChild(w);
                 }
                 if(cvalue != "" && !test(GENDER, cvalue)){
+                    console.log("cgender");
                     cpassed = false;
                     w.style.display = "inline-block";
                     w.innerHTML = GENDER_MESSAGE;
@@ -118,6 +123,7 @@ function validateSearch(event){
                     element.parentElement.parentElement.appendChild(w);
                 }
                 if(cvalue != "" && !test(ISBN, cvalue)){
+                    console.log("cisbn");
                     cpassed = false;
                     w.style.display = "inline-block";
                     w.innerHTML = ISBN_MESSAGE;
@@ -132,6 +138,7 @@ function validateSearch(event){
                     element.parentElement.parentElement.appendChild(w);
                 }
                 if(cvalue != "" && !test(YEAR, cvalue)){//<<------------------------------------------------------------------------
+                    console.log("cyear");
                     cpassed = false;
                     w.style.display = "inline-block";
                     w.innerHTML = YEAR_MESSAGE;//<<-----------------------------------------------------------------
@@ -146,6 +153,7 @@ function validateSearch(event){
                     element.parentElement.parentElement.appendChild(w);
                 }
                 if(cvalue != "" && !test(CLASSIFICATION, cvalue)){//<<------------------------------------------------------------------------
+                    console.log("cclassification");
                     cpassed = false;
                     w.style.display = "inline-block";
                     w.innerHTML = CLASSIFICATION_MESSAGE;//<<-----------------------------------------------------------------
@@ -160,6 +168,7 @@ function validateSearch(event){
                     element.parentElement.parentElement.appendChild(w);
                 }
                 if(cvalue != "" && !test(PASSWORD, cvalue)){//<<------------------------------------------------------------------------
+                    console.log("cpassword");
                     cpassed = false;
                     w.style.display = "inline-block";
                     w.innerHTML = PASSWORD_MESSAGE;//<<-----------------------------------------------------------------
@@ -174,6 +183,7 @@ function validateSearch(event){
                     element.parentElement.parentElement.appendChild(w);
                 }
                 if(cvalue != "" && !test(EMAIL, cvalue)){//<<------------------------------------------------------------------------
+                    console.log("cemail");
                     cpassed = false;
                     w.style.display = "inline-block";
                     w.innerHTML = EMAIL_MESSAGE;//<<-----------------------------------------------------------------
@@ -188,6 +198,7 @@ function validateSearch(event){
                     element.parentElement.parentElement.appendChild(w);
                 }
                 if(cvalue != "" && !test(PHONE, cvalue)){//<<------------------------------------------------------------------------
+                    console.log("cphone");
                     cpassed = false;
                     w.style.display = "inline-block";
                     w.innerHTML = PHONE_MESSAGE;//<<-----------------------------------------------------------------
