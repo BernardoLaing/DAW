@@ -200,7 +200,8 @@ function queryFirstVisitor($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNa
     
     ) ivg  
     
-    and (v.nombre like ? ".($nombre==""?"or 1":"").")
+    where
+    (v.nombre like ? ".($nombre==""?"or 1":"").")
     and (apellidoPaterno like ? ".($apellidoPaterno==""?"or 1":"").")
     and (apellidoMaterno like ? ".($apellidoMaterno==""?"or 1":"").")
     and (fechaNacimiento = ? ".($fechaNacimiento==""?"or 1":"").")
