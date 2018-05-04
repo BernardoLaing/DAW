@@ -1,6 +1,6 @@
 <?php include("partials/session_functions.php");?>
 <?php 
-if(!$_SESSION["permisos"][14])
+if(!$_SESSION["permisos"][12])
     header('Location: menu.php');
 ?>
 <?php include("partials/_header.html"); ?> <!--Acaba en la primera etiqueta body-->

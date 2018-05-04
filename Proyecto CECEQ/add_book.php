@@ -3,7 +3,7 @@ include("partials/session_functions.php");
 require_once('model/catalog_books_utils.php');
 ?>
 <?php 
-if(!$_SESSION["permisos"][23])
+if(!$_SESSION["permisos"][4])
     header('Location: menu.php');
 ?>
 <?php include("partials/_header.html"); ?>

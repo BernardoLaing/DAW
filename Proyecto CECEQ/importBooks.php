@@ -1,5 +1,9 @@
 <?php
-session_start();
+include("partials/session_functions.php");
+
+if(!$_SESSION["permisos"][4])
+    header('Location: menu.php');
+
 require_once('utils.php');
 
 function checkIfTableExists(){

@@ -1,6 +1,6 @@
 <?php
 include("partials/session_functions.php");
-if(!$_SESSION["permisos"][17])
+if(!$_SESSION["permisos"][13])
     header('Location: menu.php');
 require_once('model/catalog_books_utils.php');
 ?>

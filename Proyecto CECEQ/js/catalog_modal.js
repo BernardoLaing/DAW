@@ -32,7 +32,6 @@ function fucSaveChanges2(){
     });
 }
 function sendInfoAjax(){
-    alert('filtro 1')
     $.get("editBookAjax.php", {id: idEjemplarChange, titulo: $('#book_title_see').val(), autor1: $('#book_author_see').val(), apellido1: $('#book_apaterno_see').val(),  autor2: $('#book_author2_see').val(), apellido2: $('#book_apaterno2_see').val(), autor3: $('#book_author3_see').val(), apellido3: $('#book_apaterno3_see').val(), isbn: $('#book_isbn_see').val(), estante: $('#book_shelf_see').val(), vol: $('#book_vol_see').val(), edicion: $('#book_edicion_see').val(), aEdicion: $('#book_yeare_see').val(), editorial: $('#book_editorial_see').val(), anio: $('#book_year_see').val(), coleccion: $('#book_colection_see').val(), categoria: $('#sclasificacion').val(), clave: $('#book_clave_see').val(), adquisicion: $('#book_adquisition_see').val(), numC: $('#book_class_see').val(), materias: $('#book_materias_see').val(), estado: $('#estado').val()}, function(data){
            $('#modalCatalogAvisoBody').text(data);
            $('#modalCatalogAvisoFooter').html('<button type="button" class="btn btn-secondary" id="modalCatalogAvisoDismiss" >Cerrar</button>');

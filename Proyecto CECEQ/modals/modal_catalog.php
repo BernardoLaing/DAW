@@ -248,7 +248,7 @@
         </div>
         <div>
         <?php      
-          if($_SESSION["permisos"][22])
+          if($_SESSION["permisos"][3])
           {
             echo '<b id="infoAdicional">info adicional</b>';
           }
@@ -257,7 +257,7 @@
      
       <div class="modal-footer row">
           <?php      
-          if($_SESSION["permisos"][22])
+          if($_SESSION["permisos"][3])
           {
             echo '<button type="button" class="btn btn-success col-md-3" id="saveChangesBook">Guardar cambios</button>';
             echo '<button type="button" class="btn btn-secondary col-md-3" id="editBook">Editar ejemplar</button>';
@@ -269,7 +269,7 @@
   </div>
 </div>
 <?php      
-if($_SESSION["permisos"][22])
+if($_SESSION["permisos"][3])
 {
     echo '<div class="modal" id="modalCatalogAviso" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">  <div class="modal-header"><h5 class="modal-title">Aviso</h5>  </div>   <div class="modal-body" >    <p id="modalCatalogAvisoBody">Modal body text goes here</p>  </div>  <div id="modalCatalogAvisoFooter" class="modal-footer">    <button type="button" class="btn btn-primary">Save changes</button>    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div></div></div></div>';
 }

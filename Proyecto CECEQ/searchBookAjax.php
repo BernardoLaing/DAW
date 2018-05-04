@@ -1,3 +1,8 @@
+<?php include("partials/session_functions.php");?>
+<?php 
+if(!$_SESSION["permisos"][2])
+    header('Location: menu.php');
+?>
 <?php
 require_once('model/catalog_books_utils.php');
 $respuesta = 'venga '.$_GET["name"] .' '. $_GET["apellidop"] .' '. $_GET["title"].' '. $_GET["pagina"].' '. $_GET["categoria"] ;

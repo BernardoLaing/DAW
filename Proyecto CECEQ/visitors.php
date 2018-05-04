@@ -1,7 +1,7 @@
 <?php
 include("partials/session_functions.php");
 
-if(!$_SESSION["permisos"][6])
+if(!$_SESSION["permisos"][8])
     header('Location: menu.php');
 
 include("partials/_header.html");
