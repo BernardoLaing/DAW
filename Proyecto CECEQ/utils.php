@@ -269,11 +269,10 @@ function updateVisitante($idVisitante, $nombre, $apellidoPaterno, $apellidoMater
     $statement->execute();
 
     $statement = mysqli_prepare($connection,"
-    update visitante_gradoestudios
-    set idGrado = ?
-    where idVisitante = ?
+    insert into visitante_gradoestudios
+    values (?, ?, current_timestamp())
     ");
-    $statement->bind_param("ii", $gradoEstudios, $idVisitante);
+    $statement->bind_param("ii", $idVisitante, $gradoEstudios);
     $statement->execute();
     disconnect($connection);
 }
