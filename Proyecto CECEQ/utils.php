@@ -143,15 +143,32 @@ function queryVisitor($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno,
     $apellidoMaterno .="%";
     $statement = mysqli_prepare($connection,"
     select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', g.nombre as 'Grado de estudios', genero as 'Género'
-    from visitante as v, visitante_gradoestudios as vg, gradoestudios as g
+    from visitante v, gradoestudios g,
+    (
+            
+      select vg.idVisitante as vid, vg.idGrado as gid
+      from
+        (
+        select idVisitante as ii, max(fecha) as im
+        from visitante_gradoestudios
+        group by idVisitante
+        ) i, visitante_gradoestudios vg
+      where i.ii = vg.idVisitante and i.im = vg.fecha
+    
+    ) ivg  
+    
+    
     where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
     and (v.nombre like ? ".($nombre==""?"or 1":"").")
     and (apellidoPaterno like ? ".($apellidoPaterno==""?"or 1":"").")
     and (apellidoMaterno like ? ".($apellidoMaterno==""?"or 1":"").")
     and (fechaNacimiento = ? ".($fechaNacimiento==""?"or 1":"").")
     and (genero = ? ".($genero==""?"or 1":"").")
-    and v.idVisitante = vg.idVisitante
-    and vg.idGrado = g.idGrado
+    
+    
+    and v.idVisitante = ivg.vid
+    and ivg.gid = g.idGrado
+    
     and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
     ");
     $statement->bind_param("isssssi", $idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios);
@@ -167,6 +184,39 @@ function queryFirstVisitor($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNa
     $apellidoPaterno .="%";
     $apellidoMaterno .="%";
     $statement = mysqli_prepare($connection,"
+    
+    select v.idVisitante
+    from visitante v, gradoestudios g,
+    (
+            
+      select vg.idVisitante as vid, vg.idGrado as gid
+      from
+        (
+        select idVisitante as ii, max(fecha) as im
+        from visitante_gradoestudios
+        group by idVisitante
+        ) i, visitante_gradoestudios vg
+      where i.ii = vg.idVisitante and i.im = vg.fecha
+    
+    ) ivg  
+    
+    where
+    (v.nombre like ? ".($nombre==""?"or 1":"").")
+    and (apellidoPaterno like ? ".($apellidoPaterno==""?"or 1":"").")
+    and (apellidoMaterno like ? ".($apellidoMaterno==""?"or 1":"").")
+    and (fechaNacimiento = ? ".($fechaNacimiento==""?"or 1":"").")
+    and (genero = ? ".($genero==""?"or 1":"").")
+    
+    
+    and v.idVisitante = ivg.vid
+    and ivg.gid = g.idGrado
+    
+    and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
+    
+    ORDER BY v.idVisitante desc LIMIT 1
+
+    ");
+    /*
     select v.idVisitante
     from visitante as v, visitante_gradoestudios as vg, gradoestudios as g
     where (v.nombre like ? ".($nombre==""?"or 1":"").")
@@ -178,7 +228,7 @@ function queryFirstVisitor($nombre, $apellidoPaterno, $apellidoMaterno, $fechaNa
     and vg.idGrado = g.idGrado
     and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
     ORDER BY v.idVisitante desc LIMIT 1
-    ");
+    */
     $statement->bind_param("sssssi", $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios);
     $statement->execute();
     $result = $statement->get_result();
@@ -220,11 +270,10 @@ function updateVisitante($idVisitante, $nombre, $apellidoPaterno, $apellidoMater
     $statement->execute();
 
     $statement = mysqli_prepare($connection,"
-    update visitante_gradoestudios
-    set idGrado = ?
-    where idVisitante = ?
+    insert into visitante_gradoestudios
+    values (?, ?, current_timestamp())
     ");
-    $statement->bind_param("ii", $gradoEstudios, $idVisitante);
+    $statement->bind_param("ii", $idVisitante, $gradoEstudios);
     $statement->execute();
     disconnect($connection);
 }
@@ -445,7 +494,40 @@ function querySancion($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno,
     $apellidoPaterno .="%";
     $apellidoMaterno .="%";
     $statement = mysqli_prepare($connection,"
-    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', g.nombre as 'Grado de estudios', genero as 'Género', descripcion as 'Descripción'
+    select v.idVisitante as 'Número', v.nombre as 'Nombre', apellidoPaterno as 'Apellido paterno', apellidoMaterno as 'Apellido materno', fechaNacimiento as 'Fecha de nacimiento', g.nombre as 'Grado de estudios', genero as 'Género'
+    
+    from visitante v, gradoestudios g, sancion s,
+    (
+            
+      select vg.idVisitante as vid, vg.idGrado as gid
+      from
+        (
+        select idVisitante as ii, max(fecha) as im
+        from visitante_gradoestudios
+        group by idVisitante
+        ) i, visitante_gradoestudios vg
+      where i.ii = vg.idVisitante and i.im = vg.fecha
+    
+    ) ivg  
+    
+    
+    where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
+    and (v.nombre like ? ".($nombre==""?"or 1":"").")
+    and (apellidoPaterno like ? ".($apellidoPaterno==""?"or 1":"").")
+    and (apellidoMaterno like ? ".($apellidoMaterno==""?"or 1":"").")
+    and (fechaNacimiento = ? ".($fechaNacimiento==""?"or 1":"").")
+    and (genero = ? ".($genero==""?"or 1":"").")
+    
+    
+    and v.idVisitante = ivg.vid
+    and ivg.gid = g.idGrado
+    
+    and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
+    
+    and v.idVisitante = s.idVisitante
+    and fechaFin > CURRENT_DATE
+    ");
+    /*
     from visitante as v, visitante_gradoestudios as vg, gradoestudios as g, sancion as s
     where (v.idVisitante = ? ".($idVisitante==""?"or 1":"").")
     and (v.nombre like ? ".($nombre==""?"or 1":"").")
@@ -456,9 +538,7 @@ function querySancion($idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno,
     and v.idVisitante = vg.idVisitante
     and vg.idGrado = g.idGrado
     and (g.idGrado = ? ".($gradoEstudios==""?"or 1":"").")
-    and v.idVisitante = s.idVisitante
-    and fechaFin > CURRENT_DATE
-    ");
+    */
     $statement->bind_param("isssssi", $idVisitante, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $genero, $gradoEstudios);
     $statement->execute();
     $result = $statement->get_result();

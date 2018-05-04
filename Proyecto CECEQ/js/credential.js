@@ -1,7 +1,8 @@
 $(document).ready(function(){
 
+    var gid;
     $.loadData = function (d, getId){
-
+        gid = getId;
         loadImage();
 
         $("#credential_issuance").val(d["issuance"]);
@@ -29,6 +30,7 @@ $(document).ready(function(){
                 type: "button",
                 class: "btn btn-secondary",
                 click: function(){
+                    $("#fileToUpload").prop("disabled", false);
                     $(".card-body").find("input").each(function(){
                         $(this).prop("disabled", false);
                     });
@@ -37,61 +39,13 @@ $(document).ready(function(){
                         $(this).prop("disabled", false);
                     });
                     $(this).text("Guardar cambios");
-                    $(this).click( function() {
-                        $.post("controller/credentialEdit_controller.php", {
-                                credential:
-                                    {
-                                        idVisitante: getId,
-                                        name: $("#credential_name").val(),
-                                        paternal: $("#credential_paternal").val(),
-                                        maternal: $("#credential_maternal").val(),
-                                        birth: $("#credential_birth").val(),
-                                        gender: $("#credential_gender").val(),
-                                        schooling: $("#credential_schooling").val(),
-                                        email: $("#credential_email").val(),
-                                        street: $("#credential_street").val(),
-                                        number: $("#credential_number").val(),
-                                        neighborhood: $("#credential_neighborhood").val(),
-                                        postalCode: $("#credential_postalCode").val(),
-                                        phone: $("#credential_phone").val(),
-
-                                        workName: $("#credential_workName").val(),
-                                        workPhone: $("#credential_workPhone").val(),
-                                        workStreet: $("#credential_workStreet").val(),
-                                        workNumber: $("#credential_workNumber").val(),
-                                        workNeighborhood: $("#credential_workNeighborhood").val(),
-                                        workPostalCode: $("#credential_workPostalCode").val(),
-
-                                        nameF: $("#credential_nameF").val(),
-                                        paternalF: $("#credential_paternalF").val(),
-                                        maternalF: $("#credential_maternalF").val(),
-                                        emailF: $("#credential_emailF").val(),
-                                        phoneF: $("#credential_phoneF").val(),
-                                        schoolingF: $("#credential_schoolingF").val(),
-                                        streetF: $("#credential_streetF").val(),
-                                        numberF: $("#credential_numberF").val(),
-                                        neighborhoodF: $("#credential_neighborhoodF").val(),
-                                        postalCodeF: $("#credential_postalCodeF").val(),
-                                        workNameF: $("#credential_workNameF").val(),
-                                        workPhoneF: $("#credential_workPhoneF").val(),
-                                        workStreetF: $("#credential_workStreetF").val(),
-                                        workNumberF: $("#credential_workNumberF").val(),
-                                        workNeighborhoodF: $("#credential_workNeighborhoodF").val(),
-                                        workPostalCodeF: $("#credential_workPostalCodeF").val()
-
-                                    }
-                            },
-                            function (data, status) {
-                            alert(data);
-                                if (status == "success")
-                                    $("#modalSaved").modal("show");
-                                else
-                                    $("#modalError").modal("show");
-                                setTimeout(function () {
-                                    //location.reload();
-                                }, 1150);
-                            });
-                    });
+                    $("#editButtonCredential").html(
+                        $("<button/>", {
+                            text: "Guardar cambios",
+                            class: "btn btn-secondary",
+                            type: "submit"
+                        })
+                    );
                 }
             })
         );
@@ -103,8 +57,67 @@ $(document).ready(function(){
                 class: "btn btn-secondary"
             })
         );
-
     };
+
+    $("#credentialForm").submit(function(e) {
+        e.preventDefault();
+        if(!validateSearch(null))
+            return;
+        console.log("submitting");
+        $.post("controller/credentialEdit_controller.php", {
+                credential:
+                    {
+                        idVisitante: gid,
+                        name: $("#credential_name").val(),
+                        paternal: $("#credential_paternal").val(),
+                        maternal: $("#credential_maternal").val(),
+                        birth: $("#credential_birth").val(),
+                        gender: $("#credential_gender").val(),
+                        schooling: $("#credential_schooling").val(),
+                        email: $("#credential_email").val(),
+                        street: $("#credential_street").val(),
+                        number: $("#credential_number").val(),
+                        neighborhood: $("#credential_neighborhood").val(),
+                        postalCode: $("#credential_postalCode").val(),
+                        phone: $("#credential_phone").val(),
+
+                        workName: $("#credential_workName").val(),
+                        workPhone: $("#credential_workPhone").val(),
+                        workStreet: $("#credential_workStreet").val(),
+                        workNumber: $("#credential_workNumber").val(),
+                        workNeighborhood: $("#credential_workNeighborhood").val(),
+                        workPostalCode: $("#credential_workPostalCode").val(),
+
+                        nameF: $("#credential_nameF").val(),
+                        paternalF: $("#credential_paternalF").val(),
+                        maternalF: $("#credential_maternalF").val(),
+                        emailF: $("#credential_emailF").val(),
+                        phoneF: $("#credential_phoneF").val(),
+                        schoolingF: $("#credential_schoolingF").val(),
+                        streetF: $("#credential_streetF").val(),
+                        numberF: $("#credential_numberF").val(),
+                        neighborhoodF: $("#credential_neighborhoodF").val(),
+                        postalCodeF: $("#credential_postalCodeF").val(),
+                        workNameF: $("#credential_workNameF").val(),
+                        workPhoneF: $("#credential_workPhoneF").val(),
+                        workStreetF: $("#credential_workStreetF").val(),
+                        workNumberF: $("#credential_workNumberF").val(),
+                        workNeighborhoodF: $("#credential_workNeighborhoodF").val(),
+                        workPostalCodeF: $("#credential_workPostalCodeF").val()
+
+                    }
+            },
+            function (data, status) {
+                if (status == "success")
+                    $("#modalSaved").modal("show");
+                else
+                    $("#modalError").modal("show");
+                setTimeout(function () {
+                    window.location.href="menu.php";
+                }, 1150);
+            });
+    });
+
 
     function getGradoEstudios(t){
         switch(t){
@@ -126,17 +139,32 @@ $(document).ready(function(){
     }
 
     function loadImage(){
-       // $("img").first().attr("src", 'data:image/png;base64,'+data);
         //console.log(window.location.href);
-        //a.substr(0, a.length-(a.match(/\/[^\/]+$/)+"").length)+"/uploads/revanbebe.png";
+        var a = window.location.href;
+        a = a.substr(0, a.length-(a.match(/\/[^\/]+$/)+"").length)+"/uploads/revanbebe.png";
+        console.log(a);
+        var i = $("#targetOuter").find("img").first();
+        $("#fileToUpload").prop("disabled", true);
+        $("#fileToUpload").removeAttr("required");
+        $("#fileToUpload").change(
+            function(){
+               i.hide();
+               $("#fileToUpload").prop("required", true);
+            }
+        );
+        i.removeClass("icon-choose-image");
+        i.attr("src", a);
+        i.attr("width", 278);
+        i.attr("height", 200);
         /*
-        $.get("uploads/revanbebe.png",
+        $.get(a,
             function(data){
+                console.log(data);
                 $("img").first().removeClass(".icon-choose-image");
-                $("img").first().attr("src", 'data:image/png;base64,'+data);
-                console.log("a");
+                $("#targetOuter").find("img").first().attr("src", a);
             });
         */
+
     }
 
 });

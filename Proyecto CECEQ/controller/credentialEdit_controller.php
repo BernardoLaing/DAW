@@ -71,18 +71,19 @@ if(count($_POST)>0
             $nulls++;
         }
     }
-
-    /*
+    //$_FILES["fileToUpload"]["tmp_name"] = "fakepath/adf";
+/*
     if($_FILES["fileToUpload"]["tmp_name"] != null){
         $info["fileToUpload"] = $_FILES["fileToUpload"]["tmp_name"];
     }else{
         $info["fileToUpload"] = "";
         $nulls++;
-    }*/
-
+    }
+*/
     if(isset($info)) {
-        $target_file = $target_dir;//. basename($_FILES["fileToUpload"]["name"]);
+        //$target_file = basename($_FILES["fileToUpload"]["name"]);
         if($nulls == 0){
+            $target_file = "fakepath/a";
             if(
             updateCredential(
             // Visitante
