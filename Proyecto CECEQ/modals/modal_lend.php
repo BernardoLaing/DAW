@@ -18,6 +18,7 @@ if($var_value && $var_tipo == 'Préstamo'){
         <!-- Modal body -->
         <div class="modal-body">
           <p>' . checkLendTimes($_SESSION['credencial']) . '</p>
+          <p>' . checkSanction($_SESSION['credencial']) . '</p>
           <p><strong>Ejemplar: </strong>' . getNameBook($_SESSION['libro'], false) . '</p>
           <p><strong>Prestamo a: </strong>' . getNameVisitor($_SESSION['credencial'], true) .'</p>
           <p><strong>Fecha de préstamo: </strong>'.date("Y-m-d").'</p>
