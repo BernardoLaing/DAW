@@ -1,6 +1,12 @@
 <?php 
 session_start();
-$target_dir = "uploads/";
+//$target_dir = "../uploads/";
+$target_dir = "../uploads/credenciales";
+if(!is_dir($target_dir)){
+    mkdir($target_dir);
+}else{
+    $target_dir = $target_dir . "/";
+}
     include("../regexps.php");
     include("../model/credential-utils.php");
     if(count($_POST)>0){
@@ -72,6 +78,7 @@ $target_dir = "uploads/";
         if(isset($info)) {
             $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
             if($nulls == 0){
+                move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
                 if(
                     insertCredential(
                         // Visitante
