@@ -1,5 +1,4 @@
 <br /><br />
-
 <div class="container mdiv shadow">
 
     <div class="mx-auto text-center"> <!-- mx-auto da un padding y border automatico-->
@@ -52,7 +51,9 @@
                 <td style="width: 29%;"><?php echo $row[1]; ?></td>
                 <td style="width: 29%;"><?php echo $row[0]; ?></td>
                 <td style="width: 29%;"><?php echo $row[2]; ?></td>
+                <?php if($_SESSION["permisos"][21]): ?>
                 <td style="width: 6.5%;"><a href="accountsEdit.php?user=<?php echo $row[0] ?>"><i class="material-icons edit">mode_edit</i></a></td>
+                <?php endif ?>
                 <!--<td style="width: 6.5%;"><a data-toggle="modal" data-target="#deleteModal"><i class="material-icons delete">delete</i></a></td>-->
             </tr>
             <?php $count++; ?>
@@ -118,7 +119,7 @@ $(".input").each(function(){
                 tableContent = tableContent.concat("<tr><td style='width: 29%;'>" + value.nombre + "</td>");
                 tableContent = tableContent.concat("<td style='width: 29%;'>" + value.user + "</td>");
                 tableContent = tableContent.concat("<td style='width: 29%;'>" + value.rol + "</td>");
-                tableContent = tableContent.concat("<td style='width: 6.5%;'><a href='accountsEdit.php?user=" + value.user + "'><i class='material-icons edit'>mode_edit</i></a></td></tr>");
+                tableContent = tableContent.concat("<?php if($_SESSION["permisos"][21]): ?><td style='width: 6.5%;'><a href='accountsEdit.php?user=" + value.user + "'><i class='material-icons edit'>mode_edit</i></a></td></tr><?php endif ?>");
                 /*tableContent = tableContent.concat("<td style='width: 6.5%;'><a href='deleteAccount.php?user=" + value.user + "'><i class='material-icons delete'>delete</i></a></td></tr>");*/
                 $("#user-table").html(tableContent);
             })
