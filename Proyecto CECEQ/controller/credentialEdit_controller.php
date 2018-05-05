@@ -1,8 +1,11 @@
 <?php
 session_start();
-$target_dir = "uploads/";
-include("../regexps.php");
-include("../model/credential-utils.php");
+$target_dir = "../uploads/credenciales";
+if(!is_dir($target_dir)){
+    mkdir($target_dir);
+}else{
+    $target_dir = $target_dir . "/";
+}
 /*
 if(count($_POST)>0){
     foreach($_POST["credential"] as $key => $value) {
@@ -81,9 +84,9 @@ if(count($_POST)>0
     }
 */
     if(isset($info)) {
-        //$target_file = basename($_FILES["fileToUpload"]["name"]);
+        $target_file = basename($_FILES["fileToUpload"]["name"]);
         if($nulls == 0){
-            $target_file = "fakepath/a";
+            move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
             if(
             updateCredential(
             // Visitante
