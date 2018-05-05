@@ -10,7 +10,9 @@
             <div class="col-sm-12 col-md-4 mb-3">
                 <div class="card-body shadow">
                     <p class=""><b><?php echo $row["nombre"]; ?></b></p>
+                    <?php if($_SESSION['permisos'][25]): ?>
                     <a class="edit" href="rolsEdit.php?idRol=<?php echo $row[0] ?>"><i class="material-icons">mode_edit</i></a>
+                    <?php endif ?>
                     <div class="card-text">
                         <?php echo $row["descripcion"]; ?>
                     </div> <br>
@@ -34,7 +36,9 @@
         </div>
         <div class="col-sm-4"></div>
         <div class="col-sm-2">
+            <?php if($_SESSION['permisos'][23]): ?>
             <a href="rolsCreate.php"><button type="button" class="btn btn-secondary btn-block"> Agregar rol </button></a>
+            <?php endif ?>
         </div>
     </div>
     <br />
