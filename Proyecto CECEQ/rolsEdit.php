@@ -15,6 +15,9 @@ $rol = getRol($_GET['idRol']);
 //echo $_SESSION['error_type'];
 //echo "dfghjkl";
 include("html/rolsEdit.html");
+$link="https://www.youtube.com//embed/PptNXwj6kN0?autoplay=1";
+include("html/manualUsuario.html"); 
+include("partials/_bottom_bar.html"); 
 include("modals/modal_error.html");
 if(isset($_SESSION['error_type']) && $_SESSION['error_type'] === "rolEditConflict"){
     echo "<script>
