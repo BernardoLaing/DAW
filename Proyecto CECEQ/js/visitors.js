@@ -74,10 +74,9 @@ $(document).ready(function(){
                     }, 1150);
             });
 });
-
-$("#warpSanctionButton").html($("<button>", {
-class: "btn btn-secondary",
-text: "Sancionar",
+    $("#warpSanctionButton").html($("<button>", {
+        class: "btn btn-secondary",
+        text: "Sancionar",
 click: function(e){
 e.preventDefault();
 $("input").each(function(){
@@ -101,7 +100,9 @@ $("select").each(function(){
 $("#user_table").show();
 });
 }
-}));
+}
+                               
+));
 
 $("#mform_sanctions").submit(function(e){
 e.preventDefault();
