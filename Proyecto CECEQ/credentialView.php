@@ -1,6 +1,6 @@
 <?php
 include("partials/session_functions.php");
-$_SESSION["permisos"][27] = 1;
+
 if(!$_SESSION["permisos"][27])
     header('Location: menu.php');
 
