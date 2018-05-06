@@ -15,6 +15,9 @@ $rols = getTable('rol');
 
 <?php 
 include("html/accountCreate.html");
+$link="https://www.youtube.com//embed/Amt9N3fb6Kc?autoplay=1";
+include("html/manualUsuario.html"); 
+include("partials/_bottom_bar.html"); 
 include("modals/modal_error.html");
 if(isset($_SESSION['error_type']) && $_SESSION['error_type'] === "userConflict"){
     echo "<script>

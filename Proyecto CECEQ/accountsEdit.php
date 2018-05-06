@@ -13,7 +13,7 @@ $user = getUser($_GET['user']);
 ?>
 <?php 
 include("html/accountsEdit.html");
-$link="https://www.youtube.com//embed/PptNXwj6kN0?autoplay=1";
+$link="https://www.youtube.com/embed/1GR5bdopQDM?autoplay=1";
 include("html/manualUsuario.html"); 
 include("partials/_bottom_bar.html"); 
 include("modals/modal_error.html");
