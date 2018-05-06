@@ -13,7 +13,6 @@ $(document).ready(function(){
         }
 
 
-
         $("#registrarEntrada").click(function(e){
             e.preventDefault();
 

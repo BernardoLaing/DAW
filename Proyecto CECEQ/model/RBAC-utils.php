@@ -342,6 +342,34 @@ function getRol($idRol){
     return false;
 }
 
+function checkUniqueness($name){
+    $db = connect();
+    if ($db != NULL) {
+        $query='SELECT nombre
+                FROM rol
+                WHERE nombre=?';
+        // Preparing the statement
+        if (!($stmt = $db->prepare($query))) {
+            die("Preparation 1 failed: (" . $db->errno . ") " . $db->error);
+        }
+        // Binding statement params
+        if (!$stmt->bind_param("s", $name)) {
+            die("Parameter vinculation failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+         // Executing the statement
+         if (!$stmt->execute()) {
+            die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
+          }
+        $stmt->store_result();
+        if($stmt->num_rows !== 0){
+            disconnect($db);
+            return false;
+        }
+        disconnect($db);
+        return true;
+    }
+}
+
 function createRol($name, $description, $permissions){
     $db = connect();
     if ($db != NULL) {

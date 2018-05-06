@@ -23,32 +23,33 @@ $(document).ready(function(){
             }
             $(this).prop("disabled", true);
         });
+        if($.getPermissions()[7]) {
+            $("form").first().find("#editButtonCredential").html(
+                $("<button/>", {
+                    text: "Editar",
+                    type: "button",
+                    class: "btn btn-secondary",
+                    click: function () {
+                        $("#fileToUpload").prop("disabled", false);
+                        $(".card-body").find("input").each(function () {
+                            $(this).prop("disabled", false);
+                        });
 
-        $("form").first().find("#editButtonCredential").html(
-            $("<button/>", {
-                text: "Editar",
-                type: "button",
-                class: "btn btn-secondary",
-                click: function(){
-                    $("#fileToUpload").prop("disabled", false);
-                    $(".card-body").find("input").each(function(){
-                        $(this).prop("disabled", false);
-                    });
-
-                    $(".card-body").find("select").each(function(){
-                        $(this).prop("disabled", false);
-                    });
-                    $(this).text("Guardar cambios");
-                    $("#editButtonCredential").html(
-                        $("<button/>", {
-                            text: "Guardar cambios",
-                            class: "btn btn-secondary",
-                            type: "submit"
-                        })
-                    );
-                }
-            })
-        );
+                        $(".card-body").find("select").each(function () {
+                            $(this).prop("disabled", false);
+                        });
+                        $(this).text("Guardar cambios");
+                        $("#editButtonCredential").html(
+                            $("<button/>", {
+                                text: "Guardar cambios",
+                                class: "btn btn-secondary",
+                                type: "submit"
+                            })
+                        );
+                    }
+                })
+            );
+        }
 
         $("form").first().find("#printButtonCredential").html(
             $("<button/>", {

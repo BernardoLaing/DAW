@@ -111,7 +111,11 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <div class="col-md-12">
-                        <button id="registrarEntrada" type="submit" class="btn btn-secondary mx-auto chinsert" value="Registrar entrada">Registrar Entrada</button>
+
+                        <?php if($_SESSION["permisos"][6])
+                        echo "<button id='registrarEntrada' type='submit' class='btn btn-secondary mx-auto chinsert' value='Registrar entrada'>Registrar Entrada</button>";
+                        ?>
+
                     </div>
                 </div>
             </div>

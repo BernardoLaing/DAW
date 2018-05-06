@@ -13,6 +13,9 @@ $user = getUser($_GET['user']);
 ?>
 <?php 
 include("html/accountsEdit.html");
+$link="https://www.youtube.com//embed/PptNXwj6kN0?autoplay=1";
+include("html/manualUsuario.html"); 
+include("partials/_bottom_bar.html"); 
 include("modals/modal_error.html");
 if(isset($_SESSION['error_type']) && $_SESSION['error_type'] === "userConflict"){
     echo "<script>

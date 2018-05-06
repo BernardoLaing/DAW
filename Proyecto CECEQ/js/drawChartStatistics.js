@@ -240,7 +240,7 @@ function obtenerEntradasGenero(anio){ //Entradas por genero
         labels: estadoLabels,
         datasets : [
           {
-            label: 'G\xE9nero',
+            label: '# de entradas',
             backgroundColor: '#4eb7d2', //AZUL
             borderColor: 'rgba(200, 200, 200, 0.75)', //GRIS
             hoverBackgroundColor: '#30a0bd', //AZUL OSCURO
@@ -249,20 +249,29 @@ function obtenerEntradasGenero(anio){ //Entradas por genero
           }
         ]
       };
+        
+        console.log(score);
 
       var options = {
-				title : {
-					display : true,
-					position : "top",
-					text : "Entradas por g\xE9nero "+anio,
-					fontSize : 20,
-					fontColor : "#111"
-				},
-				legend : {
-					display : false,
-					position : "bottom"
-				}
-			};
+          title : {
+              display : true,
+              position : "top",
+              text : "Entradas por g\xE9nero "+anio,
+              fontSize : 20,
+              fontColor : "#111"
+          },
+          legend : {
+              display : false,
+              position : "bottom"
+          },
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      };
 
       var divDoughnutGenero = $("#visitanteGeneroChart");
 
