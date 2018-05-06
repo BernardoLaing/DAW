@@ -695,7 +695,10 @@ function queryCredencial($idVisitante){
             
             -- añadir nombre del grado de estudios del fiador
             cf.idFiador = f.idFiador and
-            f.idFiador = fid;    
+            f.idFiador = fid and  
+            c.fechaExpedicion > '".date('Y-m-d', strtotime('-1 year'))."'          
+                        
+            order by c.fechaExpedicion desc limit 1;
     
     ");
     $statement->bind_param("i", $idVisitante);
