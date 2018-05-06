@@ -19,7 +19,6 @@ if(isset($_POST["submit"])){
           strlen($name) > 0 && strlen($name) <= 50 &&
           $passwd == $passwdValidate && is_numeric($rol)){
                 echo "PASO3";
-                        echo "PASO5";
                         if(updateUser($user, $name, $passwd, $rol)){//Se editó exitosamente
                             echo "updateUser validado";
                             $_SESSION['success_msg'] = "La cuenta fue editada con éxito";
