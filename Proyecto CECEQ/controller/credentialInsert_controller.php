@@ -1,12 +1,14 @@
 <?php 
 session_start();
 //$target_dir = "../uploads/";
-$target_dir = "../uploads/credenciales";
-if(!is_dir($target_dir)){
+$target_dir = "../uploads/credenciales/" . date("Y");
+if(!is_dir($target_dir))
     mkdir($target_dir);
-}else{
-    $target_dir = $target_dir . "/";
-}
+$target_dir = $target_dir . "/" . date("m");
+if(!is_dir($target_dir))
+    mkdir($target_dir);
+$target_dir = $target_dir . "/";
+
     include("../regexps.php");
     include("../model/credential-utils.php");
     if(count($_POST)>0){
@@ -23,7 +25,7 @@ if(!is_dir($target_dir)){
         // Visitante
         && (test($NAME, $_POST["credential"]["name"]))
         && (test($NAME, $_POST["credential"]["paternal"]))
-        && (test($NAME, $_POST["credential"]["maternal"] ))
+        && (test($NAME, $_POST["credential"]["maternal"] ) || $_POST["credential"]["maternal"] == null)
         && (test($DATE, $_POST["credential"]["birth"] ))
         && (test($GENDER, $_POST["credential"]["gender"] ))
         && (test($SCHOOLING, $_POST["credential"]["schooling"] ))
@@ -44,7 +46,7 @@ if(!is_dir($target_dir)){
         // Fiador
         && (test($NAME, $_POST["credential"]["nameF"]))
         && (test($NAME, $_POST["credential"]["paternalF"]))
-        && (test($NAME, $_POST["credential"]["maternalF"] ))
+        && (test($NAME, $_POST["credential"]["maternalF"]) || $_POST["credential"]["maternalF"] == null)
         && (($_POST["credential"]["emailF"]  != null) )
         && (test($NUMBER, $_POST["credential"]["phoneF"] ))
         && (test($SCHOOLING, $_POST["credential"]["schoolingF"] ))
@@ -66,7 +68,9 @@ if(!is_dir($target_dir)){
                 $info[$key] = htmlspecialchars($value);
             else{
                 $info[$key] = "";
-                $nulls++;
+                if($key!="maternal" && $key!="maternalF"){
+                    $nulls++;
+                }
             }
         }
         if($_FILES["fileToUpload"]["tmp_name"] != null){
