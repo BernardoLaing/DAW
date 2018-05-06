@@ -7,44 +7,48 @@ $(document).ready(function(){
         $("select").each(function(){
             $(this).prop("disabled", true);
         });
+        if($.getPermissions()[9]) {
+            $("#warpEditButton").html($("<button>", {
+                class: "btn btn-secondary",
+                text: "Editar",
+                click: function (e) {
+                    e.preventDefault();
+                    $("input").each(function () {
+                        $(this).prop("required", true);
+                    });
+                    $("input").first().prop("required", false);
+                    $(this).prop("required", false);
+                    $("#warpSanctionButton").find("button").hide();
+                    $("input").each(function () {
+                        $(this).prop("disabled", false);
+                    });
+                    $("#user_number").prop("disabled", true);
+                    $("select").each(function () {
+                        $(this).prop("disabled", false);
+                    });
+                    $("#user_table").hide();
+                    $("#warpEditButton").html($("<button>", {
+                        class: "btn btn-secondary",
+                        text: "Guardar cambios",
+                        type: "submit"
+                    }));
+                }
+            }));
+        }
 
-        $("#warpEditButton").html($("<button>", {
-            class: "btn btn-secondary",
-            text: "Editar",
-            click: function(e){
-                e.preventDefault();
-                $("input").each(function (){
-                    $(this).prop("required", true);
-                });
-                $("input").first().prop("required", false);
-                $(this).prop("required", false);
-                $("#warpSanctionButton").find("button").hide();
-                $("input").each(function(){
-                    $(this).prop("disabled", false);
-                });
-                $("#user_number").prop("disabled", true);
-                $("select").each(function(){
-                    $(this).prop("disabled", false);
-                });
-                $("#user_table").hide();
-                $("#warpEditButton").html($("<button>", {
-                    class: "btn btn-secondary",
-                    text: "Guardar cambios",
-                    type: "submit"
-                }));
-            }
-        }));
-        $("#warpEditButton").append(
-            $("<button>", {
+        if($.getPermissions()[27]) {
+            $("#warpEditButton").append(
+                $("<button>", {
                     class: "btn btn-secondary d-ib ml-3",
                     text: "Ver credencial",
                     click: function (e) {
                         var a = window.location.href;
-                        a = a.substr(0, a.length-(a.match(/\/[^\/]+$/)+"").length)+"/credentialView.php?id="+$("#user_number").val();
+                        a = a.substr(0, a.length - (a.match(/\/[^\/]+$/) + "").length) + "/credentialView.php?id=" + $("#user_number").val();
                         window.location.href = a;
                     }
                 })
-        );
+            );
+        }
 
         $("#entry_form").submit(function(e){
             e.preventDefault();
@@ -74,34 +78,35 @@ $(document).ready(function(){
                     }, 1150);
             });
 });
-
-$("#warpSanctionButton").html($("<button>", {
-class: "btn btn-secondary",
-text: "Sancionar",
-click: function(e){
-e.preventDefault();
-$("input").each(function(){
-$(this).prop("disabled", false);
-});
-$("select").each(function(){
-$(this).prop("disabled", false);
-});
-$("#user_table").hide();
-$("#sanctionValues").modal("show");
-$("#mbody_sanctions").html("<p>Usuario: "+$("#user_name").val()+" "+$("#user_paternal").val()+" "+$("#user_maternal").val()+"</p>");
-$("#user_sanctionDescription").val("");
-$("#sanctionValues").find("button").first().click(function(){
-$("#sanctionValues").modal("hide");
-$("input").each(function(){
-    $(this).prop("disabled", true);
-});
-$("select").each(function(){
-    $(this).prop("disabled", true);
-});
-$("#user_table").show();
-});
+if($.getPermissions()[16]){
+    $("#warpSanctionButton").html($("<button>", {
+        class: "btn btn-secondary",
+        text: "Sancionar",
+        click: function(e){
+            e.preventDefault();
+            $("input").each(function(){
+            $(this).prop("disabled", false);
+            });
+            $("select").each(function(){
+            $(this).prop("disabled", false);
+            });
+            $("#user_table").hide();
+            $("#sanctionValues").modal("show");
+            $("#mbody_sanctions").html("<p>Usuario: "+$("#user_name").val()+" "+$("#user_paternal").val()+" "+$("#user_maternal").val()+"</p>");
+            $("#user_sanctionDescription").val("");
+            $("#sanctionValues").find("button").first().click(function(){
+            $("#sanctionValues").modal("hide");
+            $("input").each(function(){
+                $(this).prop("disabled", true);
+            });
+            $("select").each(function(){
+                $(this).prop("disabled", true);
+            });
+            $("#user_table").show();
+            });
+        }
+    }));
 }
-}));
 
 $("#mform_sanctions").submit(function(e){
 e.preventDefault();

@@ -10,86 +10,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="credential.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/credential.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utils.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="790" column="34" lean-forward="true" selection-start-line="790" selection-start-column="34" selection-end-line="790" selection-end-column="34" />
-              <folding>
-                <marker date="1525458398563" expanded="true" signature="640:733" ph="SELECT usuar... usuario" />
-                <marker date="1525458398563" expanded="true" signature="1990:2004" ph="SELECT * FRO... ${$tableName}" />
-                <marker date="1525458398563" expanded="true" signature="4364:4502" ph="insert into visitante_gradoestudios... " />
-                <marker date="1525458398563" expanded="true" signature="4688:4800" ph="insert into entrada... " />
-                <marker date="1525458398563" expanded="true" signature="4942:4986" ph="insert into entrada... " />
-                <marker date="1525458398563" expanded="true" signature="5353:6458" ph="select v.idV... visitante" />
-                <marker date="1525458398563" expanded="true" signature="5645:5924" ph="select vg.id... idVisitante" />
-                <marker date="1525458398563" expanded="true" signature="5722:5830" ph="select idVis... visitante_gradoestudios" />
-                <marker date="1525458398563" expanded="true" signature="7002:7838" ph="select v.idV... visitante" />
-                <marker date="1525458398563" expanded="true" signature="7002:7883" ph="select v.idV... visitante" />
-                <marker date="1525458398563" expanded="true" signature="7087:7366" ph="select vg.id... idVisitante" />
-                <marker date="1525458398563" expanded="true" signature="7164:7272" ph="select idVis... visitante_gradoestudios" />
-                <marker date="1525458398563" expanded="true" signature="9160:9276" ph="insert into visitante... " />
-                <marker date="1525458398563" expanded="true" signature="9788:9924" ph="update visitante... " />
-                <marker date="1525458398563" expanded="true" signature="10135:10209" ph="insert into visitante_gradoestudios... " />
-                <marker date="1525458398563" expanded="true" signature="10147:10175" ph="update visitante_gradoestudios... " />
-                <marker date="1525458398563" expanded="true" signature="10491:10617" ph="insert into Fiador_GradoEstudios... " />
-                <marker date="1525458398563" expanded="true" signature="11424:12072" ph="insert into fiador... " />
-                <marker date="1525458398563" expanded="true" signature="12644:12760" ph="insert into visitante... " />
-                <marker date="1525458398563" expanded="true" signature="13098:13285" ph="insert into credencial_fiador... " />
-                <marker date="1525458398563" expanded="true" signature="17026:17042" ph="..." />
-                <marker date="1525458398563" expanded="true" signature="17904:18015" ph="insert into sancion... " />
-                <marker date="1525458398563" expanded="true" signature="18437:19633" ph="select v.idV... visitante" />
-                <marker date="1525458398563" expanded="true" signature="18745:19024" ph="select vg.id... idVisitante" />
-                <marker date="1525458398563" expanded="true" signature="18822:18930" ph="select idVis... visitante_gradoestudios" />
-                <marker date="1525458398563" expanded="true" signature="20624:20698" ph="update sancion... " />
-                <marker date="1525458398563" expanded="true" signature="21453:25172" ph="select v.nom... visitante" />
-                <marker date="1525458398563" expanded="true" signature="23089:23467" ph="select vg.id... idVisitante" />
-                <marker date="1525458398563" expanded="true" signature="23189:23313" ph="select idVis... visitante_gradoestudios" />
-                <marker date="1525458398563" expanded="true" signature="23614:23883" ph="select g.nom... fiador" />
-                <marker date="1525458398563" expanded="true" signature="23941:24057" ph="select idVis... credencial" />
-                <marker date="1525458398563" expanded="true" signature="24102:24443" ph="select idCre... credencial_fiador" />
-                <marker date="1525458398563" expanded="true" signature="24222:24342" ph="select idCre... credencial_fiador" />
-                <marker date="1525458398563" expanded="true" signature="26017:26174" ph="update visitante... " />
-                <marker date="1525458398563" expanded="true" signature="26017:26203" ph="update visitante... " />
-                <marker date="1525458398563" expanded="true" signature="26023:26174" ph="insert into visitante... " />
-                <marker date="1525458398563" expanded="true" signature="26860:26930" ph="insert into visitante_gradoestudios... " />
-                <marker date="1525458398563" expanded="true" signature="27522:27855" ph="update credencial... " />
-                <marker date="1525458398563" expanded="true" signature="27522:27878" ph="update credencial... " />
-                <marker date="1525458398563" expanded="true" signature="27528:27855" ph="insert into credencial... " />
-                <marker date="1525458398563" expanded="true" signature="28646:28668" ph="select c.idC... credencial" />
-                <marker date="1525458398563" expanded="true" signature="28646:29246" ph="select c.idC... credencial" />
-                <marker date="1525458398563" expanded="true" signature="28722:29047" ph="select idCre... credencial_fiador" />
-                <marker date="1525458398563" expanded="true" signature="28834:28954" ph="select idCre... credencial_fiador" />
-                <marker date="1525458398563" expanded="true" signature="30005:30306" ph="insert into fiador... " />
-                <marker date="1525458398563" expanded="true" signature="31142:31209" ph="insert into Fiador_GradoEstudios... " />
-                <marker date="1525458398563" expanded="true" signature="31766:31821" ph="insert into credencial_fiador... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="credentialEdit_controller.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/credentialEdit_controller.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="81" column="2" lean-forward="false" selection-start-line="81" selection-start-column="2" selection-end-line="81" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -101,8 +22,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cvalue != &quot;&quot; &amp;&amp;</find>
-      <find>console.l</find>
       <find>ocupaci</find>
       <find>teléfono</find>
       <find>required</find>
@@ -131,6 +50,8 @@
       <find>target_fi</find>
       <find>fileToUpload</find>
       <find>foto</find>
+      <find>sancionar</find>
+      <find>&quot;</find>
     </findStrings>
     <replaceStrings>
       <replace>.parentElement.parentElement.parentElement.</replace>
@@ -143,8 +64,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/rolsCreate.php" />
-        <option value="$PROJECT_DIR$/regexps.php" />
         <option value="$PROJECT_DIR$/js/validatePasswords.js" />
         <option value="$PROJECT_DIR$/html/accountCreate.html" />
         <option value="$PROJECT_DIR$/html/rolsCreate.html" />
@@ -155,7 +74,6 @@
         <option value="$PROJECT_DIR$/html/add_book.html" />
         <option value="$PROJECT_DIR$/visitants.php" />
         <option value="$PROJECT_DIR$/partials/buttons/_users.html" />
-        <option value="$PROJECT_DIR$/sanctions.php" />
         <option value="$PROJECT_DIR$/js/dynamicqueries_editable.js" />
         <option value="$PROJECT_DIR$/js/viewInfo.js" />
         <option value="$PROJECT_DIR$/index.php" />
@@ -165,10 +83,7 @@
         <option value="$PROJECT_DIR$/controller/visitorsUpdate_controller.php" />
         <option value="$PROJECT_DIR$/modals/modal_saved.html" />
         <option value="$PROJECT_DIR$/html/sanctions.html" />
-        <option value="$PROJECT_DIR$/js/sanctions.js" />
         <option value="$PROJECT_DIR$/js/script.js" />
-        <option value="$PROJECT_DIR$/js/entry.js" />
-        <option value="$PROJECT_DIR$/html/entry.html" />
         <option value="$PROJECT_DIR$/controller/sanctionsInsert_controller.php" />
         <option value="$PROJECT_DIR$/controller/csrfValidation.php" />
         <option value="$PROJECT_DIR$/controller/entrySearch_controller.php" />
@@ -186,14 +101,20 @@
         <option value="$PROJECT_DIR$/backup/rq.sql" />
         <option value="$PROJECT_DIR$/userCredential.php" />
         <option value="$PROJECT_DIR$/model/credential-utils.php" />
-        <option value="$PROJECT_DIR$/visitors.php" />
-        <option value="$PROJECT_DIR$/credentialView.php" />
         <option value="$PROJECT_DIR$/js/validtest.js" />
         <option value="$PROJECT_DIR$/html/credential.html" />
         <option value="$PROJECT_DIR$/utils.php" />
-        <option value="$PROJECT_DIR$/js/visitors.js" />
         <option value="$PROJECT_DIR$/controller/credentialEdit_controller.php" />
+        <option value="$PROJECT_DIR$/js/permissions.js" />
+        <option value="$PROJECT_DIR$/permissions.php" />
+        <option value="$PROJECT_DIR$/js/visitors.js" />
+        <option value="$PROJECT_DIR$/visitors.php" />
+        <option value="$PROJECT_DIR$/js/sanctions.js" />
+        <option value="$PROJECT_DIR$/sanctions.php" />
         <option value="$PROJECT_DIR$/js/credential.js" />
+        <option value="$PROJECT_DIR$/credentialView.php" />
+        <option value="$PROJECT_DIR$/js/entry.js" />
+        <option value="$PROJECT_DIR$/html/entry.html" />
       </list>
     </option>
   </component>
@@ -205,8 +126,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="373" />
-    <option name="y" value="-10" />
+    <option name="x" value="-47" />
+    <option name="y" value="-22" />
     <option name="width" value="1379" />
     <option name="height" value="319" />
   </component>
@@ -225,7 +146,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,12 +161,23 @@
             <path>
               <item name="Proyecto CECEQ" type="b2602c69:ProjectViewProjectNode" />
               <item name="Proyecto CECEQ" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="html" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Proyecto CECEQ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Proyecto CECEQ" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Proyecto CECEQ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Proyecto CECEQ" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="model" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -321,23 +252,22 @@
       <workItem from="1524682698070" duration="622000" />
       <workItem from="1525223890871" duration="17652000" />
       <workItem from="1525319095757" duration="15352000" />
-      <workItem from="1525373679035" duration="26221000" />
+      <workItem from="1525373679035" duration="26275000" />
+      <workItem from="1525537055992" duration="7093000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188526000" />
+    <option name="totallyTimeSpent" value="195673000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.193265" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.193265" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -349,6 +279,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -365,23 +296,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/visitorsTest.php" />
-    <entry file="file://$PROJECT_DIR$/backup/sanctionsInsert_controller.php" />
-    <entry file="file://$PROJECT_DIR$/controller/visitorsUpdate_controller.php" />
-    <entry file="file://$PROJECT_DIR$/controller/sanctionsInsert_controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backup/entrySearch_controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/regexps.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -407,13 +321,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/entry.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="94" column="26" lean-forward="false" selection-start-line="93" selection-start-column="33" selection-end-line="94" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -487,7 +394,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -495,14 +401,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-731">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entry.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="42" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -547,55 +445,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CredentialEdit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="42" lean-forward="true" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userCredential.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-306">
-          <caret line="44" column="10" lean-forward="true" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/dynamicqueries_viewInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="45" column="19" lean-forward="true" selection-start-line="29" selection-start-column="12" selection-end-line="45" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/sanctions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/credentialEdit.php" />
+    <entry file="file://$PROJECT_DIR$/userCredential.php" />
     <entry file="file://$PROJECT_DIR$/html/userCredential.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -603,7 +461,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -611,7 +468,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -619,15 +475,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="59" lean-forward="false" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visitors.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="35" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -639,19 +486,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/credentialView.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="32" lean-forward="false" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/validtest.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
           <caret line="59" column="22" lean-forward="false" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -659,14 +497,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-          <folding>
-            <marker date="1525389857761" expanded="true" signature="915:1043" ph="insert into visitante... " />
-            <marker date="1525389857761" expanded="true" signature="1702:1772" ph="insert into visitante_gradoestudios... " />
-            <marker date="1525389857761" expanded="true" signature="2365:2717" ph="insert into credencial... " />
-            <marker date="1525389857761" expanded="true" signature="3526:3827" ph="insert into fiador... " />
-            <marker date="1525389857761" expanded="true" signature="4719:4786" ph="insert into Fiador_GradoEstudios... " />
-            <marker date="1525389857761" expanded="true" signature="5355:5410" ph="insert into credencial_fiador... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -681,30 +511,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/entry.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/validations.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/visitors.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="33" column="20" lean-forward="true" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controller/credentialInsert_controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-68">
@@ -715,8 +521,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utils.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="790" column="34" lean-forward="true" selection-start-line="790" selection-start-column="34" selection-end-line="790" selection-end-column="34" />
+        <state relative-caret-position="17">
+          <caret line="790" column="34" lean-forward="false" selection-start-line="790" selection-start-column="34" selection-end-line="790" selection-end-column="34" />
           <folding>
             <marker date="1525458398563" expanded="true" signature="640:733" ph="SELECT usuar... usuario" />
             <marker date="1525458398563" expanded="true" signature="1990:2004" ph="SELECT * FRO... ${$tableName}" />
@@ -771,16 +577,136 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/credentialEdit_controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
+        <state relative-caret-position="17">
           <caret line="81" column="2" lean-forward="false" selection-start-line="81" selection-start-column="2" selection-end-line="81" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/dynamicqueries_viewInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-862">
+          <caret line="28" column="34" lean-forward="true" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/permissions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="34" lean-forward="true" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/visitors-utils.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/validations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" column="10" lean-forward="true" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/permissions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/visitors.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="80" column="27" lean-forward="true" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sanctions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/sanctions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visitors.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/credentialView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/credential.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+        <state relative-caret-position="765">
+          <caret line="45" column="46" lean-forward="false" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entry.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="12" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entry.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="42" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/entry.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="114" column="33" lean-forward="false" selection-start-line="114" selection-start-column="33" selection-end-line="114" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/catalog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="148" column="19" lean-forward="true" selection-start-line="148" selection-start-column="19" selection-end-line="148" selection-end-column="44" />
           <folding />
         </state>
       </provider>

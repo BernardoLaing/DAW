@@ -1,5 +1,9 @@
 <?php
 include("partials/session_functions.php");
+
+if(!$_SESSION["permisos"][27])
+    header('Location: menu.php');
+
 require_once("utils.php");
 require_once("regexps.php");
 $a = "id not valid";
