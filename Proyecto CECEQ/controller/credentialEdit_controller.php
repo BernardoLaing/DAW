@@ -1,11 +1,12 @@
 <?php
 session_start();
-$target_dir = "../uploads/credenciales";
-if(!is_dir($target_dir)){
+$target_dir = "../uploads/credenciales/" . date("Y");
+if(!is_dir($target_dir))
     mkdir($target_dir);
-}else{
-    $target_dir = $target_dir . "/";
-}
+$target_dir = $target_dir . "/" . date("m");
+if(!is_dir($target_dir))
+    mkdir($target_dir);
+$target_dir = $target_dir . "/";
 /*
 if(count($_POST)>0){
     foreach($_POST["credential"] as $key => $value) {
