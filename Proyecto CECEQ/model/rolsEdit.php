@@ -17,10 +17,17 @@ if(count($_POST)>0){
           strlen($name) > 0 && strlen($name) <= 50 &&
           isset($_POST["permissions"])){
              $permissions = $_POST["permissions"];
-            if(updateRol($idRol, $name, $description, $permissions)){
-               header('Location: ../rols.php');
+
+             if(checkUniqueness($name)==true){ //Hay unicidad en nombre rol
+                if(updateRol($idRol, $name, $description, $permissions)){
+                header('Location: ../rols.php');
+                }else{
+                    echo "ERROR";
+                }
             }else{
-                echo "ERROR";
+                $_SESSION['error_type'] = "rolEditConflict";
+                $_SESSION['error_msg'] = "Ya existe un rol con este nombre";
+                header('Location: ../rolsEdit.php?idRol=' . $idRol);
             }
             
         }else{
