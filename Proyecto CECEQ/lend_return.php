@@ -7,7 +7,7 @@ if(!$_SESSION["permisos"][12])
 <?php include("partials/_top_bar.html");?>  <!--Es la etiqueta Nav-->
 <?php include("html/_lend_return.html"); ?> <!--Empieza en los scripts-->
 <?php 
-$link="https://www.youtube.com//embed/jcFWyTIEhCs?autoplay=1";
+$link="https://www.youtube.com/embed/NQF6Yb9Yh0I?autoplay=1";
 include("html/manualUsuario.html"); 
 ?>
 <?php include("partials/_bottom_bar.html"); ?> <!--Icono de ayuda--> 

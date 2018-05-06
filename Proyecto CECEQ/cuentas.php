@@ -15,7 +15,7 @@ $count = 1;
 <?php 
 include("html/cuentas.html");
 
-$link="https://www.youtube.com//embed/PptNXwj6kN0?autoplay=1";
+$link="https://www.youtube.com/embed/F43Q0iKerJk?autoplay=1";
 include("html/manualUsuario.html"); 
 include("partials/_bottom_bar.html"); 
 

@@ -13,7 +13,7 @@ $permissions = getTable('operacion');
     <?php 
     include("html/rolsCreate.html");
 
-    $link="https://www.youtube.com//embed/PptNXwj6kN0?autoplay=1";
+    $link="https://www.youtube.com/embed/yL4Ho7lQysg?autoplay=1";
     include("html/manualUsuario.html"); 
     include("partials/_bottom_bar.html"); 
 

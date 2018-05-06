@@ -361,7 +361,7 @@ function checkUniqueness($name){
             die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
           }
         $stmt->store_result();
-        if($stmt->num_rows !== 0){
+        if($stmt->num_rows > 1){
             disconnect($db);
             return false;
         }
