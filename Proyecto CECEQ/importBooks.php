@@ -81,6 +81,36 @@ function transferDataToRespectiveTables(){
     
     $connection = connect();
     mysqli_begin_transaction($connection);
+    $sql =  "
+    SELECT idEjemplar
+    FROM Ejemplar
+    ORDER BY idEjemplar DESC
+    LIMIT 1
+    ";
+    
+    if(mysqli_query($connection,$sql)){
+        $resultado = mysqli_query($connection,$sql);
+        echo "Paso insert titulo";
+        $last_id = intval(mysqli_fetch_row($resultado)[0]);
+    }else{
+        echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
+    }
+
+    $sql =  "
+    SELECT idTitulo
+    FROM Titulo
+    ORDER BY idTitulo DESC
+    LIMIT 1
+    ";
+    
+    if(mysqli_query($connection,$sql)){
+        $resultado = mysqli_query($connection,$sql);
+        echo "Paso insert titulo";
+        $last_id_titulo = intval(mysqli_fetch_row($resultado)[0]);
+    }else{
+        echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
+    }
+
     $sql = "
         INSERT INTO titulo(titulo,year) 
         SELECT u.titulo , u.yearTitulo 
@@ -94,6 +124,7 @@ function transferDataToRespectiveTables(){
         }else{
             echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
         }
+
     $sql = "
         INSERT INTO autor(nombre,apellidoPaterno)
         SELECT u.nombre, u.apellido
@@ -132,7 +163,7 @@ function transferDataToRespectiveTables(){
             echo "Paso insert titulo";
         }else{
             echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
-        }
+        }  
 
     $sql = "
         UPDATE ejemplar
@@ -144,6 +175,34 @@ function transferDataToRespectiveTables(){
         }else{
             echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
         }
+
+        $sql = "
+        INSERT INTO titulo_categoria(idTitulo,idCategoria)
+        SELECT idTitulo, u.numClasificacion
+        FROM upload u, autor a, titulo t
+        WHERE (u.nombre,u.apellido)=(a.nombre,a.apellidoPaterno)
+        AND (u.titulo,u.yearTitulo)=(t.titulo,t.year)
+        AND (idTitulo,u.numClasificacion)
+        NOT IN (SELECT idTitulo,idCategoria FROM titulo_categoria)
+        GROUP BY idTitulo,idAutor;
+        ";
+        if(mysqli_query($connection,$sql)){
+            echo "Paso insert titulo";
+        }else{
+            echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
+        }
+
+    $sql = "
+    INSERT INTO ejemplar_estado(idEjemplar,idEstado)
+    select idEjemplar, idEstado
+    from ejemplar, (select idEstado from estado where idEstado = 5) a
+    where idEjemplar >".$last_id."
+    ";
+    if(mysqli_query($connection,$sql)){
+        echo "Paso insert titulo";
+    }else{
+        echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
+    }
         
     $sql = "DROP TABLE upload;";
     if(mysqli_query($connection,$sql)){

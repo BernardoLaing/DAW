@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-sm-12">
                 <div class="text-center">
-                    <div class="display-3">Tramitar credencial</div>
+                    <div class="display-3">Editar credencial</div>
                 </div>
         </div>
     </div>

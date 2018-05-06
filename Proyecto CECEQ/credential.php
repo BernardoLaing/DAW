@@ -2,6 +2,8 @@
 include("partials/session_functions.php");
 if(!$_SESSION["permisos"][7])
     header('Location: menu.php');
+
+$title = "Tramitar Credencial";
 include("partials/_header.html");
 include("partials/_top_bar.html"); 
 ?>
