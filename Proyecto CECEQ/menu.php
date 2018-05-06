@@ -39,7 +39,9 @@
         if($_SESSION["permisos"][15]){
             include("partials/buttons/_sanctions.html");
         }
+        include("partials/buttons/_information.html");
         ?>
+        
     </div><br />
 </div>
 <?php include("partials/_footer.html"); ?>
