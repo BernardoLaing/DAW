@@ -29,7 +29,7 @@
         $results = buscarAutorN($_GET["autor2"], $_GET["apellido2"], ""); //insetrar autor
         if($row = mysqli_fetch_assoc($results))
         {
-            $idAutor=$row['idAutor'];
+            $idAutor2=$row['idAutor'];
         }
     }
     if($_GET["autor3"] != ""){
@@ -41,7 +41,7 @@
         $results = buscarAutorN($_GET["autor3"], $_GET["apellido3"], ""); //insetrar autor
         if($row = mysqli_fetch_assoc($results))
         {
-            $idAutor=$row['idAutor'];
+            $idAutor3=$row['idAutor'];
         }
     }
     
@@ -91,7 +91,6 @@
         editCategoriaTitulo($idTitulo, $cat);
     }
     editEjemplarEstado($idEjemplar, $_GET["estado"]);
-    echo $idTitulo. ' '. $cat;
     echo 'cambios guardados';
 
    ?>
