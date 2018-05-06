@@ -66,9 +66,11 @@
                 <a href="accessControl.php" class="btn btn-secondary py-0"><i class="material-icons align-middle">arrow_back</i></a>
             </div>
             <div class="col-sm-4"></div>
+            <?php if($_SESSION["permisos"][19]): ?>
             <div class="col-sm-2">
                 <a href="accountCreate.php"><button type="button" class="btn btn-secondary btn-block"> Agregar cuenta </button></a>
             </div>
+            <?php endif ?>
         </div>
     </div>
     <br>

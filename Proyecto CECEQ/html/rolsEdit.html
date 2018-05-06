@@ -190,7 +190,9 @@ function check( $ROL, $idPermiso){
                 <a href="rols.php" class="btn btn-secondary py-0"><i class="material-icons alagin-middle">arrow_back</i></a>
             </div>
             <div class="col-sm-2 offset-md-2">
+                <?php if($_SESSION['permisos'][24]): ?>
                 <a data-toggle="modal" data-target="#deleteModal" href="model/deleteRol.php?idRol=<?php echo $rol['idRol'] ?>" class="btn btn-secondary">Eliminar Rol</a>
+                <?php endif ?>
             </div>
             <div class="col-sm-3">
                 <input type="submit" class="btn btn-secondary btn-block cinsert" value="Guardar cambios">

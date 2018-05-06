@@ -123,6 +123,38 @@ function setTipo($idCredencial, $idEjemplar, $boolPrestamo){
     disconnect($conn);
 }
 
+function checkSanction($idCredencial){
+    $conn = connect();
+    if(!$conn){ die("No se pudo conectar a la Base de Datos");}
+    ///////////// REVISA QUE NO TENGA 3 PRESTAMOS //////////////////////
+
+
+
+      $sql='SELECT *
+      FROM sancion s
+      WHERE s.idVisitante = (?)
+      AND fechaFin > CURDATE()';
+        // Preparing the statement
+        if (!($statement = $conn->prepare($sql))) {
+        die("Preparation 1 failed: (" . $conn->errno . ") " . $conn->error);
+        }
+        // Binding statement params
+        if (!$statement->bind_param("i", $idCredencial)) {
+        die("Parameter vinculation failed: (" . $statement->errno . ") " . $statement->error);
+        }
+        // Executing the statement
+        if (!$statement->execute()) {
+        die("Execution failed: (" . $statement->errno . ") " . $statement->error);
+        }
+        $result = $statement->get_result();
+        if($result->num_rows >= 1){
+        return '<p style="color:red;" class="text-center">¡Este usuario está sancionado!</p>
+                <p style="color:red;" class="text-center">¿Desea continuar con el préstamo?</p>';
+        }
+        disconnect($conn);
+
+}
+
 function checkLendTimes($idVisitante){
   $conn = connect();
   if(!$conn){ die("No se pudo conectar a la Base de Datos");}

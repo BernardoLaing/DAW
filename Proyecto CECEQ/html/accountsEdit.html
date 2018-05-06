@@ -70,7 +70,9 @@
            
         <div class="row">
             <div class="col-4 offset-md-3 col-md-4">
+                <?php if($_SESSION["permisos"][20]): ?>
                 <a data-toggle="modal" data-target="#deleteModal" href="deleteAccount.php?user=<?php echo $user['user']; ?>"    class="btn btn-secondary">Eliminar Cuenta</a>
+                <?php endif ?>
             </div>
             <div class="col-2 offset-2 col-md-2 offset-sm-0">
                 <input type="submit" name="submit" class="btn btn-secondary btn-block cinsert" value="Registrar">
