@@ -25,6 +25,10 @@ function createTable(){
         yearTitulo int(11) NOT NULL,
         nombre varchar(50) NOT NULL,
         apellido varchar(50) NOT NULL,
+        nombre1 varchar(50),
+        apellido1 varchar(50),
+        nombre2 varchar(50),
+        apellido2 varchar(50),
         ISBN char(13) NOT NULL,
         estante varchar(10) NOT NULL,
         editorial varchar(50) NOT NULL,
@@ -96,21 +100,6 @@ function transferDataToRespectiveTables(){
         echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
     }
 
-    $sql =  "
-    SELECT idTitulo
-    FROM Titulo
-    ORDER BY idTitulo DESC
-    LIMIT 1
-    ";
-    
-    if(mysqli_query($connection,$sql)){
-        $resultado = mysqli_query($connection,$sql);
-        echo "Paso insert titulo";
-        $last_id_titulo = intval(mysqli_fetch_row($resultado)[0]);
-    }else{
-        echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
-    }
-
     $sql = "
         INSERT INTO titulo(titulo,year) 
         SELECT u.titulo , u.yearTitulo 
@@ -125,24 +114,103 @@ function transferDataToRespectiveTables(){
             echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
         }
 
+
+    //Autor
     $sql = "
         INSERT INTO autor(nombre,apellidoPaterno)
         SELECT u.nombre, u.apellido
         FROM upload u
         WHERE (u.nombre, u.apellido)
-        NOT IN(SELECT nombre,apellidoPaterno FROM autor);
+        NOT IN(SELECT nombre,apellidoPaterno FROM autor)
+        GROUP BY u.nombre,u.apellido;
         ";
         if(mysqli_query($connection,$sql)){
             echo "Paso insert titulo";
         }else{
             echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
         }
+
+ 
+    //Autor 2
+    $sql = "
+    INSERT INTO autor(nombre,apellidoPaterno)
+    SELECT u.nombre1, u.apellido1
+    FROM upload u
+    WHERE (u.nombre1, u.apellido1)
+    NOT IN(SELECT nombre,apellidoPaterno FROM autor)
+    GROUP BY u.nombre1, u.apellido1;
+    ";
+    if(mysqli_query($connection,$sql)){
+        echo "Paso insert titulo";
+    }else{
+        echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
+    }
+
+
+    //Autor 3
+    $sql = "
+    INSERT INTO autor(nombre,apellidoPaterno)
+    SELECT u.nombre2, u.apellido2
+    FROM upload u
+    WHERE (u.nombre2, u.apellido2)
+    NOT IN(SELECT nombre,apellidoPaterno FROM autor)
+    GROUP BY u.nombre2,u.apellido2
+    ";
+    if(mysqli_query($connection,$sql)){
+        echo "Paso insert titulo";
+    }else{
+        echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
+    }
+
+
+
+    $sql = "
+    DELETE FROM autor WHERE nombre = ''
+    ";
+    if(mysqli_query($connection,$sql)){
+        echo "Paso insert titulo";
+    }else{
+        echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
+    }
+    
+    $sql = "
+    DELETE FROM autor WHERE apellidoPaterno = ''
+    ";
+    if(mysqli_query($connection,$sql)){
+        echo "Paso insert titulo";
+    }else{
+        echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
+    }
+
+ 
+
+
+
+    //Autor
+    $sql = "
+    INSERT INTO titulo_autor(idTitulo,idAutor)
+    SELECT idTitulo, idAutor
+    FROM upload u, autor a, titulo t
+    WHERE (u.nombre,u.apellido)=(a.nombre,a.apellidoPaterno)
+    AND (u.titulo,u.yearTitulo)=(t.titulo,t.year)
+    AND (a.nombre IS NOT NULL)
+    AND (idTitulo,idAutor)
+    NOT IN (SELECT idTitulo, idAutor FROM titulo_autor)
+    GROUP BY idTitulo,idAutor;
+    ";
+    if(mysqli_query($connection,$sql)){
+        echo "Paso insert titulo";
+    }else{
+        echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
+    }
      
+    
+    //Autor 1
     $sql = "
         INSERT INTO titulo_autor(idTitulo,idAutor)
         SELECT idTitulo, idAutor
         FROM upload u, autor a, titulo t
-        WHERE (u.nombre,u.apellido)=(a.nombre,a.apellidoPaterno)
+        WHERE (u.nombre1,u.apellido1)=(a.nombre,a.apellidoPaterno)
         AND (u.titulo,u.yearTitulo)=(t.titulo,t.year)
         AND (idTitulo,idAutor)
         NOT IN (SELECT idTitulo, idAutor FROM titulo_autor)
@@ -153,6 +221,25 @@ function transferDataToRespectiveTables(){
         }else{
             echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
         }
+
+    
+    //Autor 2
+    $sql = "
+        INSERT INTO titulo_autor(idTitulo,idAutor)
+        SELECT idTitulo, idAutor
+        FROM upload u, autor a, titulo t
+        WHERE (u.nombre2,u.apellido2)=(a.nombre,a.apellidoPaterno)
+        AND (u.titulo,u.yearTitulo)=(t.titulo,t.year)
+        AND (idTitulo,idAutor)
+        NOT IN (SELECT idTitulo, idAutor FROM titulo_autor)
+        GROUP BY idTitulo,idAutor;
+        ";
+        if(mysqli_query($connection,$sql)){
+            echo "Paso insert titulo";
+        }else{
+            echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
+        }
+    
     $sql = "
         INSERT INTO ejemplar(isbn, estante, editorial, year, volumen, claveIngreso, idTitulo, coleccion, edicion, adquisicion, numClasificacion, materias)
         SELECT u.isbn,u.estante,u.editorial,u.yearTitulo,u.volumen ,u.claveIngreso,t.idTitulo, u.coleccion, u.edicion, u.adquisicion, u.numClasificacion, u.materias
@@ -164,6 +251,8 @@ function transferDataToRespectiveTables(){
         }else{
             echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
         }  
+
+    
 
     $sql = "
         UPDATE ejemplar
@@ -195,8 +284,6 @@ function transferDataToRespectiveTables(){
     }else{
         echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
     }
-
-    
 
     $sql = "
     INSERT INTO ejemplar_estado(idEjemplar,idEstado)
