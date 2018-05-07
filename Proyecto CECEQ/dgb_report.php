@@ -7,7 +7,7 @@ if(!$_SESSION["permisos"][11])
 include("partials/_header.html");
 include("partials/_top_bar.html");
 include("html/dgb_report.html");
-$link="https://www.youtube.com//embed/PptNXwj6kN0?autoplay=1";
+$link="https://www.youtube.com/embed/Q7EIvoSHTHI?autoplay=1";
 include("html/manualUsuario.html"); 
 include("partials/_bottom_bar.html"); 
 include("partials/_footer.html");

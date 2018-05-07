@@ -76,6 +76,10 @@ function check( $ROL, $idPermiso){
                     <label class="form-check-label" for="permissions['registrarEntrada']">Registrar entrada</label>
                 </div>
                 <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="permissions['verCredencial']" id="permissions['verCredencial']" value="27" <?php check($rol['idRol'],26);?>>
+                    <label class="form-check-label" for="permissions['exportarLibros']">Consultar Credenciales</label>
+                </div>
+                <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="permissions['gestionCredencial']" id="permissions['gestionCredencial']" value="7" <?php check($rol['idRol'],7);?>>
                     <label class="form-check-label" for="permissions['gestionCredencial']">Gestionar Credenciales</label>
                 </div>

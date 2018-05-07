@@ -4,6 +4,7 @@ $_SESSION["permisos"][27] = 1;
 if(!$_SESSION["permisos"][27])
     header('Location: menu.php');
 
+$title = "Consultar Credencial";
 require_once("utils.php");
 require_once("regexps.php");
 $a = "id not valid";

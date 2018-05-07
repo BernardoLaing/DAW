@@ -1,7 +1,7 @@
 <br /><br />
 <div class="container mdiv shadow">
     <div class="mx-auto text-center"> <!-- mx-auto da un padding y border automatico-->
-        <div class="display-3">Roles</div> <!--display son headdings mas grandes-->
+        <div class="display-3">Crear rol</div> <!--display son headdings mas grandes-->
     </div>
     <br>
     <form method="post" action="newRol.php">
@@ -32,6 +32,10 @@
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="permissions['registrarEntrada']" id="permissions['registrarEntrada']" value="6">
                     <label class="form-check-label" for="permissions['registrarEntrada']">Registrar entrada</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="permissions['verCredencial']" id="permissions['verCredencial']" value="27">
+                    <label class="form-check-label" for="permissions['exportarLibros']">Consultar Credenciales</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="permissions['gestionCredencial']" id="permissions['gestionCredencial']" value="7">
