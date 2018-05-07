@@ -11,71 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="utils.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/utils.php">
+      <file leaf-file-name="credential.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/html/credential.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="690" column="12" lean-forward="true" selection-start-line="690" selection-start-column="12" selection-end-line="690" selection-end-column="12" />
-              <folding>
-                <marker date="1525631616417" expanded="true" signature="640:733" ph="SELECT usuar... usuario" />
-                <marker date="1525631616417" expanded="true" signature="1990:2004" ph="SELECT * FRO... ${$tableName}" />
-                <marker date="1525631616417" expanded="true" signature="4364:4502" ph="insert into visitante_gradoestudios... " />
-                <marker date="1525631616417" expanded="true" signature="4688:4800" ph="insert into entrada... " />
-                <marker date="1525631616417" expanded="true" signature="4942:4986" ph="insert into entrada... " />
-                <marker date="1525631616417" expanded="true" signature="5353:6458" ph="select v.idV... visitante" />
-                <marker date="1525631616417" expanded="true" signature="5645:5924" ph="select vg.id... idVisitante" />
-                <marker date="1525631616417" expanded="true" signature="5722:5830" ph="select idVis... visitante_gradoestudios" />
-                <marker date="1525631616417" expanded="true" signature="7002:7838" ph="select v.idV... visitante" />
-                <marker date="1525631616417" expanded="true" signature="7002:7883" ph="select v.idV... visitante" />
-                <marker date="1525631616417" expanded="true" signature="7087:7366" ph="select vg.id... idVisitante" />
-                <marker date="1525631616417" expanded="true" signature="7164:7272" ph="select idVis... visitante_gradoestudios" />
-                <marker date="1525631616417" expanded="true" signature="9160:9276" ph="insert into visitante... " />
-                <marker date="1525631616417" expanded="true" signature="9788:9924" ph="update visitante... " />
-                <marker date="1525631616417" expanded="true" signature="10135:10209" ph="insert into visitante_gradoestudios... " />
-                <marker date="1525631616417" expanded="true" signature="10147:10175" ph="update visitante_gradoestudios... " />
-                <marker date="1525631616417" expanded="true" signature="10491:10617" ph="insert into Fiador_GradoEstudios... " />
-                <marker date="1525631616417" expanded="true" signature="11424:12072" ph="insert into fiador... " />
-                <marker date="1525631616417" expanded="true" signature="12644:12760" ph="insert into visitante... " />
-                <marker date="1525631616417" expanded="true" signature="13098:13285" ph="insert into credencial_fiador... " />
-                <marker date="1525631616417" expanded="true" signature="17026:17042" ph="..." />
-                <marker date="1525631616417" expanded="true" signature="17904:18015" ph="insert into sancion... " />
-                <marker date="1525631616417" expanded="true" signature="18437:19633" ph="select v.idV... visitante" />
-                <marker date="1525631616417" expanded="true" signature="18745:19024" ph="select vg.id... idVisitante" />
-                <marker date="1525631616417" expanded="true" signature="18822:18930" ph="select idVis... visitante_gradoestudios" />
-                <marker date="1525631616417" expanded="true" signature="20624:20698" ph="update sancion... " />
-                <marker date="1525631616417" expanded="true" signature="21453:25172" ph="select v.nom... visitante" />
-                <marker date="1525631616417" expanded="true" signature="21453:25211" ph="select v.nom... visitante" />
-                <marker date="1525631616417" expanded="true" signature="21453:25339" ph="select v.nom... visitante" />
-                <marker date="1525631616417" expanded="true" signature="23089:23467" ph="select vg.id... idVisitante" />
-                <marker date="1525631616417" expanded="true" signature="23189:23313" ph="select idVis... visitante_gradoestudios" />
-                <marker date="1525631616417" expanded="true" signature="23614:23883" ph="select g.nom... fiador" />
-                <marker date="1525631616417" expanded="true" signature="23941:24057" ph="select idVis... credencial" />
-                <marker date="1525631616417" expanded="true" signature="24102:24443" ph="select idCre... credencial_fiador" />
-                <marker date="1525631616417" expanded="true" signature="24222:24342" ph="select idCre... credencial_fiador" />
-                <marker date="1525631616417" expanded="true" signature="26180:26337" ph="update visitante... " />
-                <marker date="1525631616417" expanded="true" signature="26180:26366" ph="update visitante... " />
-                <marker date="1525631616417" expanded="true" signature="26186:26337" ph="insert into visitante... " />
-                <marker date="1525631616417" expanded="true" signature="27023:27093" ph="insert into visitante_gradoestudios... " />
-                <marker date="1525631616417" expanded="true" signature="27685:28018" ph="update credencial... " />
-                <marker date="1525631616417" expanded="true" signature="27685:28041" ph="update credencial... " />
-                <marker date="1525631616417" expanded="true" signature="27691:28018" ph="insert into credencial... " />
-                <marker date="1525631616417" expanded="true" signature="28809:28831" ph="select c.idC... credencial" />
-                <marker date="1525631616417" expanded="true" signature="28809:29409" ph="select c.idC... credencial" />
-                <marker date="1525631616417" expanded="true" signature="28885:29210" ph="select idCre... credencial_fiador" />
-                <marker date="1525631616417" expanded="true" signature="28997:29117" ph="select idCre... credencial_fiador" />
-                <marker date="1525631616417" expanded="true" signature="30168:30469" ph="insert into fiador... " />
-                <marker date="1525631616417" expanded="true" signature="31305:31372" ph="insert into Fiador_GradoEstudios... " />
-                <marker date="1525631616417" expanded="true" signature="31929:31984" ph="insert into credencial_fiador... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="credentialView.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/credentialView.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="2" lean-forward="true" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+            <state relative-caret-position="-157">
+              <caret line="415" column="22" lean-forward="true" selection-start-line="415" selection-start-column="22" selection-end-line="415" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -93,7 +33,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ocupaci</find>
       <find>teléfono</find>
       <find>required</find>
       <find>insertvisitantegradoestudios</find>
@@ -111,7 +50,6 @@
       <find>credential[workName]</find>
       <find>header</find>
       <find>file</find>
-      <find>echo</find>
       <find>cphone</find>
       <find>cpassed = false</find>
       <find>credential_numberF</find>
@@ -123,6 +61,8 @@
       <find>foto</find>
       <find>sancionar</find>
       <find>&quot;</find>
+      <find>submit</find>
+      <find>echo</find>
     </findStrings>
     <replaceStrings>
       <replace>.parentElement.parentElement.parentElement.</replace>
@@ -135,7 +75,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/js/validatePasswords.js" />
         <option value="$PROJECT_DIR$/html/accountCreate.html" />
         <option value="$PROJECT_DIR$/html/rolsCreate.html" />
         <option value="$PROJECT_DIR$/html/_estadisticas.html" />
@@ -173,19 +112,20 @@
         <option value="$PROJECT_DIR$/userCredential.php" />
         <option value="$PROJECT_DIR$/model/credential-utils.php" />
         <option value="$PROJECT_DIR$/js/validtest.js" />
-        <option value="$PROJECT_DIR$/html/credential.html" />
-        <option value="$PROJECT_DIR$/controller/credentialEdit_controller.php" />
         <option value="$PROJECT_DIR$/js/permissions.js" />
         <option value="$PROJECT_DIR$/permissions.php" />
         <option value="$PROJECT_DIR$/visitors.php" />
         <option value="$PROJECT_DIR$/js/sanctions.js" />
-        <option value="$PROJECT_DIR$/sanctions.php" />
-        <option value="$PROJECT_DIR$/js/credential.js" />
         <option value="$PROJECT_DIR$/js/entry.js" />
         <option value="$PROJECT_DIR$/html/entry.html" />
         <option value="$PROJECT_DIR$/js/visitors.js" />
-        <option value="$PROJECT_DIR$/credentialView.php" />
+        <option value="$PROJECT_DIR$/sanctions.php" />
+        <option value="$PROJECT_DIR$/sanctionsView.php" />
         <option value="$PROJECT_DIR$/utils.php" />
+        <option value="$PROJECT_DIR$/js/credential.js" />
+        <option value="$PROJECT_DIR$/credentialView.php" />
+        <option value="$PROJECT_DIR$/controller/credentialEdit_controller.php" />
+        <option value="$PROJECT_DIR$/html/credential.html" />
       </list>
     </option>
   </component>
@@ -239,12 +179,12 @@
             <path>
               <item name="Proyecto CECEQ" type="b2602c69:ProjectViewProjectNode" />
               <item name="Proyecto CECEQ" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modals" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="Proyecto CECEQ" type="b2602c69:ProjectViewProjectNode" />
               <item name="Proyecto CECEQ" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="model" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="uploads" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -330,7 +270,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198671000" />
+    <option name="totallyTimeSpent" value="210948000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -348,12 +288,23 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.193265" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,34 +320,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/regexps.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/activities.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activities.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/entrySearch_controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controller/csrfValidation.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -517,7 +440,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/credentialEdit.php" />
     <entry file="file://$PROJECT_DIR$/userCredential.php" />
     <entry file="file://$PROJECT_DIR$/html/userCredential.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -568,27 +490,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/credential.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-799">
-          <caret line="33" column="41" lean-forward="false" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/credentialInsert_controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/credentialEdit_controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="81" column="2" lean-forward="false" selection-start-line="81" selection-start-column="2" selection-end-line="81" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/dynamicqueries_viewInfo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-862">
@@ -631,31 +532,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sanctions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/sanctions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visitors.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/credential.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" column="46" lean-forward="false" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -687,76 +567,169 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/visitors.js">
+    <entry file="file://$PROJECT_DIR$/sanctionsView.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="89" column="48" lean-forward="false" selection-start-line="89" selection-start-column="48" selection-end-line="89" selection-end-column="48" />
+        <state relative-caret-position="17">
+          <caret line="1" column="43" lean-forward="true" selection-start-line="1" selection-start-column="43" selection-end-line="1" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/credentialView.php">
+    <entry file="file://$PROJECT_DIR$/sanctions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="2" lean-forward="true" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+        <state relative-caret-position="136">
+          <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visitors.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/regexps.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/utils.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="690" column="12" lean-forward="true" selection-start-line="690" selection-start-column="12" selection-end-line="690" selection-end-column="12" />
+        <state relative-caret-position="260">
+          <caret line="893" column="0" lean-forward="true" selection-start-line="893" selection-start-column="0" selection-end-line="893" selection-end-column="0" />
           <folding>
-            <marker date="1525631616417" expanded="true" signature="640:733" ph="SELECT usuar... usuario" />
-            <marker date="1525631616417" expanded="true" signature="1990:2004" ph="SELECT * FRO... ${$tableName}" />
-            <marker date="1525631616417" expanded="true" signature="4364:4502" ph="insert into visitante_gradoestudios... " />
-            <marker date="1525631616417" expanded="true" signature="4688:4800" ph="insert into entrada... " />
-            <marker date="1525631616417" expanded="true" signature="4942:4986" ph="insert into entrada... " />
-            <marker date="1525631616417" expanded="true" signature="5353:6458" ph="select v.idV... visitante" />
-            <marker date="1525631616417" expanded="true" signature="5645:5924" ph="select vg.id... idVisitante" />
-            <marker date="1525631616417" expanded="true" signature="5722:5830" ph="select idVis... visitante_gradoestudios" />
-            <marker date="1525631616417" expanded="true" signature="7002:7838" ph="select v.idV... visitante" />
-            <marker date="1525631616417" expanded="true" signature="7002:7883" ph="select v.idV... visitante" />
-            <marker date="1525631616417" expanded="true" signature="7087:7366" ph="select vg.id... idVisitante" />
-            <marker date="1525631616417" expanded="true" signature="7164:7272" ph="select idVis... visitante_gradoestudios" />
-            <marker date="1525631616417" expanded="true" signature="9160:9276" ph="insert into visitante... " />
-            <marker date="1525631616417" expanded="true" signature="9788:9924" ph="update visitante... " />
-            <marker date="1525631616417" expanded="true" signature="10135:10209" ph="insert into visitante_gradoestudios... " />
-            <marker date="1525631616417" expanded="true" signature="10147:10175" ph="update visitante_gradoestudios... " />
-            <marker date="1525631616417" expanded="true" signature="10491:10617" ph="insert into Fiador_GradoEstudios... " />
-            <marker date="1525631616417" expanded="true" signature="11424:12072" ph="insert into fiador... " />
-            <marker date="1525631616417" expanded="true" signature="12644:12760" ph="insert into visitante... " />
-            <marker date="1525631616417" expanded="true" signature="13098:13285" ph="insert into credencial_fiador... " />
-            <marker date="1525631616417" expanded="true" signature="17026:17042" ph="..." />
-            <marker date="1525631616417" expanded="true" signature="17904:18015" ph="insert into sancion... " />
-            <marker date="1525631616417" expanded="true" signature="18437:19633" ph="select v.idV... visitante" />
-            <marker date="1525631616417" expanded="true" signature="18745:19024" ph="select vg.id... idVisitante" />
-            <marker date="1525631616417" expanded="true" signature="18822:18930" ph="select idVis... visitante_gradoestudios" />
-            <marker date="1525631616417" expanded="true" signature="20624:20698" ph="update sancion... " />
-            <marker date="1525631616417" expanded="true" signature="21453:25172" ph="select v.nom... visitante" />
-            <marker date="1525631616417" expanded="true" signature="21453:25211" ph="select v.nom... visitante" />
-            <marker date="1525631616417" expanded="true" signature="21453:25339" ph="select v.nom... visitante" />
-            <marker date="1525631616417" expanded="true" signature="23089:23467" ph="select vg.id... idVisitante" />
-            <marker date="1525631616417" expanded="true" signature="23189:23313" ph="select idVis... visitante_gradoestudios" />
-            <marker date="1525631616417" expanded="true" signature="23614:23883" ph="select g.nom... fiador" />
-            <marker date="1525631616417" expanded="true" signature="23941:24057" ph="select idVis... credencial" />
-            <marker date="1525631616417" expanded="true" signature="24102:24443" ph="select idCre... credencial_fiador" />
-            <marker date="1525631616417" expanded="true" signature="24222:24342" ph="select idCre... credencial_fiador" />
-            <marker date="1525631616417" expanded="true" signature="26180:26337" ph="update visitante... " />
-            <marker date="1525631616417" expanded="true" signature="26180:26366" ph="update visitante... " />
-            <marker date="1525631616417" expanded="true" signature="26186:26337" ph="insert into visitante... " />
-            <marker date="1525631616417" expanded="true" signature="27023:27093" ph="insert into visitante_gradoestudios... " />
-            <marker date="1525631616417" expanded="true" signature="27685:28018" ph="update credencial... " />
-            <marker date="1525631616417" expanded="true" signature="27685:28041" ph="update credencial... " />
-            <marker date="1525631616417" expanded="true" signature="27691:28018" ph="insert into credencial... " />
-            <marker date="1525631616417" expanded="true" signature="28809:28831" ph="select c.idC... credencial" />
-            <marker date="1525631616417" expanded="true" signature="28809:29409" ph="select c.idC... credencial" />
-            <marker date="1525631616417" expanded="true" signature="28885:29210" ph="select idCre... credencial_fiador" />
-            <marker date="1525631616417" expanded="true" signature="28997:29117" ph="select idCre... credencial_fiador" />
-            <marker date="1525631616417" expanded="true" signature="30168:30469" ph="insert into fiador... " />
-            <marker date="1525631616417" expanded="true" signature="31305:31372" ph="insert into Fiador_GradoEstudios... " />
-            <marker date="1525631616417" expanded="true" signature="31929:31984" ph="insert into credencial_fiador... " />
+            <marker date="1525707960583" expanded="true" signature="640:733" ph="SELECT usuar... usuario" />
+            <marker date="1525707960583" expanded="true" signature="1990:2004" ph="SELECT * FRO... ${$tableName}" />
+            <marker date="1525707960583" expanded="true" signature="4120:4258" ph="insert into visitante_gradoestudios... " />
+            <marker date="1525707960583" expanded="true" signature="4444:4556" ph="insert into entrada... " />
+            <marker date="1525707960583" expanded="true" signature="4698:4742" ph="insert into entrada... " />
+            <marker date="1525707960583" expanded="true" signature="5109:6214" ph="select v.idV... visitante" />
+            <marker date="1525707960583" expanded="true" signature="5401:5680" ph="select vg.id... idVisitante" />
+            <marker date="1525707960583" expanded="true" signature="5478:5586" ph="select idVis... visitante_gradoestudios" />
+            <marker date="1525707960583" expanded="true" signature="6758:7639" ph="select v.idV... visitante" />
+            <marker date="1525707960583" expanded="true" signature="6843:7122" ph="select vg.id... idVisitante" />
+            <marker date="1525707960583" expanded="true" signature="6920:7028" ph="select idVis... visitante_gradoestudios" />
+            <marker date="1525707960583" expanded="true" signature="8916:9032" ph="insert into visitante... " />
+            <marker date="1525707960583" expanded="true" signature="9544:9680" ph="update visitante... " />
+            <marker date="1525707960583" expanded="true" signature="9891:9965" ph="insert into visitante_gradoestudios... " />
+            <marker date="1525707960583" expanded="true" signature="10247:10373" ph="insert into Fiador_GradoEstudios... " />
+            <marker date="1525707960583" expanded="true" signature="11180:11828" ph="insert into fiador... " />
+            <marker date="1525707960583" expanded="true" signature="12400:12516" ph="insert into visitante... " />
+            <marker date="1525707960583" expanded="true" signature="12854:13041" ph="insert into credencial_fiador... " />
+            <marker date="1525707960583" expanded="true" signature="16782:16798" ph="..." />
+            <marker date="1525707960583" expanded="true" signature="17660:17771" ph="insert into sancion... " />
+            <marker date="1525707960583" expanded="true" signature="18193:19389" ph="select v.idV... visitante" />
+            <marker date="1525707960583" expanded="true" signature="18501:18780" ph="select vg.id... idVisitante" />
+            <marker date="1525707960583" expanded="true" signature="18578:18686" ph="select idVis... visitante_gradoestudios" />
+            <marker date="1525707960583" expanded="true" signature="20380:20454" ph="update sancion... " />
+            <marker date="1525707960583" expanded="true" signature="21209:25095" ph="select v.nom... visitante" />
+            <marker date="1525707960583" expanded="true" signature="22845:23223" ph="select vg.id... idVisitante" />
+            <marker date="1525707960583" expanded="true" signature="22945:23069" ph="select idVis... visitante_gradoestudios" />
+            <marker date="1525707960583" expanded="true" signature="23370:23639" ph="select g.nom... fiador" />
+            <marker date="1525707960583" expanded="true" signature="23697:23813" ph="select idVis... credencial" />
+            <marker date="1525707960583" expanded="true" signature="23858:24199" ph="select idCre... credencial_fiador" />
+            <marker date="1525707960583" expanded="true" signature="23978:24098" ph="select idCre... credencial_fiador" />
+            <marker date="1525707960583" expanded="true" signature="25936:26122" ph="update visitante... " />
+            <marker date="1525707960583" expanded="true" signature="26779:26849" ph="insert into visitante_gradoestudios... " />
+            <marker date="1525707960583" expanded="true" signature="27441:27797" ph="update credencial... " />
+            <marker date="1525707960583" expanded="true" signature="28565:29165" ph="select c.idC... credencial" />
+            <marker date="1525707960583" expanded="true" signature="28641:28966" ph="select idCre... credencial_fiador" />
+            <marker date="1525707960583" expanded="true" signature="28753:28873" ph="select idCre... credencial_fiador" />
+            <marker date="1525707960583" expanded="true" signature="29924:30225" ph="insert into fiador... " />
+            <marker date="1525707960583" expanded="true" signature="31061:31128" ph="insert into Fiador_GradoEstudios... " />
+            <marker date="1525707960583" expanded="true" signature="31685:31740" ph="insert into credencial_fiador... " />
+            <marker date="1525707960583" expanded="true" signature="32476:34854" ph="select v.nom... visitante" />
+            <marker date="1525707960583" expanded="true" signature="32604:32982" ph="select vg.id... idVisitante" />
+            <marker date="1525707960583" expanded="true" signature="32704:32828" ph="select idVis... visitante_gradoestudios" />
+            <marker date="1525707960583" expanded="true" signature="33129:33398" ph="select g.nom... fiador" />
+            <marker date="1525707960583" expanded="true" signature="33456:33572" ph="select idVis... credencial" />
+            <marker date="1525707960583" expanded="true" signature="33617:33958" ph="select idCre... credencial_fiador" />
+            <marker date="1525707960583" expanded="true" signature="33737:33857" ph="select idCre... credencial_fiador" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/credentialEdit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/visitors.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2125">
+          <caret line="125" column="39" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/catalog_modal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/credential.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-867">
+          <caret line="9" column="36" lean-forward="true" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/credential.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="27" selection-end-column="1" />
+          <folding>
+            <marker date="1525699554955" expanded="true" signature="634:766" ph="..." />
+            <marker date="1525699554955" expanded="true" signature="679:747" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/credentialView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="20" column="8" lean-forward="true" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <folding>
+            <marker date="1525707205208" expanded="true" signature="795:927" ph="..." />
+            <marker date="1525707205208" expanded="true" signature="840:908" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/credentialInsert_controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="104" column="25" lean-forward="true" selection-start-line="104" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/credentialEdit_controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="125" column="39" lean-forward="false" selection-start-line="125" selection-start-column="39" selection-end-line="125" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/credential.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-157">
+          <caret line="415" column="22" lean-forward="true" selection-start-line="415" selection-start-column="22" selection-end-line="415" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>

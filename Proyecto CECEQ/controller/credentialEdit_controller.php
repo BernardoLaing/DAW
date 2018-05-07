@@ -1,12 +1,21 @@
 <?php
+require_once("../regexps.php");
+require_once("../utils.php");
+
 session_start();
-$target_dir = "../uploads/credenciales/" . date("Y");
-if(!is_dir($target_dir))
-    mkdir($target_dir);
-$target_dir = $target_dir . "/" . date("m");
-if(!is_dir($target_dir))
-    mkdir($target_dir);
-$target_dir = $target_dir . "/";
+$hasImage = false;
+if($_FILES["fileToUpload"]["tmp_name"]!=null) {
+    if (getimagesize($_FILES["fileToUpload"]["tmp_name"]) != FALSE) {
+        $hasImage = true;
+        $target_dir = "../uploads/credenciales/" . date("Y");
+        if (!is_dir($target_dir))
+            mkdir($target_dir);
+        $target_dir = $target_dir . "/" . date("m");
+        if (!is_dir($target_dir))
+            mkdir($target_dir);
+        $target_dir = $target_dir . "/";
+    }
+}
 /*
 if(count($_POST)>0){
     foreach($_POST["credential"] as $key => $value) {
@@ -33,7 +42,7 @@ if(count($_POST)>0
     && (test($GENDER, $_POST["credential"]["gender"] ))
     && (test($SCHOOLING, $_POST["credential"]["schooling"] ))
     // Credencial
-    //&& ((getimagesize($_FILES["fileToUpload"]["tmp_name"]) != FALSE))
+    // no va --> && ((getimagesize($_FILES["fileToUpload"]["tmp_name"]) != FALSE))
     && (($_POST["credential"]["email"]  !== null))
     && (test($NAME, $_POST["credential"]["street"] ))
     && (test($NUMBER, $_POST["credential"]["number"] ))
@@ -75,17 +84,21 @@ if(count($_POST)>0
             $nulls++;
         }
     }
+    $info["idVisitante"] = htmlspecialchars($_POST["idVisitante"]);
     //$_FILES["fileToUpload"]["tmp_name"] = "fakepath/adf";
-/*
-    if($_FILES["fileToUpload"]["tmp_name"] != null){
-        $info["fileToUpload"] = $_FILES["fileToUpload"]["tmp_name"];
-    }else{
-        $info["fileToUpload"] = "";
-        $nulls++;
+
+    if($hasImage) {
+        if ($_FILES["fileToUpload"]["tmp_name"] != null) {
+            $info["fileToUpload"] = $_FILES["fileToUpload"]["tmp_name"];
+        } else {
+            $info["fileToUpload"] = "";
+            $nulls++;
+        }
     }
-*/
+
     if(isset($info)) {
-        $target_file = basename($_FILES["fileToUpload"]["name"]);
+        $ftuccc = buildAssocArray(getCurrentPhoto($info["idVisitante"]))["fileToUpload"];
+        $target_file = $hasImage? $target_dir . basename($_FILES["fileToUpload"]["name"]) : $ftuccc;
         if($nulls == 0){
             move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
             if(
@@ -99,14 +112,18 @@ if(count($_POST)>0
                 //Fiador
                 $info["nameF"], $info["paternalF"], $info["maternalF"], $info["emailF"], $info["phoneF"], $info["streetF"], $info["numberF"], $info["neighborhoodF"], $info["postalCodeF"], $info["workNameF"], $info["workPhoneF"], $info["workStreetF"], $info["workNumberF"], $info["workNeighborhoodF"], $info["workPostalCodeF"], $info["schoolingF"]
             )){
+
                 $_SESSION['credential_msg'] = 1;
-                $_SESSION['msg'] = "La credencial fue registrada con éxito";
+                $_SESSION['msg'] = "La credencial fue editada con éxito";
+
             }
         }
     }
 }else{
-    echo "nope";
-
+    $_SESSION['credential_msg'] = 1;
+    $_SESSION['msg'] = "La credencial no pudo ser modificada";
 }
+header("Location: ../credentialView.php?id=".$_POST["idVisitante"]);
+
 
 ?>
