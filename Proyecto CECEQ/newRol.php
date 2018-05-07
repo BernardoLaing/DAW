@@ -9,22 +9,24 @@ if(isset($_POST["submit"])){
     if(isset($_POST["name"]) && isset($_POST["description"] )){
         $description = process($_POST["description"]);
         $name = process($_POST["name"]);
-        $permissions = $_POST["permissions"];
+       
         if(strlen($description) > 0 &&
           strlen($description) <= 50 &&
           strlen($name) > 0 &&
-          strlen($name) <= 50){
-            if(count($permissions === 0)){
-                $_SESSION['error_type'] = "rolConflict";
-                $_SESSION['error_msg'] = "No agregaste permisos al rol";
-                header('Location: rolsCreate.php');
-            }
+          strlen($name) <= 50 &&
+          isset($_POST["permissions"])){
+            $permissions = $_POST["permissions"];
+
             if(createRol($name, $description, $permissions)){
                 header('Location: rols.php');
             }else{
                 header('Location: rolsCreate.php');
             }
             
+        }else{
+            $_SESSION['error_type'] = "rolConflict";
+            $_SESSION['error_msg'] = "No agregaste ningun permisos al rol";
+            header('Location: rolsCreate.php');
         }
     }
     echo "NOT ISSET";

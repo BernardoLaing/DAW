@@ -8,7 +8,11 @@ if(!$_SESSION["permisos"][4])
 ?>
 <?php include("partials/_header.html"); ?>
 <?php include("partials/_top_bar.html"); ?>
-<?php include("html/add_book.html"); ?>
+<?php include("html/add_book.html"); 
+$link="https://www.youtube.com/embed/6nWTYrBjfBQ?autoplay=1";
+include("html/manualUsuario.html"); 
+include("partials/_bottom_bar.html"); 
+?>
 <?php
 if(!empty($_POST))
 {

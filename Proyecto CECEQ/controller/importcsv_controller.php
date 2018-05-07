@@ -30,5 +30,5 @@ if ( isset($_POST["uploadCsv"]) ) {
     }
 }
 importBooks();
-header("Location: ../catalog.php");
+//header("Location: ../catalog.php");
 ?>
