@@ -28,7 +28,7 @@ function funcBuscarLibro(){
     var titulo = $('#book_title');
     var categoria = $('#subclasificacionBusqueda');
     $.get("searchBookAjax.php", { name: nombre.val(), apellidop: apaterno.val(), apellidom: amaterno.val(), title: titulo.val() , paginacion: paginacion, pagina: pagina, categoria: categoria.val()}, function(data){
-         //alert(data);
+        //console.log(data);
         $('#respuestaLibros').html(data);
         funcVerificarPaginacion();
     });
