@@ -1,6 +1,6 @@
 <?php
     function connect() {
-        $ENV = "prod";
+        $ENV = "dev";
         if ($ENV == "dev") {
             $mysql = mysqli_connect("localhost","root","","jambe");
                                             //root si estan en windows
@@ -82,12 +82,6 @@
         }
         return false;
     }
-
-
-//---------------------------------RBAC MODEL---------------------------------------------------------
-//require_once('model/RBAC-utils.php');
-
-// ---------------------------------------END RBAC MODEL-----------------------------------------
 
 require_once('model/DGB-utils.php');
 

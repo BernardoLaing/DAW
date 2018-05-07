@@ -5,7 +5,6 @@ function funcionPrincipal()
 }
 function funcExportarExcel()
 {
-    $.get("exportarExcel.php");
-    alert("Exportado!");
+    window.open('exportarExcel.php'); 
 }
 var exportar = $('#exportarCatalogo');
