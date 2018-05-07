@@ -12,10 +12,10 @@ if(isset($_GET["id"])&&$_GET["id"]!=null&&test($NUMBER, $_GET["id"]))
     $a = json_encode(buildAssocArray(queryCredencial($_GET["id"])));
 include("partials/_header.html");
 include("partials/_top_bar.html");
+include("permissions.php");
 include("html/credential.html");
 include("partials/_footer.html");
-include("modals/modal_saved.html");
-include("modals/modal_connection_error.html");
+
 ?>
 <script src="js/credential.js"></script>
 <script>
@@ -24,3 +24,13 @@ include("modals/modal_connection_error.html");
     });
 </script>
 
+<?php
+if(isset($_SESSION['credential_msg']) && $_SESSION['credential_msg']){
+    echo "<script>
+            $(document).ready(function (e) {
+                $('#modalCredential').modal('show');
+            });
+        </script>";
+    $_SESSION['credential_msg'] = 0;
+}
+?>

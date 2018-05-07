@@ -1,6 +1,6 @@
 <?php
     function connect() {
-        $ENV = "prod";
+        $ENV = "dev";
         if ($ENV == "dev") {
             $mysql = mysqli_connect("localhost","root","","jambe");
                                             //root si estan en windows
@@ -893,6 +893,88 @@ function updateCredential(
 }
 
 
-
+function getCurrentPhoto($idVisitante){
+    $connection = connect();
+    $statement = mysqli_prepare($connection,"
+    
+            select c.foto as 'fileToUpload'
+            
+            from
+            visitante v,
+            (
+            
+              select vg.idVisitante as vid, g.nombre as gnom
+              from
+                (
+                select idVisitante as ii, max(fecha) as im
+                from visitante_gradoestudios
+                group by idVisitante
+                ) i, visitante_gradoestudios vg, gradoestudios g
+              where i.ii = vg.idVisitante and i.im = vg.fecha and vg.idGrado = g.idGrado
+            
+            ) as vg,
+            credencial c,
+            credencial_fiador cf,
+            fiador f,
+            (
+                select g.nombre as fgnom, f.idFiador as fid
+                from
+                fiador f,
+                fiador_gradoestudios fg,
+                gradoestudios g
+                where
+                f.idFiador = fg.idFiador and
+                fg.idGrado = g.idGrado
+            
+            ) fg,
+            (
+            select idVisitante as idvc, max(fechaExpedicion) as mfc
+            from credencial
+            group by idVisitante
+            ) ic,
+            (
+            select idCredencial as eidc, idFiador as eidf
+            from credencial_fiador icf,
+                (
+                select idCredencial as idc, max(fecha) imfc
+                from credencial_fiador
+                group by idCredencial
+                ) ic
+            where icf.idCredencial = ic.idc and
+            icf.fecha = ic.imfc
+            ) scuc
+            
+            
+            where
+            v.idVisitante = ? and
+            
+            -- nombre del grado de estudios
+            v.idVisitante = vid and
+            
+            -- agregar credencial
+            v.idVisitante = c.idVisitante and
+            
+            -- credencial más reciente
+            c.idVisitante = ic.idvc and
+            c.fechaExpedicion = mfc and
+            
+            -- fiador más reciente
+            c.idCredencial = cf.idCredencial and
+            (cf.idCredencial, cf.idFiador) = (scuc.eidc, scuc.eidf) and
+            
+            -- añadir nombre del grado de estudios del fiador
+            cf.idFiador = f.idFiador and
+            f.idFiador = fid and  
+            c.fechaExpedicion > '".date('Y-m-d', strtotime('-1 year'))."'          
+                        
+            order by c.fechaExpedicion desc limit 1;
+    
+    ");
+    $statement->bind_param("i", $idVisitante);
+    $statement->execute();
+    $result = $statement->get_result();
+    disconnect($connection);
+    return $result;
+}
 
 
