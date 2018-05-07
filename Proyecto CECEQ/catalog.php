@@ -9,8 +9,8 @@ if(!$_SESSION["permisos"][2])
 <?php 
 $link="https://www.youtube.com/embed/WVbMyrh5hLI?autoplay=1";
 include("html/manualUsuario.html"); 
+include("partials/_bottom_bar.html"); 
 ?>
-<?php include("partials/_bottom_bar.html"); ?> <!--Icono de ayuda--> 
 <?php include("modals/modal_catalog.php");?>
 <script src="js/catalog_modal.js"></script> 
 <script src="js/exportXcel.js"></script>

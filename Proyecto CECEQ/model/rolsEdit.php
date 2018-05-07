@@ -4,7 +4,7 @@ require_once('../utils.php');
 require_once('RBAC-utils.php');
 ?>
 <?php
-var_dump($_POST);
+//var_dump($_POST);
 if(count($_POST)>0){
     //Validar que los campos se hayan llenado de la manera correcta.
     if(isset($_POST["nombre_rol"]) && isset($_POST["description_rol"] )){
@@ -13,6 +13,7 @@ if(count($_POST)>0){
         $name = process($_POST["nombre_rol"]);
         //$permissions = $_POST["permissions"];
         $idRol = $_POST["idRol"];
+        echo $idRol;
         if(strlen($description) > 0 && strlen($description) <= 50 &&
           strlen($name) > 0 && strlen($name) <= 50 &&
           isset($_POST["permissions"])){
