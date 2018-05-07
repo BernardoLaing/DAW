@@ -129,6 +129,29 @@ $(".input").each(function(){
         });
     });
 });
+    
+$("#rol").change(function(){
+    $.get("controller/cuentas_search.php",{
+        user : $("#user").val(),
+        name : $("#name").val(),
+        rol : $("#rol").val()
+    },
+    function(data){
+        var obj = JSON.parse(data);
+        console.log(data);
+        var tableContent = '<thead><tr><th scope="col"> Nombre </th><th scope="col"> Usuario </th><th scope="col"> Rol </th><th scope="col"></th><th scope="col"></th></tr></thead>';
+        $.each(obj, function(key, value){
+//              console.log(value);
+            tableContent = tableContent.concat("<tr><td style='width: 29%;'>" + value.nombre + "</td>");
+            tableContent = tableContent.concat("<td style='width: 29%;'>" + value.user + "</td>");
+            tableContent = tableContent.concat("<td style='width: 29%;'>" + value.rol + "</td>");
+            tableContent = tableContent.concat("<?php if($_SESSION["permisos"][21]): ?><td style='width: 6.5%;'><a href='accountsEdit.php?user=" + value.user + "'><i class='material-icons edit'>mode_edit</i></a></td></tr><?php endif ?>");
+                /*tableContent = tableContent.concat("<td style='width: 6.5%;'><a href='deleteAccount.php?user=" + value.user + "'><i class='material-icons delete'>delete</i></a></td></tr>");*/
+            $("#user-table").html(tableContent);
+        })
+//            console.log(obj);
+    });
+});
 
 
 </script>

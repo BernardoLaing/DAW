@@ -115,7 +115,7 @@ function buscarGeneralId($id)
 {
     $connection = connect();
     $statement = mysqli_prepare($connection,"
-    select GROUP_CONCAT(a.nombre SEPARATOR ', ') AS autores, GROUP_CONCAT(apellidoPaterno SEPARATOR ', ') AS apellidos, titulo, t.year, estante, editorial, es.nombre, c.idCategoria, e.idEjemplar, ISBN, volumen, edicion, e.year as yearE, c.nombre AS nombreC, es.idEstado, coleccion, claveIngreso, fechaIngreso, idUsuario, adquisicion, numClasificacion, materias
+    select GROUP_CONCAT(a.nombre SEPARATOR ',') AS autores, GROUP_CONCAT(apellidoPaterno SEPARATOR ',') AS apellidos, titulo, t.year, estante, editorial, es.nombre, c.idCategoria, e.idEjemplar, ISBN, volumen, edicion, e.year as yearE, c.nombre AS nombreC, es.idEstado, coleccion, claveIngreso, fechaIngreso, idUsuario, adquisicion, numClasificacion, materias
     from autor a, titulo t, titulo_autor ta, ejemplar e, ejemplar_estado ee, estado es, titulo_categoria tc, categoria c
     where e.idEjemplar = ?
     and a.idAutor=ta.idAutor

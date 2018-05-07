@@ -3,7 +3,7 @@ include("partials/session_functions.php");
 if(!$_SESSION["permisos"][21])
     header('Location: menu.php');
 require_once('utils.php');
-require_once('model/RBAC-utils.php');
+require_once('model/rbac-utils.php');
 include("partials/_header.html");
 include("partials/_top_bar.html"); 
 ?>
@@ -13,7 +13,7 @@ $user = getUser($_GET['user']);
 ?>
 <?php 
 include("html/accountsEdit.html");
-$link="https://www.youtube.com//embed/PptNXwj6kN0?autoplay=1";
+$link="https://www.youtube.com/embed/1GR5bdopQDM?autoplay=1";
 include("html/manualUsuario.html"); 
 include("partials/_bottom_bar.html"); 
 include("modals/modal_error.html");
