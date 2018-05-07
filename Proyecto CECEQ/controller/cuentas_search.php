@@ -1,7 +1,7 @@
 <?php
     include("../regexps.php");
     require_once('../utils.php');
-    require_once('../model/RBAC-utils.php');
+    require_once('../model/rbac-utils.php');
     if(count($_GET)>0 &&
             (($_GET["user"] == null) || test($NAME, $_GET["user"])) &&
             (($_GET["name"] == null) || test($NAME, $_GET["name"])) &&

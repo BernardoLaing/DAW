@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('../utils.php');
-require_once('RBAC-utils.php');
+require_once('rbac-utils.php');
 ?>
 <?php
 var_dump($_POST);
@@ -51,7 +51,7 @@ function process($data){
 ?>
 
 // <?php 
-// require_once('../model/RBAC-utils.php');
+// require_once('../model/rbac-utils.php');
 // ?>
 
 // <?php
