@@ -53,7 +53,7 @@ function importBooks(){
         createTable();
         insertBooks();
     }
-    transferDataToRespectiveTables();
+   transferDataToRespectiveTables();
 }
 
 function insertBooks(){
@@ -176,21 +176,27 @@ function transferDataToRespectiveTables(){
             echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
         }
 
-        $sql = "
-        INSERT INTO titulo_categoria(idTitulo,idCategoria)
-        SELECT idTitulo, u.numClasificacion
-        FROM upload u, autor a, titulo t
-        WHERE (u.nombre,u.apellido)=(a.nombre,a.apellidoPaterno)
-        AND (u.titulo,u.yearTitulo)=(t.titulo,t.year)
-        AND (idTitulo,u.numClasificacion)
-        NOT IN (SELECT idTitulo,idCategoria FROM titulo_categoria)
-        GROUP BY idTitulo,idAutor;
-        ";
-        if(mysqli_query($connection,$sql)){
-            echo "Paso insert titulo";
-        }else{
-            echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
-        }
+    $sql = "
+        insert into titulo_categoria (idTitulo, idCategoria)
+        select ts.idTitulo, us.numClasificacion 
+        FROM 
+        (select t.idTitulo, t.titulo, t.year, a.nombre, a.apellidoPaterno 
+         from titulo t, titulo_autor ta, autor a 
+         where t.idTitulo = ta.idTitulo and ta.idAutor = a.idAutor) ts, 
+        (select titulo, yearTitulo, nombre, apellido, numClasificacion from upload) us 
+        where (ts.titulo, ts.year, ts.nombre, ts.apellidoPaterno) = (us.titulo, us.yearTitulo, us.nombre, us.apellido)
+        AND 
+        (ts.idTitulo,us.numClasificacion)
+        NOT IN (SELECT idTitulo, idCategoria FROM titulo_categoria)
+        group by ts.idTitulo, us.numClasificacion
+    ";
+    if(mysqli_query($connection,$sql)){
+        echo "Paso insert titulo";
+    }else{
+        echo "<p>Error: " . $sql . "<br>" . mysqli_error($connection) ."</p>";
+    }
+
+    
 
     $sql = "
     INSERT INTO ejemplar_estado(idEjemplar,idEstado)
