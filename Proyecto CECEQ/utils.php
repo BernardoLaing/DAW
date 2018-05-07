@@ -1,6 +1,6 @@
 <?php
     function connect() {
-        $ENV = "dev";
+        $ENV = "prod";
         if ($ENV == "dev") {
             $mysql = mysqli_connect("localhost","root","","jambe");
                                             //root si estan en windows
