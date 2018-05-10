@@ -50,6 +50,7 @@ $(document).ready(function(){
                     type: "button",
                     class: "btn btn-secondary",
                     click: function () {
+                        $("#printCredentialButtonElement").hide();
                         $("#fileToUpload").prop("disabled", false);
                         $(".card-body").find("input").each(function () {
                             $(this).prop("disabled", false);
@@ -72,10 +73,11 @@ $(document).ready(function(){
         }
 
         $("form").first().find("#printButtonCredential").html(
-            $("<button/>", {
+            $("<a/>", {
                 text: "Imprimir credencial",
-                type: "button",
-                class: "btn btn-secondary"
+                href: "userCredential.php?id="+gid,
+                class: "btn btn-secondary",
+                id: "printCredentialButtonElement"
             })
         );
     };
