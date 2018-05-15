@@ -15,6 +15,15 @@ $(document).ready(function(){
                 value: getId
             })
         );
+        $("#credentialForm").append(
+            $("<input/>", {
+                type: "text",
+                name: "csrf",
+                id: "csrfTokenInput",
+                value: "asdf",//+$.getCsrfToken(),
+                style: "display: none"
+            })
+        );
 
         $("#credentialForm").submit(function(e) {
             if(!validateSearch(null))

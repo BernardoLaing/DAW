@@ -3,6 +3,9 @@ require_once("../regexps.php");
 require_once("../utils.php");
 
 session_start();
+
+include("csrfTester.php");
+
 $hasImage = false;
 if($_FILES["fileToUpload"]["tmp_name"]!=null) {
     if (getimagesize($_FILES["fileToUpload"]["tmp_name"]) != FALSE) {

@@ -24,9 +24,9 @@ include("partials/_footer.html");
 <script>
     $(document).ready(function(){
         $.loadData(<?php echo $a ?>, <?php echo $_GET["id"] ?>);
+        $.setCsrfToken(<?php echo "'".$_SESSION["csrfToken"]."'" ?>);
     });
 </script>
-
 <?php
 if(isset($_SESSION['credential_msg']) && $_SESSION['credential_msg']){
     echo "<script>

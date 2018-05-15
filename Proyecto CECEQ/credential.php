@@ -27,6 +27,7 @@ if(isset($_SESSION['credential_msg']) && $_SESSION['credential_msg']){
     $_SESSION['credential_msg'] = 0;
 }
 
-include("partials/_footer.html"); ?>
+include("partials/_footer.html");
+?>
 <?php include("upload.php"); ?>
 <?php ?>
