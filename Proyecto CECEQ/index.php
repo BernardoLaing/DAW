@@ -56,6 +56,10 @@ function process($data){
     return $data;
 }
 
+if(!isset($_SESSION["csrfToken"]))
+    $_SESSION["csrfToken"] = "asdf";
+
+
 ?>
 <?php include("partials/_header.html"); ?>
 <?php include("html/login_form.html"); ?>
