@@ -1,8 +1,0 @@
-#!/usr/bin/ksh
-
-if [$1 -eq "-M" ]
-then 
-	echo "PASO"
-else
-	echo "NO PASO"
-fi
