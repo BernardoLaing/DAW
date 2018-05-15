@@ -14,6 +14,9 @@ include("partials/_header.html");
 include("partials/_top_bar.html");
 include("permissions.php");
 include("html/credential.html");
+$link="https://www.youtube.com/embed/WVF4j5VMpH4?autoplay=1";
+include("html/manualUsuario.html");
+include("partials/_bottom_bar.html");
 include("partials/_footer.html");
 
 ?>

@@ -67,6 +67,7 @@ $(document).ready(function(){
                                 type: "submit"
                             })
                         );
+                        $("iframe").first().prop("src", "https://www.youtube.com/embed/HgDBl0JYzNw?autoplay=1");
                     }
                 })
             );
