@@ -1,6 +1,7 @@
 <?php
 include("../regexps.php");
 include("../utils.php");
+include("csrfValidationAJAX.php");
 
 if(count($_POST)>0
     && test($NUMBER, $_POST["user"]["number"])

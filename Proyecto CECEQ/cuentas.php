@@ -18,7 +18,6 @@ include("html/cuentas.html");
 $link="https://www.youtube.com/embed/F43Q0iKerJk?autoplay=1";
 include("html/manualUsuario.html"); 
 include("partials/_bottom_bar.html"); 
-
 if(isset($_SESSION['success_msg'])){
     echo "<script>
             $(document).ready(function (e) {

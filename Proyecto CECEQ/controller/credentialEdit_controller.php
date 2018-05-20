@@ -4,7 +4,7 @@ require_once("../utils.php");
 
 session_start();
 
-include("csrfTester.php");
+include("csrfValidation.php");
 
 $hasImage = false;
 if($_FILES["fileToUpload"]["tmp_name"]!=null) {

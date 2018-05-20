@@ -57,8 +57,8 @@ function process($data){
 }
 
 //if(!isset($_SESSION["csrfToken"]))
-    $_SESSION["csrfToken"] = "asdf";
 
+    $_SESSION["csrfToken"] = bin2hex(random_bytes(32));
 
 ?>
 <?php include("partials/_header.html"); ?>

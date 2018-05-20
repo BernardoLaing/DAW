@@ -2,6 +2,7 @@
 session_start();
 require_once('utils.php');
 require_once('model/rbac-utils.php');
+include("controller/csrfValidation.php");
 ?>
 <?php
 if(isset($_POST["submit"])){

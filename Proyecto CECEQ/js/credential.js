@@ -20,7 +20,7 @@ $(document).ready(function(){
                 type: "text",
                 name: "csrf",
                 id: "csrfTokenInput",
-                value: "asdf",//+$.getCsrfToken(),
+                value: $.getCsrfToken(),
                 style: "display: none"
             })
         );

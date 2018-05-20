@@ -13,6 +13,16 @@ if(isset($_GET["id"])&&$_GET["id"]!=null&&test($NUMBER, $_GET["id"]))
 include("partials/_header.html");
 include("partials/_top_bar.html");
 include("permissions.php");
+
+?>
+
+<script>
+    $(document).ready(function(){
+        $.setCsrfToken(<?php echo "'".$_SESSION["csrfToken"]."'" ?>);
+    });
+</script>
+
+<?php
 include("html/credential.html");
 $link="https://www.youtube.com/embed/WVF4j5VMpH4?autoplay=1";
 include("html/manualUsuario.html");
@@ -24,7 +34,6 @@ include("partials/_footer.html");
 <script>
     $(document).ready(function(){
         $.loadData(<?php echo $a ?>, <?php echo $_GET["id"] ?>);
-        $.setCsrfToken(<?php echo "'".$_SESSION["csrfToken"]."'" ?>);
     });
 </script>
 <?php

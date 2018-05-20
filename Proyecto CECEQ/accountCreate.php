@@ -29,4 +29,5 @@ if(isset($_SESSION['error_type']) && $_SESSION['error_type'] === "userConflict")
 }
 
 include("partials/_footer.html");
+include("addTokenToDom.php");
 ?>

@@ -1,7 +1,7 @@
 <?php
     include("../regexps.php");
     include("../utils.php");
-
+    include("csrfValidationAJAX.php");
     foreach($_POST["user"] as $key => $value){
         echo $key." : ".$value."\n";
     }
